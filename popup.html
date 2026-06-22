@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flashcard Vocabulary</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>Flashcards</h1>
+          <p id="cardCount">0 saved cards</p>
+        </div>
+        <button id="openStudyButton" class="icon-button" type="button" title="Open study web app">Study</button>
+      </header>
+
+      <section class="panel auth-panel">
+        <div id="loggedOutView">
+          <p class="section-title">Cloud account</p>
+          <form id="authForm" autocomplete="off">
+            <div class="field-grid">
+              <label>
+                <span>Username</span>
+                <input id="usernameInput" name="username" type="text" value="student" required>
+              </label>
+
+              <label>
+                <span>Password</span>
+                <input id="passwordInput" name="password" type="password" value="password123" required>
+              </label>
+            </div>
+            <div class="auth-actions">
+              <button id="loginButton" class="primary-button" type="submit">Login</button>
+              <button id="registerButton" type="button">Register</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="loggedInView" class="logged-in is-hidden">
+          <div>
+            <p class="section-title">Logged in</p>
+            <strong id="accountName"></strong>
+          </div>
+          <button id="logoutButton" type="button">Logout</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <form id="flashcardForm" autocomplete="off">
+          <label>
+            <span>Word</span>
+            <div class="inline-input">
+              <input id="wordInput" name="word" type="text" placeholder="e.g. resilient" required>
+              <button id="translateButton" type="button">AI</button>
+            </div>
+          </label>
+
+          <label>
+            <span>Meaning</span>
+            <textarea id="meaningInput" name="meaning" rows="3" placeholder="Short definition or translation" required></textarea>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              <span>Wordform</span>
+              <input id="wordformInput" name="wordform" type="text" placeholder="noun, verb">
+            </label>
+
+            <label>
+              <span>Category</span>
+              <input id="categoryInput" name="category" type="text" placeholder="IELTS, Work">
+            </label>
+          </div>
+
+          <button class="primary-button" type="submit">Save flashcard</button>
+        </form>
+      </section>
+
+      <section class="toolbar" aria-label="Flashcard actions">
+        <button id="syncButton" type="button">Sync to Cloud</button>
+        <button id="exportButton" type="button">Export JSON</button>
+        <button id="clearButton" class="danger-button" type="button">Clear local</button>
+      </section>
+
+      <p id="statusMessage" class="status" role="status" aria-live="polite"></p>
+
+      <section class="card-list" aria-label="Saved flashcards">
+        <div id="emptyState" class="empty-state">
+          Add your first vocabulary card.
+        </div>
+        <ul id="flashcardList"></ul>
+      </section>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

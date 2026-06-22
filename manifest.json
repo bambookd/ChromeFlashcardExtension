@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Flashcard Vocabulary",
+  "description": "Save vocabulary flashcards locally and sync them to a local backend API.",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "Flashcard Vocabulary",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "contextMenus",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "contentScript.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

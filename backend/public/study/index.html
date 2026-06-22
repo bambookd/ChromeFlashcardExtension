@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flashcard Study</title>
+    <link rel="stylesheet" href="/study/styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section id="authView" class="auth-view">
+        <div class="auth-card">
+          <p class="eyebrow">Flashcard Vocabulary</p>
+          <h1>Study your saved words</h1>
+          <p class="muted">Login with a local account to load your cloud-synced flashcards.</p>
+
+          <form id="authForm" class="auth-form">
+            <label>
+              <span>Username</span>
+              <input id="usernameInput" name="username" type="text" autocomplete="username" required>
+            </label>
+
+            <label>
+              <span>Password</span>
+              <input id="passwordInput" name="password" type="password" autocomplete="current-password" required>
+            </label>
+
+            <div class="button-row">
+              <button id="loginButton" class="primary-button" type="submit">Login</button>
+              <button id="registerButton" class="secondary-button" type="button">Register</button>
+            </div>
+          </form>
+
+          <p class="hint">Sample accounts: <strong>student/password123</strong> or <strong>teacher/password123</strong></p>
+          <p id="authStatus" class="status" role="status"></p>
+        </div>
+      </section>
+
+      <section id="studyView" class="study-view is-hidden">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Study Mode</p>
+            <h1>Flashcards</h1>
+          </div>
+          <div class="topbar-actions">
+            <span id="userBadge" class="user-badge"></span>
+            <button id="logoutButton" class="secondary-button" type="button">Logout</button>
+          </div>
+        </header>
+
+        <section class="controls">
+          <label>
+            <span>Category</span>
+            <select id="categorySelect">
+              <option value="">All categories</option>
+            </select>
+          </label>
+
+          <label class="checkbox-label">
+            <input id="randomToggle" type="checkbox" checked>
+            <span>Random order</span>
+          </label>
+
+          <div class="controls-actions">
+            <button id="reloadButton" class="secondary-button" type="button">Reload</button>
+            <button id="newCardButton" class="primary-button" type="button">New card</button>
+          </div>
+        </section>
+
+        <p id="studyStatus" class="status" role="status"></p>
+
+        <section class="workspace">
+          <section class="review-panel">
+            <div id="flashcard" class="review-card" tabindex="0" role="button" aria-label="Flip flashcard">
+              <div class="card-face">
+                <p id="cardMeta" class="card-meta"></p>
+                <h2 id="cardWord">No cards yet</h2>
+                <p id="cardMeaning" class="card-meaning is-hidden"></p>
+                <p id="flipHint" class="flip-hint">Click card or press Space to flip</p>
+              </div>
+            </div>
+
+            <div class="review-actions">
+              <button id="previousButton" class="secondary-button" type="button">Previous</button>
+              <button id="flipButton" class="secondary-button" type="button">Flip</button>
+              <button id="nextButton" class="primary-button" type="button">Next</button>
+            </div>
+          </section>
+
+          <aside class="editor-panel">
+            <h2 id="editorTitle">Add flashcard</h2>
+            <form id="cardForm">
+              <input id="cardIdInput" type="hidden">
+
+              <label>
+                <span>Word</span>
+                <input id="cardWordInput" name="word" type="text" required>
+              </label>
+
+              <label>
+                <span>Meaning</span>
+                <textarea id="cardMeaningInput" name="meaning" rows="4" required></textarea>
+              </label>
+
+              <div class="field-grid">
+                <label>
+                  <span>Wordform</span>
+                  <input id="cardWordformInput" name="wordform" type="text">
+                </label>
+
+                <label>
+                  <span>Category</span>
+                  <input id="cardCategoryInput" name="category" type="text" placeholder="IELTS">
+                </label>
+              </div>
+
+              <div class="button-row">
+                <button class="primary-button" type="submit">Save</button>
+                <button id="resetFormButton" class="secondary-button" type="button">Reset</button>
+              </div>
+            </form>
+          </aside>
+        </section>
+
+        <section class="library">
+          <div class="library-header">
+            <h2>Library</h2>
+            <p id="libraryCount">0 cards</p>
+          </div>
+          <div id="cardList" class="card-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/study/app.js"></script>
+  </body>
+</html>
