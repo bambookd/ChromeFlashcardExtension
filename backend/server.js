@@ -24,12 +24,14 @@ const SAMPLE_USERS = [
   {
     id: "user-demo-1",
     username: "student",
-    password: "password123"
+    password: "password123",
+    categories: ["IELTS", "Work"]
   },
   {
     id: "user-demo-2",
     username: "teacher",
-    password: "password123"
+    password: "password123",
+    categories: ["Teaching", "Business"]
   }
 ];
 
@@ -101,6 +103,7 @@ app.post("/api/auth/register", async (request, response, next) => {
       id: randomUUID(),
       username,
       passwordHash: await bcrypt.hash(password, 10),
+      categories: [],
       createdAt: new Date().toISOString()
     };
 
@@ -167,6 +170,7 @@ app.post("/api/flashcards", requireAuth, async (request, response, next) => {
 
     flashcards.unshift(created);
     await writeJson(FLASHCARDS_PATH, flashcards);
+    await ensureUserCategory(request.user.id, created.category);
 
     response.status(201).json({
       ok: true,
@@ -199,6 +203,7 @@ app.put("/api/flashcards/:id", requireAuth, async (request, response, next) => {
 
     flashcards[index] = updated;
     await writeJson(FLASHCARDS_PATH, flashcards);
+    await ensureUserCategory(request.user.id, updated.category);
 
     response.json({
       ok: true,
@@ -232,13 +237,75 @@ app.delete("/api/flashcards/:id", requireAuth, async (request, response, next) =
 
 app.get("/api/categories", requireAuth, async (request, response, next) => {
   try {
-    const flashcards = await getUserFlashcards(request.user.id);
-    const categories = [...new Set(flashcards.map((card) => card.category).filter(Boolean))]
-      .sort((a, b) => a.localeCompare(b));
+    const categories = await getUserCategories(request.user.id);
 
     response.json({
       ok: true,
       categories
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.post("/api/categories", requireAuth, async (request, response, next) => {
+  try {
+    const category = normalizeCategory(request.body?.category);
+    const categories = await ensureUserCategory(request.user.id, category);
+
+    response.status(201).json({
+      ok: true,
+      category,
+      categories
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.delete("/api/categories/:category", requireAuth, async (request, response, next) => {
+  try {
+    const category = normalizeCategory(request.params.category);
+
+    if (category.toLowerCase() === "uncategorized") {
+      throw httpError(400, "Uncategorized cannot be deleted");
+    }
+
+    const users = await readJson(USERS_PATH, []);
+    const userIndex = users.findIndex((user) => user.id === request.user.id);
+
+    if (userIndex === -1) {
+      throw httpError(404, "User not found");
+    }
+
+    users[userIndex].categories = getStoredCategories(users[userIndex])
+      .filter((item) => item.toLowerCase() !== category.toLowerCase());
+    await writeJson(USERS_PATH, users);
+
+    const flashcards = await readJson(FLASHCARDS_PATH, []);
+    let updatedCards = 0;
+    const nextFlashcards = flashcards.map((card) => {
+      if (card.userId === request.user.id && card.category?.toLowerCase() === category.toLowerCase()) {
+        updatedCards += 1;
+        return {
+          ...card,
+          category: "Uncategorized",
+          updatedAt: new Date().toISOString()
+        };
+      }
+
+      return card;
+    });
+
+    if (updatedCards > 0) {
+      await writeJson(FLASHCARDS_PATH, nextFlashcards);
+    }
+
+    response.json({
+      ok: true,
+      deletedCategory: category,
+      updatedCards,
+      categories: await getUserCategories(request.user.id)
     });
   } catch (error) {
     next(error);
@@ -298,6 +365,7 @@ app.post("/api/sync", requireAuth, async (request, response, next) => {
     }
 
     await writeJson(FLASHCARDS_PATH, allCards);
+    await ensureUserCategories(request.user.id, incomingCards.map((card) => card.category));
     await writeJson(CLOUD_STORE_PATH, {
       userId: request.user.id,
       username: request.user.username,
@@ -400,9 +468,18 @@ async function bootstrapLocalData() {
         id: sampleUser.id,
         username: sampleUser.username,
         passwordHash: await bcrypt.hash(sampleUser.password, 10),
+        categories: sampleUser.categories,
         createdAt: new Date().toISOString()
       });
       usersChanged = true;
+    } else {
+      const index = users.findIndex((user) => user.username.toLowerCase() === sampleUser.username.toLowerCase());
+      const categories = mergeCategories(getStoredCategories(users[index]), sampleUser.categories);
+
+      if (categories.length !== getStoredCategories(users[index]).length) {
+        users[index].categories = categories;
+        usersChanged = true;
+      }
     }
   }
 
@@ -471,6 +548,41 @@ async function getUserFlashcards(userId) {
     .filter((card) => card.userId === userId)
     .map(stripInternalFields)
     .sort((a, b) => (b.updatedAt || b.createdAt || "").localeCompare(a.updatedAt || a.createdAt || ""));
+}
+
+async function getUserCategories(userId) {
+  const users = await readJson(USERS_PATH, []);
+  const user = users.find((candidate) => candidate.id === userId);
+  const flashcards = await readJson(FLASHCARDS_PATH, []);
+  const cardCategories = flashcards
+    .filter((card) => card.userId === userId)
+    .map((card) => card.category)
+    .filter(Boolean);
+
+  return mergeCategories(getStoredCategories(user), cardCategories);
+}
+
+async function ensureUserCategory(userId, category) {
+  return ensureUserCategories(userId, [category]);
+}
+
+async function ensureUserCategories(userId, categoriesToAdd) {
+  const users = await readJson(USERS_PATH, []);
+  const userIndex = users.findIndex((user) => user.id === userId);
+
+  if (userIndex === -1) {
+    throw httpError(404, "User not found");
+  }
+
+  const currentCategories = getStoredCategories(users[userIndex]);
+  const categories = mergeCategories(currentCategories, categoriesToAdd.filter(Boolean));
+
+  if (categories.length !== currentCategories.length) {
+    users[userIndex].categories = categories;
+    await writeJson(USERS_PATH, users);
+  }
+
+  return categories;
 }
 
 async function requireAuth(request, _response, next) {
@@ -593,6 +705,56 @@ function normalizeOptionalString(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function normalizeCategory(value) {
+  const category = normalizeRequiredString(value, "category");
+
+  if (category.length > 40) {
+    throw httpError(400, "Category must be 40 characters or fewer");
+  }
+
+  return category;
+}
+
+function getStoredCategories(user) {
+  return Array.isArray(user?.categories) ? user.categories.filter(Boolean) : [];
+}
+
+function mergeCategories(...categoryLists) {
+  const byKey = new Map();
+
+  for (const categories of categoryLists) {
+    for (const category of categories) {
+      const normalized = normalizeOptionalString(category);
+
+      if (!normalized) {
+        continue;
+      }
+
+      const key = normalized.toLowerCase();
+
+      if (!byKey.has(key)) {
+        byKey.set(key, normalized);
+      }
+    }
+  }
+
+  if (!byKey.has("uncategorized")) {
+    byKey.set("uncategorized", "Uncategorized");
+  }
+
+  return [...byKey.values()].sort((a, b) => {
+    if (a.toLowerCase() === "uncategorized") {
+      return -1;
+    }
+
+    if (b.toLowerCase() === "uncategorized") {
+      return 1;
+    }
+
+    return a.localeCompare(b);
+  });
+}
+
 function createMockTranslation(word) {
   const dictionary = new Map([
     ["resilient", { meaning: "Able to recover quickly from difficulty.", wordform: "adjective" }],
@@ -608,7 +770,7 @@ function createMockTranslation(word) {
   }
 
   return {
-    meaning: `Simulated AI meaning for "${word}". Replace this with AWS Translate, Bedrock, or another provider in production.`,
+    meaning: `Simulated translation for "${word}". Replace this with Amazon Translate in production.`,
     wordform: "unknown"
   };
 }

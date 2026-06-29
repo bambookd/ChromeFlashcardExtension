@@ -232,6 +232,12 @@ textarea:focus {
   min-width: 240px;
 }
 
+.category-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
 .checkbox-label {
   flex-direction: row;
   align-items: center;

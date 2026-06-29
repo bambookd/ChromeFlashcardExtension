@@ -1,6 +1,6 @@
 # Flashcard Vocabulary Chrome Extension
 
-Offline-first Chrome Extension for saving vocabulary flashcards locally with `chrome.storage.local`, plus a localhost API that simulates cloud sync, AI translation, and JSON export.
+Offline-first Chrome Extension for saving vocabulary flashcards locally with `chrome.storage.local`, plus a localhost API that simulates cloud sync, translation, and JSON export.
 
 ## Project Structure
 
@@ -56,6 +56,8 @@ POST /api/flashcards
 PUT  /api/flashcards/:id
 DELETE /api/flashcards/:id
 GET  /api/categories
+POST /api/categories
+DELETE /api/categories/:category
 GET  /api/study/random
 POST /api/sync        { "flashcards": [...] }
 POST /api/translate   { "word": "resilient" }
@@ -73,7 +75,7 @@ User data is written to `backend/data/users.json`. Cloud-synced flashcards are w
 4. Select this project folder: `ChromeFlashCardExtension`.
 5. Pin and open the extension.
 
-Keep the backend running before using `AI`, `Sync`, `Export JSON`, or the study web app. Saving and deleting flashcards in the extension works offline because the extension uses `chrome.storage.local`.
+Keep the backend running before using `Translate`, `Sync`, `Export JSON`, or the study web app. Saving and deleting flashcards in the extension works offline because the extension uses `chrome.storage.local`.
 
 ## Save From A Web Page
 
@@ -118,5 +120,5 @@ The current study logic is session-based, not full spaced repetition yet. The AP
 The current localhost API is shaped to map cleanly to AWS later:
 
 - `POST /api/sync` can become API Gateway + Lambda + DynamoDB.
-- `POST /api/translate` can call Amazon Translate, Bedrock, or another AI provider.
+- `POST /api/translate` can call Amazon Translate.
 - `POST /api/export` can generate a JSON file and return a pre-signed S3 URL.

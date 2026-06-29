@@ -27,6 +27,7 @@ body {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -134,6 +135,7 @@ label {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   color: var(--text);
@@ -147,12 +149,19 @@ textarea {
 }
 
 input:focus,
+select:focus,
 textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .inline-input {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.category-row {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 8px;
@@ -167,7 +176,8 @@ textarea:focus {
 .primary-button,
 .icon-button,
 .toolbar button,
-.inline-input button {
+.inline-input button,
+.category-row button {
   min-height: 38px;
   padding: 0 13px;
   border-radius: 8px;

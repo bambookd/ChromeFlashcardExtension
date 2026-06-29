@@ -1,6 +1,8 @@
 const FLASHCARD_STORAGE_KEY = "flashcards";
+const FLASHCARD_CATEGORY_STORAGE_KEY = "flashcardCategories";
 const FLASHCARD_API_BASE_URL = "http://localhost:3000";
 const EDITOR_HOST_ID = "flashcard-vocabulary-inline-editor";
+const ADD_CATEGORY_VALUE = "__add_category__";
 
 let lastSelectionRect = null;
 let lastContextPoint = null;
@@ -61,7 +63,7 @@ function getSelectedText() {
   return selection ? selection.toString().trim().replace(/\s+/g, " ").slice(0, 120) : "";
 }
 
-function showFlashcardEditor(word) {
+async function showFlashcardEditor(word) {
   closeEditor();
 
   editorHost = document.createElement("div");
@@ -85,16 +87,64 @@ function showFlashcardEditor(word) {
   const meaningInput = shadowRoot.querySelector("[name='meaning']");
   const wordformInput = shadowRoot.querySelector("[name='wordform']");
   const categoryInput = shadowRoot.querySelector("[name='category']");
+  const deleteCategoryButton = shadowRoot.querySelector("[data-action='delete-category']");
+  await renderCategoryOptions(categoryInput, deleteCategoryButton);
 
   closeButtons.forEach((button) => {
     button.addEventListener("click", closeEditor);
+  });
+
+  categoryInput.addEventListener("change", async () => {
+    if (categoryInput.value !== ADD_CATEGORY_VALUE) {
+      categoryInput.dataset.previousValue = categoryInput.value;
+      deleteCategoryButton.disabled = categoryInput.value === "Uncategorized";
+      return;
+    }
+
+    const previousValue = categoryInput.dataset.previousValue || "Uncategorized";
+    const category = window.prompt("New category name:");
+
+    if (!category?.trim()) {
+      categoryInput.value = previousValue;
+      return;
+    }
+
+    const normalized = normalizeCategoryName(category);
+
+    if (!normalized) {
+      categoryInput.value = previousValue;
+      return;
+    }
+
+    await ensureLocalCategory(normalized);
+    await renderCategoryOptions(categoryInput, deleteCategoryButton, normalized);
+    setInlineStatus(status, `Added category "${normalized}".`, "success");
+  });
+
+  deleteCategoryButton.addEventListener("click", async () => {
+    const category = getSelectedCategory(categoryInput);
+
+    if (category === "Uncategorized") {
+      setInlineStatus(status, "Uncategorized cannot be deleted.", "error");
+      return;
+    }
+
+    const confirmed = window.confirm(`Delete category "${category}"? Cards using it will move to Uncategorized.`);
+
+    if (!confirmed) {
+      return;
+    }
+
+    await deleteLocalCategory(category);
+    await renderCategoryOptions(categoryInput, deleteCategoryButton, "Uncategorized");
+    setInlineStatus(status, `Deleted category "${category}".`, "success");
   });
 
   translateButton.addEventListener("click", async () => {
     const currentWord = wordInput.value.trim();
 
     if (!currentWord) {
-      setInlineStatus(status, "Word is required before AI lookup.", "error");
+      setInlineStatus(status, "Word is required before translation.", "error");
       return;
     }
 
@@ -112,11 +162,11 @@ function showFlashcardEditor(word) {
         wordformInput.value = result.wordform;
       }
 
-      setInlineStatus(status, "Meaning loaded from local API.", "success");
+      setInlineStatus(status, "Translation loaded from local API.", "success");
     } catch (error) {
-      setInlineStatus(status, `AI lookup failed: ${error.message}`, "error");
+      setInlineStatus(status, `Translation failed: ${error.message}`, "error");
     } finally {
-      setButtonBusy(translateButton, false, "AI");
+      setButtonBusy(translateButton, false, "Translate");
     }
   });
 
@@ -128,7 +178,7 @@ function showFlashcardEditor(word) {
       word: wordInput.value.trim(),
       meaning: meaningInput.value.trim(),
       wordform: wordformInput.value.trim(),
-      category: categoryInput.value.trim(),
+      category: getSelectedCategory(categoryInput),
       createdAt: new Date().toISOString(),
       syncedAt: null,
       sourceUrl: location.href,
@@ -171,20 +221,37 @@ function createEditorMarkup(word) {
       <label>
         <span>Meaning</span>
         <div class="meaning-row">
-          <textarea name="meaning" rows="3" placeholder="Type meaning or use AI" required></textarea>
-          <button class="secondary-button" type="button" data-action="translate">AI</button>
+          <textarea name="meaning" rows="3" placeholder="Type meaning or translate" required></textarea>
+          <button class="secondary-button" type="button" data-action="translate">Translate</button>
         </div>
       </label>
 
       <div class="field-grid">
         <label>
           <span>Wordform</span>
-          <input name="wordform" type="text" placeholder="noun, verb">
+          <select name="wordform">
+            <option value="">Select type</option>
+            <option value="noun">Noun</option>
+            <option value="verb">Verb</option>
+            <option value="adjective">Adjective</option>
+            <option value="adverb">Adverb</option>
+            <option value="pronoun">Pronoun</option>
+            <option value="preposition">Preposition</option>
+            <option value="conjunction">Conjunction</option>
+            <option value="interjection">Interjection</option>
+            <option value="phrase">Phrase</option>
+            <option value="phrasal verb">Phrasal verb</option>
+            <option value="idiom">Idiom</option>
+            <option value="unknown">Unknown</option>
+          </select>
         </label>
 
         <label>
           <span>Category</span>
-          <input name="category" type="text" placeholder="IELTS, Work">
+          <div class="category-row">
+            <select name="category"></select>
+            <button class="secondary-button" type="button" data-action="delete-category">Delete</button>
+          </div>
         </label>
       </div>
 
@@ -265,6 +332,7 @@ function createEditorStyles() {
     }
 
     input,
+    select,
     textarea {
       width: 100%;
       margin: 0;
@@ -282,6 +350,7 @@ function createEditorStyles() {
     }
 
     input:focus,
+    select:focus,
     textarea:focus {
       border-color: #2563eb;
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
@@ -307,6 +376,12 @@ function createEditorStyles() {
       grid-template-columns: 1fr auto;
       gap: 8px;
       align-items: start;
+    }
+
+    .category-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
     }
 
     .field-grid {
@@ -385,7 +460,102 @@ function positionEditor(host) {
 async function saveFlashcard(card) {
   const result = await chrome.storage.local.get({ [FLASHCARD_STORAGE_KEY]: [] });
   const currentCards = Array.isArray(result[FLASHCARD_STORAGE_KEY]) ? result[FLASHCARD_STORAGE_KEY] : [];
+  await ensureLocalCategory(card.category);
   await chrome.storage.local.set({ [FLASHCARD_STORAGE_KEY]: [card, ...currentCards] });
+}
+
+async function getLocalCategories() {
+  const result = await chrome.storage.local.get({ [FLASHCARD_CATEGORY_STORAGE_KEY]: ["Uncategorized"] });
+  return normalizeCategoryList(result[FLASHCARD_CATEGORY_STORAGE_KEY]);
+}
+
+async function setLocalCategories(categories) {
+  await chrome.storage.local.set({ [FLASHCARD_CATEGORY_STORAGE_KEY]: normalizeCategoryList(categories) });
+}
+
+async function ensureLocalCategory(category) {
+  const categories = await getLocalCategories();
+  await setLocalCategories([...categories, category]);
+}
+
+async function deleteLocalCategory(category) {
+  const categories = await getLocalCategories();
+  await setLocalCategories(categories.filter((item) => item.toLowerCase() !== category.toLowerCase()));
+
+  const result = await chrome.storage.local.get({ [FLASHCARD_STORAGE_KEY]: [] });
+  const currentCards = Array.isArray(result[FLASHCARD_STORAGE_KEY]) ? result[FLASHCARD_STORAGE_KEY] : [];
+  await chrome.storage.local.set({
+    [FLASHCARD_STORAGE_KEY]: currentCards.map((card) => (
+      card.category?.toLowerCase() === category.toLowerCase()
+        ? { ...card, category: "Uncategorized", updatedAt: new Date().toISOString(), syncedAt: null }
+        : card
+    ))
+  });
+}
+
+async function renderCategoryOptions(select, deleteButton, selectedValue = select.value || "Uncategorized") {
+  const result = await chrome.storage.local.get({ [FLASHCARD_STORAGE_KEY]: [] });
+  const currentCards = Array.isArray(result[FLASHCARD_STORAGE_KEY]) ? result[FLASHCARD_STORAGE_KEY] : [];
+  const categories = normalizeCategoryList([
+    ...await getLocalCategories(),
+    ...currentCards.map((card) => card.category).filter(Boolean)
+  ]);
+
+  await setLocalCategories(categories);
+  select.textContent = "";
+
+  for (const category of categories) {
+    select.append(new Option(category, category));
+  }
+
+  select.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
+  select.value = categories.includes(selectedValue) ? selectedValue : "Uncategorized";
+  select.dataset.previousValue = select.value;
+  deleteButton.disabled = select.value === "Uncategorized";
+}
+
+function getSelectedCategory(select) {
+  return select.value && select.value !== ADD_CATEGORY_VALUE
+    ? select.value
+    : "Uncategorized";
+}
+
+function normalizeCategoryName(value) {
+  return typeof value === "string" ? value.trim().slice(0, 40) : "";
+}
+
+function normalizeCategoryList(categories) {
+  const byKey = new Map();
+
+  for (const category of categories || []) {
+    const normalized = normalizeCategoryName(category);
+
+    if (!normalized) {
+      continue;
+    }
+
+    const key = normalized.toLowerCase();
+
+    if (!byKey.has(key)) {
+      byKey.set(key, normalized);
+    }
+  }
+
+  if (!byKey.has("uncategorized")) {
+    byKey.set("uncategorized", "Uncategorized");
+  }
+
+  return [...byKey.values()].sort((a, b) => {
+    if (a.toLowerCase() === "uncategorized") {
+      return -1;
+    }
+
+    if (b.toLowerCase() === "uncategorized") {
+      return 1;
+    }
+
+    return a.localeCompare(b);
+  });
 }
 
 async function fetchJson(url, options = {}) {

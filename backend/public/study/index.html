@@ -51,9 +51,12 @@
         <section class="controls">
           <label>
             <span>Category</span>
-            <select id="categorySelect">
-              <option value="">All categories</option>
-            </select>
+            <div class="category-row">
+              <select id="categorySelect">
+                <option value="">All categories</option>
+              </select>
+              <button id="deleteCategoryButton" class="secondary-button" type="button">Delete</button>
+            </div>
           </label>
 
           <label class="checkbox-label">
@@ -134,12 +137,32 @@
               <div class="field-grid">
                 <label>
                   <span>Wordform</span>
-                  <input id="cardWordformInput" name="wordform" type="text">
+                  <select id="cardWordformInput" name="wordform">
+                    <option value="">Select type</option>
+                    <option value="noun">Noun</option>
+                    <option value="verb">Verb</option>
+                    <option value="adjective">Adjective</option>
+                    <option value="adverb">Adverb</option>
+                    <option value="pronoun">Pronoun</option>
+                    <option value="preposition">Preposition</option>
+                    <option value="conjunction">Conjunction</option>
+                    <option value="interjection">Interjection</option>
+                    <option value="phrase">Phrase</option>
+                    <option value="phrasal verb">Phrasal verb</option>
+                    <option value="idiom">Idiom</option>
+                    <option value="unknown">Unknown</option>
+                  </select>
                 </label>
 
                 <label>
                   <span>Category</span>
-                  <input id="cardCategoryInput" name="category" type="text" placeholder="IELTS">
+                  <div class="category-row">
+                    <select id="cardCategoryInput" name="category">
+                      <option value="Uncategorized">Uncategorized</option>
+                      <option value="__add_category__">+ Add category</option>
+                    </select>
+                    <button id="deleteEditorCategoryButton" class="secondary-button" type="button">Delete</button>
+                  </div>
                 </label>
               </div>
 

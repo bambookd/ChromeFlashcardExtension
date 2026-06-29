@@ -1,10 +1,12 @@
 const API_BASE_URL = "";
 const AUTH_KEY = "flashcardStudyAuth";
+const ADD_CATEGORY_VALUE = "__add_category__";
 
 const state = {
   token: "",
   user: null,
   flashcards: [],
+  categories: ["Uncategorized"],
   filteredCards: [],
   session: createEmptySession()
 };
@@ -20,6 +22,7 @@ const elements = {
   userBadge: document.getElementById("userBadge"),
   logoutButton: document.getElementById("logoutButton"),
   categorySelect: document.getElementById("categorySelect"),
+  deleteCategoryButton: document.getElementById("deleteCategoryButton"),
   randomToggle: document.getElementById("randomToggle"),
   reloadButton: document.getElementById("reloadButton"),
   newCardButton: document.getElementById("newCardButton"),
@@ -52,6 +55,7 @@ const elements = {
   cardMeaningInput: document.getElementById("cardMeaningInput"),
   cardWordformInput: document.getElementById("cardWordformInput"),
   cardCategoryInput: document.getElementById("cardCategoryInput"),
+  deleteEditorCategoryButton: document.getElementById("deleteEditorCategoryButton"),
   resetFormButton: document.getElementById("resetFormButton")
 };
 
@@ -70,7 +74,9 @@ function bindEvents() {
   elements.registerButton.addEventListener("click", register);
   elements.logoutButton.addEventListener("click", logout);
   elements.reloadButton.addEventListener("click", loadFlashcards);
-  elements.categorySelect.addEventListener("change", applyFilters);
+  elements.categorySelect.addEventListener("change", handleFilterCategoryChange);
+  elements.deleteCategoryButton.addEventListener("click", handleDeleteCategory);
+  elements.deleteEditorCategoryButton.addEventListener("click", handleDeleteEditorCategory);
   elements.randomToggle.addEventListener("change", () => {
     resetStudySession("Start a new session to apply shuffle changes.");
   });
@@ -85,6 +91,7 @@ function bindEvents() {
   elements.newCardButton.addEventListener("click", resetForm);
   elements.resetFormButton.addEventListener("click", resetForm);
   elements.cardForm.addEventListener("submit", saveCard);
+  elements.cardCategoryInput.addEventListener("change", handleEditorCategoryChange);
   elements.cardList.addEventListener("click", handleLibraryClick);
 }
 
@@ -148,6 +155,7 @@ function logout() {
   state.token = "";
   state.user = null;
   state.flashcards = [];
+  state.categories = ["Uncategorized"];
   state.filteredCards = [];
   state.session = createEmptySession();
   localStorage.removeItem(AUTH_KEY);
@@ -170,7 +178,12 @@ async function loadFlashcards() {
 
   try {
     const response = await apiFetch("/api/flashcards");
+    const categoriesResponse = await apiFetch("/api/categories");
     state.flashcards = response.flashcards || [];
+    state.categories = normalizeCategoryList([
+      ...(categoriesResponse.categories || []),
+      ...state.flashcards.map((card) => card.category).filter(Boolean)
+    ]);
     rebuildCategories();
     applyFilters();
     setStatus(elements.studyStatus, `Loaded ${state.flashcards.length} flashcard${state.flashcards.length === 1 ? "" : "s"}.`, "success");
@@ -181,8 +194,13 @@ async function loadFlashcards() {
 
 function rebuildCategories() {
   const selected = elements.categorySelect.value;
-  const categories = [...new Set(state.flashcards.map((card) => card.category).filter(Boolean))]
-    .sort((a, b) => a.localeCompare(b));
+  const editorSelected = elements.cardCategoryInput.value;
+  const categories = normalizeCategoryList([
+    ...state.categories,
+    ...state.flashcards.map((card) => card.category).filter(Boolean)
+  ]);
+
+  state.categories = categories;
 
   elements.categorySelect.textContent = "";
   elements.categorySelect.append(new Option("All categories", ""));
@@ -191,7 +209,134 @@ function rebuildCategories() {
     elements.categorySelect.append(new Option(category, category));
   }
 
+  elements.categorySelect.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
   elements.categorySelect.value = categories.includes(selected) ? selected : "";
+  elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
+  elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
+
+  elements.cardCategoryInput.textContent = "";
+
+  for (const category of categories) {
+    elements.cardCategoryInput.append(new Option(category, category));
+  }
+
+  elements.cardCategoryInput.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
+  elements.cardCategoryInput.value = categories.includes(editorSelected) ? editorSelected : "Uncategorized";
+  elements.cardCategoryInput.dataset.previousValue = elements.cardCategoryInput.value;
+  elements.deleteEditorCategoryButton.disabled = elements.cardCategoryInput.value === "Uncategorized";
+}
+
+async function handleFilterCategoryChange() {
+  if (elements.categorySelect.value === ADD_CATEGORY_VALUE) {
+    await addCategoryFromPrompt(elements.categorySelect, () => {
+      elements.categorySelect.value = "";
+    });
+    return;
+  }
+
+  elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
+  elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
+  applyFilters();
+}
+
+async function handleEditorCategoryChange() {
+  if (elements.cardCategoryInput.value === ADD_CATEGORY_VALUE) {
+    await addCategoryFromPrompt(elements.cardCategoryInput, () => {
+      elements.cardCategoryInput.value = "Uncategorized";
+    });
+    return;
+  }
+
+  elements.cardCategoryInput.dataset.previousValue = elements.cardCategoryInput.value;
+  elements.deleteEditorCategoryButton.disabled = elements.cardCategoryInput.value === "Uncategorized";
+}
+
+async function addCategoryFromPrompt(select, fallback) {
+  const previousValue = select.dataset.previousValue;
+  const category = window.prompt("New category name:");
+
+  if (!category?.trim()) {
+    if (previousValue) {
+      select.value = previousValue;
+    } else {
+      fallback();
+    }
+    return;
+  }
+
+  const normalized = normalizeCategoryName(category);
+
+  if (!normalized) {
+    if (previousValue) {
+      select.value = previousValue;
+    } else {
+      fallback();
+    }
+    return;
+  }
+
+  try {
+    const response = await apiFetch("/api/categories", {
+      method: "POST",
+      body: JSON.stringify({ category: normalized })
+    });
+    state.categories = normalizeCategoryList(response.categories || [...state.categories, normalized]);
+    rebuildCategories();
+    select.value = normalized;
+    select.dataset.previousValue = normalized;
+    elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
+    elements.deleteEditorCategoryButton.disabled = elements.cardCategoryInput.value === "Uncategorized";
+    applyFilters();
+    setStatus(elements.studyStatus, `Added category "${normalized}".`, "success");
+  } catch (error) {
+    setStatus(elements.studyStatus, error.message, "error");
+    if (previousValue) {
+      select.value = previousValue;
+    } else {
+      fallback();
+    }
+  }
+}
+
+async function handleDeleteCategory() {
+  const category = elements.categorySelect.value;
+
+  await deleteCategory(category, {
+    missingMessage: "Select a category to delete."
+  });
+}
+
+async function handleDeleteEditorCategory() {
+  const category = elements.cardCategoryInput.value;
+
+  await deleteCategory(category, {
+    missingMessage: "Select an editor category to delete."
+  });
+}
+
+async function deleteCategory(category, options = {}) {
+  if (!category || category === "Uncategorized" || category === ADD_CATEGORY_VALUE) {
+    setStatus(elements.studyStatus, options.missingMessage || "Select a category to delete.", "error");
+    return;
+  }
+
+  const confirmed = window.confirm(`Delete category "${category}"? Cards using it will move to Uncategorized.`);
+
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    await apiFetch(`/api/categories/${encodeURIComponent(category)}`, {
+      method: "DELETE"
+    });
+    elements.categorySelect.value = "";
+    elements.cardCategoryInput.value = "Uncategorized";
+    await loadFlashcards();
+    setStatus(elements.studyStatus, `Deleted category "${category}".`, "success");
+  } catch (error) {
+    setStatus(elements.studyStatus, error.message, "error");
+  }
 }
 
 function applyFilters() {
@@ -438,7 +583,7 @@ async function saveCard(event) {
     word: elements.cardWordInput.value.trim(),
     meaning: elements.cardMeaningInput.value.trim(),
     wordform: elements.cardWordformInput.value.trim(),
-    category: elements.cardCategoryInput.value.trim() || "Uncategorized"
+    category: getSelectedEditorCategory()
   };
 
   try {
@@ -518,6 +663,8 @@ function resetForm() {
   elements.editorTitle.textContent = "Add flashcard";
   elements.cardForm.reset();
   elements.cardId.value = "";
+  elements.cardCategoryInput.value = "Uncategorized";
+  elements.deleteEditorCategoryButton.disabled = true;
   elements.cardWordInput.focus();
 }
 
@@ -554,6 +701,50 @@ function shuffleCards(cards) {
 
 function isTypingInForm(target) {
   return ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(target?.tagName);
+}
+
+function getSelectedEditorCategory() {
+  return elements.cardCategoryInput.value && elements.cardCategoryInput.value !== ADD_CATEGORY_VALUE
+    ? elements.cardCategoryInput.value
+    : "Uncategorized";
+}
+
+function normalizeCategoryName(value) {
+  return typeof value === "string" ? value.trim().slice(0, 40) : "";
+}
+
+function normalizeCategoryList(categories) {
+  const byKey = new Map();
+
+  for (const category of categories || []) {
+    const normalized = normalizeCategoryName(category);
+
+    if (!normalized) {
+      continue;
+    }
+
+    const key = normalized.toLowerCase();
+
+    if (!byKey.has(key)) {
+      byKey.set(key, normalized);
+    }
+  }
+
+  if (!byKey.has("uncategorized")) {
+    byKey.set("uncategorized", "Uncategorized");
+  }
+
+  return [...byKey.values()].sort((a, b) => {
+    if (a.toLowerCase() === "uncategorized") {
+      return -1;
+    }
+
+    if (b.toLowerCase() === "uncategorized") {
+      return 1;
+    }
+
+    return a.localeCompare(b);
+  });
 }
 
 async function apiFetch(path, options = {}) {

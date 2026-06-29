@@ -53,7 +53,7 @@
             <span>Word</span>
             <div class="inline-input">
               <input id="wordInput" name="word" type="text" placeholder="e.g. resilient" required>
-              <button id="translateButton" type="button">AI</button>
+              <button id="translateButton" type="button">Translate</button>
             </div>
           </label>
 
@@ -65,12 +65,32 @@
           <div class="field-grid">
             <label>
               <span>Wordform</span>
-              <input id="wordformInput" name="wordform" type="text" placeholder="noun, verb">
+              <select id="wordformInput" name="wordform">
+                <option value="">Select type</option>
+                <option value="noun">Noun</option>
+                <option value="verb">Verb</option>
+                <option value="adjective">Adjective</option>
+                <option value="adverb">Adverb</option>
+                <option value="pronoun">Pronoun</option>
+                <option value="preposition">Preposition</option>
+                <option value="conjunction">Conjunction</option>
+                <option value="interjection">Interjection</option>
+                <option value="phrase">Phrase</option>
+                <option value="phrasal verb">Phrasal verb</option>
+                <option value="idiom">Idiom</option>
+                <option value="unknown">Unknown</option>
+              </select>
             </label>
 
             <label>
               <span>Category</span>
-              <input id="categoryInput" name="category" type="text" placeholder="IELTS, Work">
+              <div class="category-row">
+                <select id="categoryInput" name="category">
+                  <option value="Uncategorized">Uncategorized</option>
+                  <option value="__add_category__">+ Add category</option>
+                </select>
+                <button id="deleteCategoryButton" type="button">Delete</button>
+              </div>
             </label>
           </div>
 
