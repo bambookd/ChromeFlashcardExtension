@@ -6,9 +6,7 @@ const state = {
   user: null,
   flashcards: [],
   filteredCards: [],
-  currentIndex: 0,
-  history: [],
-  isFlipped: false
+  session: createEmptySession()
 };
 
 const elements = {
@@ -26,13 +24,25 @@ const elements = {
   reloadButton: document.getElementById("reloadButton"),
   newCardButton: document.getElementById("newCardButton"),
   studyStatus: document.getElementById("studyStatus"),
+  sessionMode: document.getElementById("sessionMode"),
+  progressBar: document.getElementById("progressBar"),
+  progressText: document.getElementById("progressText"),
   flashcard: document.getElementById("flashcard"),
   cardMeta: document.getElementById("cardMeta"),
   cardWord: document.getElementById("cardWord"),
   cardMeaning: document.getElementById("cardMeaning"),
+  flipHint: document.getElementById("flipHint"),
+  startSessionButton: document.getElementById("startSessionButton"),
+  restartSessionButton: document.getElementById("restartSessionButton"),
   flipButton: document.getElementById("flipButton"),
-  previousButton: document.getElementById("previousButton"),
-  nextButton: document.getElementById("nextButton"),
+  skipButton: document.getElementById("skipButton"),
+  gradeActions: document.getElementById("gradeActions"),
+  sessionSummary: document.getElementById("sessionSummary"),
+  summaryReviewed: document.getElementById("summaryReviewed"),
+  summaryAgain: document.getElementById("summaryAgain"),
+  summaryHard: document.getElementById("summaryHard"),
+  summaryGood: document.getElementById("summaryGood"),
+  summaryEasy: document.getElementById("summaryEasy"),
   libraryCount: document.getElementById("libraryCount"),
   cardList: document.getElementById("cardList"),
   cardForm: document.getElementById("cardForm"),
@@ -62,20 +72,16 @@ function bindEvents() {
   elements.reloadButton.addEventListener("click", loadFlashcards);
   elements.categorySelect.addEventListener("change", applyFilters);
   elements.randomToggle.addEventListener("change", () => {
-    state.history = [];
-    state.currentIndex = 0;
-    renderStudyCard();
+    resetStudySession("Start a new session to apply shuffle changes.");
   });
   elements.flashcard.addEventListener("click", flipCard);
-  elements.flashcard.addEventListener("keydown", (event) => {
-    if (event.key === " " || event.key === "Enter") {
-      event.preventDefault();
-      flipCard();
-    }
-  });
+  elements.flashcard.addEventListener("keydown", handleStudyKeydown);
+  document.addEventListener("keydown", handleGlobalStudyKeydown);
+  elements.startSessionButton.addEventListener("click", startStudySession);
+  elements.restartSessionButton.addEventListener("click", startStudySession);
   elements.flipButton.addEventListener("click", flipCard);
-  elements.previousButton.addEventListener("click", previousCard);
-  elements.nextButton.addEventListener("click", nextCard);
+  elements.skipButton.addEventListener("click", skipCard);
+  elements.gradeActions.addEventListener("click", handleGradeClick);
   elements.newCardButton.addEventListener("click", resetForm);
   elements.resetFormButton.addEventListener("click", resetForm);
   elements.cardForm.addEventListener("submit", saveCard);
@@ -143,6 +149,7 @@ function logout() {
   state.user = null;
   state.flashcards = [];
   state.filteredCards = [];
+  state.session = createEmptySession();
   localStorage.removeItem(AUTH_KEY);
   showAuth();
 }
@@ -192,37 +199,123 @@ function applyFilters() {
   state.filteredCards = category
     ? state.flashcards.filter((card) => card.category === category)
     : [...state.flashcards];
-  state.currentIndex = 0;
-  state.history = [];
-  state.isFlipped = false;
-  renderStudyCard();
+  resetStudySession("Start a session to review this set.");
   renderLibrary();
 }
 
-function renderStudyCard() {
-  const card = getCurrentCard();
-  state.isFlipped = false;
-  elements.cardMeaning.classList.add("is-hidden");
-
-  if (!card) {
-    elements.cardMeta.textContent = "";
-    elements.cardWord.textContent = "No cards";
-    elements.cardMeaning.textContent = "";
-    elements.previousButton.disabled = true;
-    elements.nextButton.disabled = true;
-    elements.flipButton.disabled = true;
+function startStudySession() {
+  if (state.filteredCards.length === 0) {
+    resetStudySession("No flashcards in this category.");
+    setStatus(elements.studyStatus, "No flashcards to study. Add or sync cards first.", "error");
     return;
   }
 
+  const cards = elements.randomToggle.checked
+    ? shuffleCards(state.filteredCards)
+    : [...state.filteredCards];
+  const category = elements.categorySelect.value || "All categories";
+
+  state.session = {
+    isActive: true,
+    isComplete: false,
+    isFlipped: false,
+    currentCard: cards[0],
+    queue: cards.slice(1),
+    totalCards: cards.length,
+    completedCount: 0,
+    attempts: 0,
+    modeLabel: `${category} / ${elements.randomToggle.checked ? "shuffled" : "ordered"}`,
+    stats: {
+      again: 0,
+      hard: 0,
+      good: 0,
+      easy: 0
+    }
+  };
+
+  setStatus(elements.studyStatus, "Session started. Recall the meaning first, then flip.", "success");
+  renderStudyCard();
+}
+
+function resetStudySession(message = "Choose a category, then start a session.") {
+  state.session = createEmptySession();
+  elements.sessionMode.textContent = message;
+  elements.cardMeta.textContent = "";
+  elements.cardWord.textContent = state.filteredCards.length > 0 ? "Start a session" : "No cards";
+  elements.cardMeaning.textContent = "";
+  elements.cardMeaning.classList.add("is-hidden");
+  elements.flipHint.textContent = state.filteredCards.length > 0
+    ? "Click Start Session to begin reviewing."
+    : "Add or sync flashcards before studying.";
+  elements.gradeActions.classList.add("is-hidden");
+  elements.sessionSummary.classList.add("is-hidden");
+  elements.startSessionButton.disabled = state.filteredCards.length === 0;
+  elements.startSessionButton.textContent = "Start session";
+  elements.flipButton.disabled = true;
+  elements.skipButton.disabled = true;
+  renderProgress();
+}
+
+function renderStudyCard() {
+  const { currentCard } = state.session;
+  elements.sessionSummary.classList.add("is-hidden");
+  renderProgress();
+
+  if (!currentCard) {
+    renderSessionComplete();
+    return;
+  }
+
+  elements.sessionMode.textContent = state.session.modeLabel;
   elements.cardMeta.textContent = [
-    card.category || "Uncategorized",
-    card.wordform || ""
+    currentCard.category || "Uncategorized",
+    currentCard.wordform || "",
+    `${state.session.queue.length} remaining`
   ].filter(Boolean).join(" / ");
-  elements.cardWord.textContent = card.word;
-  elements.cardMeaning.textContent = card.meaning;
-  elements.previousButton.disabled = state.history.length === 0 && state.currentIndex === 0;
-  elements.nextButton.disabled = state.filteredCards.length <= 1;
+  elements.cardWord.textContent = currentCard.word;
+  elements.cardMeaning.textContent = currentCard.meaning;
+  elements.cardMeaning.classList.toggle("is-hidden", !state.session.isFlipped);
+  elements.flipHint.textContent = state.session.isFlipped
+    ? "Rate your recall to continue."
+    : "Recall the meaning, then click or press Space to flip.";
+  elements.gradeActions.classList.toggle("is-hidden", !state.session.isFlipped);
+  elements.startSessionButton.disabled = false;
+  elements.startSessionButton.textContent = "Restart";
   elements.flipButton.disabled = false;
+  elements.skipButton.disabled = false;
+}
+
+function renderSessionComplete() {
+  state.session.isActive = false;
+  state.session.isComplete = true;
+  elements.sessionMode.textContent = "Session complete";
+  elements.cardMeta.textContent = "";
+  elements.cardWord.textContent = "Done";
+  elements.cardMeaning.textContent = "You finished this study queue.";
+  elements.cardMeaning.classList.remove("is-hidden");
+  elements.flipHint.textContent = "Start another session when ready.";
+  elements.gradeActions.classList.add("is-hidden");
+  elements.sessionSummary.classList.remove("is-hidden");
+  elements.startSessionButton.disabled = false;
+  elements.startSessionButton.textContent = "Start session";
+  elements.flipButton.disabled = true;
+  elements.skipButton.disabled = true;
+  elements.summaryReviewed.textContent = String(state.session.completedCount);
+  elements.summaryAgain.textContent = String(state.session.stats.again);
+  elements.summaryHard.textContent = String(state.session.stats.hard);
+  elements.summaryGood.textContent = String(state.session.stats.good);
+  elements.summaryEasy.textContent = String(state.session.stats.easy);
+  setStatus(elements.studyStatus, "Session complete.", "success");
+  renderProgress();
+}
+
+function renderProgress() {
+  const total = state.session.totalCards || state.filteredCards.length || 0;
+  const completed = state.session.completedCount || 0;
+  const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+  elements.progressText.textContent = `${completed} / ${total}`;
+  elements.progressBar.style.width = `${percent}%`;
 }
 
 function renderLibrary() {
@@ -252,55 +345,89 @@ function renderLibrary() {
   elements.cardList.appendChild(fragment);
 }
 
-function getCurrentCard() {
-  if (state.filteredCards.length === 0) {
-    return null;
-  }
-
-  return state.filteredCards[state.currentIndex] || state.filteredCards[0];
-}
-
 function flipCard() {
-  const card = getCurrentCard();
-
-  if (!card) {
+  if (!state.session.isActive || !state.session.currentCard || state.session.isComplete) {
     return;
   }
 
-  state.isFlipped = !state.isFlipped;
-  elements.cardMeaning.classList.toggle("is-hidden", !state.isFlipped);
+  state.session.isFlipped = true;
+  renderStudyCard();
 }
 
-function nextCard() {
-  if (state.filteredCards.length <= 1) {
+function skipCard() {
+  if (!state.session.isActive || !state.session.currentCard) {
     return;
   }
 
-  state.history.push(state.currentIndex);
+  state.session.queue.push(state.session.currentCard);
+  moveToNextCard();
+}
 
-  if (elements.randomToggle.checked) {
-    let nextIndex = state.currentIndex;
+function handleGradeClick(event) {
+  const button = event.target.closest("[data-grade]");
 
-    while (nextIndex === state.currentIndex) {
-      nextIndex = Math.floor(Math.random() * state.filteredCards.length);
-    }
-
-    state.currentIndex = nextIndex;
-  } else {
-    state.currentIndex = (state.currentIndex + 1) % state.filteredCards.length;
+  if (!button || !state.session.isFlipped) {
+    return;
   }
 
+  gradeCurrentCard(button.dataset.grade);
+}
+
+function gradeCurrentCard(grade) {
+  if (!state.session.currentCard || !Object.prototype.hasOwnProperty.call(state.session.stats, grade)) {
+    return;
+  }
+
+  state.session.stats[grade] += 1;
+  state.session.attempts += 1;
+
+  if (grade === "again") {
+    state.session.queue.push(state.session.currentCard);
+  } else {
+    state.session.completedCount += 1;
+  }
+
+  moveToNextCard();
+}
+
+function moveToNextCard() {
+  state.session.currentCard = state.session.queue.shift() || null;
+  state.session.isFlipped = false;
   renderStudyCard();
 }
 
-function previousCard() {
-  if (state.history.length > 0) {
-    state.currentIndex = state.history.pop();
-  } else {
-    state.currentIndex = Math.max(0, state.currentIndex - 1);
+function handleStudyKeydown(event) {
+  if (event.key === " " || event.key === "Enter") {
+    event.preventDefault();
+    flipCard();
+  }
+}
+
+function handleGlobalStudyKeydown(event) {
+  if (elements.studyView.classList.contains("is-hidden") || isTypingInForm(event.target)) {
+    return;
   }
 
-  renderStudyCard();
+  if (event.key === " ") {
+    event.preventDefault();
+    flipCard();
+    return;
+  }
+
+  if (!state.session.isFlipped) {
+    return;
+  }
+
+  const shortcuts = {
+    "1": "again",
+    "2": "hard",
+    "3": "good",
+    "4": "easy"
+  };
+
+  if (shortcuts[event.key]) {
+    gradeCurrentCard(shortcuts[event.key]);
+  }
 }
 
 async function saveCard(event) {
@@ -392,6 +519,41 @@ function resetForm() {
   elements.cardForm.reset();
   elements.cardId.value = "";
   elements.cardWordInput.focus();
+}
+
+function createEmptySession() {
+  return {
+    isActive: false,
+    isComplete: false,
+    isFlipped: false,
+    currentCard: null,
+    queue: [],
+    totalCards: 0,
+    completedCount: 0,
+    attempts: 0,
+    modeLabel: "",
+    stats: {
+      again: 0,
+      hard: 0,
+      good: 0,
+      easy: 0
+    }
+  };
+}
+
+function shuffleCards(cards) {
+  const shuffled = [...cards];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
+function isTypingInForm(target) {
+  return ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(target?.tagName);
 }
 
 async function apiFetch(path, options = {}) {

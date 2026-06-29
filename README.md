@@ -101,13 +101,17 @@ http://localhost:3000/study
 The study app logs in with the same local account system as the extension. It loads all cloud flashcards for the logged-in user into browser memory, then lets you:
 
 - filter by category
-- study in random or sequential order
-- click the card to flip meaning
+- start a focused study session from the selected category
+- shuffle once per session or study in saved order
+- recall the answer before flipping the card
+- rate the result with `Again`, `Hard`, `Good`, or `Easy`
+- send `Again` cards back to the end of the current queue
+- track session progress and completion summary
 - add flashcards
 - edit flashcards
 - delete flashcards
 
-The first version intentionally keeps repetition scheduling out of scope. The API and data model keep `updatedAt` and sync metadata so spaced repetition fields can be added later.
+The current study logic is session-based, not full spaced repetition yet. The API and data model keep `updatedAt` and sync metadata so persistent review fields such as `lastReviewedAt`, `nextReviewAt`, streak, and difficulty can be added later.
 
 ## Production Mapping
 
