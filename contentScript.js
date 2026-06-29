@@ -1,6 +1,7 @@
 const FLASHCARD_STORAGE_KEY = "flashcards";
 const FLASHCARD_CATEGORY_STORAGE_KEY = "flashcardCategories";
-const FLASHCARD_API_BASE_URL = "http://localhost:3000";
+const FLASHCARD_AUTH_STORAGE_KEY = "flashcardAuth";
+const FLASHCARD_API_BASE_URL = globalThis.FLASHCARD_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const EDITOR_HOST_ID = "flashcard-vocabulary-inline-editor";
 const ADD_CATEGORY_VALUE = "__add_category__";
 
@@ -151,8 +152,10 @@ async function showFlashcardEditor(word) {
     setButtonBusy(translateButton, true, "Loading");
 
     try {
+      const authHeaders = await getAuthHeaders();
       const result = await fetchJson(`${FLASHCARD_API_BASE_URL}/api/translate`, {
         method: "POST",
+        headers: authHeaders,
         body: JSON.stringify({ word: currentWord })
       });
 
@@ -467,6 +470,13 @@ async function saveFlashcard(card) {
 async function getLocalCategories() {
   const result = await chrome.storage.local.get({ [FLASHCARD_CATEGORY_STORAGE_KEY]: ["Uncategorized"] });
   return normalizeCategoryList(result[FLASHCARD_CATEGORY_STORAGE_KEY]);
+}
+
+async function getAuthHeaders() {
+  const result = await chrome.storage.local.get({ [FLASHCARD_AUTH_STORAGE_KEY]: null });
+  const token = result[FLASHCARD_AUTH_STORAGE_KEY]?.token;
+
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
 async function setLocalCategories(categories) {

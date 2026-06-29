@@ -28,6 +28,7 @@
         "https://*/*"
       ],
       "js": [
+        "extension-config.js",
         "contentScript.js"
       ],
       "run_at": "document_idle"

@@ -1,4 +1,4 @@
-const API_BASE_URL = "";
+const API_BASE_URL = window.FLASHCARD_CONFIG?.API_BASE_URL || "";
 const AUTH_KEY = "flashcardStudyAuth";
 const ADD_CATEGORY_VALUE = "__add_category__";
 

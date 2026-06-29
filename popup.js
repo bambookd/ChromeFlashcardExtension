@@ -1,5 +1,5 @@
-const API_BASE_URL = "http://localhost:3000";
-const STUDY_URL = `${API_BASE_URL}/study`;
+const API_BASE_URL = globalThis.FLASHCARD_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const STUDY_URL = globalThis.FLASHCARD_CONFIG?.STUDY_URL || `${API_BASE_URL}/study`;
 const STORAGE_KEY = "flashcards";
 const AUTH_STORAGE_KEY = "flashcardAuth";
 const CATEGORY_STORAGE_KEY = "flashcardCategories";
@@ -276,8 +276,10 @@ async function handleTranslate() {
   setBusy(elements.translateButton, true, "...");
 
   try {
+    const auth = await storage.getAuth();
     const result = await fetchJson(`${API_BASE_URL}/api/translate`, {
       method: "POST",
+      headers: auth?.token ? authHeaders(auth) : {},
       body: JSON.stringify({ word })
     });
 
