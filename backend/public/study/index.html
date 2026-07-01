@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flashcard Study</title>
-    <link rel="stylesheet" href="/study/styles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <main class="app">
       <section id="authView" class="auth-view">
         <div class="auth-card">
-          <p class="eyebrow">Flashcard Vocabulary</p>
+          <div class="auth-card-header">
+            <p class="eyebrow">Flashcard Vocabulary</p>
+            <button id="authThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+          </div>
           <h1>Study your saved words</h1>
           <p class="muted">Login with a local account to load your cloud-synced flashcards.</p>
 
@@ -43,6 +46,11 @@
             <h1>Flashcards</h1>
           </div>
           <div class="topbar-actions">
+            <div class="mode-tabs" aria-label="Practice mode">
+              <button id="studyModeButton" class="mode-tab is-active" type="button">Study</button>
+              <button id="testModeButton" class="mode-tab" type="button">Test</button>
+            </div>
+            <button id="studyThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
             <span id="userBadge" class="user-badge"></span>
             <button id="logoutButton" class="secondary-button" type="button">Logout</button>
           </div>
@@ -73,7 +81,7 @@
         <p id="studyStatus" class="status" role="status"></p>
 
         <section class="workspace">
-          <section class="review-panel">
+          <section id="studyPanel" class="review-panel">
             <div class="session-header">
               <div>
                 <p id="sessionMode" class="session-mode">Choose a category, then start a session.</p>
@@ -116,6 +124,46 @@
                 <div><strong id="summaryEasy">0</strong><span>Easy</span></div>
               </div>
               <button id="restartSessionButton" class="primary-button" type="button">Restart session</button>
+            </div>
+          </section>
+
+          <section id="testPanel" class="test-panel is-hidden">
+            <div class="test-header">
+              <div>
+                <p class="eyebrow">Test Mode</p>
+                <h2>Fill in the blank</h2>
+                <p class="muted">Read the meaning, type the original word, and unlock hints only when needed.</p>
+              </div>
+              <div class="test-score">
+                <strong id="testCorrectCount">0</strong>
+                <span>correct</span>
+              </div>
+            </div>
+
+            <div class="test-controls">
+              <label>
+                <span>Test category</span>
+                <select id="testCategorySelect">
+                  <option value="">All categories</option>
+                </select>
+              </label>
+              <button id="startTestButton" class="primary-button" type="button">Start test</button>
+            </div>
+
+            <div class="test-card">
+              <p class="test-label">Meaning</p>
+              <h2 id="testMeaning">Start a test to get a random meaning.</h2>
+              <form id="testForm" class="test-form">
+                <input id="testAnswerInput" type="text" placeholder="Type the word" autocomplete="off" disabled>
+                <button id="submitTestButton" class="primary-button" type="submit" disabled>Check</button>
+              </form>
+              <p id="testFeedback" class="test-feedback">You have 5 attempts per card.</p>
+              <div id="testHints" class="hint-list" aria-label="Hints"></div>
+            </div>
+
+            <div class="test-actions">
+              <button id="nextTestButton" class="secondary-button" type="button" disabled>Next word</button>
+              <span id="testAttemptText" class="attempt-text">0 / 5 attempts</span>
             </div>
           </section>
 

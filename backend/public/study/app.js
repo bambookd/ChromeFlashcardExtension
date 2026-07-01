@@ -1,5 +1,6 @@
 const API_BASE_URL = window.FLASHCARD_CONFIG?.API_BASE_URL || "";
 const AUTH_KEY = "flashcardStudyAuth";
+const THEME_KEY = "flashcardStudyTheme";
 const ADD_CATEGORY_VALUE = "__add_category__";
 
 const state = {
@@ -8,18 +9,23 @@ const state = {
   flashcards: [],
   categories: ["Uncategorized"],
   filteredCards: [],
-  session: createEmptySession()
+  session: createEmptySession(),
+  test: createEmptyTest()
 };
 
 const elements = {
   authView: document.getElementById("authView"),
   studyView: document.getElementById("studyView"),
   authForm: document.getElementById("authForm"),
+  authThemeToggle: document.getElementById("authThemeToggle"),
   username: document.getElementById("usernameInput"),
   password: document.getElementById("passwordInput"),
   registerButton: document.getElementById("registerButton"),
   authStatus: document.getElementById("authStatus"),
   userBadge: document.getElementById("userBadge"),
+  studyModeButton: document.getElementById("studyModeButton"),
+  testModeButton: document.getElementById("testModeButton"),
+  studyThemeToggle: document.getElementById("studyThemeToggle"),
   logoutButton: document.getElementById("logoutButton"),
   categorySelect: document.getElementById("categorySelect"),
   deleteCategoryButton: document.getElementById("deleteCategoryButton"),
@@ -27,6 +33,8 @@ const elements = {
   reloadButton: document.getElementById("reloadButton"),
   newCardButton: document.getElementById("newCardButton"),
   studyStatus: document.getElementById("studyStatus"),
+  studyPanel: document.getElementById("studyPanel"),
+  testPanel: document.getElementById("testPanel"),
   sessionMode: document.getElementById("sessionMode"),
   progressBar: document.getElementById("progressBar"),
   progressText: document.getElementById("progressText"),
@@ -46,6 +54,17 @@ const elements = {
   summaryHard: document.getElementById("summaryHard"),
   summaryGood: document.getElementById("summaryGood"),
   summaryEasy: document.getElementById("summaryEasy"),
+  testCategorySelect: document.getElementById("testCategorySelect"),
+  startTestButton: document.getElementById("startTestButton"),
+  testCorrectCount: document.getElementById("testCorrectCount"),
+  testMeaning: document.getElementById("testMeaning"),
+  testForm: document.getElementById("testForm"),
+  testAnswerInput: document.getElementById("testAnswerInput"),
+  submitTestButton: document.getElementById("submitTestButton"),
+  testFeedback: document.getElementById("testFeedback"),
+  testHints: document.getElementById("testHints"),
+  nextTestButton: document.getElementById("nextTestButton"),
+  testAttemptText: document.getElementById("testAttemptText"),
   libraryCount: document.getElementById("libraryCount"),
   cardList: document.getElementById("cardList"),
   cardForm: document.getElementById("cardForm"),
@@ -62,6 +81,7 @@ const elements = {
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
+  applySavedTheme();
   bindEvents();
   restoreSession();
 }
@@ -71,6 +91,10 @@ function bindEvents() {
     event.preventDefault();
     login();
   });
+  elements.authThemeToggle.addEventListener("click", toggleTheme);
+  elements.studyThemeToggle.addEventListener("click", toggleTheme);
+  elements.studyModeButton.addEventListener("click", () => switchPracticeMode("study"));
+  elements.testModeButton.addEventListener("click", () => switchPracticeMode("test"));
   elements.registerButton.addEventListener("click", register);
   elements.logoutButton.addEventListener("click", logout);
   elements.reloadButton.addEventListener("click", loadFlashcards);
@@ -88,11 +112,44 @@ function bindEvents() {
   elements.flipButton.addEventListener("click", flipCard);
   elements.skipButton.addEventListener("click", skipCard);
   elements.gradeActions.addEventListener("click", handleGradeClick);
+  elements.testCategorySelect.addEventListener("change", resetTest);
+  elements.startTestButton.addEventListener("click", startTestRound);
+  elements.nextTestButton.addEventListener("click", startTestRound);
+  elements.testForm.addEventListener("submit", submitTestAnswer);
   elements.newCardButton.addEventListener("click", resetForm);
   elements.resetFormButton.addEventListener("click", resetForm);
   elements.cardForm.addEventListener("submit", saveCard);
   elements.cardCategoryInput.addEventListener("change", handleEditorCategoryChange);
   elements.cardList.addEventListener("click", handleLibraryClick);
+}
+
+function switchPracticeMode(mode) {
+  const isTest = mode === "test";
+  elements.studyPanel.classList.toggle("is-hidden", isTest);
+  elements.testPanel.classList.toggle("is-hidden", !isTest);
+  elements.studyModeButton.classList.toggle("is-active", !isTest);
+  elements.testModeButton.classList.toggle("is-active", isTest);
+}
+
+function applySavedTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+  const theme = savedTheme || (prefersDark ? "dark" : "light");
+  setTheme(theme);
+}
+
+function toggleTheme() {
+  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+}
+
+function setTheme(theme) {
+  const normalized = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = normalized;
+  localStorage.setItem(THEME_KEY, normalized);
+
+  const label = normalized === "dark" ? "Light" : "Dark";
+  elements.authThemeToggle.textContent = label;
+  elements.studyThemeToggle.textContent = label;
 }
 
 async function restoreSession() {
@@ -158,6 +215,7 @@ function logout() {
   state.categories = ["Uncategorized"];
   state.filteredCards = [];
   state.session = createEmptySession();
+  state.test = createEmptyTest();
   localStorage.removeItem(AUTH_KEY);
   showAuth();
 }
@@ -195,6 +253,7 @@ async function loadFlashcards() {
 function rebuildCategories() {
   const selected = elements.categorySelect.value;
   const editorSelected = elements.cardCategoryInput.value;
+  const testSelected = elements.testCategorySelect.value;
   const categories = normalizeCategoryList([
     ...state.categories,
     ...state.flashcards.map((card) => card.category).filter(Boolean)
@@ -204,15 +263,19 @@ function rebuildCategories() {
 
   elements.categorySelect.textContent = "";
   elements.categorySelect.append(new Option("All categories", ""));
+  elements.testCategorySelect.textContent = "";
+  elements.testCategorySelect.append(new Option("All categories", ""));
 
   for (const category of categories) {
     elements.categorySelect.append(new Option(category, category));
+    elements.testCategorySelect.append(new Option(category, category));
   }
 
   elements.categorySelect.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
   elements.categorySelect.value = categories.includes(selected) ? selected : "";
   elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
   elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
+  elements.testCategorySelect.value = categories.includes(testSelected) ? testSelected : "";
 
   elements.cardCategoryInput.textContent = "";
 
@@ -237,6 +300,164 @@ async function handleFilterCategoryChange() {
   elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
   elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
   applyFilters();
+}
+
+function getTestPool() {
+  const category = elements.testCategorySelect.value;
+  return category
+    ? state.flashcards.filter((card) => card.category === category)
+    : [...state.flashcards];
+}
+
+function resetTest() {
+  state.test = createEmptyTest();
+  elements.testMeaning.textContent = "Start a test to get a random meaning.";
+  elements.testAnswerInput.value = "";
+  elements.testAnswerInput.disabled = true;
+  elements.submitTestButton.disabled = true;
+  elements.nextTestButton.disabled = true;
+  elements.testFeedback.textContent = "You have 5 attempts per card.";
+  elements.testFeedback.className = "test-feedback";
+  elements.testHints.textContent = "";
+  renderTestProgress();
+}
+
+function startTestRound() {
+  const pool = getTestPool().filter((card) => card.word && card.meaning);
+
+  if (pool.length === 0) {
+    resetTest();
+    elements.testFeedback.textContent = "No cards available for this test category.";
+    elements.testFeedback.classList.add("is-error");
+    return;
+  }
+
+  state.test = {
+    ...createEmptyTest(),
+    currentCard: pool[Math.floor(Math.random() * pool.length)],
+    correctCount: state.test.correctCount
+  };
+
+  elements.testMeaning.textContent = state.test.currentCard.meaning;
+  elements.testAnswerInput.value = "";
+  elements.testAnswerInput.disabled = false;
+  elements.submitTestButton.disabled = false;
+  elements.nextTestButton.disabled = false;
+  elements.testFeedback.textContent = "Type the word from memory.";
+  elements.testFeedback.className = "test-feedback";
+  elements.testHints.textContent = "";
+  elements.testAnswerInput.focus();
+  renderTestProgress();
+}
+
+function submitTestAnswer(event) {
+  event.preventDefault();
+
+  if (!state.test.currentCard || state.test.isComplete) {
+    return;
+  }
+
+  const answer = normalizeAnswer(elements.testAnswerInput.value);
+  const expected = normalizeAnswer(state.test.currentCard.word);
+
+  if (answer === expected) {
+    state.test.correctCount += 1;
+    state.test.isComplete = true;
+    elements.testFeedback.textContent = "Correct. Move to the next word.";
+    elements.testFeedback.className = "test-feedback is-success";
+    elements.submitTestButton.disabled = true;
+    elements.testAnswerInput.disabled = true;
+    renderTestProgress();
+    return;
+  }
+
+  state.test.attempts += 1;
+  addTestHint();
+
+  if (state.test.attempts >= state.test.maxAttempts) {
+    state.test.isComplete = true;
+    elements.testFeedback.textContent = `Out of attempts. Answer: ${state.test.currentCard.word}`;
+    elements.testFeedback.className = "test-feedback is-error";
+    elements.submitTestButton.disabled = true;
+    elements.testAnswerInput.disabled = true;
+  } else {
+    elements.testFeedback.textContent = "Not yet. Use the new hint and try again.";
+    elements.testFeedback.className = "test-feedback is-error";
+  }
+
+  renderTestProgress();
+}
+
+function addTestHint() {
+  const hint = getNextHint();
+
+  if (!hint) {
+    return;
+  }
+
+  state.test.hints.push(hint);
+  renderTestHints();
+}
+
+function getNextHint() {
+  const card = state.test.currentCard;
+  const includeCategoryHint = !elements.testCategorySelect.value;
+  const hintIndex = state.test.hints.length;
+  const baseHints = [];
+
+  if (includeCategoryHint) {
+    baseHints.push({
+      label: "Category",
+      value: card.category || "Uncategorized"
+    });
+  }
+
+  baseHints.push({
+    label: "Wordform",
+    value: card.wordform || "unknown"
+  });
+
+  if (hintIndex < baseHints.length) {
+    return baseHints[hintIndex];
+  }
+
+  const visibleLetters = Math.max(1, hintIndex - baseHints.length + 1);
+  return {
+    label: "Letters",
+    value: maskWord(card.word, visibleLetters)
+  };
+}
+
+function renderTestHints() {
+  elements.testHints.textContent = "";
+
+  for (const hint of state.test.hints) {
+    const item = document.createElement("div");
+    item.className = "hint-item";
+    item.innerHTML = `<span>${escapeHtml(hint.label)}</span><strong>${escapeHtml(hint.value)}</strong>`;
+    elements.testHints.appendChild(item);
+  }
+}
+
+function renderTestProgress() {
+  elements.testCorrectCount.textContent = String(state.test.correctCount || 0);
+  elements.testAttemptText.textContent = `${state.test.attempts || 0} / ${state.test.maxAttempts || 5} attempts`;
+}
+
+function normalizeAnswer(value) {
+  return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function maskWord(word, visibleLetters) {
+  const chars = Array.from(String(word || ""));
+
+  return chars.map((char, index) => {
+    if (char === " " || char === "-") {
+      return char;
+    }
+
+    return index < visibleLetters ? char : "_";
+  }).join(" ");
 }
 
 async function handleEditorCategoryChange() {
@@ -685,6 +906,17 @@ function createEmptySession() {
       good: 0,
       easy: 0
     }
+  };
+}
+
+function createEmptyTest() {
+  return {
+    currentCard: null,
+    attempts: 0,
+    maxAttempts: 5,
+    correctCount: 0,
+    isComplete: false,
+    hints: []
   };
 }
 
