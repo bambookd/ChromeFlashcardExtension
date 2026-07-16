@@ -1,0 +1,627 @@
+% =====================================================================
+%  ChromeFlashCardExtension — Context Handoff Document
+%  Bien dich tren Overleaf: compiler mac dinh (pdfLaTeX) chay duoc ngay.
+%  Neu tieng Viet hien sai, doi sang XeLaTeX (Menu > Compiler > XeLaTeX).
+%  Preamble ben duoi tu dong tuong thich ca hai engine.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+% ---- Engine-aware font / encoding (pdfLaTeX hoac XeLaTeX/LuaLaTeX) ----
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T5]{fontenc}   % T5 = bang ma tieng Viet (vntex)
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}      % XeLaTeX/LuaLaTeX: Unicode truc tiep
+\fi
+
+\usepackage[vietnamese]{babel}
+
+% ---- Layout & typography ----
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{xcolor}
+\usepackage{underscore}      % cho phep go dau _ trong van ban thuong
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+\usepackage{hyperref}
+
+% ---- Palette (dong bo voi mau accent cua chinh ung dung) ----
+\definecolor{accent}{HTML}{2F4BBD}
+\definecolor{accentsoft}{HTML}{EDF0FC}
+\definecolor{ink}{HTML}{1A1D24}
+\definecolor{muted}{HTML}{565F6D}
+\definecolor{codebg}{HTML}{F4F5F7}
+\definecolor{codeborder}{HTML}{E3E6EB}
+\definecolor{ok}{HTML}{16794F}
+\definecolor{warn}{HTML}{92600E}
+\definecolor{bad}{HTML}{B4302C}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent,
+  citecolor=accent,
+  pdftitle={ChromeFlashCardExtension - Context Handoff},
+  pdfauthor={ChromeFlashCardExtension}
+}
+
+% ---- Section styling ----
+\titleformat{\section}{\Large\bfseries\color{accent}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries\color{ink}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+
+% ---- Header / footer ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\small\color{muted}ChromeFlashCardExtension}
+\fancyhead[R]{\small\color{muted}Context Handoff}
+\fancyfoot[C]{\small\color{muted}\thepage}
+
+% ---- Code listing style ----
+\lstdefinestyle{plain}{
+  basicstyle=\ttfamily\footnotesize\color{ink},
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codeborder},
+  framesep=6pt,
+  xleftmargin=6pt,
+  xrightmargin=6pt,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  aboveskip=8pt,
+  belowskip=4pt,
+}
+\lstset{style=plain}
+
+% ---- Callout boxes ----
+\newtcolorbox{note}[1][Ghi chú]{enhanced, breakable,
+  colback=accentsoft, colframe=accent, coltitle=white,
+  fonttitle=\bfseries\small, title=#1,
+  boxrule=0.6pt, left=3mm, right=3mm, top=1.5mm, bottom=1.5mm}
+\newtcolorbox{blocker}[1][Blocker]{enhanced, breakable,
+  colback=bad!5, colframe=bad!70!black, coltitle=white,
+  fonttitle=\bfseries\small, title=#1,
+  boxrule=0.6pt, left=3mm, right=3mm, top=1.5mm, bottom=1.5mm}
+\newtcolorbox{tip}[1][Mẹo]{enhanced, breakable,
+  colback=ok!6, colframe=ok!70!black, coltitle=white,
+  fonttitle=\bfseries\small, title=#1,
+  boxrule=0.6pt, left=3mm, right=3mm, top=1.5mm, bottom=1.5mm}
+
+% Small helper: inline code
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Status tags
+\newcommand{\tagok}{\textcolor{ok}{\textbf{Có}}}
+\newcommand{\tagno}{\textcolor{bad}{\textbf{Chưa}}}
+\newcommand{\tagpart}{\textcolor{warn}{\textbf{Một phần}}}
+
+\setlist{itemsep=2pt, topsep=3pt, parsep=0pt}
+
+% =====================================================================
+\begin{document}
+
+% ------------------------- TITLE PAGE --------------------------------
+\begin{titlepage}
+\centering
+\vspace*{2.2cm}
+
+{\color{accent}\rule{\linewidth}{2pt}}\\[0.5cm]
+{\Huge\bfseries ChromeFlashCardExtension}\\[0.35cm]
+{\Large\color{muted} Tiện ích học từ vựng + backend serverless trên AWS}\\[0.3cm]
+{\color{accent}\rule{\linewidth}{2pt}}\\[1.4cm]
+
+{\large\bfseries Tài liệu bàn giao ngữ cảnh (Context Handoff)}\\[0.4cm]
+{\color{muted} Đọc tài liệu này là đủ để nắm bức tranh tổng thể của dự án:\\
+sản phẩm, kiến trúc, API, dữ liệu, cấu hình, trạng thái và cách chạy thử.}\\[2.2cm]
+
+\begin{tcolorbox}[width=0.8\linewidth, colback=accentsoft, colframe=accent,
+  boxrule=0.8pt, arc=3pt]
+\centering\small
+\textbf{Loại dự án:} Đồ án / demo thực tập \quad\textbullet\quad
+\textbf{Nền tảng:} Chrome Extension (MV3) + Node.js/Express + AWS\\[2pt]
+\textbf{Nhánh tham chiếu:} \code{test-aws} \quad\textbullet\quad
+\textbf{Snapshot:} 2026-07-14
+\end{tcolorbox}
+
+\vfill
+{\color{muted}\small Sinh từ bộ tài liệu trong \code{docs/}. Xem mục cuối để biết đọc sâu ở đâu.}
+\end{titlepage}
+
+% ------------------------- TOC ---------------------------------------
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{Giới thiệu nhanh (đọc trong 60 giây)}
+
+\begin{note}[TL;DR — Dự án này là gì?]
+\textbf{ChromeFlashCardExtension} là một tiện ích Chrome giúp người học \emph{lưu từ vựng
+ngay khi đang đọc web}, đồng bộ lên cloud, rồi \emph{ôn tập} và \emph{chơi game} trên web.
+Backend là một ứng dụng Express duy nhất chạy được ở \textbf{hai chế độ}: local (file JSON)
+và \textbf{AWS serverless} (Lambda + API Gateway + DynamoDB + S3 + Translate + CloudWatch).
+Mục tiêu hiện tại: đưa backend lên AWS để làm demo thực tập dùng tối thiểu 3 dịch vụ AWS.
+\end{note}
+
+\noindent Sản phẩm gồm \textbf{4 bề mặt giao diện} dùng chung một backend:
+
+\begin{enumerate}
+  \item \textbf{Popup extension} — đăng nhập, thêm/sửa thẻ, đồng bộ, export.
+  \item \textbf{Editor nội tuyến} (inline, chèn vào trang web qua context menu chuột phải).
+  \item \textbf{Study Web} — học flashcard theo phiên, chấm mức nhớ (Again/Hard/Good/Easy), quản lý thư viện.
+  \item \textbf{Game Web} — chơi solo đoán từ; có prototype realtime 1v1 nhưng \emph{chỉ chạy local}.
+\end{enumerate}
+
+% =====================================================================
+\section{Sản phẩm dành cho ai và giải quyết điều gì}
+
+\subsection{Người dùng chính}
+\begin{itemize}
+  \item \textbf{Người học}: đăng ký/đăng nhập; bôi đen từ trên trang web rồi mở editor bằng
+        menu chuột phải; dịch sang tiếng Việt; sửa nghĩa/loại từ/nhóm rồi lưu; đồng bộ lên
+        cloud; vào Study Web để ôn tập; vào Game Web để chơi; export JSON qua link tải tạm thời.
+  \item \textbf{Người chấm / mentor}: xem kiến trúc dùng nhiều dịch vụ AWS có trách nhiệm rõ ràng;
+        kiểm tra dữ liệu bền vững trên DynamoDB; xác nhận Lambda/API Gateway chạy độc lập với máy
+        local; quan sát log/lỗi qua CloudWatch; đánh giá đánh đổi bảo mật/chi phí.
+\end{itemize}
+
+\subsection{Triết lý thiết kế}
+\begin{itemize}
+  \item \textbf{Offline-first}: thẻ luôn lưu được vào \code{chrome.storage.local} dù backend không chạy.
+  \item \textbf{Một backend, hai chế độ}: cùng mã Express dùng cho cả local lẫn Lambda
+        (qua \code{serverless-http}), tách biệt tầng lưu trữ (JSON so với DynamoDB).
+  \item \textbf{Ranh giới tin cậy rõ ràng}: client không bao giờ được tin; backend luôn xác định
+        chủ sở hữu dữ liệu từ JWT đã xác thực, không nhận \code{userId} từ client.
+\end{itemize}
+
+% =====================================================================
+\section{Tính năng chính}
+
+\begin{longtable}{@{}p{3.4cm} p{11.8cm}@{}}
+\toprule
+\textbf{Nhóm} & \textbf{Chi tiết} \\
+\midrule
+\endhead
+Tài khoản & Đăng ký / đăng nhập bằng username + password; phiên đăng nhập giữ bằng JWT (hết hạn 7 ngày). \\
+\addlinespace
+Lưu thẻ khi đọc web & Bôi đen từ/cụm từ $\rightarrow$ chuột phải $\rightarrow$ ``Save as flashcard'' $\rightarrow$ editor hiện ngay trên trang (Shadow DOM, không đụng CSS trang gốc). \\
+\addlinespace
+Dịch tự động & Gọi \code{/api/translate}; trên AWS dùng Amazon Translate (mặc định dịch sang tiếng Việt), local dùng bản mock. \\
+\addlinespace
+Nhóm (category) & Tạo / liệt kê / xoá nhóm; xoá nhóm sẽ chuyển các thẻ về \code{Uncategorized}. \\
+\addlinespace
+Đồng bộ cloud & Upsert một chiều local $\rightarrow$ cloud theo \code{cardId}; không xoá thẻ trên cloud, không hai chiều. \\
+\addlinespace
+Study Web & Học theo phiên có xáo trộn, lật thẻ, chấm 4 mức nhớ (phím tắt 1--4), thanh tiến độ, tổng kết phiên; thư viện gom theo nhóm; CRUD thẻ. \\
+\addlinespace
+Game Web & Chơi solo (thử thách 10 thẻ hoặc chạy nước rút 30 giây), chấm điểm đúng/gần đúng/sai = 100/50/0. Tab realtime 1v1 là prototype local. \\
+\addlinespace
+Export & Backend ghi một file JSON vào bucket S3 riêng tư và trả về pre-signed URL (mặc định hết hạn sau 900 giây). \\
+\addlinespace
+Giao diện & Cả 4 bề mặt dùng chung một hệ design token, có chế độ sáng/tối (dark mode). \\
+\bottomrule
+\end{longtable}
+
+% =====================================================================
+\section{Kiến trúc tổng thể}
+
+\subsection{Kiến trúc mục tiêu trên AWS (MVP)}
+
+\begin{center}
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw=accent, thick, rounded corners, align=center,
+              minimum height=9mm, minimum width=24mm, fill=accentsoft},
+  cli/.style={draw=muted, thick, rounded corners, align=center,
+              minimum height=9mm, minimum width=24mm, fill=gray!8},
+  db/.style={draw=warn!80!black, thick, cylinder, shape border rotate=90,
+             aspect=0.28, align=center, minimum height=12mm, minimum width=20mm,
+             fill=warn!12},
+  arr/.style={-{Latex[length=2.2mm]}, thick, draw=muted},
+]
+  % clients
+  \node[cli] (ext) at (0,1.1) {Chrome\\Extension};
+  \node[cli] (web) at (0,-1.1) {Study/Game\\Web (S3)};
+  % core
+  \node[box] (api) at (3.6,0) {API Gateway\\HTTP API};
+  \node[box] (lam) at (7.2,0) {AWS Lambda\\Express};
+  % data plane
+  \node[db]  (ddb) at (11.0,0) {DynamoDB\\3 bảng};
+  \node[box] (tr)  at (11.0,2.1) {Amazon\\Translate};
+  \node[db]  (s3)  at (11.0,-2.1) {S3 Export\\(private)};
+  \node[box] (cw)  at (7.2,-2.4) {CloudWatch};
+
+  \draw[arr] (ext) -- (api);
+  \draw[arr] (web) -- (api);
+  \draw[arr] (api) -- (lam);
+  \draw[arr] (lam) -- (ddb);
+  \draw[arr] (lam) -- (tr);
+  \draw[arr] (lam) -- (s3);
+  \draw[arr] (lam) -- (cw);
+  \draw[arr] (api) -- (cw);
+\end{tikzpicture}
+\end{center}
+
+\noindent Ngoài ra, trình duyệt tải trực tiếp Study/Game (HTML/CSS/JS tĩnh) từ một
+\textbf{bucket S3 website công khai} (chỉ chứa asset frontend). Khi bật \code{auto}
+phát hiện ngôn ngữ, Amazon Translate còn kéo theo Amazon Comprehend
+(\code{comprehend:DetectDominantLanguage}) như một dịch vụ hỗ trợ gián tiếp.
+
+\subsection{Vì sao chọn serverless}
+\begin{itemize}
+  \item Không phải quản lý server/OS — hợp với demo nhỏ, scale-to-zero, tính tiền theo lượng dùng.
+  \item Tái dùng nguyên ứng dụng Express hiện có qua \code{serverless-http}.
+  \item DynamoDB khớp mẫu truy cập ``dữ liệu thuộc về từng user''.
+  \item Mỗi dịch vụ có một trách nhiệm dễ trình bày trong báo cáo.
+\end{itemize}
+
+\subsection{Ranh giới tin cậy}
+\begin{longtable}{@{}p{4.2cm} p{11cm}@{}}
+\toprule
+\textbf{Vùng} & \textbf{Thành phần} \\
+\midrule
+\endhead
+Client (không tin) & extension, JS trên trình duyệt, \code{localStorage}, \code{chrome.storage}, mọi payload gửi lên. \\
+Biên công khai & S3 website endpoint, API Gateway endpoint, pre-signed export URL. \\
+AWS (tin cậy) & Lambda role, các bảng DynamoDB, lời gọi Translate/Comprehend, bucket export riêng tư. \\
+\bottomrule
+\end{longtable}
+
+\begin{note}[Nguyên tắc vàng]
+Không tin \code{userId}, vai trò, điểm số hay quyền sở hữu do client gửi lên. Backend luôn lấy
+danh tính người dùng từ JWT đã xác thực (claim \code{sub}). Pre-signed URL là ``bearer capability'':
+ai giữ URL trong thời gian còn hạn đều tải được — nên không log và không chia sẻ URL đó.
+\end{note}
+
+% =====================================================================
+\section{Cấu trúc mã nguồn}
+
+\begin{lstlisting}
+ChromeFlashCardExtension/
+|-- manifest.json            # Chrome Manifest V3 (permissions, content scripts)
+|-- background.js            # Service worker: tao context menu, inject content script
+|-- contentScript.js         # Editor noi tuyen tren trang web (Shadow DOM)
+|-- popup.html/.css/.js       # Popup: auth, the local, sync, export
+|-- extension-config.js       # Cau hinh API/Study URL cho extension
+|
+|-- backend/
+|   |-- app.js               # Express app + routes (dung cho ca local va Lambda)
+|   |-- server.js            # Khoi dong HTTP + WebSocket local (KHONG import trong Lambda)
+|   |-- lambda.js            # Lambda handler (serverless-http)
+|   |-- src/
+|   |   |-- config.js               # Doc bien moi truong, chon che do
+|   |   |-- localRepositories.js    # Luu tru JSON (chi development)
+|   |   |-- dynamoRepositories.js   # Luu tru DynamoDB (che do cloud)
+|   |   |-- translateService.js     # Mock hoac Amazon Translate
+|   |   |-- exportService.js        # Export local hoac S3 pre-signed URL
+|   |   |-- realtimeServer.js        # WebSocket local (in-memory, chi local)
+|   |   |-- auth.js / validation.js / scoring.js / errors.js
+|   |-- public/
+|       |-- study/  (index.html, app.js, styles.css, config.js)
+|       |-- game/   (index.html, app.js, styles.css, config.js)
+|
+|-- infra/template.yaml      # SAM starter (chua day du, con vai blocker)
+|-- docs/                    # Bo tai lieu context AWS (11 file, xem muc cuoi)
+`-- LOG.md                   # Nhat ky thay doi bat buoc cap nhat
+\end{lstlisting}
+
+\begin{note}[Nguồn sự thật (source of truth)]
+Mã ở thư mục gốc và \code{backend/} là nguồn chính. Thư mục
+\code{ChromeFlashCardExtension-test-aws-clean/} chỉ là bản sao thử nghiệm — \emph{đừng} coi là
+nguồn chính và đừng đồng bộ song song. \code{infra/template.yaml} là starter, không phải bằng
+chứng đã deploy AWS.
+\end{note}
+
+% =====================================================================
+\section{Luồng người dùng}
+
+\subsection{Hiện trạng (chạy local)}
+\begin{lstlisting}
+Boi den tren trang web
+  -> Menu chuot phai (context menu)
+  -> Editor duoc inject (contentScript.js)
+  -> (tuy chon) POST /api/translate
+  -> Luu vao chrome.storage.local
+  -> Dang nhap o popup
+  -> POST /api/sync  (origin = chrome-extension://<id>)
+  -> Backend repository (JSON local)
+
+Study Web: login/register -> flashcard & category API -> UI hoc/on tap
+Game Web : REST API cho auth/cards -> WebSocket /realtime cho prototype 1v1
+\end{lstlisting}
+
+\subsection{Mục tiêu trên AWS}
+Extension và Study/Game Web đều gọi HTTPS tới \emph{cùng} một API Gateway $\rightarrow$ Lambda
+$\rightarrow$ DynamoDB, cộng thêm Amazon Translate và bucket export riêng tư. Trình duyệt tải
+asset tĩnh trực tiếp từ bucket S3 website. Mọi dịch vụ đẩy log/metric về CloudWatch.
+
+\begin{blocker}[Hai điểm bắt buộc sửa CODE trước khi deploy AWS]
+\textbf{AUD-P0-07 — Translate trong editor:} \code{contentScript.js} hiện gọi
+\code{/api/translate} trực tiếp. Trên trang web thật, request mang \emph{origin của trang đó}
+(vd \code{https://en.wikipedia.org}), không phải origin extension, nên bị CORS chặn (403) khi
+allowlist chặt trên AWS. Phải định tuyến qua \code{background.js} (service worker chạy ở origin
+\code{chrome-extension://<id>}). \emph{Không} được nới CORS thành \code{*}.\\[4pt]
+\textbf{AUD-P0-08 — Tắt realtime:} đặt \code{REALTIME\_URL=""} là \emph{không đủ} — code fallback
+sang \code{ws://<origin>/realtime} và sẽ lỗi trên S3. Phải tắt UI realtime ngay trong code.
+\end{blocker}
+
+% =====================================================================
+\section{Hợp đồng API (REST)}
+
+\textbf{Quy ước:} JSON in/out; route cần bảo vệ dùng header \code{Authorization: Bearer <JWT>};
+thành công thường có \code{ok: true}; lỗi có dạng \code{\{ ok: false, error: "..." \}}; giới hạn
+body 1 MB. Base URL local: \code{http://localhost:3000}; base URL AWS:
+\code{https://<api-id>.execute-api.<region>.amazonaws.com}.
+
+\begin{longtable}{@{}p{4.6cm} p{1.2cm} p{4.4cm} p{4.4cm}@{}}
+\toprule
+\textbf{Method / Path} & \textbf{Auth} & \textbf{Request} & \textbf{Response} \\
+\midrule
+\endhead
+\code{GET /api/health} & Không & --- & \code{\{ok, service\}} \\
+\code{POST /api/auth/register} & Không & \code{\{username, password\}} & \code{\{ok, token, user\}} 201 \\
+\code{POST /api/auth/login} & Không & \code{\{username, password\}} & \code{\{ok, token, user\}} \\
+\code{GET /api/me} & Có & --- & \code{\{ok, user\}} \\
+\code{GET /api/flashcards} & Có & --- & \code{\{ok, count, flashcards\}} \\
+\code{POST /api/flashcards} & Có & flashcard & \code{\{ok, flashcard\}} 201 \\
+\code{PUT /api/flashcards/:id} & Có & các field & \code{\{ok, flashcard\}} \\
+\code{DELETE /api/flashcards/:id} & Có & --- & \code{\{ok, deletedId\}} \\
+\code{GET /api/categories} & Có & --- & \code{\{ok, categories\}} \\
+\code{POST /api/categories} & Có & \code{\{category\}} & \code{\{ok, category, categories\}} \\
+\code{DELETE /api/categories/:cat} & Có & --- & category/count/list \\
+\code{GET /api/study/random} & Có & \code{?category=} & \code{\{ok, flashcard, count\}} \\
+\code{POST /api/sync} & Có & \code{\{flashcards:[...]\}} & count/created/updated/syncedAt \\
+\code{POST /api/translate} & Có (AWS) & \code{\{word\}} hoặc \code{\{text,...\}} & bản dịch \\
+\code{POST /api/export} & Có & \code{\{flashcards?\}} & \code{\{ok, fileName, downloadUrl\}} \\
+\bottomrule
+\end{longtable}
+
+\noindent Ví dụ một số payload (đã bỏ dấu tiếng Việt trong khối mã cho tương thích trình biên dịch):
+
+\begin{lstlisting}
+// POST /api/auth/login  ->  response
+{ "ok": true,
+  "token": "<jwt>",
+  "user": { "id": "<uuid>", "userId": "<uuid>",
+            "username": "demo_user", "role": "user" } }
+
+// POST /api/sync  ->  response
+{ "ok": true, "count": 1, "created": 1, "updated": 0,
+  "syncedAt": "2026-07-14T00:00:00.000Z" }
+
+// POST /api/translate  ->  response (che do AWS)
+{ "ok": true, "word": "resilient", "meaning": "kien cuong",
+  "wordform": "unknown", "provider": "amazon-translate" }
+\end{lstlisting}
+
+\begin{note}[Ngữ nghĩa Sync cần nhớ]
+\code{/api/sync} là \textbf{bulk upsert một chiều} local $\rightarrow$ cloud theo \code{cardId}.
+Không phải full-replace, không lan truyền thao tác xoá ở local, và \emph{không atomic} — lỗi
+giữa chừng có thể ghi được một phần (partial write). Retry cùng \code{cardId} thường cập nhật item
+cũ nhưng timestamp/count có thể đổi.
+\end{note}
+
+% =====================================================================
+\section{Mô hình dữ liệu}
+
+\subsection{DynamoDB (chế độ cloud)}
+\begin{longtable}{@{}p{3.1cm} p{4.6cm} p{7.3cm}@{}}
+\toprule
+\textbf{Bảng} & \textbf{Khoá} & \textbf{Ghi chú} \\
+\midrule
+\endhead
+Users & PK: \code{username} & \code{userId} (UUID, = JWT \code{sub}), \code{passwordHash} (bcrypt), \code{role}. Không GSI. \\
+\addlinespace
+Flashcards & PK: \code{userId}, SK: \code{cardId} & Các field thẻ + \code{userId}. Lọc theo category hiện làm trong Lambda \emph{sau} khi Query. \\
+\addlinespace
+Categories & PK: \code{userId}, SK: \code{categoryName} & \code{createdAt}, \code{updatedAt}. \\
+\bottomrule
+\end{longtable}
+
+\noindent Mẫu truy cập: Query toàn bộ thẻ/nhóm của user hiện tại; get/update/delete theo khoá kép.
+Xác thực token: nạp lại user theo \code{username} rồi kiểm tra \code{userId === sub}.
+
+\subsection{Hình dạng logic của một thẻ}
+\begin{lstlisting}
+{
+  "id": "<= cardId, de tuong thich client>",
+  "cardId": "<uuid hoac id san co>",
+  "word": "resilient",
+  "meaning": "kien cuong",
+  "wordform": "adjective",
+  "category": "IELTS",
+  "sourceUrl": "https://example.test/article",
+  "sourceTitle": "Demo article",
+  "createdAt": "2026-07-14T00:00:00.000Z",
+  "updatedAt": "2026-07-14T00:00:00.000Z",
+  "syncedAt":  "2026-07-14T00:00:00.000Z"
+}
+\end{lstlisting}
+
+\subsection{Lưu trữ phía trình duyệt}
+\begin{longtable}{@{}p{3.2cm} p{5.0cm} p{6.8cm}@{}}
+\toprule
+\textbf{Nơi lưu} & \textbf{Key} & \textbf{Nội dung} \\
+\midrule
+\endhead
+Extension & \code{flashcards} & Thẻ local (offline) \\
+          & \code{flashcardCategories} & Danh sách nhóm \\
+          & \code{flashcardAuth} & Token + info user \\
+          & \code{flashcardTheme} & Lựa chọn sáng/tối của popup \\
+\addlinespace
+Study/Game & \code{flashcardStudyAuth} & Token + user (dùng chung nếu cùng origin) \\
+           & \code{flashcardStudyTheme} & Lựa chọn sáng/tối (Study + Game dùng chung key) \\
+\bottomrule
+\end{longtable}
+
+% =====================================================================
+\section{Cấu hình và biến môi trường}
+
+Chuyển từ local sang AWS chủ yếu là đổi biến môi trường. Bảng dưới là các biến quan trọng
+(rút gọn từ \code{05\_API\_DATA\_CONFIG\_CONTRACTS.md}).
+
+\begin{longtable}{@{}p{4.0cm} p{3.4cm} p{7.0cm}@{}}
+\toprule
+\textbf{Biến} & \textbf{Local} & \textbf{AWS} \\
+\midrule
+\endhead
+\code{DATA_STORE} & \code{local} & \code{dynamodb} (đồng thời bật Translate thật, yêu cầu auth translate, tắt allow-all-origins) \\
+\code{JWT_SECRET} & fallback yếu & \textbf{Bắt buộc} giá trị mạnh \\
+\code{USERS_TABLE} & \code{FlashcardUsers} & Bắt buộc \\
+\code{FLASHCARDS_TABLE} & \code{FlashcardCards} & Bắt buộc \\
+\code{CATEGORIES_TABLE} & \code{FlashcardCategories} & Bắt buộc \\
+\code{EXPORT_BUCKET} & rỗng & \textbf{Bắt buộc} (bucket riêng tư) \\
+\code{ALLOWED_ORIGINS} & danh sách localhost & \textbf{Bắt buộc} — liệt kê chính xác, không \code{*} \\
+\code{CORS_ALLOW_ALL} & có điều kiện & \textbf{Phải vắng / false} trên AWS \\
+\code{SERVE_STUDY_STATIC} & \code{true} & \code{false} (S3 phục vụ frontend) \\
+\code{AWS_REGION} & shell/profile & Runtime tự cấp — \textbf{không tự set} (reserved key) \\
+\code{TRANSLATE_MAX_LENGTH} & \code{120} & \code{120} (chặn chi phí) \\
+\bottomrule
+\end{longtable}
+
+\begin{note}[Vì sao ``chạy được ở local'' không chứng minh CORS đúng]
+Trong \code{backend/src/config.js}, \code{allowAllOrigins} tự bật khi \code{DATA_STORE=local} và
+chưa set \code{ALLOWED_ORIGINS}. Đó là lý do local không bao giờ lộ lỗi CORS. Đừng lấy ``local
+chạy ngon'' làm bằng chứng cấu hình CORS chính xác cho AWS.
+\end{note}
+
+% =====================================================================
+\section{Trạng thái hiện tại và các blocker}
+
+\begin{longtable}{@{}p{6.6cm} p{2.4cm} p{5.4cm}@{}}
+\toprule
+\textbf{Khu vực} & \textbf{Trạng thái} & \textbf{Ghi chú} \\
+\midrule
+\endhead
+Express chạy local & \tagok & \code{server.js}, repository JSON \\
+Lambda handler & \tagok & \code{lambda.js}, \code{serverless-http} \\
+DynamoDB repository & \tagok & 3 bảng, query theo \code{userId} \\
+Amazon Translate & \tagpart & Có code; IAM còn thiếu quyền Comprehend cho \code{auto} \\
+Translate trong editor & \tagno & Sẽ hỏng vì CORS trên AWS (AUD-P0-07) \\
+Export S3 riêng tư & \tagok & Pre-signed URL 15 phút \\
+API Gateway / SAM & \tagpart & Runtime \code{nodejs20.x} đã deprecated; template còn set reserved \code{AWS_REGION} \\
+S3 Study/Game web & \tagpart & Có asset tĩnh; hạ tầng bucket chưa nằm trong SAM \\
+Realtime multiplayer & \tagpart & Prototype WebSocket in-memory, không hợp Lambda HTTP API \\
+Tắt realtime cho AWS & \tagno & \code{REALTIME_URL=""} không tắt được (AUD-P0-08) \\
+Test tự động & \tagno & Mới có syntax check cho 3 file entry \\
+AWS deploy đã xác nhận & \tagno & Chưa có bằng chứng trong repo \\
+\bottomrule
+\end{longtable}
+
+\begin{blocker}[Không deploy trước khi xử lý các mục P0]
+Trong 8 blocker P0: 6 mục chỉ cần đổi cấu hình hoặc chốt phạm vi (nâng runtime lên
+\code{nodejs24.x}, thêm quyền IAM cho Translate, bỏ reserved \code{AWS_REGION}, gói artifact sạch,
+chốt cấu hình URL, gắn nhãn realtime là ngoài phạm vi). Riêng \textbf{AUD-P0-07} và
+\textbf{AUD-P0-08} \emph{bắt buộc sửa code} và không thể đóng bằng runbook.
+\end{blocker}
+
+% =====================================================================
+\section{Chạy thử ở local (Getting Started)}
+
+\textbf{Yêu cầu:} Node.js $\ge 18$ (máy dev đang dùng v24) và trình duyệt nhân Chromium
+(Chrome/Brave/Edge).
+
+\subsection{1) Khởi động backend}
+\begin{lstlisting}
+cd backend
+npm install        # lan dau
+npm run dev        # = node --watch server.js  ->  http://localhost:3000
+\end{lstlisting}
+
+\noindent Sau khi server chạy:
+\begin{itemize}
+  \item Study Web: \code{http://localhost:3000/study/}
+  \item Game Web: \code{http://localhost:3000/game/}
+  \item Tài khoản mẫu (seed local): \code{student} / \code{password123}
+\end{itemize}
+
+\begin{tip}[Sửa CSS/HTML của Study/Game]
+\code{--watch} chỉ theo dõi file backend. Khi đổi asset trong \code{backend/public/}, không cần
+restart server — chỉ cần hard-reload trình duyệt (Ctrl+Shift+R) để bỏ cache CSS cũ.
+\end{tip}
+
+\subsection{2) Nạp extension vào trình duyệt}
+\begin{enumerate}
+  \item Mở \code{chrome://extensions} (hoặc \code{brave://extensions}).
+  \item Bật \textbf{Developer mode}.
+  \item \textbf{Load unpacked} $\rightarrow$ chọn \emph{thư mục gốc} của dự án (nơi có \code{manifest.json}).
+  \item Mỗi lần đổi code extension: bấm nút \textbf{Reload} trên card của extension,
+        rồi \textbf{F5 lại tab web} đang mở để nạp content script mới.
+\end{enumerate}
+
+\begin{note}[Content script không chạy trên trang nội bộ trình duyệt]
+Menu chuột phải ``Save as flashcard'' luôn hiện (do service worker tạo), nhưng editor chỉ hiện
+được trên trang \code{http://} / \code{https://} \emph{thật}. Trên trang New Tab, \code{chrome://},
+\code{brave://}, Web Store... trình duyệt chặn cứng mọi extension. Muốn thử: mở một trang thật
+(vd Wikipedia), bôi đen một từ rồi chuột phải.
+\end{note}
+
+% =====================================================================
+\section{Bảo mật, vận hành và chi phí (tóm tắt)}
+
+\begin{itemize}
+  \item \textbf{Bí mật:} không commit AWS credentials, JWT secret production hay \code{.env}.
+        Lambda nhận quyền qua execution role, không nhúng access key.
+  \item \textbf{Least privilege:} Lambda role chỉ đủ quyền cho 3 bảng, prefix object export,
+        Translate (và Comprehend nếu dùng \code{auto}).
+  \item \textbf{Export bucket:} bật Block Public Access; URL thô phải trả 403, chỉ pre-signed URL tải được.
+  \item \textbf{CORS:} không dùng \code{*} ở bản demo cuối; allowlist chính xác theo origin.
+  \item \textbf{Log an toàn:} không log JWT, password, full pre-signed URL hay nội dung nhạy cảm;
+        đặt retention hữu hạn (khuyến nghị 14 ngày cho demo).
+  \item \textbf{Alarm tối thiểu:} Lambda Errors và API Gateway 5xx; thêm Throttles nếu có thời gian.
+  \item \textbf{Chi phí:} đặt budget nhỏ + billing alert; DynamoDB khởi điểm 1 RCU/1 WCU cho demo,
+        không phải SLA production.
+\end{itemize}
+
+\begin{note}[Quyền riêng tư]
+Thẻ có thể chứa \code{sourceUrl}/\code{sourceTitle} — tức lịch sử đọc web của người dùng. Vì vậy
+demo phải dùng dữ liệu giả; trước khi lên production cần có privacy notice và chính sách
+lưu trữ/export/xoá.
+\end{note}
+
+% =====================================================================
+\section{Đọc sâu ở đâu (bản đồ tài liệu)}
+
+Toàn bộ chi tiết nằm trong thư mục \code{docs/} (tiếng Việt). Thứ tự đọc khuyến nghị:
+
+\begin{longtable}{@{}p{6.4cm} p{8.4cm}@{}}
+\toprule
+\textbf{File} & \textbf{Nội dung} \\
+\midrule
+\endhead
+\code{01_PROJECT_CONTEXT.md} & Sản phẩm, người dùng, phạm vi, cấu trúc repo \\
+\code{02_REQUIREMENTS.md} & Yêu cầu chức năng/phi chức năng, tiêu chí chấp nhận \\
+\code{03_CURRENT_STATE_AUDIT.md} & Hiện có gì, bằng chứng, khoảng trống \\
+\code{04_AWS_ARCHITECTURE.md} & Kiến trúc mục tiêu, quyết định (ADR), ranh giới MVP \\
+\code{05_API_DATA_CONFIG_CONTRACTS.md} & API, DynamoDB, storage, biến môi trường \\
+\code{06_MIGRATION_PLAN.md} & Thứ tự thay đổi an toàn và các cổng kiểm soát \\
+\code{07_MANUAL_DEPLOYMENT_RUNBOOK.md} & Triển khai bằng AWS Console \\
+\code{08_SECURITY_OPERATIONS_COST.md} & Bảo mật, log, alarm, backup, chi phí \\
+\code{09_TEST_AND_ACCEPTANCE.md} & Ma trận test và bằng chứng cần lưu \\
+\code{10_IMPROVEMENT_BACKLOG.md} & Backlog ưu tiên, definition of done \\
+\code{11_AGENT_HANDOFF.md} & Quy tắc cho người/agent tiếp theo \\
+\bottomrule
+\end{longtable}
+
+\vspace{0.6cm}
+\begin{center}
+\color{muted}\small
+--- Hết tài liệu bàn giao ngữ cảnh ---\\
+Cập nhật cùng nhịp với \code{LOG.md} mỗi khi kiến trúc hoặc hợp đồng thay đổi.
+\end{center}
+
+\end{document}

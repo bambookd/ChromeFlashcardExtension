@@ -25,7 +25,8 @@ export const config = {
   paths: {
     dataDir: path.join(backendRoot, "data"),
     exportDir: path.join(backendRoot, "exports"),
-    studyDir: path.join(backendRoot, "public", "study")
+    studyDir: path.join(backendRoot, "public", "study"),
+    gameDir: path.join(backendRoot, "public", "game")
   }
 };
 

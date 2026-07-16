@@ -47,6 +47,7 @@ app.use("/exports", express.static(config.paths.exportDir, {
 
 if (config.serveStudyStatic) {
   app.use("/study", express.static(config.paths.studyDir));
+  app.use("/game", express.static(config.paths.gameDir));
   app.get("/", (_request, response) => {
     response.redirect("/study");
   });

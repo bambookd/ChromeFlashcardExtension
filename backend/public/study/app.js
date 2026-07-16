@@ -1,4 +1,5 @@
 const API_BASE_URL = window.FLASHCARD_CONFIG?.API_BASE_URL || "";
+const GAME_URL = window.FLASHCARD_CONFIG?.GAME_URL || "/game/";
 const AUTH_KEY = "flashcardStudyAuth";
 const THEME_KEY = "flashcardStudyTheme";
 const ADD_CATEGORY_VALUE = "__add_category__";
@@ -9,8 +10,7 @@ const state = {
   flashcards: [],
   categories: ["Uncategorized"],
   filteredCards: [],
-  session: createEmptySession(),
-  test: createEmptyTest()
+  session: createEmptySession()
 };
 
 const elements = {
@@ -23,8 +23,9 @@ const elements = {
   registerButton: document.getElementById("registerButton"),
   authStatus: document.getElementById("authStatus"),
   userBadge: document.getElementById("userBadge"),
-  studyModeButton: document.getElementById("studyModeButton"),
-  testModeButton: document.getElementById("testModeButton"),
+  studyTabButton: document.getElementById("studyTabButton"),
+  libraryTabButton: document.getElementById("libraryTabButton"),
+  openGameButton: document.getElementById("openGameButton"),
   studyThemeToggle: document.getElementById("studyThemeToggle"),
   logoutButton: document.getElementById("logoutButton"),
   categorySelect: document.getElementById("categorySelect"),
@@ -34,7 +35,7 @@ const elements = {
   newCardButton: document.getElementById("newCardButton"),
   studyStatus: document.getElementById("studyStatus"),
   studyPanel: document.getElementById("studyPanel"),
-  testPanel: document.getElementById("testPanel"),
+  libraryPanel: document.getElementById("libraryPanel"),
   sessionMode: document.getElementById("sessionMode"),
   progressBar: document.getElementById("progressBar"),
   progressText: document.getElementById("progressText"),
@@ -54,18 +55,8 @@ const elements = {
   summaryHard: document.getElementById("summaryHard"),
   summaryGood: document.getElementById("summaryGood"),
   summaryEasy: document.getElementById("summaryEasy"),
-  testCategorySelect: document.getElementById("testCategorySelect"),
-  startTestButton: document.getElementById("startTestButton"),
-  testCorrectCount: document.getElementById("testCorrectCount"),
-  testMeaning: document.getElementById("testMeaning"),
-  testForm: document.getElementById("testForm"),
-  testAnswerInput: document.getElementById("testAnswerInput"),
-  submitTestButton: document.getElementById("submitTestButton"),
-  testFeedback: document.getElementById("testFeedback"),
-  testHints: document.getElementById("testHints"),
-  nextTestButton: document.getElementById("nextTestButton"),
-  testAttemptText: document.getElementById("testAttemptText"),
   libraryCount: document.getElementById("libraryCount"),
+  libraryNewCardButton: document.getElementById("libraryNewCardButton"),
   cardList: document.getElementById("cardList"),
   cardForm: document.getElementById("cardForm"),
   editorTitle: document.getElementById("editorTitle"),
@@ -93,8 +84,9 @@ function bindEvents() {
   });
   elements.authThemeToggle.addEventListener("click", toggleTheme);
   elements.studyThemeToggle.addEventListener("click", toggleTheme);
-  elements.studyModeButton.addEventListener("click", () => switchPracticeMode("study"));
-  elements.testModeButton.addEventListener("click", () => switchPracticeMode("test"));
+  elements.studyTabButton.addEventListener("click", () => switchView("study"));
+  elements.libraryTabButton.addEventListener("click", () => switchView("library"));
+  elements.openGameButton.addEventListener("click", openGame);
   elements.registerButton.addEventListener("click", register);
   elements.logoutButton.addEventListener("click", logout);
   elements.reloadButton.addEventListener("click", loadFlashcards);
@@ -112,23 +104,24 @@ function bindEvents() {
   elements.flipButton.addEventListener("click", flipCard);
   elements.skipButton.addEventListener("click", skipCard);
   elements.gradeActions.addEventListener("click", handleGradeClick);
-  elements.testCategorySelect.addEventListener("change", resetTest);
-  elements.startTestButton.addEventListener("click", startTestRound);
-  elements.nextTestButton.addEventListener("click", startTestRound);
-  elements.testForm.addEventListener("submit", submitTestAnswer);
   elements.newCardButton.addEventListener("click", resetForm);
+  elements.libraryNewCardButton.addEventListener("click", resetForm);
   elements.resetFormButton.addEventListener("click", resetForm);
   elements.cardForm.addEventListener("submit", saveCard);
   elements.cardCategoryInput.addEventListener("change", handleEditorCategoryChange);
   elements.cardList.addEventListener("click", handleLibraryClick);
 }
 
-function switchPracticeMode(mode) {
-  const isTest = mode === "test";
-  elements.studyPanel.classList.toggle("is-hidden", isTest);
-  elements.testPanel.classList.toggle("is-hidden", !isTest);
-  elements.studyModeButton.classList.toggle("is-active", !isTest);
-  elements.testModeButton.classList.toggle("is-active", isTest);
+function openGame() {
+  window.location.href = GAME_URL;
+}
+
+function switchView(view) {
+  const isLibrary = view === "library";
+  elements.studyPanel.classList.toggle("is-hidden", isLibrary);
+  elements.libraryPanel.classList.toggle("is-hidden", !isLibrary);
+  elements.studyTabButton.classList.toggle("is-active", !isLibrary);
+  elements.libraryTabButton.classList.toggle("is-active", isLibrary);
 }
 
 function applySavedTheme() {
@@ -215,7 +208,6 @@ function logout() {
   state.categories = ["Uncategorized"];
   state.filteredCards = [];
   state.session = createEmptySession();
-  state.test = createEmptyTest();
   localStorage.removeItem(AUTH_KEY);
   showAuth();
 }
@@ -253,7 +245,6 @@ async function loadFlashcards() {
 function rebuildCategories() {
   const selected = elements.categorySelect.value;
   const editorSelected = elements.cardCategoryInput.value;
-  const testSelected = elements.testCategorySelect.value;
   const categories = normalizeCategoryList([
     ...state.categories,
     ...state.flashcards.map((card) => card.category).filter(Boolean)
@@ -263,19 +254,15 @@ function rebuildCategories() {
 
   elements.categorySelect.textContent = "";
   elements.categorySelect.append(new Option("All categories", ""));
-  elements.testCategorySelect.textContent = "";
-  elements.testCategorySelect.append(new Option("All categories", ""));
 
   for (const category of categories) {
     elements.categorySelect.append(new Option(category, category));
-    elements.testCategorySelect.append(new Option(category, category));
   }
 
   elements.categorySelect.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
   elements.categorySelect.value = categories.includes(selected) ? selected : "";
   elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
   elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
-  elements.testCategorySelect.value = categories.includes(testSelected) ? testSelected : "";
 
   elements.cardCategoryInput.textContent = "";
 
@@ -300,164 +287,6 @@ async function handleFilterCategoryChange() {
   elements.categorySelect.dataset.previousValue = elements.categorySelect.value;
   elements.deleteCategoryButton.disabled = !elements.categorySelect.value || elements.categorySelect.value === "Uncategorized";
   applyFilters();
-}
-
-function getTestPool() {
-  const category = elements.testCategorySelect.value;
-  return category
-    ? state.flashcards.filter((card) => card.category === category)
-    : [...state.flashcards];
-}
-
-function resetTest() {
-  state.test = createEmptyTest();
-  elements.testMeaning.textContent = "Start a test to get a random meaning.";
-  elements.testAnswerInput.value = "";
-  elements.testAnswerInput.disabled = true;
-  elements.submitTestButton.disabled = true;
-  elements.nextTestButton.disabled = true;
-  elements.testFeedback.textContent = "You have 5 attempts per card.";
-  elements.testFeedback.className = "test-feedback";
-  elements.testHints.textContent = "";
-  renderTestProgress();
-}
-
-function startTestRound() {
-  const pool = getTestPool().filter((card) => card.word && card.meaning);
-
-  if (pool.length === 0) {
-    resetTest();
-    elements.testFeedback.textContent = "No cards available for this test category.";
-    elements.testFeedback.classList.add("is-error");
-    return;
-  }
-
-  state.test = {
-    ...createEmptyTest(),
-    currentCard: pool[Math.floor(Math.random() * pool.length)],
-    correctCount: state.test.correctCount
-  };
-
-  elements.testMeaning.textContent = state.test.currentCard.meaning;
-  elements.testAnswerInput.value = "";
-  elements.testAnswerInput.disabled = false;
-  elements.submitTestButton.disabled = false;
-  elements.nextTestButton.disabled = false;
-  elements.testFeedback.textContent = "Type the word from memory.";
-  elements.testFeedback.className = "test-feedback";
-  elements.testHints.textContent = "";
-  elements.testAnswerInput.focus();
-  renderTestProgress();
-}
-
-function submitTestAnswer(event) {
-  event.preventDefault();
-
-  if (!state.test.currentCard || state.test.isComplete) {
-    return;
-  }
-
-  const answer = normalizeAnswer(elements.testAnswerInput.value);
-  const expected = normalizeAnswer(state.test.currentCard.word);
-
-  if (answer === expected) {
-    state.test.correctCount += 1;
-    state.test.isComplete = true;
-    elements.testFeedback.textContent = "Correct. Move to the next word.";
-    elements.testFeedback.className = "test-feedback is-success";
-    elements.submitTestButton.disabled = true;
-    elements.testAnswerInput.disabled = true;
-    renderTestProgress();
-    return;
-  }
-
-  state.test.attempts += 1;
-  addTestHint();
-
-  if (state.test.attempts >= state.test.maxAttempts) {
-    state.test.isComplete = true;
-    elements.testFeedback.textContent = `Out of attempts. Answer: ${state.test.currentCard.word}`;
-    elements.testFeedback.className = "test-feedback is-error";
-    elements.submitTestButton.disabled = true;
-    elements.testAnswerInput.disabled = true;
-  } else {
-    elements.testFeedback.textContent = "Not yet. Use the new hint and try again.";
-    elements.testFeedback.className = "test-feedback is-error";
-  }
-
-  renderTestProgress();
-}
-
-function addTestHint() {
-  const hint = getNextHint();
-
-  if (!hint) {
-    return;
-  }
-
-  state.test.hints.push(hint);
-  renderTestHints();
-}
-
-function getNextHint() {
-  const card = state.test.currentCard;
-  const includeCategoryHint = !elements.testCategorySelect.value;
-  const hintIndex = state.test.hints.length;
-  const baseHints = [];
-
-  if (includeCategoryHint) {
-    baseHints.push({
-      label: "Category",
-      value: card.category || "Uncategorized"
-    });
-  }
-
-  baseHints.push({
-    label: "Wordform",
-    value: card.wordform || "unknown"
-  });
-
-  if (hintIndex < baseHints.length) {
-    return baseHints[hintIndex];
-  }
-
-  const visibleLetters = Math.max(1, hintIndex - baseHints.length + 1);
-  return {
-    label: "Letters",
-    value: maskWord(card.word, visibleLetters)
-  };
-}
-
-function renderTestHints() {
-  elements.testHints.textContent = "";
-
-  for (const hint of state.test.hints) {
-    const item = document.createElement("div");
-    item.className = "hint-item";
-    item.innerHTML = `<span>${escapeHtml(hint.label)}</span><strong>${escapeHtml(hint.value)}</strong>`;
-    elements.testHints.appendChild(item);
-  }
-}
-
-function renderTestProgress() {
-  elements.testCorrectCount.textContent = String(state.test.correctCount || 0);
-  elements.testAttemptText.textContent = `${state.test.attempts || 0} / ${state.test.maxAttempts || 5} attempts`;
-}
-
-function normalizeAnswer(value) {
-  return String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function maskWord(word, visibleLetters) {
-  const chars = Array.from(String(word || ""));
-
-  return chars.map((char, index) => {
-    if (char === " " || char === "-") {
-      return char;
-    }
-
-    return index < visibleLetters ? char : "_";
-  }).join(" ");
 }
 
 async function handleEditorCategoryChange() {
@@ -619,7 +448,16 @@ function resetStudySession(message = "Choose a category, then start a session.")
   elements.startSessionButton.textContent = "Start session";
   elements.flipButton.disabled = true;
   elements.skipButton.disabled = true;
+  setPrimaryAction("start");
   renderProgress();
+}
+
+/* The main action moves as the session progresses: start -> flip -> grade buttons. */
+function setPrimaryAction(target) {
+  elements.startSessionButton.classList.toggle("primary-button", target === "start");
+  elements.startSessionButton.classList.toggle("secondary-button", target !== "start");
+  elements.flipButton.classList.toggle("primary-button", target === "flip");
+  elements.flipButton.classList.toggle("secondary-button", target !== "flip");
 }
 
 function renderStudyCard() {
@@ -647,8 +485,9 @@ function renderStudyCard() {
   elements.gradeActions.classList.toggle("is-hidden", !state.session.isFlipped);
   elements.startSessionButton.disabled = false;
   elements.startSessionButton.textContent = "Restart";
-  elements.flipButton.disabled = false;
+  elements.flipButton.disabled = state.session.isFlipped;
   elements.skipButton.disabled = false;
+  setPrimaryAction(state.session.isFlipped ? "none" : "flip");
 }
 
 function renderSessionComplete() {
@@ -666,6 +505,7 @@ function renderSessionComplete() {
   elements.startSessionButton.textContent = "Start session";
   elements.flipButton.disabled = true;
   elements.skipButton.disabled = true;
+  setPrimaryAction("start");
   elements.summaryReviewed.textContent = String(state.session.completedCount);
   elements.summaryAgain.textContent = String(state.session.stats.again);
   elements.summaryHard.textContent = String(state.session.stats.hard);
@@ -686,29 +526,88 @@ function renderProgress() {
 
 function renderLibrary() {
   elements.cardList.textContent = "";
-  elements.libraryCount.textContent = `${state.filteredCards.length} card${state.filteredCards.length === 1 ? "" : "s"}`;
+  elements.libraryCount.textContent = `${state.flashcards.length} card${state.flashcards.length === 1 ? "" : "s"}`;
 
   const fragment = document.createDocumentFragment();
+  const groups = groupCardsByCategory(state.flashcards);
 
-  for (const card of state.filteredCards) {
-    const item = document.createElement("article");
-    item.className = "library-card";
-    item.innerHTML = `
-      <h3>${escapeHtml(card.word)}</h3>
-      <p>${escapeHtml(card.meaning)}</p>
-      <div class="library-meta">
-        <span class="pill">${escapeHtml(card.category || "Uncategorized")}</span>
-        ${card.wordform ? `<span class="pill">${escapeHtml(card.wordform)}</span>` : ""}
-      </div>
-      <div class="library-actions">
-        <button class="secondary-button" type="button" data-action="edit" data-id="${escapeHtml(card.id)}">Edit</button>
-        <button class="danger-button" type="button" data-action="delete" data-id="${escapeHtml(card.id)}">Delete</button>
-      </div>
+  if (groups.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "library-empty";
+    empty.textContent = "No flashcards yet. Add a card from the study form or sync from the extension.";
+    elements.cardList.appendChild(empty);
+    return;
+  }
+
+  for (const group of groups) {
+    const section = document.createElement("details");
+    section.className = "category-group";
+    section.open = group.category === "Uncategorized" || groups.length <= 3;
+    section.innerHTML = `
+      <summary>
+        <span>${escapeHtml(group.category)}</span>
+        <strong>${group.cards.length}</strong>
+      </summary>
+      <div class="category-card-list"></div>
     `;
-    fragment.appendChild(item);
+
+    const list = section.querySelector(".category-card-list");
+
+    for (const card of group.cards) {
+      const item = document.createElement("article");
+      item.className = "library-card";
+      item.innerHTML = `
+        <div class="library-card-main">
+          <h3>${escapeHtml(card.word)}</h3>
+          <p>${escapeHtml(card.meaning)}</p>
+          <div class="library-meta">
+            ${card.wordform ? `<span class="pill">${escapeHtml(card.wordform)}</span>` : ""}
+            <span class="pill">${card.syncedAt ? "Synced" : "Cloud"}</span>
+          </div>
+        </div>
+        <div class="library-actions">
+          <button class="secondary-button" type="button" data-action="edit" data-id="${escapeHtml(card.id)}">Edit</button>
+          <button class="danger-button" type="button" data-action="delete" data-id="${escapeHtml(card.id)}">Delete</button>
+        </div>
+      `;
+      list.appendChild(item);
+    }
+
+    fragment.appendChild(section);
   }
 
   elements.cardList.appendChild(fragment);
+}
+
+function groupCardsByCategory(cards) {
+  const groups = new Map();
+
+  for (const card of cards) {
+    const category = card.category || "Uncategorized";
+
+    if (!groups.has(category)) {
+      groups.set(category, []);
+    }
+
+    groups.get(category).push(card);
+  }
+
+  return [...groups.entries()]
+    .map(([category, cardsInGroup]) => ({
+      category,
+      cards: cardsInGroup.sort((a, b) => a.word.localeCompare(b.word))
+    }))
+    .sort((a, b) => {
+      if (a.category.toLowerCase() === "uncategorized") {
+        return -1;
+      }
+
+      if (b.category.toLowerCase() === "uncategorized") {
+        return 1;
+      }
+
+      return a.category.localeCompare(b.category);
+    });
 }
 
 function flipCard() {
@@ -853,6 +752,7 @@ async function handleLibraryClick(event) {
 }
 
 function editCard(card) {
+  switchView("study");
   elements.editorTitle.textContent = "Edit flashcard";
   elements.cardId.value = card.id;
   elements.cardWordInput.value = card.word;
@@ -881,6 +781,7 @@ async function deleteCard(card) {
 }
 
 function resetForm() {
+  switchView("study");
   elements.editorTitle.textContent = "Add flashcard";
   elements.cardForm.reset();
   elements.cardId.value = "";
@@ -906,17 +807,6 @@ function createEmptySession() {
       good: 0,
       easy: 0
     }
-  };
-}
-
-function createEmptyTest() {
-  return {
-    currentCard: null,
-    attempts: 0,
-    maxAttempts: 5,
-    correctCount: 0,
-    isComplete: false,
-    hints: []
   };
 }
 
