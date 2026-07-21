@@ -25,16 +25,16 @@ are in `ap-southeast-1` (Singapore) unless noted otherwise.
 | What to inspect | Link / name |
 | --- | --- |
 | Project overview: CloudFormation stack | [CloudFormation stacks](https://ap-southeast-1.console.aws.amazon.com/cloudformation/home?region=ap-southeast-1) → select `chrome-flashcard-dev` → **Resources** tab |
-| Lambda API function | [ApiFunction](https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions/chrome-flashcard-dev-ApiFunction-n92GBqOQnAwI?tab=code) |
+| Lambda API function | [ApiFunction](https://ap-southeast-1.console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions/chrome-flashcard-dev-ApiFunction-XXXXXXXX?tab=code) |
 | API Gateway HTTP API | [HTTP API `YOUR_API_ID`](https://ap-southeast-1.console.aws.amazon.com/apigateway/main/apis/YOUR_API_ID/routes?region=ap-southeast-1) |
-| DynamoDB Users | [Users table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-UsersTable-G5F8DXL37I2E&tab=overview) |
-| DynamoDB Flashcards | [Flashcards table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-FlashcardsTable-16RL84N3MZJUG&tab=overview) |
-| DynamoDB Categories | [Categories table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-CategoriesTable-1F37JWDLC5Y5H&tab=overview) |
+| DynamoDB Users | [Users table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-UsersTable-XXXXXXXX&tab=overview) |
+| DynamoDB Flashcards | [Flashcards table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-FlashcardsTable-XXXXXXXX&tab=overview) |
+| DynamoDB Categories | [Categories table](https://ap-southeast-1.console.aws.amazon.com/dynamodbv2/home?region=ap-southeast-1#table?name=chrome-flashcard-dev-CategoriesTable-XXXXXXXX&tab=overview) |
 | Static Study/Game bucket | [Public static S3 bucket](https://s3.console.aws.amazon.com/s3/buckets/YOUR_SITE_BUCKET?region=ap-southeast-1&tab=objects) |
 | Private export bucket | [Private export S3 bucket](https://s3.console.aws.amazon.com/s3/buckets/YOUR_EXPORT_BUCKET?region=ap-southeast-1&tab=objects) |
 | SAM artifact bucket | [SAM source S3 bucket](https://s3.console.aws.amazon.com/s3/buckets/aws-sam-cli-managed-default-samclisourcebucket-jrtjgdyplprv?region=ap-southeast-1&tab=objects) |
-| Lambda logs | [CloudWatch Logs](https://ap-southeast-1.console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#logsV2:log-groups) → open `/aws/lambda/chrome-flashcard-dev-ApiFunction-n92GBqOQnAwI` |
-| Lambda execution role | [IAM role](https://us-east-1.console.aws.amazon.com/iam/home#/roles/details/chrome-flashcard-dev-ApiFunctionRole-AOy1xyQigoi0) |
+| Lambda logs | [CloudWatch Logs](https://ap-southeast-1.console.aws.amazon.com/cloudwatch/home?region=ap-southeast-1#logsV2:log-groups) → open `/aws/lambda/chrome-flashcard-dev-ApiFunction-XXXXXXXX` |
+| Lambda execution role | [IAM role](https://us-east-1.console.aws.amazon.com/iam/home#/roles/details/chrome-flashcard-dev-ApiFunctionRole-XXXXXXXX) |
 | Budget alerts | [AWS Budgets](https://console.aws.amazon.com/costmanagement/home#/budgets) |
 | Study web | [Open Study](https://YOUR_SITE_BUCKET.s3.ap-southeast-1.amazonaws.com/study/index.html) |
 | Game web | [Open Game](https://YOUR_SITE_BUCKET.s3.ap-southeast-1.amazonaws.com/game/index.html) |
@@ -166,11 +166,11 @@ include the public static bucket because that bucket was created manually.
 3. Find and select only these resource names:
 
    ```text
-   chrome-flashcard-dev-ApiFunction-n92GBqOQnAwI
+   chrome-flashcard-dev-ApiFunction-XXXXXXXX
    YOUR_API_ID
-   chrome-flashcard-dev-UsersTable-G5F8DXL37I2E
-   chrome-flashcard-dev-FlashcardsTable-16RL84N3MZJUG
-   chrome-flashcard-dev-CategoriesTable-1F37JWDLC5Y5H
+   chrome-flashcard-dev-UsersTable-XXXXXXXX
+   chrome-flashcard-dev-FlashcardsTable-XXXXXXXX
+   chrome-flashcard-dev-CategoriesTable-XXXXXXXX
    YOUR_EXPORT_BUCKET
    YOUR_SITE_BUCKET
    ```
