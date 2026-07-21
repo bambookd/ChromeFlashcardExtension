@@ -8,7 +8,6 @@ import { config } from "./src/config.js";
 import { httpError } from "./src/errors.js";
 import { createExportService } from "./src/exportService.js";
 import { createRepositories } from "./src/repositories.js";
-import { createTranslateService } from "./src/translateService.js";
 import {
   normalizeCategory,
   normalizeFlashcard,
@@ -23,7 +22,6 @@ const __dirname = path.dirname(__filename);
 
 export const repositories = createRepositories(config);
 const authService = createAuthService(config, repositories);
-const translateService = createTranslateService(config);
 const exportService = createExportService(config);
 
 export const app = express();
@@ -282,14 +280,6 @@ app.post("/api/sync", requireAuth, async (request, response, next) => {
   }
 });
 
-app.post("/api/translate", maybeRequireTranslateAuth, async (request, response, next) => {
-  try {
-    response.json(await translateService.translate(request.body));
-  } catch (error) {
-    next(error);
-  }
-});
-
 app.post("/api/export", requireAuth, async (request, response, next) => {
   try {
     const providedFlashcards = Array.isArray(request.body?.flashcards)
@@ -324,15 +314,6 @@ async function requireAuth(request, _response, next) {
   } catch (error) {
     next(error);
   }
-}
-
-async function maybeRequireTranslateAuth(request, response, next) {
-  if (!config.requireTranslateAuth) {
-    next();
-    return;
-  }
-
-  await requireAuth(request, response, next);
 }
 
 function getBearerToken(request) {

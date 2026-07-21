@@ -14,21 +14,19 @@ Parameters:
 
 Globals:
   Function:
-    Runtime: nodejs20.x
+    Runtime: nodejs24.x
     Timeout: 15
     MemorySize: 256
     Environment:
       Variables:
         DATA_STORE: dynamodb
-        AWS_REGION: !Ref AWS::Region
         USERS_TABLE: !Ref UsersTable
         FLASHCARDS_TABLE: !Ref FlashcardsTable
         CATEGORIES_TABLE: !Ref CategoriesTable
         EXPORT_BUCKET: !Ref ExportBucket
         JWT_SECRET: !Ref JwtSecret
         ALLOWED_ORIGINS: !Ref AllowedOrigins
-        USE_AMAZON_TRANSLATE: "true"
-        REQUIRE_TRANSLATE_AUTH: "true"
+        SERVE_STUDY_STATIC: "false"
 
 Resources:
   ApiFunction:
@@ -45,11 +43,6 @@ Resources:
             TableName: !Ref CategoriesTable
         - S3CrudPolicy:
             BucketName: !Ref ExportBucket
-        - Statement:
-            Effect: Allow
-            Action:
-              - translate:TranslateText
-            Resource: "*"
       Events:
         HttpApi:
           Type: HttpApi
@@ -61,6 +54,9 @@ Resources:
   HttpApi:
     Type: AWS::Serverless::HttpApi
     Properties:
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 5
+        ThrottlingRateLimit: 2
       CorsConfiguration:
         AllowMethods:
           - GET
@@ -126,6 +122,13 @@ Resources:
   ExportBucket:
     Type: AWS::S3::Bucket
     Properties:
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireDemoExports
+            Status: Enabled
+            ExpirationInDays: 7
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 1
       PublicAccessBlockConfiguration:
         BlockPublicAcls: true
         BlockPublicPolicy: true

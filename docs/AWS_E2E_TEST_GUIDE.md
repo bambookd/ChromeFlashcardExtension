@@ -1,6 +1,6 @@
 # AWS End-to-End Test Guide
 
-This guide verifies the full AWS flow for `ChromeFlashcardExtension` after deploying the backend to Lambda/API Gateway, storing data in DynamoDB, hosting the study web on S3, using Amazon Translate, and exporting JSON through a private S3 pre-signed URL.
+This guide verifies the full AWS flow for `ChromeFlashcardExtension` after deploying the backend to Lambda/API Gateway, storing data in DynamoDB, hosting the study web on S3, and exporting JSON through a private S3 pre-signed URL.
 
 ## 1. Fill In Test Values
 
@@ -32,16 +32,12 @@ Confirm Lambda environment variables:
 
 ```text
 DATA_STORE=dynamodb
-AWS_REGION=ap-southeast-1
 USERS_TABLE=FlashcardUsers
 FLASHCARDS_TABLE=FlashcardCards
 CATEGORIES_TABLE=FlashcardCategories
 JWT_SECRET=<strong secret>
 EXPORT_BUCKET=<private export bucket>
 ALLOWED_ORIGINS=http://localhost:3000,chrome-extension://YOUR_EXTENSION_ID,http://YOUR_STUDY_BUCKET.s3-website-ap-southeast-1.amazonaws.com
-USE_AMAZON_TRANSLATE=true
-REQUIRE_TRANSLATE_AUTH=true
-TRANSLATE_MAX_LENGTH=120
 SERVE_STUDY_STATIC=false
 ```
 
@@ -53,7 +49,6 @@ dynamodb:PutItem
 dynamodb:UpdateItem
 dynamodb:DeleteItem
 dynamodb:Query
-translate:TranslateText
 s3:PutObject
 s3:GetObject
 logs:CreateLogGroup
@@ -218,40 +213,7 @@ categories includes Uncategorized
 categories includes AWS Test
 ```
 
-## 8. Translate API Test
-
-Run:
-
-```powershell
-$TranslateBody = @{
-  text = "resilient"
-  sourceLanguageCode = "en"
-  targetLanguageCode = "vi"
-} | ConvertTo-Json
-
-Invoke-RestMethod `
-  -Method Post `
-  -Uri "$ApiBaseUrl/api/translate" `
-  -Headers $AuthHeaders `
-  -ContentType "application/json" `
-  -Body $TranslateBody
-```
-
-Expected:
-
-```json
-{
-  "ok": true,
-  "word": "resilient",
-  "meaning": "<translated text>",
-  "wordform": "unknown",
-  "provider": "amazon-translate"
-}
-```
-
-If this returns `local-mock-translate`, Lambda is not running with `USE_AMAZON_TRANSLATE=true` or `DATA_STORE=dynamodb`.
-
-## 9. Flashcard API Test
+## 8. Flashcard API Test
 
 Create flashcard:
 
@@ -323,7 +285,7 @@ ok = true
 flashcard.meaning updated
 ```
 
-## 10. Study Random API Test
+## 9. Study Random API Test
 
 Run:
 
@@ -342,7 +304,7 @@ count >= 1
 flashcard.category = AWS Test
 ```
 
-## 11. Export API Test
+## 10. Export API Test
 
 Run:
 
@@ -385,7 +347,7 @@ JSON contains flashcards array
 
 Confirm the export bucket is still private. Opening the raw S3 object URL without the signature should fail.
 
-## 12. DynamoDB Data Verification
+## 11. DynamoDB Data Verification
 
 In AWS Console, inspect the tables.
 
@@ -416,7 +378,7 @@ Sort key categoryName = AWS Test
 
 Normal flashcard loading should query by `userId`. It should not require scanning the whole flashcards table.
 
-## 13. Study Web on S3 Test
+## 12. Study Web on S3 Test
 
 Before uploading to S3, confirm `backend/public/study/config.js` points to API Gateway:
 
@@ -454,7 +416,7 @@ Test:
 
 If login fails in the study page but API tests pass, check CORS `ALLOWED_ORIGINS`. It must include the exact S3 website origin.
 
-## 14. Chrome Extension AWS Test
+## 13. Chrome Extension AWS Test
 
 Update `extension-config.js`:
 
@@ -486,7 +448,7 @@ Test popup:
 1. Open the extension popup.
 2. Login with `aws-test-user`.
 3. Add a word manually.
-4. Click Translate.
+4. Enter a meaning manually.
 5. Save locally.
 6. Click Sync to Cloud.
 7. Open the study page from the extension.
@@ -498,13 +460,13 @@ Test context-menu flow:
 3. Right-click.
 4. Choose the flashcard context-menu option.
 5. Confirm the inline editor appears near the selected word.
-6. Click Translate.
+6. Enter a meaning manually.
 7. Save the flashcard.
 8. Open popup and confirm the card exists locally.
 9. Sync to cloud.
 10. Confirm the synced card appears in the S3 study web.
 
-If Translate/Login fails from the extension but PowerShell API tests pass, check:
+If Login or Sync fails from the extension but PowerShell API tests pass, check:
 
 ```text
 ALLOWED_ORIGINS includes chrome-extension://YOUR_EXTENSION_ID
@@ -514,7 +476,7 @@ the extension was reloaded after editing files
 the webpage tab was reloaded so the latest content script is active
 ```
 
-## 15. Category Delete Behavior Test
+## 14. Category Delete Behavior Test
 
 Create a card in category `AWS Test`, then delete the category:
 
@@ -549,7 +511,7 @@ Expected:
 cards that used AWS Test now have category = Uncategorized
 ```
 
-## 16. Cleanup Test Data
+## 15. Cleanup Test Data
 
 Delete test card:
 
@@ -575,7 +537,7 @@ Delete test user's category items from Categories table
 Delete test export objects from private export bucket
 ```
 
-## 17. Pass Criteria
+## 16. Pass Criteria
 
 The AWS test passes when:
 
@@ -584,16 +546,15 @@ Health endpoint returns ok
 Register/login returns JWT
 Protected routes reject missing JWT and accept valid JWT
 Categories create/list/delete correctly
-Amazon Translate returns provider = amazon-translate
 Flashcards create/list/update/delete correctly
 Study random endpoint returns user-owned cards
 Export creates private S3 object and pre-signed URL downloads JSON
 S3 study web can login and study cards
-Chrome extension can login, translate, save locally, sync to cloud, and open study web
+Chrome extension can login, save locally, sync to cloud, and open study web
 DynamoDB contains user-scoped records with expected keys
 ```
 
-## 18. Common Failure Points
+## 17. Common Failure Points
 
 `Backend not reachable`:
 
@@ -611,14 +572,6 @@ Missing Authorization header
 Expired JWT
 JWT_SECRET changed after login
 User record was deleted from DynamoDB
-```
-
-`Translate returns local-mock-translate`:
-
-```text
-DATA_STORE is not dynamodb
-USE_AMAZON_TRANSLATE is not true
-Lambda env vars were changed but function was not redeployed/restarted
 ```
 
 `DynamoDB AccessDenied`:

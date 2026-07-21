@@ -31,7 +31,6 @@ const elements = {
   cardCount: document.getElementById("cardCount"),
   status: document.getElementById("statusMessage"),
   syncButton: document.getElementById("syncButton"),
-  translateButton: document.getElementById("translateButton"),
   exportButton: document.getElementById("exportButton"),
   clearButton: document.getElementById("clearButton"),
   openStudyButton: document.getElementById("openStudyButton")
@@ -121,7 +120,6 @@ function bindEvents() {
   elements.logoutButton.addEventListener("click", handleLogout);
   elements.form.addEventListener("submit", handleSave);
   elements.syncButton.addEventListener("click", handleSync);
-  elements.translateButton.addEventListener("click", handleTranslate);
   elements.category.addEventListener("change", handleCategoryChange);
   elements.deleteCategoryButton.addEventListener("click", handleDeleteCategory);
   elements.exportButton.addEventListener("click", handleExport);
@@ -300,38 +298,6 @@ async function handleSync() {
     setStatus(`Sync failed: ${error.message}`, "error");
   } finally {
     setBusy(elements.syncButton, false, "Sync to Cloud");
-  }
-}
-
-async function handleTranslate() {
-  const word = elements.word.value.trim();
-
-  if (!word) {
-    setStatus("Enter a word before translating.", "error");
-    elements.word.focus();
-    return;
-  }
-
-  setBusy(elements.translateButton, true, "...");
-
-  try {
-    const auth = await storage.getAuth();
-    const result = await fetchJson(`${API_BASE_URL}/api/translate`, {
-      method: "POST",
-      headers: auth?.token ? authHeaders(auth) : {},
-      body: JSON.stringify({ word })
-    });
-
-    elements.meaning.value = result.meaning;
-    if (!elements.wordform.value && result.wordform) {
-      elements.wordform.value = result.wordform;
-    }
-
-    setStatus("Translation loaded from local API.", "success");
-  } catch (error) {
-    setStatus(`Translation failed: ${error.message}`, "error");
-  } finally {
-    setBusy(elements.translateButton, false, "Translate");
   }
 }
 
@@ -620,7 +586,7 @@ async function fetchJson(url, options = {}) {
       }
     });
   } catch (error) {
-    throw new Error("local backend is not reachable");
+    throw new Error("Configured API is not reachable");
   }
 
   const data = await response.json().catch(() => ({}));

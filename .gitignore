@@ -7,6 +7,16 @@ backend/exports/
 
 # Build artifacts (see REPO-002)
 *.zip
+backend/dist/
+infra/.aws-sam/
+infra/samconfig.toml
 
 # Experimental duplicate copy, not source of truth (see REPO-001)
 ChromeFlashCardExtension-test-aws-clean/
+
+# Báo cáo thực tập cá nhân, không liên quan tới project
+fcj-internship-report/
+
+# Giá trị hạ tầng thật của từng người. Repo là public nên docs/ dùng placeholder.
+infra/env.local.md
+env.local.md

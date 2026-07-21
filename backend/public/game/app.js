@@ -1,6 +1,9 @@
 const API_BASE_URL = window.FLASHCARD_CONFIG?.API_BASE_URL || "";
 const STUDY_URL = window.FLASHCARD_CONFIG?.STUDY_URL || "/study/";
-const REALTIME_URL = window.FLASHCARD_CONFIG?.REALTIME_URL || createRealtimeUrl();
+const REALTIME_URL = window.FLASHCARD_CONFIG?.REALTIME_URL === undefined
+  ? createRealtimeUrl()
+  : window.FLASHCARD_CONFIG.REALTIME_URL;
+const REALTIME_ENABLED = Boolean(REALTIME_URL);
 const AUTH_KEY = "flashcardStudyAuth";
 const THEME_KEY = "flashcardStudyTheme";
 
@@ -74,7 +77,21 @@ function init() {
   applySavedTheme();
   document.querySelector(".secondary-link").setAttribute("href", STUDY_URL);
   bindEvents();
+  configureRealtimeAvailability();
   restoreSession();
+}
+
+function configureRealtimeAvailability() {
+  if (REALTIME_ENABLED) {
+    return;
+  }
+
+  elements.realtimeTabButton.disabled = true;
+  elements.realtimeTabButton.textContent = "Realtime (local only)";
+  elements.realtimeTabButton.title = "Realtime multiplayer is not deployed in the AWS MVP.";
+  elements.createRoomButton.disabled = true;
+  elements.joinRoomButton.disabled = true;
+  elements.roomCodeInput.disabled = true;
 }
 
 function applySavedTheme() {
@@ -131,8 +148,6 @@ async function restoreSession() {
 
   if (!saved?.token || !saved?.user) {
     showAuth();
-    elements.username.value = "student";
-    elements.password.value = "password123";
     return;
   }
 
@@ -444,7 +459,7 @@ function joinRealtimeRoomFromInput() {
 function autoJoinRoomFromUrl() {
   const roomId = new URLSearchParams(window.location.search).get("room");
 
-  if (!roomId) {
+  if (!roomId || !REALTIME_ENABLED) {
     return;
   }
 
@@ -464,6 +479,11 @@ function joinRealtimeRoom(roomId) {
 }
 
 function connectRealtimeSocket(onOpen) {
+  if (!REALTIME_ENABLED) {
+    setRealtimeStatus("Realtime multiplayer is available only on the local backend.", "error");
+    return;
+  }
+
   if (state.realtime.socket?.readyState === WebSocket.OPEN) {
     onOpen();
     return;
@@ -762,7 +782,7 @@ async function rawFetch(path, options = {}) {
       }
     });
   } catch (error) {
-    throw new Error("Local backend is not reachable");
+    throw new Error("Configured API is not reachable");
   }
 
   const data = await response.json().catch(() => ({}));

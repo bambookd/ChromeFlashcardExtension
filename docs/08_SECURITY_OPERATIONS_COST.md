@@ -270,3 +270,46 @@ Do not hard-code price estimates because region/free-tier/account pricing change
 - Data retention/privacy policy.
 - CI security/test gates.
 
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+## Threat model (mục 2)
+
+"Cost abuse qua Translate/sync" thu hẹp còn "Cost abuse qua sync". Bề mặt tấn
+công chi phí giảm: không còn endpoint nào gọi dịch vụ AWS tính tiền theo ký tự.
+
+## Controls (mục 3)
+
+Bỏ "Translate auth required trong Dynamo mode" và "Translate input max 120".
+Hai control này biến mất cùng tính năng, không phải bị nới lỏng.
+
+## Least privilege (mục 4)
+
+Lambda role không còn:
+
+```text
+translate:TranslateText
+comprehend:DetectDominantLanguage
+```
+
+Danh sách "không cấp" ở mục 5 giữ nguyên tinh thần; `translate:*` giờ là điều
+hiển nhiên vì dịch vụ không được dùng.
+
+Lưu ý drift: role trên AWS vẫn còn hai quyền này cho tới lần deploy kế tiếp
+(`AWS_USAGE_CHECKLIST.md` mục 6). Đây là permission thừa chứ không phải quyền bị
+lạm dụng - không code path nào gọi tới.
+
+## Monitoring (mục 8) và cost (mục 10)
+
+Bỏ dòng "Translate usage | Cost/abuse | Budget and app limit" khỏi bảng
+monitoring. Bỏ "Translate characters; `auto` detection may also use Comprehend"
+khỏi cost drivers, và bỏ "Translate auth + 120-char cap" khỏi cost controls.
+
+Chi phí còn lại: DynamoDB provisioned capacity, Lambda, API Gateway, S3.
+
+## Incident playbook (mục 11)
+
+Playbook "AccessDenied on Translate" **không còn áp dụng** và có thể bỏ. Nếu
+CloudWatch còn log AccessDenied liên quan translate/comprehend sau ngày này, đó
+là dấu hiệu code cũ còn được deploy - kiểm tra version Lambda đang chạy thay vì
+cấp lại quyền.

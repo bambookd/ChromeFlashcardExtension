@@ -10,7 +10,12 @@
     <main class="app-shell">
       <header class="app-header">
         <div class="brand">
-          <span class="brand-mark" aria-hidden="true">F</span>
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
+              <path d="M7 6.5h10M7 10.5h7M7 14.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M5.5 3.5h13a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5"></path>
+            </svg>
+          </span>
           <div class="brand-text">
             <h1>Flashcards</h1>
             <p id="cardCount">0 saved cards</p>
@@ -20,7 +25,10 @@
           <button id="themeToggle" class="icon-button" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">
             <span class="icon-glyph" aria-hidden="true">◐</span>
           </button>
-          <button id="openStudyButton" class="ghost-button" type="button" title="Open study web app">Study</button>
+          <button id="openStudyButton" class="ghost-button study-button" type="button" title="Open study web app">
+            <span>Study</span>
+            <span aria-hidden="true">↗</span>
+          </button>
         </div>
       </header>
 
@@ -59,20 +67,23 @@
         </div>
       </section>
 
-      <section class="panel" aria-label="Add flashcard">
-        <p class="section-title">Add flashcard</p>
+      <section class="panel capture-panel" aria-label="Add flashcard">
+        <div class="panel-heading">
+          <div>
+            <p class="section-title">Quick capture</p>
+            <p class="section-copy">Save a word now, review it when you are ready.</p>
+          </div>
+          <span class="step-badge">01</span>
+        </div>
         <form id="flashcardForm" autocomplete="off">
           <label>
             <span>Word</span>
-            <div class="inline-input">
-              <input id="wordInput" name="word" type="text" placeholder="e.g. resilient" required>
-              <button id="translateButton" class="secondary-button" type="button">Translate</button>
-            </div>
+            <input id="wordInput" name="word" type="text" placeholder="e.g. resilient" required>
           </label>
 
           <label>
             <span>Meaning</span>
-            <textarea id="meaningInput" name="meaning" rows="3" placeholder="Short definition or translation" required></textarea>
+            <textarea id="meaningInput" name="meaning" rows="3" placeholder="Short definition or meaning" required></textarea>
           </label>
 
           <div class="field-grid">
@@ -111,7 +122,10 @@
             </label>
           </div>
 
-          <button class="primary-button" type="submit">Save flashcard</button>
+          <button class="primary-button save-button" type="submit">
+            <span aria-hidden="true">＋</span>
+            Add to library
+          </button>
         </form>
       </section>
 
@@ -130,6 +144,13 @@
         </div>
 
         <div id="emptyState" class="empty-state">
+          <span class="empty-illustration" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="38" height="38" fill="none">
+              <rect x="10" y="8" width="28" height="34" rx="6" stroke="currentColor" stroke-width="2"></rect>
+              <path d="M17 18h14M17 24h10M17 30h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M33 34l2.5 2.5L40 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
           <p class="empty-title">No flashcards yet</p>
           <p class="empty-hint">Save a word above, or select text on any page and use the right-click menu.</p>
         </div>

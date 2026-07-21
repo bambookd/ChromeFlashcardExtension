@@ -19,9 +19,6 @@ export const config = {
   allowAllOrigins: process.env.CORS_ALLOW_ALL === "true" || (dataStore === "local" && !process.env.ALLOWED_ORIGINS),
   apiBaseUrl: process.env.API_BASE_URL || "http://localhost:3000",
   serveStudyStatic: process.env.SERVE_STUDY_STATIC !== "false",
-  useAmazonTranslate: process.env.USE_AMAZON_TRANSLATE === "true" || dataStore === "dynamodb",
-  requireTranslateAuth: process.env.REQUIRE_TRANSLATE_AUTH === "true" || dataStore === "dynamodb",
-  translateMaxLength: Number(process.env.TRANSLATE_MAX_LENGTH || 120),
   paths: {
     dataDir: path.join(backendRoot, "data"),
     exportDir: path.join(backendRoot, "exports"),

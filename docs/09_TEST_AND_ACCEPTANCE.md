@@ -286,3 +286,44 @@ No-go if any:
 
 Go for demo when all MUST requirements pass, evidence is redacted, alarms/budget exist and limitations are stated clearly.
 
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+## Test case bị bỏ
+
+Các case sau không còn đối tượng để test:
+
+- `L-09` Translate local (`local-mock-translate`).
+- `A-12` Translate `{text,source=en,target=vi}`.
+- `A-13` Translate `{word}` với auto detect.
+- `A-14` Translate no token -> 401.
+- `A-15` Translate >120 chars -> 400.
+- `A-18` Translate từ content script trên trang web thật (AUD-P0-07).
+
+`A-18` đáng chú ý: nó từng được thiết kế để **fail có chủ đích** nếu AWS-007
+chưa sửa. Giờ nó bị bỏ vì tính năng không tồn tại, không phải vì được cho qua.
+
+## Test case thay thế
+
+Thêm một case thủ công cho luồng mới:
+
+| ID | Test | Expected | Evidence |
+|---|---|---|---|
+| A-12b | Editor trong trang web: highlight từ, nhập nghĩa tay, save | Card lưu vào `chrome.storage.local`, không có network request nào tới `/api/translate` | Network tab trống với path đó |
+
+## Coverage và checklist
+
+- Bảng mục 1: "AWS E2E | API->Lambda->DDB/Translate/S3" -> "API->Lambda->DDB/S3".
+- Quy trình mục 4 bước 7 ("Translate explicit `en` then UI payload với `auto`"):
+  bỏ.
+- Extension flow mục cuối bước 5: không còn bước Translate; thay bằng nhập nghĩa
+  tay rồi save. Ghi chú AUD-P0-07 ở bước đó không còn áp dụng.
+- Evidence template: bỏ dòng `translate:`.
+
+## No-go list
+
+Bỏ ba mục liên quan Translate: "Translate auto AccessDenied", phần "kể cả khi lý
+do là để nút Translate trong editor chạy được" trong mục CORS wildcard (bản thân
+mục CORS wildcard vẫn là no-go), và "Editor-translate hỏng trên AWS mà không có
+quyết định chính thức hạ FR-04b xuống `OUT`" - FR-04b đã chính thức là `OUT`,
+xem `docs/02_REQUIREMENTS.md`.

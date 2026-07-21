@@ -502,3 +502,57 @@ Never paste full signed URL into `LOG.md` or screenshot because it is temporary 
 - Remove alarms/log groups or set retention.
 - Remove IAM role/policies no longer used.
 - Verify budget dashboard and no WebSocket/extra resources were accidentally created.
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Runbook này còn hiệu lực trừ các phần Translate dưới đây.
+
+## Preflight (mục 2)
+
+Bỏ `node --check src/translateService.js` - file đã bị xóa. Dùng
+`npm run check` trong `backend/` thay cho danh sách thủ công.
+
+Trong "không deploy nếu", bỏ hai gạch đầu dòng về `comprehend:DetectDominantLanguage`
+và về AUD-P0-07. Cả hai đã đóng.
+
+## IAM policy (mục 5)
+
+Bỏ nguyên statement `TranslateTextWithAutoDetection`:
+
+```json
+{
+  "Sid": "TranslateTextWithAutoDetection",
+  "Effect": "Allow",
+  "Action": ["translate:TranslateText", "comprehend:DetectDominantLanguage"],
+  "Resource": "*"
+}
+```
+
+Cùng với đó, đoạn giải thích "Why `Resource: *` for Translate/Comprehend" không
+còn áp dụng. `infra/template.yaml` đã bỏ hai quyền này; policy còn lại chỉ gồm
+DynamoDB CRUD cho 3 bảng và S3 CRUD cho export bucket.
+
+Role đang chạy trên AWS vẫn giữ statement cũ cho tới lần deploy kế tiếp. Xem
+`AWS_USAGE_CHECKLIST.md` mục 6.
+
+## Lambda environment (mục 8)
+
+Bỏ ba biến khỏi cấu hình:
+
+```text
+USE_AMAZON_TRANSLATE=true
+REQUIRE_TRANSLATE_AUTH=true
+TRANSLATE_MAX_LENGTH=120
+```
+
+## Smoke test (mục 9)
+
+Bỏ cả hai lệnh gọi `/api/translate` và bước "test actual UI-compatible
+`{word:"resilient"}`". Endpoint giờ trả 404.
+
+## Cảnh báo AUD-P0-07 (mục 12)
+
+**Không còn áp dụng.** Cảnh báo đó nói nút Translate trong editor sẽ bị CORS
+chặn. Nút đã bị xóa, `contentScript.js` không fetch API nữa, nên không có
+quyết định nào cần chọn trước demo. Popup login/sync/export vẫn không bị ảnh
+hưởng như ghi chú cũ đã nói.

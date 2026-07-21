@@ -130,3 +130,21 @@ Flashcard có thể chứa:
 
 `sourceUrl`/`sourceTitle` có thể tiết lộ lịch sử đọc web. Trước demo phải dùng dữ liệu giả, và trước production phải có privacy notice cùng chính sách retention/export/delete.
 
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Amazon Translate đã được gỡ khỏi sản phẩm vì account AWS đang dùng trả về
+`OptInRequired` cho dịch vụ này. Quyết định là **bỏ tính năng**, không phải chờ
+account được cấp quyền.
+
+Ảnh hưởng tới tài liệu này:
+
+- Luồng ở mục 2 không còn bước `POST /api/translate`. Editor trong trang web
+  lưu thẳng vào `chrome.storage.local`; người dùng tự nhập nghĩa.
+- Sơ đồ target ở mục 3 không còn nhánh `Lambda -> Amazon Translate`.
+- MVP không còn cam kết Translate ở popup lẫn editor.
+- `backend/src/translateService.js` đã bị xóa; bảng file ở cuối tài liệu không
+  còn dòng đó, và `contentScript.js` không còn gọi translate.
+
+Vì luồng translate biến mất, vấn đề CORS content-script (AUD-P0-07) không còn
+tồn tại trong sản phẩm. Xem `LOG.md` và `docs/10_IMPROVEMENT_BACKLOG.md`.

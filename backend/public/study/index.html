@@ -9,33 +9,66 @@
   <body>
     <main class="app">
       <section id="authView" class="auth-view">
-        <div class="auth-card">
-          <div class="auth-card-header">
-            <p class="eyebrow">Flashcard Vocabulary</p>
-            <button id="authThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
-          </div>
-          <h1>Study your saved words</h1>
-          <p class="muted">Login with a local account to load your cloud-synced flashcards.</p>
-
-          <form id="authForm" class="auth-form">
-            <label>
-              <span>Username</span>
-              <input id="usernameInput" name="username" type="text" autocomplete="username" required>
-            </label>
-
-            <label>
-              <span>Password</span>
-              <input id="passwordInput" name="password" type="password" autocomplete="current-password" required>
-            </label>
-
-            <div class="button-row">
-              <button id="loginButton" class="primary-button" type="submit">Login</button>
-              <button id="registerButton" class="secondary-button" type="button">Register</button>
+        <div class="auth-layout">
+          <section class="auth-hero" aria-labelledby="authHeroTitle">
+            <div class="hero-brand">
+              <span class="hero-mark" aria-hidden="true">F</span>
+              <span>Flashcard Vocabulary</span>
             </div>
-          </form>
+            <div class="hero-copy">
+              <p class="eyebrow">Your vocabulary workspace</p>
+              <h1 id="authHeroTitle">Turn saved words into lasting recall.</h1>
+              <p>Capture vocabulary while browsing, organize it once, and return here for focused review.</p>
+            </div>
+            <div class="feature-list" aria-label="Product highlights">
+              <div>
+                <span class="feature-icon" aria-hidden="true">01</span>
+                <p><strong>Capture anywhere</strong><span>Save directly from the Chrome extension.</span></p>
+              </div>
+              <div>
+                <span class="feature-icon" aria-hidden="true">02</span>
+                <p><strong>Review with intent</strong><span>Flip, grade and repeat at your own pace.</span></p>
+              </div>
+              <div>
+                <span class="feature-icon" aria-hidden="true">03</span>
+                <p><strong>Keep it together</strong><span>Sync categories and cards across surfaces.</span></p>
+              </div>
+            </div>
+          </section>
 
-          <p class="hint">Sample accounts: <strong>student/password123</strong> or <strong>teacher/password123</strong></p>
-          <p id="authStatus" class="status" role="status"></p>
+          <div class="auth-card">
+            <div class="auth-card-header">
+              <div>
+                <p class="eyebrow">Account access</p>
+                <h2>Welcome back</h2>
+              </div>
+              <button id="authThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+            </div>
+            <p class="muted">Sign in with the account you use in the extension, or create a new one.</p>
+
+            <form id="authForm" class="auth-form">
+              <label>
+                <span>Username</span>
+                <input id="usernameInput" name="username" type="text" autocomplete="username" placeholder="Your username" required>
+              </label>
+
+              <label>
+                <span>Password</span>
+                <div class="password-field">
+                  <input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+                  <button id="passwordToggle" class="password-toggle" type="button" aria-label="Show password">Show</button>
+                </div>
+              </label>
+
+              <div class="button-row">
+                <button id="loginButton" class="primary-button" type="submit">Login</button>
+                <button id="registerButton" class="secondary-button" type="button">Create account</button>
+              </div>
+            </form>
+
+            <p class="auth-note">Your password is sent only to the configured API. Do not use a password from another service.</p>
+            <p id="authStatus" class="status" role="status" aria-live="polite"></p>
+          </div>
         </div>
       </section>
 
@@ -58,6 +91,21 @@
         </header>
 
         <p id="studyStatus" class="status" role="status"></p>
+
+        <section class="overview-strip" aria-label="Study overview">
+          <div class="overview-item">
+            <span>Total cards</span>
+            <strong id="totalCardsMetric">0</strong>
+          </div>
+          <div class="overview-item">
+            <span>Categories</span>
+            <strong id="categoryCountMetric">0</strong>
+          </div>
+          <div class="overview-item overview-session">
+            <span>Current session</span>
+            <strong id="sessionMetric">Not started</strong>
+          </div>
+        </section>
 
         <section id="studyPanel" class="study-panel">
           <section class="controls">

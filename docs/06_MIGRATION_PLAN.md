@@ -223,3 +223,26 @@ Avoid:
 | Static web/extension cutover | Small-Medium | exact origins and extension ID |
 | E2E/hardening | Medium | sync size, Translate auto detect |
 | Realtime AWS | Large | explicitly separate future project |
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Các bước liên quan Translate trong kế hoạch này đã đóng bằng cách **gỡ tính
+năng**, không phải bằng cách sửa cho chạy.
+
+- Bước 2 phần P0 ("Thêm `comprehend:DetectDominantLanguage` hoặc đổi translate
+  source thành explicit `en`"): **bỏ**. Không còn lời gọi Translate nào.
+- Bước 9 ("Định tuyến translate qua background service worker", AWS-007):
+  **bỏ**. Đây từng là P0 code change; giờ code path không tồn tại.
+- Câu "Mục 8 và 9 là hai thay đổi code" không còn đúng với mục nào. Bước 8 (tắt
+  realtime UI, AWS-008) cũng đã đóng - xác minh bằng code và bằng E2E thật ngày
+  2026-07-21, xem `docs/10_IMPROVEMENT_BACKLOG.md`. Không còn P0 sửa code nào.
+- Phase 3 smoke test: bỏ "Extension highlight -> translate mock -> save local",
+  thay bằng highlight -> nhập nghĩa tay -> save local.
+- Phase 4: bỏ bước 7 ("Test Translate + Comprehend permission"). Gate G4 bỏ hai
+  điều kiện "Translate provider is `amazon-translate`" và phần AccessDenied liên
+  quan Translate.
+- Phase 5: "Extension login/translate/sync/export works" -> "Extension
+  login/sync/export works".
+- Phase 6 evidence: bỏ screenshot "Translate result".
+- Bảng effort: bỏ dòng "P0 translate qua service worker (AWS-007)"; dòng
+  "E2E/hardening" bỏ phần "Translate auto detect".

@@ -268,3 +268,71 @@ These should not be silently assumed in a future implementation:
 - Should sample local accounts remain in development UI?
 - Archive/delete/ignore duplicate `ChromeFlashCardExtension-test-aws-clean/`?
 - Is solo Game part of AWS demo, or only Study?
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+## Backlog item đã đóng
+
+### AWS-002 - Fix Translate auto-detection IAM: `CLOSED - WONTFIX`
+
+Đóng bằng option thứ ba không có trong danh sách gốc: gỡ tính năng. Account
+không được cấp Amazon Translate, nên cả hai option cũ (thêm quyền Comprehend,
+hoặc ép source `en`) đều không khả thi.
+
+### AWS-007 - Định tuyến translate qua background service worker: `CLOSED - WONTFIX`
+
+Đây từng là P0 bắt buộc sửa code. Giờ không còn code path: `contentScript.js`
+không fetch `/api/translate`, `background.js` không còn message bridge, và route
+backend đã bị xóa. Vấn đề CORS mà item này mô tả không thể xảy ra nữa.
+
+Alternative ghi trong item ("hạ FR-04b xuống `OUT`, chỉ demo translate từ
+popup") cũng không áp dụng: popup translate cũng đã bị gỡ.
+
+Câu tổng kết cuối tài liệu cần đọc lại: bỏ cả "AWS-007 và AWS-008" khỏi danh
+sách P0 sửa code. Xem mục bổ sung ngay dưới về AWS-008.
+
+### AWS-008 - Tắt realtime UI: `CLOSED - DONE` (xác minh 2026-07-21)
+
+Ghi chú bổ sung sau khi chạy E2E thật trên AWS. Lần cập nhật trước tài liệu này
+còn coi AWS-008 là P0 đang mở; **điều đó sai**. Code đã xử lý đúng từ trước.
+
+Bằng chứng code trong `backend/public/game/app.js`:
+
+```js
+const REALTIME_URL = window.FLASHCARD_CONFIG?.REALTIME_URL === undefined
+  ? createRealtimeUrl()
+  : window.FLASHCARD_CONFIG.REALTIME_URL;
+const REALTIME_ENABLED = Boolean(REALTIME_URL);
+```
+
+Kiểm tra `=== undefined` chứ không phải falsy, nên `REALTIME_URL: ""` **không**
+rơi vào fallback `ws://<origin>/realtime` như lo ngại ban đầu. Toàn bộ static
+site chỉ có đúng một chỗ khởi tạo WebSocket (`game/app.js:493`), nằm trong
+`connectRealtimeSocket()` và bị chặn ngay đầu hàm bởi `if (!REALTIME_ENABLED)`.
+`configureRealtimeAvailability()` cũng disable tab và đổi nhãn thành
+"Realtime (local only)".
+
+Bằng chứng trình duyệt trên bản deploy AWS thật:
+
+```text
+Network filter WS:  trống, không có ws:// hay wss://
+Tab Realtime:       disabled, nhãn "Realtime (local only)"
+Solo game:          chạy bình thường
+Console:            không có lỗi WebSocket
+```
+
+Không còn P0 sửa code nào trước khi chạy runbook.
+
+## Open question đã trả lời
+
+Câu hỏi chặn deploy "Translate trong editor: sửa code định tuyến qua service
+worker (AWS-007), hay bỏ khỏi demo AWS và chỉ translate từ popup?" đã được owner
+trả lời ngày 2026-07-21: **bỏ hẳn Translate khỏi sản phẩm.**
+
+Kéo theo đó, câu hỏi "Keep source language auto (adds Comprehend permission/cost)
+or fixed English?" cũng không còn cần trả lời.
+
+## Backlog item bị ảnh hưởng
+
+`SEC-002 - Abuse protection`: phạm vi rate limiting còn login, register và sync.
+Bỏ translate khỏi danh sách.

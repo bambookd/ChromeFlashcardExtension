@@ -98,3 +98,27 @@ Mỗi task implementation sau tài liệu này phải:
 - Cập nhật docs nếu contract hoặc architecture đổi.
 - Append `LOG.md` với request, files, quyết định, lệnh test và kết quả.
 - Không đánh dấu deploy thành công nếu chưa chạy E2E trên AWS thật.
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Account AWS hiện tại không được cấp Amazon Translate (`OptInRequired`). Owner
+chọn gỡ hẳn tính năng thay vì xin cấp quyền.
+
+Thay đổi requirement:
+
+- **FR-04 (Translate từ popup): `OUT`.** Nút Translate đã bị xóa khỏi popup.
+- **FR-04b (Translate từ editor): `OUT`.** Đây là quyết định chính thức mà
+  FR-04b yêu cầu phải ghi rõ. Editor không còn gọi translate dưới bất kỳ hình
+  thức nào, kể cả local-only.
+- **AR-01:** demo target còn API Gateway, Lambda, DynamoDB, S3 và CloudWatch.
+  Translate không còn nằm trong danh sách dịch vụ.
+- **SR-02:** least privilege của Lambda role chỉ còn 3 tables và export object
+  prefix. Không còn `translate:TranslateText` và
+  `comprehend:DetectDominantLanguage`.
+- **SR-05:** ràng buộc "không dùng CORS `*`" vẫn giữ nguyên, nhưng lý do gây áp
+  lực nới allowlist đã biến mất cùng translate.
+- **SR-09:** rate limit chỉ còn áp cho login, register và sync.
+
+Acceptance criteria ở mục cuối: bỏ mục "Translate trả dữ liệu từ Amazon
+Translate". Người dùng tự nhập nghĩa nên không có tiêu chí chấp nhận nào cho
+chất lượng dịch.

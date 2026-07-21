@@ -217,3 +217,38 @@ Game Web -> API Gateway WebSocket API
 ```
 
 Không tái sử dụng `Map`/`setInterval` làm durable room store. Countdown/expiration cần timestamp/state machine; có thể thêm EventBridge sau khi core flow ổn định.
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Amazon Translate và Amazon Comprehend đã ra khỏi kiến trúc.
+
+Sơ đồ mục 1 rút gọn còn:
+
+```text
+Lambda -> DynamoDB (Users/Flashcards/Categories)
+Lambda -> Private S3 Export Bucket -> pre-signed GET 15 phút
+Lambda/API Gateway -> CloudWatch
+```
+
+Không còn node `TRANS[Amazon Translate]` và `COMP[Amazon Comprehend]`, nên phần
+giải thích "Comprehend là dependency gián tiếp khi `SourceLanguageCode=auto`"
+không còn áp dụng.
+
+Mục 4 (Amazon Translate) bị bỏ. Mục 5 (CORS): bảng chỉ còn dòng `popup.js` với
+origin `chrome-extension://<id>`. `contentScript.js` không còn gửi request nào
+tới API, nên không còn dòng "**Không**" trong allowlist.
+
+## ADR-08 - Đóng bằng cách gỡ tính năng
+
+Status: **RESOLVED (2026-07-21) - superseded.**
+
+ADR-08 trước đây yêu cầu owner chọn giữa (1) định tuyến translate qua background
+service worker, hoặc (2) chỉ demo translate từ popup. Owner chọn phương án thứ
+ba xuất hiện sau khi deploy: **gỡ hẳn Translate**, vì account không có dịch vụ.
+
+Hệ quả: quyết định chặn deploy của ADR-08 không còn. Phương án "nới CORS thành
+`*`" vẫn bị từ chối như cũ, và giờ không còn động cơ nào để nới.
+
+Bảng failure modes mục 7: bỏ 4 dòng liên quan Translate (`Translate
+AccessDenied`, `Translate low-confidence auto detect`, `Content script translate
+trên AWS`). Các dòng còn lại giữ nguyên.

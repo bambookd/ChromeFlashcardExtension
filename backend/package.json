@@ -8,12 +8,13 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "check": "node --check app.js && node --check server.js && node --check lambda.js"
+    "check": "node --check app.js && node --check server.js && node --check lambda.js && node --check src/realtimeServer.js && node --check src/scoring.js && node --check ../background.js && node --check ../contentScript.js && node --check ../popup.js && node --check public/study/app.js && node --check public/game/app.js",
+    "package": "node scripts/package.mjs",
+    "prepare:static": "node scripts/prepare-static-site.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.1075.0",
     "@aws-sdk/client-s3": "^3.1075.0",
-    "@aws-sdk/client-translate": "^3.1075.0",
     "@aws-sdk/lib-dynamodb": "^3.1075.0",
     "@aws-sdk/s3-request-presigner": "^3.1075.0",
     "bcryptjs": "^3.0.3",
@@ -24,6 +25,6 @@
     "ws": "^8.21.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   }
 }

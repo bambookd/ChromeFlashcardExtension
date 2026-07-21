@@ -1,7 +1,5 @@
 const FLASHCARD_STORAGE_KEY = "flashcards";
 const FLASHCARD_CATEGORY_STORAGE_KEY = "flashcardCategories";
-const FLASHCARD_AUTH_STORAGE_KEY = "flashcardAuth";
-const FLASHCARD_API_BASE_URL = globalThis.FLASHCARD_CONFIG?.API_BASE_URL || "http://localhost:3000";
 const EDITOR_HOST_ID = "flashcard-vocabulary-inline-editor";
 const ADD_CATEGORY_VALUE = "__add_category__";
 
@@ -82,7 +80,6 @@ async function showFlashcardEditor(word) {
 
   const form = shadowRoot.querySelector("form");
   const closeButtons = shadowRoot.querySelectorAll("[data-action='close']");
-  const translateButton = shadowRoot.querySelector("[data-action='translate']");
   const status = shadowRoot.querySelector("[data-role='status']");
   const wordInput = shadowRoot.querySelector("[name='word']");
   const meaningInput = shadowRoot.querySelector("[name='meaning']");
@@ -141,38 +138,6 @@ async function showFlashcardEditor(word) {
     setInlineStatus(status, `Deleted category "${category}".`, "success");
   });
 
-  translateButton.addEventListener("click", async () => {
-    const currentWord = wordInput.value.trim();
-
-    if (!currentWord) {
-      setInlineStatus(status, "Word is required before translation.", "error");
-      return;
-    }
-
-    setButtonBusy(translateButton, true, "Loading");
-
-    try {
-      const authHeaders = await getAuthHeaders();
-      const result = await fetchJson(`${FLASHCARD_API_BASE_URL}/api/translate`, {
-        method: "POST",
-        headers: authHeaders,
-        body: JSON.stringify({ word: currentWord })
-      });
-
-      meaningInput.value = result.meaning || "";
-
-      if (!wordformInput.value && result.wordform) {
-        wordformInput.value = result.wordform;
-      }
-
-      setInlineStatus(status, "Translation loaded from local API.", "success");
-    } catch (error) {
-      setInlineStatus(status, `Translation failed: ${error.message}`, "error");
-    } finally {
-      setButtonBusy(translateButton, false, "Translate");
-    }
-  });
-
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -223,10 +188,7 @@ function createEditorMarkup(word) {
 
       <label>
         <span>Meaning</span>
-        <div class="meaning-row">
-          <textarea name="meaning" rows="3" placeholder="Type meaning or translate" required></textarea>
-          <button class="secondary-button" type="button" data-action="translate">Translate</button>
-        </div>
+        <textarea name="meaning" rows="3" placeholder="Type meaning manually" required></textarea>
       </label>
 
       <div class="field-grid">
@@ -448,13 +410,6 @@ function createEditorStyles() {
       outline: 0;
     }
 
-    .meaning-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: start;
-    }
-
     .category-row,
     .field-grid,
     .actions {
@@ -584,13 +539,6 @@ async function getLocalCategories() {
   return normalizeCategoryList(result[FLASHCARD_CATEGORY_STORAGE_KEY]);
 }
 
-async function getAuthHeaders() {
-  const result = await chrome.storage.local.get({ [FLASHCARD_AUTH_STORAGE_KEY]: null });
-  const token = result[FLASHCARD_AUTH_STORAGE_KEY]?.token;
-
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
 async function setLocalCategories(categories) {
   await chrome.storage.local.set({ [FLASHCARD_CATEGORY_STORAGE_KEY]: normalizeCategoryList(categories) });
 }
@@ -680,40 +628,10 @@ function normalizeCategoryList(categories) {
   });
 }
 
-async function fetchJson(url, options = {}) {
-  let response;
-
-  try {
-    response = await fetch(url, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        ...options.headers
-      }
-    });
-  } catch (error) {
-    throw new Error("local backend is not reachable");
-  }
-
-  const data = await response.json().catch(() => ({}));
-
-  if (!response.ok) {
-    throw new Error(data.error || `request failed with ${response.status}`);
-  }
-
-  return data;
-}
-
 function setInlineStatus(status, message, type = "info") {
   status.textContent = message;
   status.classList.toggle("is-error", type === "error");
   status.classList.toggle("is-success", type === "success");
-}
-
-function setButtonBusy(button, isBusy, text) {
-  button.disabled = isBusy;
-  button.textContent = text;
 }
 
 function closeEditor() {

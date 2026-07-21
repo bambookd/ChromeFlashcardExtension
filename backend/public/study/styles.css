@@ -153,16 +153,136 @@ h3 {
   min-height: 100vh;
   place-items: center;
   padding: 24px;
-  background: linear-gradient(180deg, var(--bg-veil), var(--bg));
+  background:
+    radial-gradient(circle at 12% 15%, var(--accent-soft), transparent 30%),
+    linear-gradient(180deg, var(--bg-veil), var(--bg));
+}
+
+.auth-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  width: min(980px, 100%);
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+.auth-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 610px;
+  padding: 44px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.18), transparent 28%),
+    linear-gradient(145deg, #263d9d, #3a5bd9 55%, #5272e7);
+  min-width: 0;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.hero-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: #304cb9;
+  background: #ffffff;
+  border-radius: 10px;
+  font-weight: 750;
+}
+
+.hero-copy {
+  max-width: 520px;
+  margin: 46px 0 38px;
+}
+
+.hero-copy .eyebrow {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.hero-copy h1 {
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-size: clamp(36px, 4vw, 52px);
+  letter-spacing: -0.045em;
+  line-height: 1.03;
+}
+
+.hero-copy > p:last-child {
+  max-width: 480px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16px;
+}
+
+.feature-list {
+  display: grid;
+  gap: 10px;
+}
+
+.feature-list > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--r-md);
+}
+
+.feature-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+}
+
+.feature-list p,
+.feature-list strong,
+.feature-list span {
+  margin: 0;
+}
+
+.feature-list strong,
+.feature-list p > span {
+  display: block;
+}
+
+.feature-list strong {
+  color: #ffffff;
+  font-size: 13.5px;
+}
+
+.feature-list p > span {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 12px;
 }
 
 .auth-card {
-  width: min(420px, 100%);
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  padding: 44px;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xl);
-  box-shadow: var(--shadow-lg);
 }
 
 .auth-card-header {
@@ -172,9 +292,9 @@ h3 {
   gap: 16px;
 }
 
-.auth-card h1 {
-  margin-bottom: 8px;
-  font-size: 27px;
+.auth-card h2 {
+  margin: 0;
+  font-size: 28px;
   line-height: 1.2;
 }
 
@@ -192,17 +312,37 @@ h3 {
   text-transform: uppercase;
 }
 
-.hint {
+.auth-note {
   margin: 18px 0 0;
-  padding: 10px 12px;
-  background: var(--surface-subtle);
-  border-radius: var(--r-sm);
+  color: var(--text-muted);
   font-size: 12.5px;
 }
 
-.hint strong {
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 64px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 7px;
+  min-height: 30px;
+  padding: 0 9px;
   color: var(--text-secondary);
-  font-weight: 600;
+  background: transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 650;
+  transform: translateY(-50%);
+}
+
+.password-toggle:hover {
+  color: var(--text);
+  background: var(--surface-subtle);
 }
 
 /* Forms */
@@ -463,13 +603,50 @@ textarea:focus {
   margin-top: 16px;
 }
 
+.overview-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.overview-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 64px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-xs);
+}
+
+.overview-item span {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 550;
+}
+
+.overview-item strong {
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 680;
+}
+
+.overview-session strong {
+  color: var(--accent);
+  font-size: 14px;
+}
+
 /* Controls */
 .controls {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 16px;
-  margin: 16px 0;
+  margin: 0 0 16px;
   padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -916,6 +1093,29 @@ textarea:focus {
 }
 
 @media (max-width: 860px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .auth-hero {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .hero-copy {
+    margin: 32px 0 0;
+  }
+
+  .hero-copy h1 {
+    font-size: 36px;
+  }
+
+  .feature-list {
+    display: none;
+  }
+
   .topbar,
   .controls {
     align-items: stretch;
@@ -953,11 +1153,21 @@ textarea:focus {
   .progress-text {
     text-align: left;
   }
+
+  .overview-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .overview-session {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 560px) {
   .auth-view {
+    display: grid;
     padding: 16px;
+    overflow-x: hidden;
   }
 
   .study-view {
@@ -970,6 +1180,36 @@ textarea:focus {
   .editor-panel,
   .library-panel {
     padding: 16px;
+  }
+
+  .auth-layout {
+    width: min(420px, calc(100vw - 48px));
+    max-width: min(420px, calc(100vw - 48px));
+    border-radius: var(--r-xl);
+  }
+
+  .auth-hero {
+    padding: 22px;
+  }
+
+  .hero-copy {
+    margin: 26px 0 0;
+  }
+
+  .hero-copy h1 {
+    font-size: 30px;
+  }
+
+  .hero-copy > p:last-child {
+    font-size: 14px;
+  }
+
+  .overview-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-session {
+    grid-column: auto;
   }
 
   .button-row,

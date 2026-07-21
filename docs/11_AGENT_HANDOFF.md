@@ -127,3 +127,34 @@ Next recommended task:
 Rollback note:
 LOG.md section:
 ```
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Snapshot ở đầu tài liệu là trạng thái quan sát lúc audit, giữ nguyên làm lịch
+sử. Với agent tiếp theo, hai P0 sau **đã đóng và không cần làm nữa**:
+
+- P0 "Translate source `auto` lacks documented Comprehend permission": đóng, gỡ
+  tính năng (AWS-002).
+- P0 "`contentScript.js` fetch `/api/translate` trực tiếp -> bị CORS chặn"
+  (AUD-P0-07 / AWS-007): đóng, gỡ tính năng.
+
+**Bổ sung sau E2E ngày 2026-07-21:** P0 thứ ba cũng đã đóng. Câu trước đó trong
+mục này ghi AUD-P0-08 / AWS-008 "vẫn phải xử lý" là **sai**.
+
+- P0 "`game/app.js` fallback `ws://<origin>/realtime` khi `REALTIME_URL` rỗng"
+  (AUD-P0-08 / AWS-008): đóng. Code kiểm tra `=== undefined` chứ không phải
+  falsy, nên `""` được tôn trọng và không có fallback. Đã xác minh trên bản
+  deploy AWS thật: Network filter WS trống, tab Realtime bị disable, solo game
+  chạy bình thường. Chi tiết trong `docs/10_IMPROVEMENT_BACKLOG.md`.
+
+**Không còn P0 sửa code nào đang mở.**
+
+Trong danh sách "không được làm", gạch đầu dòng về CORS `*` vẫn giữ nguyên;
+riêng mệnh đề "kể cả để chữa translate trong content script" chỉ còn giá trị
+lịch sử.
+
+Hiện trạng: `backend/src/translateService.js` đã xóa, route `POST /api/translate`
+đã xóa, `@aws-sdk/client-translate` đã gỡ khỏi dependency, và
+`infra/template.yaml` không còn `translate:TranslateText` /
+`comprehend:DetectDominantLanguage`. Lambda role **đang chạy trên AWS** vẫn còn
+hai quyền đó cho tới lần deploy kế tiếp - xem `AWS_USAGE_CHECKLIST.md` mục 6.

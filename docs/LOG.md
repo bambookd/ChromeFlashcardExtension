@@ -2866,3 +2866,1208 @@ screenshots in light and dark for every surface. `node --check` passes on all mo
 
 Not verified: the extension has not been reloaded in a real Chrome profile, so the popup and
 content script were exercised outside the extension runtime.
+
+---
+
+## 2026-07-20 — UI/UX refinement, AWS readiness fixes and CI/CD starter
+
+### User request
+
+The user asked to:
+
+```text
+Improve the current project's UI/UX.
+Audit whether the root ChromeFlashCardExtension folder is ready for manual AWS deployment.
+Identify missing pieces.
+Automate the deployment workflow where possible.
+Introduce and explain CI/CD.
+```
+
+The repository-level instruction requires every implemented order to be recorded
+in `LOG.md`.
+
+### Scope decision
+
+The repository root was treated as the source of truth:
+
+```text
+D:\2_SchoolPrj\ChromeFlashCardExtension
+```
+
+The ignored duplicate `ChromeFlashCardExtension-test-aws-clean/` was not edited.
+No AWS resources, GitHub settings, IAM roles, buckets, commits, pushes or external
+deployments were created.
+
+Read and followed:
+
+```text
+.codex/skills/aws-serverless-deploy/SKILL.md
+```
+
+### UI/UX changes
+
+#### Extension popup
+
+Updated:
+
+```text
+popup.html
+popup.css
+popup.js
+manifest.json
+```
+
+Changes:
+
+```text
+Replaced the plain F mark with a flashcard icon.
+Added a clearer Study external-navigation affordance.
+Reframed the form as Quick capture with supporting copy and a step badge.
+Changed the primary action to Add to library with an add affordance.
+Added a visual empty-state illustration.
+Added a subtle accent background and refined brand depth.
+Made API/Translate status copy environment-neutral rather than local-only.
+Updated the extension description to match the complete product.
+```
+
+The existing search, themes, auth, local storage, categories, sync, export and
+context-menu behavior were preserved.
+
+#### Study web
+
+Updated:
+
+```text
+backend/public/study/index.html
+backend/public/study/styles.css
+backend/public/study/app.js
+```
+
+Changes:
+
+```text
+Rebuilt login as a responsive two-panel onboarding/auth layout.
+Added product value explanation and capture/review/sync feature highlights.
+Removed automatic student/password123 credential prefilling.
+Added password show/hide control.
+Added login/register busy states and aria-busy/live status behavior.
+Added Total cards, Categories and Current session overview metrics.
+Kept dark theme and reduced-motion behavior.
+Added mobile sizing constraints after headless visual inspection exposed overflow risk.
+Changed unreachable-backend copy to configured API terminology.
+```
+
+#### Game web
+
+Updated:
+
+```text
+backend/public/game/index.html
+backend/public/game/app.js
+backend/public/game/config.js
+```
+
+Changes:
+
+```text
+Removed automatic sample credential prefilling and sample-password UI text.
+Local config now declares ws://localhost:3000/realtime explicitly.
+An empty REALTIME_URL now disables realtime instead of falling back to the page origin.
+AWS static builds label realtime as local-only and disable room controls.
+Solo Game remains deployable as a static S3 page.
+```
+
+### AWS deployment blockers fixed
+
+Updated:
+
+```text
+infra/template.yaml
+backend/package.json
+backend/package-lock.json
+background.js
+contentScript.js
+extension-config.js
+AWS_DEPLOYMENT.md
+AWS_E2E_TEST_GUIDE.md
+.gitignore
+backend/.gitignore
+```
+
+Fixes:
+
+```text
+Lambda runtime nodejs20.x -> nodejs24.x.
+Backend Node engine >=18 -> >=22.
+Removed reserved AWS_REGION from Lambda environment configuration.
+Added comprehend:DetectDominantLanguage for Amazon Translate auto detection.
+Added TRANSLATE_MAX_LENGTH=120.
+Added SERVE_STUDY_STATIC=false for Lambda.
+Routed inline-editor Translate through the background service worker so AWS CORS
+uses chrome-extension://<id> instead of the visited page origin.
+Updated Study AWS sample URL to include /study/.
+Removed stale AWS_REGION from the E2E Lambda environment checklist.
+Added Comprehend permission to the E2E IAM checklist.
+Ignored generated SAM, ZIP and static build artifacts.
+```
+
+Realtime multiplayer remains intentionally outside the current Lambda HTTP API
+MVP. It needs API Gateway WebSocket API, dedicated Lambda handlers and persistent
+room/connection state before it can be advertised as an AWS feature.
+
+### Build automation added
+
+Added:
+
+```text
+backend/scripts/package.mjs
+backend/scripts/prepare-static-site.mjs
+```
+
+`npm run package`:
+
+```text
+Creates backend/dist/flashcard-backend.zip.
+Includes lambda.js, app.js, src, package files and node_modules.
+Excludes server.js, public static assets, local data/exports and nested artifacts.
+Uses forward-slash ZIP entries on Windows for Lambda Linux compatibility.
+```
+
+`npm run prepare:static`:
+
+```text
+Requires API_BASE_URL and SITE_BASE_URL.
+Copies Study and Game into backend/dist/static-site/.
+Writes environment-specific config.js files.
+Links Study <-> Game through the S3 site URL.
+Sets REALTIME_URL="" for the AWS MVP.
+```
+
+### CI/CD added
+
+Added:
+
+```text
+.github/workflows/ci.yml
+.github/workflows/deploy-aws.yml
+docs/12_CI_CD_GUIDE.md
+DEPLOY_READINESS.md
+```
+
+CI behavior:
+
+```text
+Runs on push to main/test-aws and on pull requests.
+Uses Node.js 24.
+Runs npm ci, syntax checks and production dependency audit.
+Validates/builds the SAM application.
+Builds the manual Lambda ZIP.
+Does not need AWS credentials and does not deploy.
+```
+
+CD starter behavior:
+
+```text
+Uses workflow_dispatch rather than automatic production push.
+Uses a protected GitHub production environment.
+Uses GitHub OIDC and a short-lived AWS role session.
+Runs verify + SAM deploy.
+Reads ApiUrl from CloudFormation outputs.
+Prepares and syncs Study/Game to the configured S3 website bucket.
+Leaves Chrome extension publication/configuration as a manual release step.
+```
+
+Required GitHub production environment secrets:
+
+```text
+AWS_ROLE_ARN
+JWT_SECRET
+```
+
+Required variables:
+
+```text
+AWS_REGION
+AWS_STACK_NAME
+ALLOWED_ORIGINS
+STUDY_BUCKET
+SITE_BASE_URL
+```
+
+### Verification performed
+
+Ran:
+
+```text
+npm install --package-lock-only --ignore-scripts
+npm run check
+npm audit --omit=dev --audit-level=high
+npm run package
+npm run prepare:static
+cfn-lint infra/template.yaml
+git diff --check
+```
+
+Results:
+
+```text
+All JavaScript syntax checks passed.
+npm audit reported 0 vulnerabilities.
+cfn-lint reported no findings.
+Git diff whitespace check reported no errors.
+Lambda ZIP size: 4,748,731 bytes.
+Lambda ZIP entries: 4,602.
+Backslash ZIP entries: 0.
+lambda.js/app.js present: yes.
+server.js/public static files in Lambda ZIP: no.
+Generated Study/Game configs used the supplied API/site URLs.
+Generated AWS Game config used REALTIME_URL="".
+```
+
+Local smoke tests:
+
+```text
+GET /api/health -> 200 and ok=true.
+POST /api/auth/login with the existing local sample account -> token returned.
+GET /study/ -> 200.
+GET /game/ -> 200.
+Exact CORS test:
+  Origin chrome-extension://test-extension -> 200.
+  Origin https://example.com -> 403.
+```
+
+Visual checks:
+
+```text
+Captured the popup and Study auth view using installed Chrome headless.
+Desktop Study onboarding rendered correctly.
+Popup Quick capture rendered correctly.
+Reviewed a narrow headless viewport and added defensive mobile sizing.
+Temporary screenshots were stored under the system temp directory, not the repo.
+```
+
+Workflow YAML files were parsed successfully. Full GitHub-hosted Actions execution
+was not possible locally.
+
+### Remaining manual/external work
+
+```text
+AWS CLI and AWS SAM CLI are still not installed on this machine.
+Create/configure the AWS account identity and confirm with sts get-caller-identity.
+Create the public S3 Study/Game website bucket.
+Configure exact extension/site ALLOWED_ORIGINS.
+Create a strong JWT_SECRET.
+Run sam validate/build/deploy with real AWS credentials.
+Update extension-config.js with real ApiUrl and /study/ URL.
+Reload/package the extension.
+Run the full AWS_E2E_TEST_GUIDE.md and capture redacted evidence.
+Create GitHub OIDC provider/deployment role and production environment settings
+before running the Deploy AWS workflow.
+```
+
+Production hardening still recommended:
+
+```text
+CloudFront/HTTPS for Study/Game.
+Automated browser E2E tests.
+CloudWatch log retention and alarms.
+S3 export lifecycle policy.
+DynamoDB backups/pagination and stronger sync conflict handling.
+Dedicated AWS realtime architecture if multiplayer is required.
+```
+
+## 2026-07-20 — First AWS deployment completion and cost guardrails
+
+### User request
+
+Continue the first AWS deployment while minimizing early credit consumption.
+The user has a 100 USD credit balance, had uploaded the backend/static files but
+had not run functional tests, and explicitly asked to avoid unnecessary paid
+usage or accidental credential exposure.
+
+### Existing AWS state confirmed
+
+```text
+AWS profile: flashcard-dev
+Region: ap-southeast-1
+Stack: chrome-flashcard-dev
+Stack status: UPDATE_COMPLETE
+API URL: https://YOUR_API_ID.execute-api.ap-southeast-1.amazonaws.com
+Study bucket: YOUR_SITE_BUCKET
+Private export bucket: YOUR_EXPORT_BUCKET
+Extension origin: chrome-extension://YOUR_EXTENSION_ID
+```
+
+AWS Budgets already contained monthly cost budgets at 1 USD and 5 USD. Lambda
+account concurrency was only 5, so reserved concurrency was deliberately not
+configured because this limited-credit account may reject a reservation that
+cannot leave the normal unreserved concurrency pool.
+
+Before this task:
+
+```text
+The HTTPS S3 REST origin was missing from ALLOWED_ORIGINS.
+extension-config.js still pointed to localhost.
+Deployed Study/Game navigation pointed to the HTTP S3 website endpoint.
+API Gateway had no project-level throttle.
+Lambda log retention was indefinite.
+The private export bucket had no lifecycle expiration.
+The DynamoDB Users table was empty.
+```
+
+The local `student/password123` and `teacher/password123` users were confirmed
+to be local JSON bootstrap data only. They were intentionally not seeded to the
+public AWS deployment because their known passwords would expose Translate and
+other authenticated endpoints to abuse.
+
+### Source changes
+
+`backend/scripts/prepare-static-site.mjs`:
+
+```text
+Added optional STUDY_URL and GAME_URL inputs.
+Kept SITE_BASE_URL fallback behavior for local/S3 website deployments.
+Allows explicit HTTPS S3 REST object URLs ending in index.html.
+```
+
+`extension-config.js`:
+
+```text
+API_BASE_URL now points to the deployed API Gateway endpoint.
+STUDY_URL now points to the HTTPS S3 REST object URL.
+No AWS credential or JWT value was added.
+```
+
+`infra/template.yaml`:
+
+```text
+Added HTTP API default throttle: 2 requests/second, burst 5.
+Added export-object expiration after 7 days.
+Added incomplete multipart upload cleanup after 1 day.
+Kept DynamoDB at 1 RCU / 1 WCU per table.
+Did not add provisioned concurrency or any new paid service.
+```
+
+`.github/workflows/deploy-aws.yml` and `docs/12_CI_CD_GUIDE.md`:
+
+```text
+Added optional STUDY_URL and GAME_URL production variables.
+Documented HTTPS S3 REST endpoints and explicit index.html paths.
+Kept OIDC authentication; no long-lived AWS keys were added.
+```
+
+`AWS_DEPLOYMENT.md`:
+
+```text
+Documented HTTPS S3 REST static generation.
+Documented throttle, export lifecycle and seven-day log retention.
+Clarified that budgets are alerts rather than hard spending caps.
+```
+
+`DEPLOY_READINESS.md`:
+
+```text
+Replaced pre-deploy status with the actual live deployment snapshot.
+Recorded public endpoints, cost controls and remaining functional E2E work.
+```
+
+### Live AWS changes
+
+The following changes were applied without reading or replacing the existing
+JWT secret:
+
+```text
+CloudFormation AllowedOrigins updated with UsePreviousValue for JwtSecret.
+Added HTTPS origin:
+  https://YOUR_SITE_BUCKET.s3.ap-southeast-1.amazonaws.com
+API Gateway $default stage throttle set to 2 requests/second, burst 5.
+Private export bucket lifecycle set to expire objects after 7 days.
+Incomplete multipart uploads expire after 1 day.
+Lambda CloudWatch log retention set to 7 days.
+Regenerated and synced static Study/Game config files.
+```
+
+Only the two generated static config files changed during the final S3 sync,
+for a combined upload of 458 bytes. No Translate request, user registration,
+flashcard write or export operation was run.
+
+Throttle and lifecycle were applied directly to the live resources to avoid
+uploading/redeploying the 14 MB Lambda build only for configuration changes.
+The local SAM template now contains the same settings; a future SAM deploy will
+bring them under the stored CloudFormation template and eliminate possible
+drift.
+
+### Verification
+
+Local:
+
+```text
+npm run check -> passed
+npm run prepare:static -> passed
+sam validate --lint -> valid
+sam build -> succeeded
+git diff --check -> no whitespace errors
+```
+
+Live AWS:
+
+```text
+Stack status -> UPDATE_COMPLETE
+AllowedOrigins -> includes exact HTTPS S3 REST origin
+API throttle -> rate 2.0, burst 5
+Export lifecycle -> enabled, expiration 7 days, abort incomplete after 1 day
+CloudWatch log retention -> 7 days, stored bytes 0
+Study index -> HTTP 200 over HTTPS
+Game index -> HTTP 200 over HTTPS
+HTTPS Study CORS preflight -> HTTP 204 with exact allow-origin
+GET /api/health -> HTTP 200 and ok=true
+```
+
+### Deliberately deferred
+
+```text
+No AWS sample users were created.
+No Amazon Translate call was made.
+No flashcard/category data was written.
+No export object was generated.
+Chrome extension still needs a manual Reload in chrome://extensions.
+Functional E2E should use one test user, one card and one Translate call.
+CloudFront, Chrome Web Store publishing and GitHub OIDC role setup remain
+optional follow-up work.
+```
+
+## 2026-07-21 — AWS service usage and progress checklist
+
+### User request
+
+Create a clear checklist of every AWS service used since deployment guidance
+started and show the current deployment progress, without running application
+tests while Wi-Fi is unstable.
+
+### Read-only snapshot verified
+
+```text
+Stack chrome-flashcard-dev: UPDATE_COMPLETE.
+Lambda, HTTP API, three DynamoDB tables, IAM role, permission and export bucket:
+all present in CloudFormation.
+CloudWatch Lambda log group: 9,432 bytes, retention 7 days.
+Budgets: monthly 1 USD and 5 USD alerts.
+```
+
+No Translate, Comprehend, registration, flashcard, category, sync or export
+operation was called during this checklist task.
+
+### Documentation added
+
+Created AWS_USAGE_CHECKLIST.md with:
+
+```text
+Service-by-service status and cost/safety notes.
+Separation of provisioned services from runtime calls.
+Current deployment checkbox progress.
+Low-cost test order for the next session.
+Known limitations, including CloudFormation drift reconciliation.
+```
+
+## 2026-07-21 — Console links and project-view explanation
+
+### User request
+
+Add direct inspection links to the AWS checklist and explain how separately
+managed AWS services can be viewed and understood as one project.
+
+### Documentation update
+
+`AWS_USAGE_CHECKLIST.md` now contains direct links for:
+
+```text
+CloudFormation stack, Lambda, API Gateway, all three DynamoDB tables,
+static/export/SAM S3 buckets, CloudWatch Logs, IAM role, Budgets,
+Study/Game pages and API health.
+```
+
+It also documents that `chrome-flashcard-dev` is the current backend project
+boundary: CloudFormation's Resources tab lists its Lambda, HTTP API, tables,
+role and export bucket. The manually-created static S3 bucket and SAM artifact
+bucket are intentionally called out separately because they are not members of
+that stack.
+
+### Recommended future organization
+
+No AWS resources were changed. For a future single cross-service project view,
+the checklist recommends non-sensitive `Project=ChromeFlashcardExtension` and
+`Environment=dev` tags plus a tag-based AWS Resource Group. Cost allocation
+would additionally require activating the `Project` tag in Billing and has a
+propagation delay.
+
+## 2026-07-21 — Resource grouping guide
+
+### User request
+
+Explain how to group the distributed AWS resources for easier project-level
+management.
+
+### Documentation added
+
+Added two non-destructive console workflows to `AWS_USAGE_CHECKLIST.md`:
+
+```text
+Group A: CloudFormation stack-based group named chrome-flashcard-core-dev.
+Group B: Tag-based group named chrome-flashcard-all-dev.
+```
+
+Group A shows resources created by `chrome-flashcard-dev`. Group B is designed
+to include the public static S3 bucket as well, using these non-sensitive tags:
+
+```text
+Project = ChromeFlashcardExtension
+Environment = dev
+```
+
+No Resource Group or tag was created during this task; the guide deliberately
+requires the user to select only the listed project resource names in the
+console so unrelated coursework resources are not grouped or retagged.
+
+## 2026-07-21 — Functional web test update and Translate subscription blocker
+
+### User report
+
+The user manually verified that AWS Study/extension login, account creation,
+manual flashcard save and cloud sync work. After refreshing Study, synced words
+appear as expected. The Translate button reaches the backend but fails with:
+
+```text
+The AWS Access Key Id needs a subscription for the service.
+```
+
+### Diagnosis
+
+This is an AWS account-level `OptInRequired`/subscription issue for Amazon
+Translate, not a request to insert a long-term AWS access key into application
+code. Lambda is already using its execution role and has policies for
+`translate:TranslateText` and `comprehend:DetectDominantLanguage`.
+
+### Checklist update
+
+`AWS_USAGE_CHECKLIST.md` now records:
+
+```text
+Login, account creation, manual card save and sync: passed.
+Translate: blocked by account subscription.
+Export: still pending.
+```
+
+Added Amazon Translate console link and a one-request activation/test path. If
+the account's Translate console is also denied, the next external action is to
+ask the student/lab account provider to enable Translate and Comprehend in
+ap-southeast-1. No AWS credentials were created, displayed or stored.
+
+## 2026-07-21 - Remove Amazon Translate feature
+
+### User request
+
+Remove the Translate button because the current AWS/student account does not
+provide Amazon Translate, then prepare a safe redeploy guide.
+
+### Implementation
+
+- Removed Translate controls and requests from `popup.html`, `popup.js`,
+  `popup.css` and `contentScript.js`. Both the popup and inline editor now ask
+  the user to enter a meaning manually.
+- Removed the Translate message bridge from `background.js` and the
+  `POST /api/translate` route/configuration from `backend/app.js` and
+  `backend/src/config.js`.
+- Deleted `backend/src/translateService.js` and removed
+  `@aws-sdk/client-translate` from `backend/package.json` and its lockfile.
+- Removed `translate:TranslateText` and `comprehend:DetectDominantLanguage`
+  from the Lambda role in `infra/template.yaml`, so the next CloudFormation
+  deployment applies least privilege and no longer needs either service.
+
+### AWS safety and deploy scope
+
+No AWS resources were changed while editing the source. The upcoming backend
+deployment will update the existing `chrome-flashcard-dev` stack while keeping
+`JwtSecret` with `UsePreviousValue=true`; it must not generate or print a new
+JWT secret. Only Lambda/API Gateway configuration and code need redeployment.
+The static Study/Game bundle is unchanged, so no S3 sync is required for this
+feature removal. The unpacked Chrome extension must be reloaded locally after
+the source update.
+
+## 2026-07-21 - Hoàn tất gỡ Translate ở lớp tài liệu
+
+### Bối cảnh
+
+Tiếp tục công việc dở của lượt trước. Phần source code đã xong ở entry
+"2026-07-21 - Remove Amazon Translate feature"; lượt này rà soát lại toàn bộ
+repo và hoàn tất phần tài liệu chưa làm.
+
+### Xác minh source code
+
+Grep toàn repo cho `translate`/`comprehend`, loại trừ CSS `transform:
+translateY(...)`. Kết quả: không còn tham chiếu Translate nào trong source thật.
+
+```text
+backend/src/translateService.js      đã xóa
+POST /api/translate                  đã xóa khỏi backend/app.js
+USE_AMAZON_TRANSLATE / REQUIRE_TRANSLATE_AUTH / TRANSLATE_MAX_LENGTH
+                                     đã xóa khỏi backend/src/config.js
+@aws-sdk/client-translate            đã gỡ khỏi package.json + lockfile
+translate:TranslateText              đã gỡ khỏi infra/template.yaml
+comprehend:DetectDominantLanguage    đã gỡ khỏi infra/template.yaml
+```
+
+`npm run check` trong `backend/` pass toàn bộ.
+
+Hai nhóm hit còn lại là cố ý không đụng tới, cả hai đều nằm trong `.gitignore`:
+
+- `ChromeFlashCardExtension-test-aws-clean/` - bản sao thử nghiệm, đã được ghi
+  rõ trong `.gitignore` là không phải source of truth (REPO-001).
+- `backend/data/*.json` - dữ liệu chạy local, chứa chuỗi "Simulated translation
+  for ..." trong field `meaning` của card mẫu. Đây là nội dung dữ liệu cũ, không
+  phải code gọi Translate.
+
+### Tài liệu đã cập nhật
+
+Theo quy ước của bộ docs (thân bài là snapshot có ngày, thay đổi được ghi bằng
+mục "Cập nhật <ngày>" ở cuối file), đã thêm mục cập nhật vào:
+
+```text
+docs/README.md  01  02  04  05  06  07  08  09  10  11
+```
+
+Nội dung chính được ghi nhận:
+
+- **FR-04 và FR-04b chuyển sang `OUT`.** FR-04b yêu cầu owner phải ra quyết định
+  chính thức trước khi deploy; quyết định đó nay đã có và được ghi lại.
+- **ADR-08 đóng, trạng thái superseded.** ADR-08 từng bắt chọn giữa "định tuyến
+  qua service worker" và "chỉ demo translate từ popup". Owner chọn phương án thứ
+  ba: gỡ hẳn.
+- **AWS-002 và AWS-007 đóng dạng `WONTFIX`.** AWS-007 từng là P0 bắt buộc sửa
+  code. Sau thay đổi này, **AWS-008 (tắt realtime UI) là P0 code change duy nhất
+  còn lại** trước khi chạy runbook.
+- Test case `L-09`, `A-12`, `A-13`, `A-14`, `A-15`, `A-18` bị bỏ. Ghi rõ `A-18`
+  bị bỏ vì mất đối tượng test, không phải được cho pass - nó vốn được thiết kế
+  để fail có chủ đích khi AWS-007 chưa sửa.
+- Runbook `07`: bỏ statement IAM `TranslateTextWithAutoDetection`, ba biến môi
+  trường Lambda, các lệnh smoke test `/api/translate`, và vô hiệu hóa cảnh báo
+  AUD-P0-07 ở mục 12.
+- `08`: bỏ Translate khỏi threat model, controls, monitoring, cost driver và
+  playbook "AccessDenied on Translate".
+
+`AWS_USAGE_CHECKLIST.md` được refresh hoàn chỉnh: lượt trước mới thêm ghi chú
+đầu file kèm câu "the older Translate notes below are historical until the
+checklist is fully refreshed". Nay đã xử lý phần còn lại - bảng dịch vụ, sơ đồ
+IAM, thứ tự test, và mục 6 (trước là "Translate subscription blocker").
+
+Không sửa `PROMPT.md`, `multiplayerplan.md` và thân bài `docs/03`, `docs/11`: đây
+là brief gốc và snapshot lịch sử, giữ nguyên làm dấu vết audit.
+
+### Việc AWS còn lại
+
+**Chưa deploy.** Môi trường làm việc không có AWS credentials
+(`aws sts get-caller-identity` trả `NoCredentials`), và việc deploy là hành động
+outward-facing nên cần owner chủ động chạy.
+
+Hệ quả: `infra/template.yaml` đã sạch nhưng **Lambda execution role đang chạy
+trên AWS vẫn còn** `translate:TranslateText` và
+`comprehend:DetectDominantLanguage` cho tới lần deploy kế tiếp. Đây là permission
+thừa chứ không phải rủi ro đang bị khai thác - không còn code path nào gọi hai
+dịch vụ đó, và không phát sinh chi phí.
+
+Khi deploy, giữ `JwtSecret` với `UsePreviousValue=true`; không sinh hay in JWT
+secret mới. Chỉ Lambda code/config thay đổi, bundle static Study/Game không đổi
+nên không cần sync S3. Sau khi stack `UPDATE_COMPLETE`, kiểm tra read-only rằng
+inline policy của role không còn hai action trên.
+
+Không có AWS resource nào bị thay đổi trong lượt này.
+
+## 2026-07-21 - Viết lại AWS_DEPLOYMENT.md theo từng bước
+
+### Yêu cầu
+
+Chỉnh `AWS_DEPLOYMENT.md` thành hướng dẫn theo từng bước, kèm giải thích.
+
+### Quyết định về phạm vi (owner chọn)
+
+- Ngôn ngữ: **tiếng Việt**, đồng bộ với `docs/01`-`docs/11`. Giữ nguyên tiếng
+  Anh cho tên lệnh, biến môi trường và tên resource.
+- Phạm vi: **cả hai lối, tách rõ**. Phần A redeploy stack đang chạy, Phần B
+  deploy lần đầu từ đầu.
+
+### Cấu trúc mới
+
+```text
+Chọn phần nào để đọc      bảng điều hướng theo tình huống
+Thông tin môi trường      giá trị thật của chrome-flashcard-dev
+Chuẩn bị chung            yêu cầu + lệnh kiểm tra danh tính/stack
+Phần A                    A1..A8 redeploy, kèm A4b deploy qua GitHub Actions
+Phần B                    lối B-SAM và lối B-Console tạo tay
+Phần C                    bảng xử lý sự cố + danh sách tuyệt đối không làm
+Checklist test            12 bước
+Chi phí và dọn dẹp        cost driver, biện pháp kiểm soát, lệnh xóa stack
+Tài liệu liên quan        bản đồ sang các file khác
+```
+
+Bản cũ là một mạch dài không đánh số, mô tả deploy tay từ đầu, trong khi stack
+đã tồn tại - tức là tình huống người dùng thực sự gặp lại không có hướng dẫn.
+
+### Nội dung đáng chú ý được thêm
+
+- **Cảnh báo `JwtSecret`.** Tham số này khai báo `NoEcho: true` nên không đọc
+  lại được từ CloudFormation. Tài liệu ghi rõ: không sinh secret mới khi
+  redeploy, vì đổi secret sẽ vô hiệu mọi JWT đã phát và đăng xuất toàn bộ user.
+- **Bẫy `AllowedOrigins`.** Tham số có `Default: http://localhost:3000`. Nếu
+  redeploy mà quên truyền lại, CORS bị thu hẹp về localhost và làm hỏng cả
+  extension lẫn trang Study. Đã kèm lệnh đọc lại giá trị đang chạy.
+- **Bước A6 ghi rõ là tùy chọn.** Bundle static nằm trên S3 độc lập với Lambda;
+  chỉ sửa backend thì không cần sync S3. Trước đây điều này không được nói rõ.
+- Bảng xử lý sự cố gồm 8 triệu chứng thường gặp, mỗi dòng có nguyên nhân và
+  cách xử lý.
+- Bước 5 của checklist test ghi "nhập nghĩa bằng tay" kèm chú thích Translate đã
+  bị gỡ ngày 2026-07-21.
+
+### Điểm chưa kiểm chứng được
+
+Tài liệu nói `sam deploy --parameter-overrides` không hỗ trợ
+`UsePreviousValue=true`. **Chưa xác minh được** vì máy hiện tại chưa cài SAM CLI
+(`sam: command not found`). Đã ghi rõ giới hạn này ngay trong tài liệu và yêu
+cầu người đọc tự kiểm tra bằng `sam deploy --help`, thay vì khẳng định chắc.
+
+Lối thay thế không phụ thuộc vào điểm này: deploy qua GitHub Actions, nơi
+`JWT_SECRET` lấy từ GitHub Secrets.
+
+### Ghi nhận về tổ chức repo
+
+Giữa hai lượt làm việc, owner đã chuyển `AWS_DEPLOYMENT.md`, `LOG.md`,
+`PROMPT.md`, `AWS_USAGE_CHECKLIST.md`, `DEPLOY_READINESS.md`,
+`AWS_E2E_TEST_GUIDE.md` và `multiplayerplan.md` từ root vào `docs/`. Đã xác minh
+toàn bộ chỉnh sửa của lượt trước theo file sang vị trí mới nguyên vẹn.
+
+Cập nhật `docs/README.md`: dòng mô tả `AWS_DEPLOYMENT.md` là "tài liệu cũ hữu
+ích nhưng có chi tiết đã lệch... Node.js 20 và IAM cho Translate `auto`" đã hết
+đúng sau lần viết lại này.
+
+Tiêu đề mục "Quan hệ với tài liệu ở root" trong `docs/README.md` giờ không còn
+chính xác vì các file đó đã nằm trong `docs/`. Chưa sửa vì thuộc phạm vi tổ chức
+lại repo của owner, không thuộc yêu cầu này.
+
+Không có AWS resource nào bị thay đổi trong lượt này.
+
+## 2026-07-21 - Deploy AWS và E2E: Study/Game pass
+
+### Bối cảnh
+
+Hướng dẫn owner redeploy trực tiếp trên máy owner. Toàn bộ lệnh do owner chạy;
+môi trường agent không có AWS credentials.
+
+### Kết quả deploy
+
+Backend đã deploy trước đó, `/api/health` trả 200. Phần thực hiện trong phiên
+này là static site và xác minh.
+
+```text
+Bucket site:  YOUR_SITE_BUCKET
+Endpoint:     REST HTTPS (chuyển từ website endpoint HTTP)
+Study:        https://YOUR_SITE_BUCKET.s3.ap-southeast-1.amazonaws.com/study/index.html
+Game:         https://YOUR_SITE_BUCKET.s3.ap-southeast-1.amazonaws.com/game/index.html
+```
+
+**Không phải redeploy CloudFormation stack.** `AllowedOrigins` đang chạy đã chứa
+đủ 4 origin (localhost, extension, website endpoint HTTP, REST endpoint HTTPS),
+nên tránh được hoàn toàn vấn đề `JwtSecret` `NoEcho` đã nêu ở entry trước.
+
+### Quyết định: chuyển sang REST endpoint HTTPS
+
+`extension-config.js` trỏ REST endpoint HTTPS trong khi static site build theo
+website endpoint HTTP - extension mở Study qua HTTPS rồi bấm Game lại nhảy sang
+HTTP. Đã thống nhất về REST endpoint HTTPS.
+
+Lý do không phải thẩm mỹ: Study lưu JWT trong `localStorage`; trên origin HTTP
+token và traffic đi không mã hóa. Đánh đổi là URL phải kèm `index.html` vì REST
+endpoint không có định tuyến index theo thư mục.
+
+Chỉ ghi đè 2 file `config.js`; bucket, policy và stack giữ nguyên.
+
+### Xác minh tính toàn vẹn bundle
+
+`s3 sync` chỉ đẩy 2 file `config.js`, 6 file còn lại mang mốc hôm trước. Đã
+nghi ngờ S3 giữ bản cũ nên đối chiếu MD5 local với ETag S3 cho cả 8 file: khớp
+toàn bộ. Bundle trên S3 đúng bản hiện tại.
+
+`curl -I` trên `/study/` trả ETag `c89f521b...`, khớp MD5 của `study/index.html`
+đã đối chiếu - file phục vụ ra internet đúng là file đã kiểm chứng.
+
+### Trạng thái public access
+
+Bucket site và policy đã được cấu hình từ phiên trước, không phải tạo mới:
+
+```text
+BlockPublicAcls=true, IgnorePublicAcls=true      chặn ACL công khai
+BlockPublicPolicy=false, RestrictPublicBuckets=false
+Policy: s3:GetObject trên arn:.../*  (không có s3:ListBucket)
+Block Public Access mức tài khoản: không có
+```
+
+Giữ nguyên policy `/*` thay vì siết về `study/*` + `game/*`. Bucket chỉ chứa hai
+thư mục đó nên hai policy tương đương về thực tế; đổi policy public đang chạy
+tốt là churn không cần thiết.
+
+Export bucket vẫn đủ bốn cờ `true`, không bị đụng tới.
+
+### E2E Study web: pass
+
+```text
+login          preflight 204 -> 200
+register       preflight 204 -> 409   (username trùng, đúng thiết kế)
+register       preflight 204 -> 201
+flashcards     200 / 304
+categories     200 / 304
+```
+
+Mọi preflight trả 204: `ALLOWED_ORIGINS` khớp chính xác origin REST HTTPS. Không
+có lỗi CORS.
+
+Ba dòng đỏ trong Console đều không phải lỗi thật:
+
+- `409` register: từ chối username trùng. Nên ghi làm evidence test negative.
+- `401` categories: gọi trước khi đăng nhập.
+- `403` `/favicon.ico`: file không tồn tại, và policy không cấp `s3:ListBucket`
+  nên S3 trả 403 thay vì 404 để không tiết lộ key nào tồn tại. Đây là bằng
+  chứng policy chặt, không phải triệu chứng hỏng.
+
+### AWS-008 đóng - đính chính tài liệu
+
+Entry trước và `docs/06`, `docs/10`, `docs/11` ghi AWS-008 (tắt realtime UI) là
+P0 code change còn lại. **Sai.** Code đã đúng từ trước:
+
+```js
+REALTIME_URL === undefined ? createRealtimeUrl() : config.REALTIME_URL
+```
+
+Kiểm tra `=== undefined` chứ không phải falsy, nên `""` không rơi vào fallback
+`ws://<origin>/realtime`. Toàn static site chỉ có một chỗ `new WebSocket`
+(`game/app.js:493`), nằm trong `connectRealtimeSocket()` và bị chặn đầu hàm bởi
+`if (!REALTIME_ENABLED)`.
+
+Xác minh trên bản deploy thật: Network filter WS trống, tab Realtime disabled với
+nhãn "Realtime (local only)", solo game chạy bình thường, không có lỗi WebSocket.
+
+Đã sửa `docs/06`, `docs/10`, `docs/11`. **Không còn P0 sửa code nào đang mở.**
+
+### Ghi chú về chất lượng bằng chứng
+
+Phép thử `403` trên export bucket lúc đầu chạy với key không tồn tại (bucket còn
+rỗng), nên **không đủ** làm evidence cho SR-04. Bằng chứng thật phải là: object
+export có thật, pre-signed URL tải được, URL trần của chính object đó trả 403.
+Sẽ lấy ở bước export.
+
+### Còn lại
+
+Giai đoạn C (extension reload + sync) và D (export + evidence SR-04) chưa chạy.
+Không có AWS resource nào bị xóa hay tạo mới trong phiên này ngoài việc ghi đè
+hai file `config.js`.
+
+## 2026-07-21 - E2E hoàn tất: extension và export pass
+
+### Giai đoạn C - Extension: pass
+
+Reload extension, đăng nhập, bôi đen từ trên trang HTTPS thật, tự nhập nghĩa,
+lưu local, sync lên cloud, Study đọc lại được. Vòng khép kín
+extension -> DynamoDB -> Study hoạt động. Không còn request nào tới
+`/api/translate`.
+
+### Giai đoạn D - Export: pass, evidence SR-04 đầy đủ
+
+```text
+s3 ls           3 object, đều dưới prefix <userId>/
+pre-signed URL  tải được JSON
+URL trần        403 Forbidden trên chính object đó
+```
+
+Export được namespace theo `userId` (`28546f7c-.../flashcards-...json`), nên
+cách ly giữa các user là cấu trúc chứ không dựa vào quy ước đặt tên.
+
+Bằng chứng SR-04 lần này dùng object **có thật** và đúng object đã tải qua
+pre-signed URL (`generatedAt` khớp timestamp trong tên file), khác với phép thử
+đầu phiên chạy trên key không tồn tại.
+
+### Nội dung file export - hai ghi chú
+
+`sourceUrl` lưu địa chỉ trang web tại thời điểm lưu từ, nghĩa là file export
+chứa một phần lịch sử duyệt web của user. Cần để ý khi chụp màn hình báo cáo.
+Không lộ account ID hay credential.
+
+### Mục còn mở: tài khoản demo tên `student`
+
+Tài khoản test trên AWS đặt username `student`, trùng sample credential trong
+`backend/data/*.json`. `SR-06` xếp việc này vào loại MUST không được vi phạm.
+
+Owner xác nhận đây là tài khoản mới tự tạo, không phải seed dữ liệu mẫu lên
+AWS. Tuy nhiên **chưa xác minh mật khẩu có phải `password123` hay không** - đó
+mới là yếu tố quyết định mức rủi ro, vì cặp username/password đó nằm công khai
+trong repo.
+
+Owner chủ động hoãn xử lý để tập trung hoàn tất E2E. **Ghi lại như việc còn
+phải làm trước khi demo/nộp:** chạy thử login bằng `student`/`password123` với
+API thật; nếu trả 200 thì đổi mật khẩu hoặc xóa và tạo lại tài khoản tên khác.
+
+### Trạng thái E2E tổng hợp
+
+```text
+A  Study web (login, register, CRUD, CORS)   pass
+B  Game / AWS-008 (không có WebSocket)       pass
+C  Extension (save, sync, đọc lại)           pass
+D  Export + evidence SR-04                   pass
+```
+
+Không phải redeploy CloudFormation stack lần nào trong cả quá trình.
+
+## 2026-07-21 - Redeploy stack: gỡ Translate khỏi AWS thật
+
+### Phát hiện
+
+Sau khi E2E xong, kiểm tra IAM role đang chạy thì thấy **5 inline policy** trong
+khi `infra/template.yaml` chỉ khai báo 4. Policy thừa chính là Translate:
+
+```json
+"ApiFunctionRolePolicy4": {
+  "Action": ["translate:TranslateText", "comprehend:DetectDominantLanguage"],
+  "Resource": "*", "Effect": "Allow"
+}
+```
+
+Kiểm tra tiếp code Lambda: `POST /api/translate` trả `401 Authentication
+required`, tức route **vẫn còn sống**. Kết luận: bản deploy trên AWS là từ trước
+khi gỡ Translate. Việc giao ở đầu phiên chưa hoàn thành ở lớp AWS.
+
+### Hai phép thử sai trước khi tìm ra kết luận đúng
+
+Ghi lại vì dễ mắc lại:
+
+1. `aws iam get-role-policy --query "PolicyDocument.Statement[].Action"` trả
+   `null` cho Policy4. Không phải policy rỗng - `Statement` ở policy này là một
+   object đơn chứ không phải mảng, nên `Statement[]` không khớp. Phải in nguyên
+   văn policy document mới thấy.
+2. `curl -X POST /api/translate` với body JSON bị PowerShell làm hỏng trả `400`.
+   `express.json()` chạy **trước** router nên JSON hỏng bị chặn ngay, request
+   chưa tới bước so khớp route - mã 400 đó không nói gì về route. Gửi request
+   **không kèm body** mới cho kết quả dùng được (`401` = route còn, `404` = đã
+   xóa).
+
+### Giải quyết vấn đề JwtSecret
+
+Entry trước ghi `JwtSecret` `NoEcho: true` là không đọc lại được, và coi đó là
+rào cản của mọi lần redeploy. **Có lối ra:** template truyền tham số này vào
+biến môi trường `JWT_SECRET` của Lambda, và biến môi trường Lambda đọc lại được:
+
+```powershell
+aws lambda get-function-configuration --function-name $fn --query "Environment.Variables.JWT_SECRET" --output text
+```
+
+Lấy được secret dài 64 ký tự, truyền lại nguyên vẹn khi deploy. Kết quả: không
+có phiên đăng nhập nào bị mất, xác minh bằng login thật sau deploy.
+
+Hệ quả bảo mật đã ghi vào `docs/AWS_DEPLOYMENT.md`: ai có
+`lambda:GetFunctionConfiguration` đều đọc được JWT secret. Chấp nhận được ở mức
+demo; siết thật thì phải chuyển sang Secrets Manager hoặc SSM SecureString.
+
+### Deploy
+
+```text
+sam validate --lint    template hợp lệ
+sam build              Build Succeeded, nodejs24.x
+sam deploy             UPDATE_COMPLETE
+```
+
+Changeset: `Modify` trên `ApiFunctionRole`, `ApiFunction`, `ExportBucket`,
+`HttpApi`, `HttpApiApiGatewayDefaultStage` - tất cả `Replacement: False`. Ba
+bảng DynamoDB **không xuất hiện trong changeset**, không bị đụng tới.
+
+Lần deploy này tiện thể đóng luôn mục tồn đọng trong `DEPLOY_READINESS.md`:
+throttle và lifecycle vốn được áp tay trực tiếp lên live resource nay đã do
+CloudFormation quản lý, hết drift.
+
+### Xác minh sau deploy
+
+```text
+POST /api/translate   401 -> 404 "No route for POST /api/translate"
+IAM policies          5 -> 4, ApiFunctionRolePolicy4 biến mất
+/api/health           {"ok":true,"service":"flashcard-backend"}
+Login trên Study      vẫn vào được, JwtSecret giữ nguyên
+```
+
+**Nhiệm vụ gỡ Translate đóng trọn vẹn:** sạch ở source, template, code Lambda
+đang chạy và IAM role đang chạy.
+
+### Hai lỗi trong tài liệu do chính agent viết, đã sửa
+
+`docs/AWS_DEPLOYMENT.md` Bước A4 ghi "bỏ `--no-confirm-changeset` để SAM hiện
+changeset và hỏi xác nhận". **Sai.** Mặc định của SAM là `Confirm changeset:
+False`; phải truyền `--confirm-changeset` tường minh mới có cổng review. Lần
+deploy này vì thế chạy thẳng không hỏi - kết quả vô hại nhưng là do may, không
+do quy trình đúng.
+
+Lệnh `sam deploy` trong tài liệu cũng thiếu `--profile`, gây
+`Unable to locate credentials` dù mọi lệnh `aws` khác đều chạy tốt.
+
+Cả hai đã sửa, kèm ghi chú viết lệnh trên một dòng vì backtick nối dòng của
+PowerShell liên tục bị đứt khi copy-paste trong phiên này.
+
+### Việc còn mở
+
+- Tài khoản demo tên `student` (xem entry trước). Chưa xác minh mật khẩu.
+- `npm ci` báo 1 low severity vulnerability. Không chặn deploy theo ngưỡng của
+  `docs/07` (chỉ chặn ở high/critical).
+- `S3CrudPolicy` của SAM rộng hơn mức `docs/07` mô tả: kèm `s3:PutObjectAcl`,
+  `s3:DeleteObject`, `s3:PutLifecycleConfiguration`. Đây là canned policy của
+  SAM, không phải ai đó nới quyền. Muốn least privilege đúng nghĩa thì phải thay
+  bằng `Statement` tự viết.
+
+## 2026-07-21 - Quét chia sẻ và vá hướng dẫn cho deploy account khác
+
+### Yêu cầu
+
+Owner muốn zip cả folder gửi nhóm để họ test trên AWS account của họ. Cần (1)
+quét thông tin không nên lộ, (2) đánh giá hướng dẫn đã đủ để deploy account mới
+chưa.
+
+### Kết quả quét: không có secret cứng
+
+```text
+AWS access key (AKIA/ASIA)      không có
+Giá trị JWT_SECRET trong file    không có
+AWS Account ID trong file        không có
+.aws-sam/build/template.yaml     chỉ "Ref: JwtSecret", không có giá trị
+Git history (7 commit)           chưa từng commit .env/credentials/.pem/.key
+Email cá nhân trong file         không có
+```
+
+### Rủi ro thật nằm ở việc zip, không ở git
+
+`.gitignore` chặn git nhưng **không chặn zip**. Bốn thứ sẽ lọt vào gói nếu nén
+cả thư mục:
+
+```text
+.git/                    email tác giả trong commit authorship
+fcj-internship-report/   báo cáo thực tập cá nhân, 12 tuần worklog
+backend/data/            user demo student/teacher kèm bcrypt hash
+node_modules + .aws-sam  44 MB rác build
+```
+
+`fcj-internship-report/` là thứ đáng lưu ý nhất: không phải secret nhưng là tài
+liệu cá nhân, không liên quan gì tới việc nhóm test AWS.
+
+Đã đưa lệnh `robocopy` loại trừ các mục trên rồi mới `Compress-Archive`.
+
+Ngoài ra `extension-config.js` đang trỏ vào stack đang chạy của owner. Không
+phải secret, nhưng để nguyên thì extension của nhóm sẽ gọi vào AWS của owner -
+sai mục đích test và tiêu credit của owner.
+
+### Đánh giá hướng dẫn: chưa đủ, thiếu 3 chỗ
+
+Phát hiện khi rà `docs/AWS_DEPLOYMENT.md` theo góc nhìn người nhận repo:
+
+1. **Không có bước nào bảo sửa `extension-config.js`.** Nặng nhất. B-SAM bước 6
+   cũ chỉ ghi "làm theo A6 và A7", mà A7 chỉ là reload extension. Nhóm làm đúng
+   từng bước vẫn sẽ có extension trỏ vào AWS của owner.
+2. **Không hướng dẫn lấy Extension ID.** Mỗi máy load unpacked ra ID khác nhau,
+   mà `AllowedOrigins` bắt buộc chứa đúng ID đó, thiếu là Sync chết vì CORS.
+3. **Phần public bucket viết chung chung** - chỉ ghi "bật static hosting / public
+   read" không kèm lệnh, trong khi phiên này đã chạy thật và biết chính xác.
+
+### Đã vá
+
+Tách B-SAM bước 5 cũ thành bước 5 đến 9:
+
+```text
+B-SAM 5  tạo bucket + put-public-access-block + put-bucket-policy (có lệnh thật)
+B-SAM 6  lấy Extension ID từ chrome://extensions + cập nhật AllowedOrigins
+B-SAM 7  sửa extension-config.js  (bước hoàn toàn mới)
+B-SAM 8  build và upload static
+B-SAM 9  kiểm tra + cảnh báo không dùng student/password123
+```
+
+Thêm mục "Nếu bạn nhận repo này từ người khác" ở đầu tài liệu: chỉ thẳng sang
+Phần B, liệt kê 3 thứ bắt buộc phải đổi, và đổi tiêu đề mục thông tin môi trường
+thành "môi trường gốc (tham khảo định dạng)" để không ai chép nhầm giá trị của
+owner.
+
+Lệnh trong phần vá đều viết một dòng, dùng biến `$site` / `$region` / `$profile`
+thay vì hardcode.
+
+## 2026-07-21 - Làm sạch repo trước khi push lên GitHub public
+
+### Bối cảnh
+
+Owner đổi ý: thay vì zip gửi nhóm thì push lên
+`github.com/bambookd/ChromeFlashcardExtension`. Repo đang ở chế độ **public**.
+
+### Chuỗi khai thác đã nhận diện
+
+Trên repo public, ba mảnh thông tin ghép lại thành đường tấn công hoàn chỉnh:
+
+```text
+1. docs/ công bố API URL thật
+2. docs/ ghi rõ sample credential là student/password123
+3. AWS đang chạy có tài khoản thật tên student
+```
+
+Ai đọc repo cũng ghép được. Nếu mật khẩu tài khoản đó đúng là `password123` thì
+đăng nhập được và đọc/export toàn bộ dữ liệu.
+
+`backend/data/users.json` bị `.gitignore` chặn nên bcrypt hash không lên repo -
+đó là mảnh duy nhất còn thiếu, và nó không cần thiết cho chuỗi trên.
+
+**Chưa xử lý.** Owner đã hoãn hai lần; ghi lại như việc bắt buộc làm trước khi
+repo được công khai rộng.
+
+### Làm sạch định danh hạ tầng
+
+Thay 31 chỗ trong 4 file bằng placeholder:
+
+```text
+chrome-flashcard-site-<id>                  -> YOUR_SITE_BUCKET
+chrome-flashcard-dev-exportbucket-<id>      -> YOUR_EXPORT_BUCKET
+<api-id>                                    -> YOUR_API_ID
+<extension-id>                              -> YOUR_EXTENSION_ID
+```
+
+Phạm vi: `docs/AWS_DEPLOYMENT.md`, `docs/AWS_USAGE_CHECKLIST.md`,
+`docs/DEPLOY_READINESS.md`, `docs/LOG.md`.
+
+Giữ nguyên tên stack `chrome-flashcard-dev` và region: không phải định danh
+truy cập được từ bên ngoài, và hữu ích làm ví dụ.
+
+### Hệ quả phụ đã xử lý
+
+Việc thay placeholder khiến owner mất bản ghi hạ tầng của chính mình. Tạo
+`infra/env.local.md` (đã thêm vào `.gitignore`) giữ đầy đủ giá trị thật, chuỗi
+`AllowedOrigins` đang chạy, và cách lấy lại từ CloudFormation nếu mất file.
+
+File này không chứa access key, account ID hay JWT secret.
+
+### .gitignore bổ sung
+
+```text
+fcj-internship-report/    báo cáo thực tập cá nhân, đang untracked nên git add . sẽ nuốt
+infra/env.local.md        giá trị hạ tầng thật của từng người
+env.local.md
+```
+
+### extension-config.js
+
+Bản trong HEAD vốn đã sạch (`localhost` + placeholder có comment); giá trị AWS
+thật chỉ nằm ở working tree, chưa từng commit. Đã `git restore` để giữ nguyên
+trạng thái sạch đó.
+
+Cách dùng về sau: sửa tạm khi cần test với AWS, chạy `git restore
+extension-config.js` trước khi commit. Hướng dẫn nằm trong `infra/env.local.md`.
+
+### Xác minh trước push
+
+```text
+node_modules, backend/data, infra/.aws-sam, fcj-internship-report, env.local.md
+  -> đều bị .gitignore chặn
+git add -A --dry-run  ->  49 file, không có file rác nào lọt
+Định danh hạ tầng còn sót trong docs/  ->  không còn
+```

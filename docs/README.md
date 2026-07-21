@@ -76,6 +76,35 @@ Các quyết định nhạy với thời gian đã được đối chiếu ngày
 
 ## Quan hệ với tài liệu ở root
 
-- `AWS_DEPLOYMENT.md` và `AWS_E2E_TEST_GUIDE.md` là tài liệu cũ hữu ích nhưng có chi tiết đã lệch với code/thời điểm hiện tại, đặc biệt Node.js 20 và IAM cho Translate `auto`.
+- `AWS_DEPLOYMENT.md` đã được viết lại ngày 2026-07-21 thành hướng dẫn theo từng bước, tách Phần A (redeploy stack đang chạy) và Phần B (deploy lần đầu). Nội dung Node.js 24 và IAM đã khớp `infra/template.yaml` hiện tại. `AWS_E2E_TEST_GUIDE.md` vẫn là tài liệu cũ, cần đối chiếu trước khi dùng.
 - `multiplayerplan.md` là product plan dài hạn. Realtime multiplayer không thuộc AWS MVP trong bộ docs này.
 - `LOG.md` là lịch sử thay đổi theo yêu cầu của project; mọi agent triển khai phải tiếp tục cập nhật file đó.
+# Cập nhật 2026-07-20
+
+Xem [12_CI_CD_GUIDE.md](12_CI_CD_GUIDE.md) để hiểu CI/CD, GitHub Actions,
+OIDC và pipeline deploy AWS hiện tại. Trạng thái runtime/IAM/template mới nhất
+nằm trong `infra/template.yaml` và `AWS_DEPLOYMENT.md`.
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+Amazon Translate **không còn là dịch vụ của project này**. Account AWS đang dùng
+không được cấp dịch vụ (`OptInRequired`), nên owner quyết định gỡ tính năng.
+
+Danh sách dịch vụ AWS ở đầu tài liệu còn 5: API Gateway, Lambda, DynamoDB, S3 và
+CloudWatch. Ba dịch vụ cốt lõi thỏa yêu cầu tối thiểu vẫn là API Gateway, Lambda
+và DynamoDB; S3 giờ là dịch vụ tạo giá trị nghiệp vụ rõ nhất cho phần demo.
+
+Bảng trạng thái: bỏ hai dòng `Amazon Translate` và `Translate trong editor
+(content script)`. Dòng thứ hai từng ghi "**Sẽ hỏng trên AWS**" - vấn đề đó đóng
+bằng cách gỡ tính năng, không phải bằng cách sửa CORS.
+
+Link "Amazon Translate automatic language detection" trong mục nguồn tài liệu
+AWS không còn liên quan.
+
+Ghi chú về `AWS_DEPLOYMENT.md`/`AWS_E2E_TEST_GUIDE.md`: hai file đó đã được cập
+nhật và không còn nội dung Translate; phần "IAM cho Translate `auto`" trong câu
+mô tả cũ đã hết hiệu lực.
+
+Chi tiết theo từng tài liệu nằm ở mục "Cập nhật 2026-07-21" cuối các file 01,
+02, 04, 05, 06, 07, 08, 09, 10 và 11. Trạng thái AWS thật và việc còn lại:
+`AWS_USAGE_CHECKLIST.md` mục 6.

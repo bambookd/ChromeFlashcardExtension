@@ -341,3 +341,37 @@ Client actions: `createRoom`, `joinRoom`, `ready`, `submitAnswer`, `leaveRoom`.
 Server events: `roomCreated`, `roomState`, `countdown`, `prompt`, `answerResult`, `matchEnded`, `error`.
 
 Room size 2, code length 6, countdown 3s, round 30s, scoring exact/partial/wrong = 100/50/0. Đây là AS-IS local protocol, không phải AWS API contract.
+
+# Cập nhật 2026-07-21 - Gỡ Amazon Translate
+
+## API surface
+
+`POST /api/translate` **không còn tồn tại**. Route đã bị xóa khỏi
+`backend/app.js`, nên request tới path này rơi vào handler 404 chung như mọi
+unknown route. Bảng endpoint ở mục 2 bỏ dòng tương ứng.
+
+Mục 6 (Translate contract) toàn bộ không còn hiệu lực: không có request shape,
+response shape, `provider=amazon-translate`, hay yêu cầu IAM
+`translate:TranslateText` / `comprehend:DetectDominantLanguage` nào cần thỏa.
+
+## Environment variables
+
+Ba biến sau đã bị xóa khỏi `backend/src/config.js` và không được đọc ở bất kỳ
+đâu nữa:
+
+```text
+USE_AMAZON_TRANSLATE
+REQUIRE_TRANSLATE_AUTH
+TRANSLATE_MAX_LENGTH
+```
+
+`DATA_STORE=dynamodb` vẫn tắt `allowAllOrigins` như cũ, nhưng không còn bật ngầm
+`useAmazonTranslate` và `requireTranslateAuth` vì hai flag đó đã biến mất.
+
+Nếu môi trường cũ còn set ba biến này, chúng bị bỏ qua một cách vô hại. Nên xóa
+khỏi Lambda configuration ở lần deploy tới cho sạch.
+
+## CORS
+
+Ghi chú cuối mục 11 về việc content script phải chuyển lời gọi sang background
+service worker chỉ còn giá trị lịch sử: `contentScript.js` không gọi API nữa.

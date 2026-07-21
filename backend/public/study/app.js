@@ -20,6 +20,8 @@ const elements = {
   authThemeToggle: document.getElementById("authThemeToggle"),
   username: document.getElementById("usernameInput"),
   password: document.getElementById("passwordInput"),
+  passwordToggle: document.getElementById("passwordToggle"),
+  loginButton: document.getElementById("loginButton"),
   registerButton: document.getElementById("registerButton"),
   authStatus: document.getElementById("authStatus"),
   userBadge: document.getElementById("userBadge"),
@@ -34,6 +36,9 @@ const elements = {
   reloadButton: document.getElementById("reloadButton"),
   newCardButton: document.getElementById("newCardButton"),
   studyStatus: document.getElementById("studyStatus"),
+  totalCardsMetric: document.getElementById("totalCardsMetric"),
+  categoryCountMetric: document.getElementById("categoryCountMetric"),
+  sessionMetric: document.getElementById("sessionMetric"),
   studyPanel: document.getElementById("studyPanel"),
   libraryPanel: document.getElementById("libraryPanel"),
   sessionMode: document.getElementById("sessionMode"),
@@ -83,6 +88,7 @@ function bindEvents() {
     login();
   });
   elements.authThemeToggle.addEventListener("click", toggleTheme);
+  elements.passwordToggle.addEventListener("click", togglePasswordVisibility);
   elements.studyThemeToggle.addEventListener("click", toggleTheme);
   elements.studyTabButton.addEventListener("click", () => switchView("study"));
   elements.libraryTabButton.addEventListener("click", () => switchView("library"));
@@ -135,6 +141,13 @@ function toggleTheme() {
   setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 }
 
+function togglePasswordVisibility() {
+  const showPassword = elements.password.type === "password";
+  elements.password.type = showPassword ? "text" : "password";
+  elements.passwordToggle.textContent = showPassword ? "Hide" : "Show";
+  elements.passwordToggle.setAttribute("aria-label", showPassword ? "Hide password" : "Show password");
+}
+
 function setTheme(theme) {
   const normalized = theme === "dark" ? "dark" : "light";
   document.documentElement.dataset.theme = normalized;
@@ -150,8 +163,6 @@ async function restoreSession() {
 
   if (!saved?.token || !saved?.user) {
     showAuth();
-    elements.username.value = "student";
-    elements.password.value = "password123";
     return;
   }
 
@@ -178,6 +189,8 @@ async function register() {
 
 async function authenticate(path) {
   setStatus(elements.authStatus, "");
+  const isRegister = path.endsWith("/register");
+  setAuthBusy(true, isRegister);
 
   try {
     const response = await rawFetch(path, {
@@ -198,6 +211,8 @@ async function authenticate(path) {
     await loadFlashcards();
   } catch (error) {
     setStatus(elements.authStatus, error.message, "error");
+  } finally {
+    setAuthBusy(false);
   }
 }
 
@@ -236,6 +251,7 @@ async function loadFlashcards() {
     ]);
     rebuildCategories();
     applyFilters();
+    updateOverview();
     setStatus(elements.studyStatus, `Loaded ${state.flashcards.length} flashcard${state.flashcards.length === 1 ? "" : "s"}.`, "success");
   } catch (error) {
     setStatus(elements.studyStatus, error.message, "error");
@@ -522,6 +538,24 @@ function renderProgress() {
 
   elements.progressText.textContent = `${completed} / ${total}`;
   elements.progressBar.style.width = `${percent}%`;
+  updateOverview();
+}
+
+function updateOverview() {
+  const categoryCount = state.categories.filter((category) => category !== "Uncategorized").length;
+  const completed = state.session.completedCount || 0;
+  const total = state.session.totalCards || 0;
+
+  elements.totalCardsMetric.textContent = String(state.flashcards.length);
+  elements.categoryCountMetric.textContent = String(categoryCount);
+
+  if (state.session.isComplete) {
+    elements.sessionMetric.textContent = `Completed ${completed} cards`;
+  } else if (state.session.isActive) {
+    elements.sessionMetric.textContent = `${completed} of ${total} reviewed`;
+  } else {
+    elements.sessionMetric.textContent = "Not started";
+  }
 }
 
 function renderLibrary() {
@@ -892,7 +926,7 @@ async function rawFetch(path, options = {}) {
       }
     });
   } catch (error) {
-    throw new Error("Local backend is not reachable");
+    throw new Error("Configured API is not reachable");
   }
 
   const data = await response.json().catch(() => ({}));
@@ -908,6 +942,14 @@ function setStatus(element, message, type = "info") {
   element.textContent = message;
   element.classList.toggle("is-error", type === "error");
   element.classList.toggle("is-success", type === "success");
+}
+
+function setAuthBusy(isBusy, isRegister = false) {
+  elements.loginButton.disabled = isBusy;
+  elements.registerButton.disabled = isBusy;
+  elements.loginButton.textContent = isBusy && !isRegister ? "Signing in..." : "Login";
+  elements.registerButton.textContent = isBusy && isRegister ? "Creating..." : "Create account";
+  elements.authForm.setAttribute("aria-busy", String(isBusy));
 }
 
 function escapeHtml(value) {
