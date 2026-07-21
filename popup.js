@@ -1,7 +1,12 @@
-const API_BASE_URL = "http://localhost:3000";
-const STUDY_URL = `${API_BASE_URL}/study`;
+const API_BASE_URL = globalThis.FLASHCARD_CONFIG?.API_BASE_URL || "http://localhost:3000";
+const STUDY_URL = globalThis.FLASHCARD_CONFIG?.STUDY_URL || `${API_BASE_URL}/study`;
 const STORAGE_KEY = "flashcards";
 const AUTH_STORAGE_KEY = "flashcardAuth";
+const CATEGORY_STORAGE_KEY = "flashcardCategories";
+const THEME_STORAGE_KEY = "flashcardTheme";
+const ADD_CATEGORY_VALUE = "__add_category__";
+
+let searchQuery = "";
 
 const elements = {
   form: document.getElementById("flashcardForm"),
@@ -9,6 +14,9 @@ const elements = {
   loggedOutView: document.getElementById("loggedOutView"),
   loggedInView: document.getElementById("loggedInView"),
   accountName: document.getElementById("accountName"),
+  accountAvatar: document.getElementById("accountAvatar"),
+  themeToggle: document.getElementById("themeToggle"),
+  searchInput: document.getElementById("searchInput"),
   username: document.getElementById("usernameInput"),
   password: document.getElementById("passwordInput"),
   registerButton: document.getElementById("registerButton"),
@@ -17,12 +25,12 @@ const elements = {
   meaning: document.getElementById("meaningInput"),
   wordform: document.getElementById("wordformInput"),
   category: document.getElementById("categoryInput"),
+  deleteCategoryButton: document.getElementById("deleteCategoryButton"),
   list: document.getElementById("flashcardList"),
   emptyState: document.getElementById("emptyState"),
   cardCount: document.getElementById("cardCount"),
   status: document.getElementById("statusMessage"),
   syncButton: document.getElementById("syncButton"),
-  translateButton: document.getElementById("translateButton"),
   exportButton: document.getElementById("exportButton"),
   clearButton: document.getElementById("clearButton"),
   openStudyButton: document.getElementById("openStudyButton")
@@ -49,18 +57,61 @@ const storage = {
 
   async clearAuth() {
     await chrome.storage.local.remove(AUTH_STORAGE_KEY);
+  },
+
+  async getCategories() {
+    const result = await chrome.storage.local.get({ [CATEGORY_STORAGE_KEY]: ["Uncategorized"] });
+    return normalizeCategoryList(result[CATEGORY_STORAGE_KEY]);
+  },
+
+  async setCategories(categories) {
+    await chrome.storage.local.set({ [CATEGORY_STORAGE_KEY]: normalizeCategoryList(categories) });
+  },
+
+  async getTheme() {
+    const result = await chrome.storage.local.get({ [THEME_STORAGE_KEY]: null });
+    return result[THEME_STORAGE_KEY];
+  },
+
+  async setTheme(theme) {
+    await chrome.storage.local.set({ [THEME_STORAGE_KEY]: theme });
   }
 };
 
 document.addEventListener("DOMContentLoaded", init);
 
 async function init() {
+  await applySavedTheme();
   bindEvents();
   await renderAuth();
+  await renderCategories();
   await renderCards();
 }
 
+async function applySavedTheme() {
+  const savedTheme = await storage.getTheme();
+  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+  setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+}
+
+async function toggleTheme() {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(next);
+  await storage.setTheme(next);
+}
+
+function setTheme(theme) {
+  const normalized = theme === "dark" ? "dark" : "light";
+  document.documentElement.dataset.theme = normalized;
+  elements.themeToggle.title = normalized === "dark" ? "Switch to light mode" : "Switch to dark mode";
+}
+
 function bindEvents() {
+  elements.themeToggle.addEventListener("click", toggleTheme);
+  elements.searchInput.addEventListener("input", async () => {
+    searchQuery = elements.searchInput.value.trim().toLowerCase();
+    await renderCards();
+  });
   elements.authForm.addEventListener("submit", (event) => {
     event.preventDefault();
     handleAuth("login");
@@ -69,7 +120,8 @@ function bindEvents() {
   elements.logoutButton.addEventListener("click", handleLogout);
   elements.form.addEventListener("submit", handleSave);
   elements.syncButton.addEventListener("click", handleSync);
-  elements.translateButton.addEventListener("click", handleTranslate);
+  elements.category.addEventListener("change", handleCategoryChange);
+  elements.deleteCategoryButton.addEventListener("click", handleDeleteCategory);
   elements.exportButton.addEventListener("click", handleExport);
   elements.clearButton.addEventListener("click", handleClear);
   elements.openStudyButton.addEventListener("click", handleOpenStudy);
@@ -97,6 +149,7 @@ async function handleAuth(mode) {
     });
 
     await renderAuth();
+    await loadCloudCategories(response.token);
     setStatus(`Logged in as ${response.user.username}.`, "success");
   } catch (error) {
     setStatus(`${mode === "register" ? "Register" : "Login"} failed: ${error.message}`, "error");
@@ -111,6 +164,77 @@ async function handleLogout() {
   setStatus("Logged out from cloud account.", "success");
 }
 
+async function handleCategoryChange() {
+  if (elements.category.value !== ADD_CATEGORY_VALUE) {
+    elements.category.dataset.previousValue = elements.category.value;
+    elements.deleteCategoryButton.disabled = elements.category.value === "Uncategorized";
+    return;
+  }
+
+  const previousValue = elements.category.dataset.previousValue || "Uncategorized";
+  const category = window.prompt("New category name:");
+
+  if (!category?.trim()) {
+    elements.category.value = previousValue;
+    return;
+  }
+
+  const normalized = normalizeCategoryName(category);
+
+  if (!normalized) {
+    elements.category.value = previousValue;
+    return;
+  }
+
+  await ensureLocalCategory(normalized);
+
+  const auth = await storage.getAuth();
+  if (auth?.token) {
+    await createCloudCategory(auth.token, normalized).catch((error) => {
+      setStatus(`Category saved locally, cloud add failed: ${error.message}`, "error");
+    });
+  }
+
+  await renderCategories(normalized);
+  setStatus(`Added category "${normalized}".`, "success");
+}
+
+async function handleDeleteCategory() {
+  const category = getSelectedCategory();
+
+  if (category === "Uncategorized") {
+    setStatus("Uncategorized cannot be deleted.", "error");
+    return;
+  }
+
+  const confirmed = window.confirm(`Delete category "${category}"? Cards using it will move to Uncategorized.`);
+
+  if (!confirmed) {
+    return;
+  }
+
+  const categories = await storage.getCategories();
+  await storage.setCategories(categories.filter((item) => item.toLowerCase() !== category.toLowerCase()));
+
+  const cards = await storage.getCards();
+  await storage.setCards(cards.map((card) => (
+    card.category?.toLowerCase() === category.toLowerCase()
+      ? { ...card, category: "Uncategorized", updatedAt: new Date().toISOString(), syncedAt: null }
+      : card
+  )));
+
+  const auth = await storage.getAuth();
+  if (auth?.token) {
+    await deleteCloudCategory(auth.token, category).catch((error) => {
+      setStatus(`Category deleted locally, cloud delete failed: ${error.message}`, "error");
+    });
+  }
+
+  await renderCategories("Uncategorized");
+  await renderCards();
+  setStatus(`Deleted category "${category}".`, "success");
+}
+
 async function handleSave(event) {
   event.preventDefault();
 
@@ -119,7 +243,7 @@ async function handleSave(event) {
     word: elements.word.value.trim(),
     meaning: elements.meaning.value.trim(),
     wordform: elements.wordform.value.trim(),
-    category: elements.category.value.trim() || "Uncategorized",
+    category: getSelectedCategory(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     syncedAt: null
@@ -131,11 +255,13 @@ async function handleSave(event) {
   }
 
   const cards = await storage.getCards();
+  await ensureLocalCategory(card.category);
   await storage.setCards([card, ...cards]);
 
   elements.form.reset();
   elements.word.focus();
   setStatus("Saved locally.", "success");
+  await renderCategories(card.category);
   await renderCards();
 }
 
@@ -175,36 +301,6 @@ async function handleSync() {
   }
 }
 
-async function handleTranslate() {
-  const word = elements.word.value.trim();
-
-  if (!word) {
-    setStatus("Enter a word before using AI translation.", "error");
-    elements.word.focus();
-    return;
-  }
-
-  setBusy(elements.translateButton, true, "...");
-
-  try {
-    const result = await fetchJson(`${API_BASE_URL}/api/translate`, {
-      method: "POST",
-      body: JSON.stringify({ word })
-    });
-
-    elements.meaning.value = result.meaning;
-    if (!elements.wordform.value && result.wordform) {
-      elements.wordform.value = result.wordform;
-    }
-
-    setStatus("Translation simulated from local API.", "success");
-  } catch (error) {
-    setStatus(`Translation failed: ${error.message}`, "error");
-  } finally {
-    setBusy(elements.translateButton, false, "AI");
-  }
-}
-
 async function handleExport() {
   const auth = await requireAuth();
 
@@ -222,8 +318,8 @@ async function handleExport() {
       body: JSON.stringify({ flashcards: cards })
     });
 
-    chrome.tabs.create({ url: `${API_BASE_URL}${response.downloadUrl}` });
-    setStatus("Export generated by local API.", "success");
+    chrome.tabs.create({ url: resolveDownloadUrl(response.downloadUrl) });
+    setStatus("Export generated.", "success");
   } catch (error) {
     setStatus(`Export failed: ${error.message}`, "error");
   } finally {
@@ -268,22 +364,143 @@ async function renderAuth() {
   elements.loggedOutView.classList.toggle("is-hidden", isLoggedIn);
   elements.loggedInView.classList.toggle("is-hidden", !isLoggedIn);
   elements.accountName.textContent = isLoggedIn ? auth.user.username : "";
+  elements.accountAvatar.textContent = isLoggedIn ? auth.user.username.slice(0, 1) : "";
+}
+
+async function renderCategories(selectedValue = elements.category.value || "Uncategorized") {
+  const cards = await storage.getCards();
+  const storedCategories = await storage.getCategories();
+  const categories = normalizeCategoryList([
+    ...storedCategories,
+    ...cards.map((card) => card.category).filter(Boolean)
+  ]);
+
+  await storage.setCategories(categories);
+  elements.category.textContent = "";
+
+  for (const category of categories) {
+    elements.category.append(new Option(category, category));
+  }
+
+  elements.category.append(new Option("+ Add category", ADD_CATEGORY_VALUE));
+  elements.category.value = categories.includes(selectedValue) ? selectedValue : "Uncategorized";
+  elements.category.dataset.previousValue = elements.category.value;
+  elements.deleteCategoryButton.disabled = elements.category.value === "Uncategorized";
 }
 
 async function renderCards() {
   const cards = await storage.getCards();
+  const visibleCards = searchQuery ? cards.filter((card) => matchesSearch(card, searchQuery)) : cards;
+  const syncedCount = cards.filter((card) => card.syncedAt).length;
 
   elements.list.textContent = "";
-  elements.emptyState.classList.toggle("is-visible", cards.length === 0);
-  elements.cardCount.textContent = `${cards.length} saved card${cards.length === 1 ? "" : "s"}`;
+  elements.emptyState.classList.toggle("is-visible", visibleCards.length === 0);
+  elements.cardCount.textContent = cards.length === 0
+    ? "0 saved cards"
+    : `${cards.length} saved card${cards.length === 1 ? "" : "s"} · ${syncedCount} synced`;
+
+  const emptyTitle = elements.emptyState.querySelector(".empty-title");
+  const emptyHint = elements.emptyState.querySelector(".empty-hint");
+
+  if (searchQuery && cards.length > 0) {
+    emptyTitle.textContent = "No matching cards";
+    emptyHint.textContent = `Nothing matches "${elements.searchInput.value.trim()}".`;
+  } else {
+    emptyTitle.textContent = "No flashcards yet";
+    emptyHint.textContent = "Save a word above, or select text on any page and use the right-click menu.";
+  }
 
   const fragment = document.createDocumentFragment();
 
-  for (const card of cards) {
+  for (const card of visibleCards) {
     fragment.appendChild(createCardElement(card));
   }
 
   elements.list.appendChild(fragment);
+}
+
+function matchesSearch(card, query) {
+  return [card.word, card.meaning, card.category, card.wordform]
+    .some((field) => String(field || "").toLowerCase().includes(query));
+}
+
+function getSelectedCategory() {
+  return elements.category.value && elements.category.value !== ADD_CATEGORY_VALUE
+    ? elements.category.value
+    : "Uncategorized";
+}
+
+async function ensureLocalCategory(category) {
+  const categories = await storage.getCategories();
+  await storage.setCategories([...categories, category]);
+}
+
+async function loadCloudCategories(token) {
+  const response = await fetchJson(`${API_BASE_URL}/api/categories`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+  const localCategories = await storage.getCategories();
+  await storage.setCategories([...localCategories, ...(response.categories || [])]);
+  await renderCategories();
+}
+
+async function createCloudCategory(token, category) {
+  return fetchJson(`${API_BASE_URL}/api/categories`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ category })
+  });
+}
+
+async function deleteCloudCategory(token, category) {
+  return fetchJson(`${API_BASE_URL}/api/categories/${encodeURIComponent(category)}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
+
+function normalizeCategoryName(value) {
+  return typeof value === "string" ? value.trim().slice(0, 40) : "";
+}
+
+function normalizeCategoryList(categories) {
+  const byKey = new Map();
+
+  for (const category of categories || []) {
+    const normalized = normalizeCategoryName(category);
+
+    if (!normalized) {
+      continue;
+    }
+
+    const key = normalized.toLowerCase();
+
+    if (!byKey.has(key)) {
+      byKey.set(key, normalized);
+    }
+  }
+
+  if (!byKey.has("uncategorized")) {
+    byKey.set("uncategorized", "Uncategorized");
+  }
+
+  return [...byKey.values()].sort((a, b) => {
+    if (a.toLowerCase() === "uncategorized") {
+      return -1;
+    }
+
+    if (b.toLowerCase() === "uncategorized") {
+      return 1;
+    }
+
+    return a.localeCompare(b);
+  });
 }
 
 function createCardElement(card) {
@@ -301,8 +518,9 @@ function createCardElement(card) {
   deleteButton.className = "delete-card";
   deleteButton.type = "button";
   deleteButton.title = `Delete ${card.word}`;
+  deleteButton.setAttribute("aria-label", `Delete ${card.word}`);
   deleteButton.dataset.deleteId = card.id;
-  deleteButton.textContent = "x";
+  deleteButton.textContent = "×";
 
   topLine.append(word, deleteButton);
 
@@ -314,15 +532,15 @@ function createCardElement(card) {
   metaRow.className = "meta-row";
 
   const metaItems = [
-    card.wordform ? card.wordform : null,
-    card.category ? card.category : null,
-    card.syncedAt ? "Synced" : "Local only"
+    card.wordform ? { label: card.wordform } : null,
+    card.category ? { label: card.category } : null,
+    card.syncedAt ? { label: "Synced", isSynced: true } : { label: "Local only" }
   ].filter(Boolean);
 
   for (const meta of metaItems) {
     const pill = document.createElement("span");
-    pill.className = "pill";
-    pill.textContent = meta;
+    pill.className = meta.isSynced ? "pill is-synced" : "pill";
+    pill.textContent = meta.label;
     metaRow.appendChild(pill);
   }
 
@@ -347,6 +565,14 @@ function authHeaders(auth) {
   };
 }
 
+function resolveDownloadUrl(downloadUrl) {
+  if (/^https?:\/\//i.test(downloadUrl)) {
+    return downloadUrl;
+  }
+
+  return `${API_BASE_URL.replace(/\/$/, "")}/${String(downloadUrl || "").replace(/^\//, "")}`;
+}
+
 async function fetchJson(url, options = {}) {
   let response;
 
@@ -360,7 +586,7 @@ async function fetchJson(url, options = {}) {
       }
     });
   } catch (error) {
-    throw new Error("local backend is not reachable");
+    throw new Error("Configured API is not reachable");
   }
 
   const data = await response.json().catch(() => ({}));

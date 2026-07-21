@@ -1,6 +1,6 @@
 # Flashcard Vocabulary Chrome Extension
 
-Offline-first Chrome Extension for saving vocabulary flashcards locally with `chrome.storage.local`, plus a localhost API that simulates cloud sync, AI translation, and JSON export.
+Offline-first Chrome Extension for saving vocabulary flashcards locally with `chrome.storage.local`, plus a localhost API for cloud sync and JSON export.
 
 ## Project Structure
 
@@ -56,9 +56,10 @@ POST /api/flashcards
 PUT  /api/flashcards/:id
 DELETE /api/flashcards/:id
 GET  /api/categories
+POST /api/categories
+DELETE /api/categories/:category
 GET  /api/study/random
 POST /api/sync        { "flashcards": [...] }
-POST /api/translate   { "word": "resilient" }
 POST /api/export      { "flashcards": [...] }
 GET  /exports/:fileName
 ```
@@ -73,7 +74,7 @@ User data is written to `backend/data/users.json`. Cloud-synced flashcards are w
 4. Select this project folder: `ChromeFlashCardExtension`.
 5. Pin and open the extension.
 
-Keep the backend running before using `AI`, `Sync`, `Export JSON`, or the study web app. Saving and deleting flashcards in the extension works offline because the extension uses `chrome.storage.local`.
+Keep the backend running before using `Sync`, `Export JSON`, or the study web app. Saving and deleting flashcards in the extension works offline because the extension uses `chrome.storage.local`.
 
 ## Save From A Web Page
 
@@ -101,18 +102,21 @@ http://localhost:3000/study
 The study app logs in with the same local account system as the extension. It loads all cloud flashcards for the logged-in user into browser memory, then lets you:
 
 - filter by category
-- study in random or sequential order
-- click the card to flip meaning
+- start a focused study session from the selected category
+- shuffle once per session or study in saved order
+- recall the answer before flipping the card
+- rate the result with `Again`, `Hard`, `Good`, or `Easy`
+- send `Again` cards back to the end of the current queue
+- track session progress and completion summary
 - add flashcards
 - edit flashcards
 - delete flashcards
 
-The first version intentionally keeps repetition scheduling out of scope. The API and data model keep `updatedAt` and sync metadata so spaced repetition fields can be added later.
+The current study logic is session-based, not full spaced repetition yet. The API and data model keep `updatedAt` and sync metadata so persistent review fields such as `lastReviewedAt`, `nextReviewAt`, streak, and difficulty can be added later.
 
 ## Production Mapping
 
 The current localhost API is shaped to map cleanly to AWS later:
 
 - `POST /api/sync` can become API Gateway + Lambda + DynamoDB.
-- `POST /api/translate` can call Amazon Translate, Bedrock, or another AI provider.
 - `POST /api/export` can generate a JSON file and return a pre-signed S3 URL.

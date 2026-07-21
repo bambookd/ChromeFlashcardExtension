@@ -4,35 +4,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flashcard Study</title>
-    <link rel="stylesheet" href="/study/styles.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <main class="app">
       <section id="authView" class="auth-view">
-        <div class="auth-card">
-          <p class="eyebrow">Flashcard Vocabulary</p>
-          <h1>Study your saved words</h1>
-          <p class="muted">Login with a local account to load your cloud-synced flashcards.</p>
-
-          <form id="authForm" class="auth-form">
-            <label>
-              <span>Username</span>
-              <input id="usernameInput" name="username" type="text" autocomplete="username" required>
-            </label>
-
-            <label>
-              <span>Password</span>
-              <input id="passwordInput" name="password" type="password" autocomplete="current-password" required>
-            </label>
-
-            <div class="button-row">
-              <button id="loginButton" class="primary-button" type="submit">Login</button>
-              <button id="registerButton" class="secondary-button" type="button">Register</button>
+        <div class="auth-layout">
+          <section class="auth-hero" aria-labelledby="authHeroTitle">
+            <div class="hero-brand">
+              <span class="hero-mark" aria-hidden="true">F</span>
+              <span>Flashcard Vocabulary</span>
             </div>
-          </form>
+            <div class="hero-copy">
+              <p class="eyebrow">Your vocabulary workspace</p>
+              <h1 id="authHeroTitle">Turn saved words into lasting recall.</h1>
+              <p>Capture vocabulary while browsing, organize it once, and return here for focused review.</p>
+            </div>
+            <div class="feature-list" aria-label="Product highlights">
+              <div>
+                <span class="feature-icon" aria-hidden="true">01</span>
+                <p><strong>Capture anywhere</strong><span>Save directly from the Chrome extension.</span></p>
+              </div>
+              <div>
+                <span class="feature-icon" aria-hidden="true">02</span>
+                <p><strong>Review with intent</strong><span>Flip, grade and repeat at your own pace.</span></p>
+              </div>
+              <div>
+                <span class="feature-icon" aria-hidden="true">03</span>
+                <p><strong>Keep it together</strong><span>Sync categories and cards across surfaces.</span></p>
+              </div>
+            </div>
+          </section>
 
-          <p class="hint">Sample accounts: <strong>student/password123</strong> or <strong>teacher/password123</strong></p>
-          <p id="authStatus" class="status" role="status"></p>
+          <div class="auth-card">
+            <div class="auth-card-header">
+              <div>
+                <p class="eyebrow">Account access</p>
+                <h2>Welcome back</h2>
+              </div>
+              <button id="authThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
+            </div>
+            <p class="muted">Sign in with the account you use in the extension, or create a new one.</p>
+
+            <form id="authForm" class="auth-form">
+              <label>
+                <span>Username</span>
+                <input id="usernameInput" name="username" type="text" autocomplete="username" placeholder="Your username" required>
+              </label>
+
+              <label>
+                <span>Password</span>
+                <div class="password-field">
+                  <input id="passwordInput" name="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+                  <button id="passwordToggle" class="password-toggle" type="button" aria-label="Show password">Show</button>
+                </div>
+              </label>
+
+              <div class="button-row">
+                <button id="loginButton" class="primary-button" type="submit">Login</button>
+                <button id="registerButton" class="secondary-button" type="button">Create account</button>
+              </div>
+            </form>
+
+            <p class="auth-note">Your password is sent only to the configured API. Do not use a password from another service.</p>
+            <p id="authStatus" class="status" role="status" aria-live="polite"></p>
+          </div>
         </div>
       </section>
 
@@ -43,47 +79,117 @@
             <h1>Flashcards</h1>
           </div>
           <div class="topbar-actions">
+            <div class="view-tabs" aria-label="Study views">
+              <button id="studyTabButton" class="view-tab is-active" type="button">Study</button>
+              <button id="libraryTabButton" class="view-tab" type="button">Library</button>
+            </div>
+            <button id="openGameButton" class="primary-button" type="button">Open game</button>
+            <button id="studyThemeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">Dark</button>
             <span id="userBadge" class="user-badge"></span>
             <button id="logoutButton" class="secondary-button" type="button">Logout</button>
           </div>
         </header>
 
-        <section class="controls">
-          <label>
-            <span>Category</span>
-            <select id="categorySelect">
-              <option value="">All categories</option>
-            </select>
-          </label>
+        <p id="studyStatus" class="status" role="status"></p>
 
-          <label class="checkbox-label">
-            <input id="randomToggle" type="checkbox" checked>
-            <span>Random order</span>
-          </label>
-
-          <div class="controls-actions">
-            <button id="reloadButton" class="secondary-button" type="button">Reload</button>
-            <button id="newCardButton" class="primary-button" type="button">New card</button>
+        <section class="overview-strip" aria-label="Study overview">
+          <div class="overview-item">
+            <span>Total cards</span>
+            <strong id="totalCardsMetric">0</strong>
+          </div>
+          <div class="overview-item">
+            <span>Categories</span>
+            <strong id="categoryCountMetric">0</strong>
+          </div>
+          <div class="overview-item overview-session">
+            <span>Current session</span>
+            <strong id="sessionMetric">Not started</strong>
           </div>
         </section>
 
-        <p id="studyStatus" class="status" role="status"></p>
+        <section id="studyPanel" class="study-panel">
+          <section class="controls">
+            <label>
+              <span>Category</span>
+              <div class="category-row">
+                <select id="categorySelect">
+                  <option value="">All categories</option>
+                </select>
+                <button id="deleteCategoryButton" class="icon-button" type="button" title="Delete category" aria-label="Delete category">
+                  <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M2.5 4h11M6.5 4V2.5h3V4M4 4l.6 9a1 1 0 0 0 1 .9h4.8a1 1 0 0 0 1-.9L12 4"></path>
+                  </svg>
+                </button>
+              </div>
+            </label>
 
-        <section class="workspace">
+            <label class="checkbox-label">
+              <input id="randomToggle" type="checkbox" checked>
+              <span>Shuffle session</span>
+            </label>
+
+            <div class="controls-actions">
+              <button id="reloadButton" class="secondary-button" type="button">Reload</button>
+              <button id="newCardButton" class="primary-button" type="button">New card</button>
+            </div>
+          </section>
+
+          <section class="workspace">
           <section class="review-panel">
+            <div class="session-header">
+              <div>
+                <p id="sessionMode" class="session-mode">Choose a category, then start a session.</p>
+                <div class="progress-track" aria-label="Study progress">
+                  <div id="progressBar" class="progress-bar"></div>
+                </div>
+              </div>
+              <div id="progressText" class="progress-text">0 / 0</div>
+            </div>
+
             <div id="flashcard" class="review-card" tabindex="0" role="button" aria-label="Flip flashcard">
               <div class="card-face">
                 <p id="cardMeta" class="card-meta"></p>
-                <h2 id="cardWord">No cards yet</h2>
+                <h2 id="cardWord">Start a session</h2>
                 <p id="cardMeaning" class="card-meaning is-hidden"></p>
-                <p id="flipHint" class="flip-hint">Click card or press Space to flip</p>
+                <p id="flipHint" class="flip-hint">Click Start Session to begin reviewing.</p>
               </div>
             </div>
 
             <div class="review-actions">
-              <button id="previousButton" class="secondary-button" type="button">Previous</button>
+              <button id="startSessionButton" class="primary-button" type="button">Start session</button>
               <button id="flipButton" class="secondary-button" type="button">Flip</button>
-              <button id="nextButton" class="primary-button" type="button">Next</button>
+              <button id="skipButton" class="secondary-button" type="button">Skip</button>
+            </div>
+
+            <div id="gradeActions" class="grade-actions is-hidden" aria-label="Review result">
+              <button class="again-button" type="button" data-grade="again">
+                <span>Again</span>
+                <kbd>1</kbd>
+              </button>
+              <button class="hard-button" type="button" data-grade="hard">
+                <span>Hard</span>
+                <kbd>2</kbd>
+              </button>
+              <button class="good-button" type="button" data-grade="good">
+                <span>Good</span>
+                <kbd>3</kbd>
+              </button>
+              <button class="easy-button" type="button" data-grade="easy">
+                <span>Easy</span>
+                <kbd>4</kbd>
+              </button>
+            </div>
+
+            <div id="sessionSummary" class="session-summary is-hidden">
+              <h2>Session complete</h2>
+              <div class="summary-grid">
+                <div><strong id="summaryReviewed">0</strong><span>Reviewed</span></div>
+                <div><strong id="summaryAgain">0</strong><span>Again</span></div>
+                <div><strong id="summaryHard">0</strong><span>Hard</span></div>
+                <div><strong id="summaryGood">0</strong><span>Good</span></div>
+                <div><strong id="summaryEasy">0</strong><span>Easy</span></div>
+              </div>
+              <button id="restartSessionButton" class="primary-button" type="button">Restart session</button>
             </div>
           </section>
 
@@ -105,12 +211,36 @@
               <div class="field-grid">
                 <label>
                   <span>Wordform</span>
-                  <input id="cardWordformInput" name="wordform" type="text">
+                  <select id="cardWordformInput" name="wordform">
+                    <option value="">Select type</option>
+                    <option value="noun">Noun</option>
+                    <option value="verb">Verb</option>
+                    <option value="adjective">Adjective</option>
+                    <option value="adverb">Adverb</option>
+                    <option value="pronoun">Pronoun</option>
+                    <option value="preposition">Preposition</option>
+                    <option value="conjunction">Conjunction</option>
+                    <option value="interjection">Interjection</option>
+                    <option value="phrase">Phrase</option>
+                    <option value="phrasal verb">Phrasal verb</option>
+                    <option value="idiom">Idiom</option>
+                    <option value="unknown">Unknown</option>
+                  </select>
                 </label>
 
                 <label>
                   <span>Category</span>
-                  <input id="cardCategoryInput" name="category" type="text" placeholder="IELTS">
+                  <div class="category-row">
+                    <select id="cardCategoryInput" name="category">
+                      <option value="Uncategorized">Uncategorized</option>
+                      <option value="__add_category__">+ Add category</option>
+                    </select>
+                    <button id="deleteEditorCategoryButton" class="icon-button" type="button" title="Delete category" aria-label="Delete category">
+                      <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M2.5 4h11M6.5 4V2.5h3V4M4 4l.6 9a1 1 0 0 0 1 .9h4.8a1 1 0 0 0 1-.9L12 4"></path>
+                      </svg>
+                    </button>
+                  </div>
                 </label>
               </div>
 
@@ -120,18 +250,26 @@
               </div>
             </form>
           </aside>
+          </section>
         </section>
 
-        <section class="library">
+        <section id="libraryPanel" class="library-panel is-hidden">
           <div class="library-header">
-            <h2>Library</h2>
-            <p id="libraryCount">0 cards</p>
+            <div>
+              <p class="eyebrow">Library</p>
+              <h2>Manage by category</h2>
+            </div>
+            <div class="library-toolbar">
+              <p id="libraryCount">0 cards</p>
+              <button id="libraryNewCardButton" class="primary-button" type="button">New card</button>
+            </div>
           </div>
           <div id="cardList" class="card-list"></div>
         </section>
       </section>
     </main>
 
-    <script src="/study/app.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
