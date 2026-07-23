@@ -261,6 +261,10 @@
             </div>
             <div class="library-toolbar">
               <p id="libraryCount">0 cards</p>
+              <input id="importFileInput" type="file" accept=".csv,text/csv" hidden>
+              <button id="csvTemplateButton" class="link-button" type="button">Template</button>
+              <button id="importCsvButton" class="secondary-button" type="button">Import CSV</button>
+              <button id="exportCsvButton" class="secondary-button" type="button">Export CSV</button>
               <button id="libraryNewCardButton" class="primary-button" type="button">New card</button>
             </div>
           </div>
@@ -269,7 +273,44 @@
       </section>
     </main>
 
+    <dialog id="importDialog" class="import-dialog" aria-labelledby="importDialogTitle">
+      <form method="dialog" class="import-dialog-form">
+        <header class="import-dialog-header">
+          <div>
+            <p class="eyebrow">Import</p>
+            <h2 id="importDialogTitle">Review before saving</h2>
+          </div>
+          <p id="importFileName" class="muted"></p>
+        </header>
+
+        <div class="import-summary" role="group" aria-label="Import summary">
+          <div class="import-stat is-add">
+            <strong id="importAddCount">0</strong>
+            <span>To add</span>
+          </div>
+          <div class="import-stat is-skip">
+            <strong id="importSkipCount">0</strong>
+            <span>Duplicates skipped</span>
+          </div>
+          <div class="import-stat is-error">
+            <strong id="importErrorCount">0</strong>
+            <span>Rows with problems</span>
+          </div>
+        </div>
+
+        <div id="importPreview" class="import-preview" tabindex="0"></div>
+
+        <p id="importStatus" class="status" role="status" aria-live="polite"></p>
+
+        <footer class="import-dialog-actions">
+          <button id="importCancelButton" class="secondary-button" type="button" value="cancel">Cancel</button>
+          <button id="importConfirmButton" class="primary-button" type="button">Add to library</button>
+        </footer>
+      </form>
+    </dialog>
+
     <script src="config.js"></script>
+    <script src="csv.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "check": "node --check app.js && node --check server.js && node --check lambda.js && node --check src/realtimeServer.js && node --check src/scoring.js && node --check ../background.js && node --check ../contentScript.js && node --check ../popup.js && node --check public/study/app.js && node --check public/game/app.js",
+    "check": "node --check app.js && node --check server.js && node --check lambda.js && node --check src/realtimeServer.js && node --check src/scoring.js && node --check ../background.js && node --check ../contentScript.js && node --check ../popup.js && node --check public/study/app.js && node --check public/study/csv.js && node --check public/game/app.js",
+    "test": "node --test \"tests/**/*.test.mjs\"",
     "package": "node scripts/package.mjs",
     "prepare:static": "node scripts/prepare-static-site.mjs"
   },

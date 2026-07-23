@@ -3,6 +3,15 @@ const GAME_URL = window.FLASHCARD_CONFIG?.GAME_URL || "/game/";
 const AUTH_KEY = "flashcardStudyAuth";
 const THEME_KEY = "flashcardStudyTheme";
 const ADD_CATEGORY_VALUE = "__add_category__";
+const CSV = window.FlashcardCsv;
+
+// Cards are pushed through POST /api/sync in small batches. The DynamoDB tables
+// run at 1 WCU, so one request per card would exhaust burst capacity and one
+// request for the whole file would turn any mid-way failure into a total loss.
+const IMPORT_BATCH_SIZE = 25;
+const IMPORT_BATCH_RETRIES = 2;
+const IMPORT_RETRY_DELAY_MS = 1500;
+const IMPORT_PREVIEW_LIMIT = 50;
 
 const state = {
   token: "",
@@ -10,7 +19,9 @@ const state = {
   flashcards: [],
   categories: ["Uncategorized"],
   filteredCards: [],
-  session: createEmptySession()
+  session: createEmptySession(),
+  pendingImport: null,
+  isImporting: false
 };
 
 const elements = {
@@ -62,6 +73,19 @@ const elements = {
   summaryEasy: document.getElementById("summaryEasy"),
   libraryCount: document.getElementById("libraryCount"),
   libraryNewCardButton: document.getElementById("libraryNewCardButton"),
+  csvTemplateButton: document.getElementById("csvTemplateButton"),
+  importCsvButton: document.getElementById("importCsvButton"),
+  exportCsvButton: document.getElementById("exportCsvButton"),
+  importFileInput: document.getElementById("importFileInput"),
+  importDialog: document.getElementById("importDialog"),
+  importFileName: document.getElementById("importFileName"),
+  importAddCount: document.getElementById("importAddCount"),
+  importSkipCount: document.getElementById("importSkipCount"),
+  importErrorCount: document.getElementById("importErrorCount"),
+  importPreview: document.getElementById("importPreview"),
+  importStatus: document.getElementById("importStatus"),
+  importCancelButton: document.getElementById("importCancelButton"),
+  importConfirmButton: document.getElementById("importConfirmButton"),
   cardList: document.getElementById("cardList"),
   cardForm: document.getElementById("cardForm"),
   editorTitle: document.getElementById("editorTitle"),
@@ -116,6 +140,17 @@ function bindEvents() {
   elements.cardForm.addEventListener("submit", saveCard);
   elements.cardCategoryInput.addEventListener("change", handleEditorCategoryChange);
   elements.cardList.addEventListener("click", handleLibraryClick);
+  elements.csvTemplateButton.addEventListener("click", downloadCsvTemplate);
+  elements.importCsvButton.addEventListener("click", () => elements.importFileInput.click());
+  elements.importFileInput.addEventListener("change", handleImportFileChange);
+  elements.exportCsvButton.addEventListener("click", exportCsv);
+  elements.importCancelButton.addEventListener("click", closeImportDialog);
+  elements.importConfirmButton.addEventListener("click", confirmImport);
+  elements.importDialog.addEventListener("cancel", (event) => {
+    if (state.isImporting) {
+      event.preventDefault();
+    }
+  });
 }
 
 function openGame() {
@@ -568,7 +603,7 @@ function renderLibrary() {
   if (groups.length === 0) {
     const empty = document.createElement("p");
     empty.className = "library-empty";
-    empty.textContent = "No flashcards yet. Add a card from the study form or sync from the extension.";
+    empty.textContent = "No flashcards yet. Add a card from the study form, import a CSV, or sync from the extension.";
     elements.cardList.appendChild(empty);
     return;
   }
@@ -642,6 +677,331 @@ function groupCardsByCategory(cards) {
 
       return a.category.localeCompare(b.category);
     });
+}
+
+function exportCsv() {
+  const category = getSelectedFilterCategory();
+  const cards = category ? state.filteredCards : state.flashcards;
+
+  if (cards.length === 0) {
+    setStatus(elements.studyStatus, "Nothing to export in this selection.", "error");
+    return;
+  }
+
+  const fileName = CSV.buildFileName(state.user?.username, category);
+  downloadTextFile(fileName, CSV.serialize(cards), "text/csv;charset=utf-8");
+  setStatus(
+    elements.studyStatus,
+    `Exported ${cards.length} card${cards.length === 1 ? "" : "s"} to ${fileName}.`,
+    "success"
+  );
+}
+
+function downloadCsvTemplate() {
+  downloadTextFile("flashcards-template.csv", CSV.template(), "text/csv;charset=utf-8");
+  setStatus(elements.studyStatus, "Template downloaded. Keep the four column headers as they are.", "success");
+}
+
+async function handleImportFileChange(event) {
+  const file = event.target.files?.[0];
+  // Clearing the input lets the user pick the same file again after a cancel.
+  event.target.value = "";
+
+  if (!file) {
+    return;
+  }
+
+  try {
+    const parsed = CSV.parse(await readTextFile(file));
+    const plan = CSV.planImport(parsed.rows, state.flashcards);
+
+    state.pendingImport = {
+      fileName: file.name,
+      parsed,
+      plan,
+      // Card ids are minted once per file so a retry after a partial failure
+      // updates the same rows instead of creating a second copy of each card.
+      payloads: plan.additions.map(toSyncPayload),
+      savedCount: 0
+    };
+
+    renderImportDialog();
+    elements.importDialog.showModal();
+  } catch (error) {
+    setStatus(elements.studyStatus, `Could not read that file: ${error.message}`, "error");
+  }
+}
+
+function renderImportDialog() {
+  const { fileName, parsed, plan } = state.pendingImport;
+  const details = [describeDelimiter(parsed.delimiter)];
+
+  if (!parsed.hasHeader && parsed.rows.length > 0) {
+    details.push("no header row");
+  }
+
+  elements.importFileName.textContent = `${fileName} · ${details.join(" · ")}`;
+  elements.importAddCount.textContent = String(plan.additions.length);
+  elements.importSkipCount.textContent = String(plan.duplicates.length);
+  elements.importErrorCount.textContent = String(parsed.errors.length);
+
+  renderImportPreview([
+    ...plan.additions.map((row) => ({
+      line: row.line,
+      word: row.word,
+      detail: row.meaning,
+      tag: "Add",
+      className: "is-add"
+    })),
+    ...plan.duplicates.map((row) => ({
+      line: row.line,
+      word: row.word,
+      detail: row.reason === "library" ? "Already in your library" : "Repeated earlier in this file",
+      tag: "Skip",
+      className: "is-skip"
+    })),
+    ...parsed.errors.map((error) => ({
+      line: error.line,
+      word: error.word || "—",
+      detail: error.message,
+      tag: "Problem",
+      className: "is-error"
+    }))
+  ].sort((a, b) => a.line - b.line));
+
+  updateImportConfirmButton();
+  setStatus(elements.importStatus, buildImportHint(parsed, plan));
+}
+
+function renderImportPreview(entries) {
+  elements.importPreview.textContent = "";
+
+  if (entries.length === 0) {
+    elements.importPreview.appendChild(createImportNote("This file has no rows to show."));
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  for (const entry of entries.slice(0, IMPORT_PREVIEW_LIMIT)) {
+    const row = document.createElement("div");
+    row.className = `import-row ${entry.className}`;
+    row.append(
+      createImportCell("import-row-line", `L${entry.line}`),
+      createImportCell("import-row-word", entry.word),
+      createImportCell("import-row-meaning", entry.detail),
+      createImportCell("import-row-tag", entry.tag)
+    );
+    fragment.appendChild(row);
+  }
+
+  if (entries.length > IMPORT_PREVIEW_LIMIT) {
+    fragment.appendChild(createImportNote(`… and ${entries.length - IMPORT_PREVIEW_LIMIT} more rows`));
+  }
+
+  elements.importPreview.appendChild(fragment);
+}
+
+function createImportCell(className, text) {
+  const cell = document.createElement("span");
+  cell.className = className;
+  cell.textContent = text;
+  return cell;
+}
+
+function createImportNote(text) {
+  const note = document.createElement("p");
+  note.className = "import-preview-more";
+  note.textContent = text;
+  return note;
+}
+
+function buildImportHint(parsed, plan) {
+  if (parsed.rows.length === 0 && parsed.errors.length === 0) {
+    return "No rows found. Expected columns: word, meaning, wordform, category.";
+  }
+
+  if (plan.additions.length === 0) {
+    return "Nothing new here — every row is already in your library or needs fixing.";
+  }
+
+  return "Words already in your library are skipped, ignoring letter case.";
+}
+
+function updateImportConfirmButton() {
+  const remaining = countRemainingImports();
+
+  elements.importConfirmButton.disabled = remaining === 0 || state.isImporting;
+  elements.importConfirmButton.textContent = remaining === 0
+    ? "Nothing to add"
+    : `Add ${remaining} card${remaining === 1 ? "" : "s"}`;
+}
+
+function countRemainingImports() {
+  if (!state.pendingImport) {
+    return 0;
+  }
+
+  return state.pendingImport.payloads.length - state.pendingImport.savedCount;
+}
+
+async function confirmImport() {
+  if (!state.pendingImport || state.isImporting || countRemainingImports() === 0) {
+    return;
+  }
+
+  const pending = state.pendingImport;
+  const remaining = pending.payloads.slice(pending.savedCount);
+  const total = pending.payloads.length;
+
+  setImportBusy(true);
+  setStatus(elements.importStatus, `Saving 0 of ${remaining.length} cards...`);
+
+  try {
+    for (const batch of chunk(remaining, IMPORT_BATCH_SIZE)) {
+      await sendImportBatch(batch);
+      pending.savedCount += batch.length;
+      setStatus(elements.importStatus, `Saving ${pending.savedCount} of ${total} cards...`);
+    }
+  } catch (error) {
+    setImportBusy(false);
+    setStatus(
+      elements.importStatus,
+      `Stopped after ${pending.savedCount} of ${total} cards: ${error.message} Press the button again to carry on from where it stopped.`,
+      "error"
+    );
+    await loadFlashcards();
+    return;
+  }
+
+  const saved = pending.savedCount;
+
+  setImportBusy(false);
+  closeImportDialog();
+  await loadFlashcards();
+  switchView("library");
+  setStatus(elements.studyStatus, `Imported ${saved} card${saved === 1 ? "" : "s"} from CSV.`, "success");
+}
+
+async function sendImportBatch(flashcards) {
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await apiFetch("/api/sync", {
+        method: "POST",
+        body: JSON.stringify({ flashcards })
+      });
+    } catch (error) {
+      if (attempt >= IMPORT_BATCH_RETRIES || !isRetryableImportError(error)) {
+        throw error;
+      }
+
+      // DynamoDB runs at 1 WCU, so a throttled batch usually succeeds once its
+      // burst capacity has had a moment to refill.
+      await delay(IMPORT_RETRY_DELAY_MS * (attempt + 1));
+    }
+  }
+}
+
+function isRetryableImportError(error) {
+  return !error.status || [429, 500, 502, 503, 504].includes(error.status);
+}
+
+function toSyncPayload(row) {
+  const cardId = createCardId();
+
+  return {
+    id: cardId,
+    cardId,
+    word: row.word,
+    meaning: row.meaning,
+    wordform: row.wordform,
+    category: row.category
+  };
+}
+
+function createCardId() {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+
+  return `csv-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function setImportBusy(isBusy) {
+  state.isImporting = isBusy;
+  elements.importCancelButton.disabled = isBusy;
+  elements.importCsvButton.disabled = isBusy;
+  elements.exportCsvButton.disabled = isBusy;
+  updateImportConfirmButton();
+}
+
+function closeImportDialog() {
+  if (state.isImporting) {
+    return;
+  }
+
+  elements.importDialog.close();
+  state.pendingImport = null;
+}
+
+async function readTextFile(file) {
+  const buffer = await file.arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+
+  // Excel's "Unicode Text" export is UTF-16, which would decode to mojibake if
+  // it were read as UTF-8.
+  if (bytes[0] === 0xff && bytes[1] === 0xfe) {
+    return new TextDecoder("utf-16le").decode(buffer);
+  }
+
+  if (bytes[0] === 0xfe && bytes[1] === 0xff) {
+    return new TextDecoder("utf-16be").decode(buffer);
+  }
+
+  return new TextDecoder("utf-8").decode(buffer);
+}
+
+function downloadTextFile(fileName, text, mimeType) {
+  const url = URL.createObjectURL(new Blob([text], { type: mimeType }));
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function describeDelimiter(delimiter) {
+  if (delimiter === ";") {
+    return "semicolon separated";
+  }
+
+  if (delimiter === "\t") {
+    return "tab separated";
+  }
+
+  return "comma separated";
+}
+
+function getSelectedFilterCategory() {
+  const category = elements.categorySelect.value;
+  return category && category !== ADD_CATEGORY_VALUE ? category : "";
+}
+
+function chunk(items, size) {
+  const batches = [];
+
+  for (let index = 0; index < items.length; index += size) {
+    batches.push(items.slice(index, index + size));
+  }
+
+  return batches;
+}
+
+function delay(milliseconds) {
+  return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
 function flipCard() {
@@ -932,7 +1292,11 @@ async function rawFetch(path, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error || `Request failed with ${response.status}`);
+    const error = new Error(data.error || `Request failed with ${response.status}`);
+    // Callers such as the CSV import need the status to tell a throttled write
+    // apart from a rejected payload.
+    error.status = response.status;
+    throw error;
   }
 
   return data;

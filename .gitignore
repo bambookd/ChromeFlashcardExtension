@@ -20,3 +20,7 @@ fcj-internship-report/
 # Giá trị hạ tầng thật của từng người. Repo là public nên docs/ dùng placeholder.
 infra/env.local.md
 env.local.md
+
+# File export do người dùng tải về, không phải mã nguồn.
+# Mẫu CSV dùng để test nằm trong docs/ và vẫn được commit.
+/flashcards-*.csv

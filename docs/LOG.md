@@ -4071,3 +4071,71 @@ node_modules, backend/data, infra/.aws-sam, fcj-internship-report, env.local.md
 git add -A --dry-run  ->  49 file, không có file rác nào lọt
 Định danh hạ tầng còn sót trong docs/  ->  không còn
 ```
+
+## 2026-07-23 - CSV import/export cho Study Library
+
+### Yêu cầu
+
+Hầu hết vocab phải tự gõ tay. Cần import/export CSV theo 4 cột word, meaning,
+wordform, category; upload file là tự vào library.
+
+### Quyết định
+
+Parse ở trình duyệt, ghi qua `POST /api/sync` sẵn có. **Backend, template và IAM
+không đổi một dòng nào**, nên deploy chỉ là `aws s3 sync` bundle static, không
+phải redeploy CloudFormation và không chạm vào `JwtSecret`.
+
+Owner chọn: đặt ở tab Library của Study web; bỏ qua dòng trùng thay vì ghi đè;
+export tải thẳng từ trình duyệt theo bộ lọc đang xem thay vì đi qua S3.
+
+Chi tiết thiết kế, định dạng CSV và giới hạn: `docs/13_CSV_IMPORT_EXPORT.md`.
+
+### File
+
+```text
+backend/public/study/csv.js     MỚI  parse/serialize/planImport, thuần logic
+backend/tests/csv.test.mjs      MỚI  21 test, chạy bằng npm test
+docs/sample-flashcards.csv      MỚI  9 dòng, có sẵn ca trùng/thiếu/quoted
+docs/sample-flashcards-60.csv   MỚI  60 dòng, để thấy cơ chế chia lô
+backend/public/study/{index.html,app.js,styles.css}   UI + nối dây
+backend/package.json            thêm csv.js vào check, thêm script test
+```
+
+### Ba điểm kỹ thuật đáng ghi
+
+**Test bắt được lỗi thật trước khi deploy.** Khi header CSV có tên cột nhưng
+thiếu `wordform`, bản đầu tụt về vị trí mặc định và đọc nhầm sang cột `word`.
+Sửa: chỉ cột có tên trong header mới được đọc, không fallback theo vị trí.
+
+**`meaning` rỗng làm hỏng cả batch.** `/api/sync` gọi `normalizeFlashcard` với
+`allowEmptyMeaning: false` nên một dòng thiếu nghĩa khiến toàn bộ request trả
+400. Vì vậy `csv.js` buộc phải loại dòng đó ở client. Đã xác minh bằng curl.
+
+**Thử lại không sinh card trùng.** `cardId` sinh một lần cho mỗi file chứ không
+sinh lại mỗi lần gửi, nên `/api/sync` upsert đúng bản ghi cũ. Xác minh: gửi cùng
+batch hai lần cho `created: 2` rồi `created: 0, updated: 2`.
+
+### Deploy
+
+Sync 6 object lên `chrome-flashcard-site-<id>`. `game/app.js` không được upload
+vì MD5 local đã khớp ETag S3 - tính năng "Skip (wrong)" của game vốn đã deploy
+từ 2026-07-21, chỉ chưa commit vào git.
+
+Xác minh: 6/6 object HTTP 200, MD5 khớp ETag, index.html phục vụ ra internet có
+đủ hook CSV, `/api/health` ok.
+
+**Rủi ro chỉ lộ ra trên AWS:** trang Study trước giờ chưa từng gọi `/api/sync`,
+route đó chỉ có extension dùng. Local cho phép mọi origin nên không phát hiện
+được. Đã test riêng: `OPTIONS /api/sync` từ origin Study trả 204 với đúng
+allow-origin và POST nằm trong allowed methods.
+
+### Việc còn lại
+
+- Chưa commit. Toàn bộ còn trong working tree.
+- Chưa ai bấm thử trên trình duyệt thật. Máy không có Playwright/Puppeteer và
+  không tự cài thêm dependency. Phần thao tác UI do owner test.
+- Rủi ro throttle DynamoDB vẫn còn về cấu trúc: 60 từ mới khoảng 180 lượt ghi ở
+  1 WCU, sống nhờ burst credit. Chia lô 25 + retry làm hỏng giữa chừng không mất
+  cả mẻ, nhưng cách dứt điểm là chuyển 3 bảng sang `PAY_PER_REQUEST`.
+- Tài khoản demo tên `student` trên AWS vẫn chưa xác minh mật khẩu. Đây là mục
+  tồn đọng từ 2026-07-21, chưa xử lý.

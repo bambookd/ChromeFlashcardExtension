@@ -263,6 +263,7 @@ function resetGame() {
   elements.answerInput.disabled = true;
   elements.submitButton.disabled = true;
   elements.nextButton.disabled = true;
+  elements.nextButton.textContent = "Next prompt";
   elements.feedbackText.textContent = "Exact = 100 points. Strong continuous partial = 50 points.";
   elements.feedbackText.className = "feedback";
   elements.resultBox.textContent = "";
@@ -305,6 +306,12 @@ function nextPrompt() {
     return;
   }
 
+  // Skipping is a deliberate shortcut: leaving a card unanswered scores it as
+  // wrong so the player can move on without typing.
+  if (state.game.currentCard && !state.game.hasAnsweredCurrent) {
+    recordSkippedCard();
+  }
+
   if (state.game.mode === "solo-10-card" && state.game.answered >= state.game.totalCards) {
     completeGame();
     return;
@@ -324,8 +331,9 @@ function nextPrompt() {
   elements.answerInput.value = "";
   elements.answerInput.disabled = false;
   elements.submitButton.disabled = false;
-  elements.nextButton.disabled = true;
-  elements.feedbackText.textContent = "Type the original word.";
+  elements.nextButton.disabled = false;
+  elements.nextButton.textContent = "Skip (wrong)";
+  elements.feedbackText.textContent = "Type the original word, or skip to move on.";
   elements.feedbackText.className = "feedback";
   elements.resultBox.textContent = "";
   elements.answerInput.focus();
@@ -355,6 +363,7 @@ function submitAnswer(event) {
   renderAnswerResult(result);
   elements.answerInput.disabled = true;
   elements.submitButton.disabled = true;
+  elements.nextButton.textContent = "Next prompt";
 
   if (state.game.mode === "solo-10-card" && state.game.answered >= state.game.totalCards) {
     elements.nextButton.disabled = true;
@@ -364,6 +373,12 @@ function submitAnswer(event) {
   }
 
   renderGameStats();
+}
+
+function recordSkippedCard() {
+  state.game.answered += 1;
+  state.game.wrongCount += 1;
+  state.game.hasAnsweredCurrent = true;
 }
 
 function renderAnswerResult(result) {
