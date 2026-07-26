@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -15,21 +15,21 @@
     <title>Triển khai Backend Serverless &amp; Hạ tầng AWS :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785043262" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785043262" rel="stylesheet">
-    <link href="/css/hybrid.css?1785043262" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785043262" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785043262" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785043262" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785043262" rel="stylesheet">
-    <link href="/css/theme.css?1785043262" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785043262" rel="stylesheet">
+    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
+    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
+    <link href="/css/theme.css?1785057752" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785043262" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785043262"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785043262"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785043262"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785043262"></script>
+<script type="text/javascript" src="/js/search.js?1785057752"></script>
  
   </div>
 
@@ -479,7 +479,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.5-translate-export/"
-  title="Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
   class="dd-item 
         
         
@@ -487,7 +487,7 @@
         "
 >
   <a href="/vi/5-workshop/5.5-translate-export/">
-     <b> 5.5. </b> Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu 
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -586,14 +586,14 @@
                        
                 <option
                   id="en"
-                  value="https://workshop-sample.awsfcaj.com/5-workshop/5.3-deploy-backend/"
+                  value="http://localhost:1313/5-workshop/5.3-deploy-backend/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="https://workshop-sample.awsfcaj.com/vi/5-workshop/5.3-deploy-backend/"
+                  value="http://localhost:1313/vi/5-workshop/5.3-deploy-backend/"
                   selected
                 >
                   Tiếng Việt
@@ -732,7 +732,7 @@
 
 	<h4 id="tổng-quan">Tổng quan</h4>
 <p>Phần này trình bày chi tiết cấu hình Infrastructure-as-Code (IaC), quy trình build serverless stack và các bước triển khai lên AWS thông qua <strong>AWS SAM (Serverless Application Model)</strong>.</p>
-<h4 id="khai-báo-hạ-tầng-infratemplateyaml">Khai báo Hạ tầng (<code>infra/template.yaml</code>)</h4>
+<h4 id="định-nghĩa-hạ-tầng-bằng-code-infratemplateyaml">Định nghĩa Hạ tầng bằng Code (<code>infra/template.yaml</code>)</h4>
 <p>Toàn bộ hạ tầng serverless được khai báo theo chuẩn AWS Serverless Application Model. Chi tiết cấu hình tài nguyên bao gồm:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Transform</span>: <span style="color:#ae81ff">AWS::Serverless-2016-10-31</span>
@@ -794,35 +794,35 @@
 <p><strong>Giai đoạn Build Artifact</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd infra
 </span></span><span style="display:flex;"><span>sam build
-</span></span></code></pre></div><p>SAM kiểm tra <code>template.yaml</code>, cài đặt các production npm dependency và build các package zip tối ưu cho Node.js 24.x runtime.</p>
+</span></span></code></pre></div><p>SAM kiểm tra và xác thực (validate) <code>template.yaml</code>, cài đặt các production npm dependency, sau đó đóng gói (build) các file zip tối ưu cho runtime Node.js 24.x.</p>
 </li>
 <li>
-<p><strong>Khởi tạo CloudFormation Stack</strong>:</p>
+<p><strong>Triển khai CloudFormation Stack (Provisioning)</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sam deploy --guided
 </span></span></code></pre></div><p>Các giá trị parameter được cung cấp trong quá trình deployment:</p>
 <ul>
-<li><strong>Stack Name</strong>: <code>chrome-flashcard-backend</code></li>
-<li><strong>Target Region</strong>: <code>us-east-1</code></li>
+<li><strong>Stack Name</strong>: <code>chrome-flashcard-dev</code></li>
+<li><strong>Target Region</strong>: <code>ap-southeast-1</code></li>
 <li><strong>Parameter JwtSecret</strong>: <em>(Chuỗi secret key cung cấp tại thời điểm deployment)</em></li>
 <li><strong>Parameter AllowedOrigins</strong>: <code>*</code></li>
 </ul>
 </li>
 <li>
-<p><strong>Tóm tắt Tài nguyên Cloud đã Provision</strong>:</p>
+<p><strong>Tóm tắt các tài nguyên cloud đã được khởi tạo (provisioned)</strong>:</p>
 <ul>
-<li><code>AWS::Serverless::HttpApi</code> -&gt; API Gateway endpoint URL được khởi tạo: <code>https://&lt;api-id&gt;.execute-api.us-east-1.amazonaws.com</code></li>
-<li><code>AWS::Lambda::Function</code> -&gt; Lambda function được gán IAM role có quyền CRUD với DynamoDB &amp; S3.</li>
+<li><code>AWS::Serverless::HttpApi</code> -&gt; URL endpoint của API Gateway được khởi tạo: <code>https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com</code></li>
+<li><code>AWS::Lambda::Function</code> -&gt; Lambda function được gán IAM role với đầy đủ quyền CRUD trên DynamoDB &amp; S3.</li>
 <li><code>AWS::DynamoDB::Table</code> (3 bảng) -&gt; <code>UsersTable</code>, <code>FlashcardsTable</code>, và <code>CategoriesTable</code>.</li>
-<li><code>AWS::S3::Bucket</code> -&gt; Private encrypted S3 bucket lưu trữ export file kèm các quy tắc lifecycle tự động hết hạn.</li>
+<li><code>AWS::S3::Bucket</code> -&gt; Private S3 bucket được mã hóa để lưu trữ file export kèm các quy tắc lifecycle (hết hạn tự động).</li>
 </ul>
 </li>
 </ol>
-<h4 id="xác-minh-endpoint-vận-hành">Xác minh Endpoint Vận hành</h4>
-<p>Khả năng hoạt động của hệ thống được xác minh sau deployment thông qua health check tới live API Gateway HTTP API endpoint:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://&lt;api-id&gt;.execute-api.us-east-1.amazonaws.com/api/health
+<h4 id="kiểm-tra-verify-endpoint-vận-hành">Kiểm tra (Verify) Endpoint Vận hành</h4>
+<p>Trạng thái hoạt động của hệ thống được xác minh sau khi deploy bằng cách gửi request health check tới endpoint live của API Gateway HTTP API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com/api/health
 </span></span></code></pre></div><p>Kết quả thực thi:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>,<span style="color:#f92672">&#34;store&#34;</span>:<span style="color:#e6db74">&#34;dynamodb&#34;</span>}
-</span></span></code></pre></div><p>Response xác nhận kết nối trực tiếp đang hoạt động giữa AWS Lambda và tầng lưu trữ Amazon DynamoDB.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;ok&#34;</span>:<span style="color:#66d9ef">true</span>,<span style="color:#f92672">&#34;service&#34;</span>:<span style="color:#e6db74">&#34;flashcard-backend&#34;</span>}
+</span></span></code></pre></div><p>Response trả về xác nhận kết nối thông suốt giữa API Gateway, AWS Lambda và tầng ứng dụng backend.</p>
 
 
 
@@ -1315,19 +1315,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785043262"></script>
-    <script src="/js/jquery.sticky.js?1785043262"></script>
-    <script src="/js/featherlight.min.js?1785043262"></script>
-    <script src="/js/highlight.pack.js?1785043262"></script>
+    <script src="/js/clipboard.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
+    <script src="/js/jquery.sticky.js?1785057752"></script>
+    <script src="/js/featherlight.min.js?1785057752"></script>
+    <script src="/js/highlight.pack.js?1785057752"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785043262"></script>
-    <script src="/js/learn.js?1785043262"></script>
-    <script src="/js/hugo-learn.js?1785043262"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
+    <script src="/js/learn.js?1785057752"></script>
+    <script src="/js/hugo-learn.js?1785057752"></script>
 
-    <link href="/mermaid/mermaid.css?1785043262" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785043262"></script>
+    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785057752"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

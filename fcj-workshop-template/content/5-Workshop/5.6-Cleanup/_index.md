@@ -33,8 +33,8 @@ The automated stack destruction process cleanly removed the following AWS cloud 
 
 | AWS Resource | Resource Name / Pattern | Action Taken |
 |---|---|---|
-| **API Gateway** | `HttpApi` (`chrome-flashcard-backend-*`) | Terminated and HTTP endpoints released |
-| **AWS Lambda** | `ApiFunction` (`chrome-flashcard-backend-*`) | Function, execution runtime, and IAM Execution Roles deleted |
+| **API Gateway** | `HttpApi` (`chrome-flashcard-dev-*`) | Terminated and HTTP endpoints released |
+| **AWS Lambda** | `ApiFunction` (`chrome-flashcard-dev-*`) | Function, execution runtime, and IAM Execution Roles deleted |
 | **DynamoDB Tables** | `UsersTable`, `FlashcardsTable`, `CategoriesTable` | Tables destroyed & provisioned RCUs/WCUs released |
 | **Amazon S3** | `ExportBucket` | Bucket policy and storage container removed |
 | **IAM Policies** | Inline SAM policies (`DynamoDBCrudPolicy`, `S3CrudPolicy`) | Role policies detached and deleted |
@@ -45,22 +45,22 @@ Completion of the teardown process was empirically verified using the AWS CLI:
 
 1. **CloudFormation Audit**:
    ```bash
-   aws cloudformation describe-stacks --stack-name chrome-flashcard-backend
+   aws cloudformation describe-stacks --stack-name chrome-flashcard-dev --region ap-southeast-1
    ```
-   *Result*: `Stack with id chrome-flashcard-backend does not exist` (Status confirmed).
+   *Result*: `Stack with id chrome-flashcard-dev does not exist` (Status confirmed).
 
 2. **DynamoDB Audit**:
    ```bash
-   aws dynamodb list-tables
+   aws dynamodb list-tables --region ap-southeast-1
    ```
    *Result*: Verified zero remaining project-related table instances.
 
 3. **CloudWatch Log Audit**:
    ```bash
-   aws logs describe-log-groups --log-group-name-prefix "/aws/lambda/chrome-flashcard"
+   aws logs describe-log-groups --log-group-name-prefix "/aws/lambda/chrome-flashcard" --region ap-southeast-1
    ```
    *Result*: Log groups successfully purged or set to short retention windows, completing system decommissioning.
 
 #### Project Conclusion
 
-The project successfully demonstrated an **offline-first Chrome Extension (MV3)** combined with a scalable, secure **AWS Serverless infrastructure** (API Gateway, Lambda, DynamoDB, Amazon Translate, and S3). System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.
+The project successfully demonstrated an **offline-first Chrome Extension (MV3)** combined with a scalable, secure **AWS Serverless infrastructure** (API Gateway, Lambda, DynamoDB, and S3). System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.

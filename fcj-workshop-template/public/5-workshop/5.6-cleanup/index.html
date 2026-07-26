@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -15,21 +15,21 @@
     <title>Resource Teardown &amp; Operational Verification :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785043262" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785043262" rel="stylesheet">
-    <link href="/css/hybrid.css?1785043262" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785043262" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785043262" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785043262" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785043262" rel="stylesheet">
-    <link href="/css/theme.css?1785043262" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785043262" rel="stylesheet">
+    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
+    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
+    <link href="/css/theme.css?1785057752" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785043262" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785043262"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785043262"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785043262"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
+        var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785043262"></script>
+<script type="text/javascript" src="/js/search.js?1785057752"></script>
  
   </div>
 
@@ -479,7 +479,7 @@
             
 <li
   data-nav-id="/5-workshop/5.5-translate-export/"
-  title="Study Web Application, Translation Engine &amp; Data Export"
+  title="Study Web Application &amp; Data Export"
   class="dd-item 
         
         
@@ -487,7 +487,7 @@
         "
 >
   <a href="/5-workshop/5.5-translate-export/">
-     <b> 5.5. </b> Study Web Application, Translation Engine &amp; Data Export 
+     <b> 5.5. </b> Study Web Application &amp; Data Export 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -586,7 +586,7 @@
                        
                 <option
                   id="en"
-                  value="https://workshop-sample.awsfcaj.com/5-workshop/5.6-cleanup/"
+                  value="http://localhost:1313/5-workshop/5.6-cleanup/"
                   selected
                 >
                   English
@@ -594,7 +594,7 @@
                             
                 <option
                   id="vi"
-                  value="https://workshop-sample.awsfcaj.com/vi/5-workshop/5.6-cleanup/"
+                  value="http://localhost:1313/vi/5-workshop/5.6-cleanup/"
                 >
                   Tiếng Việt
                 </option>
@@ -760,12 +760,12 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 	<tbody>
 			<tr>
 					<td><strong>API Gateway</strong></td>
-					<td><code>HttpApi</code> (<code>chrome-flashcard-backend-*</code>)</td>
+					<td><code>HttpApi</code> (<code>chrome-flashcard-dev-*</code>)</td>
 					<td>Terminated and HTTP endpoints released</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
-					<td><code>ApiFunction</code> (<code>chrome-flashcard-backend-*</code>)</td>
+					<td><code>ApiFunction</code> (<code>chrome-flashcard-dev-*</code>)</td>
 					<td>Function, execution runtime, and IAM Execution Roles deleted</td>
 			</tr>
 			<tr>
@@ -790,22 +790,22 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 <ol>
 <li>
 <p><strong>CloudFormation Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-backend
-</span></span></code></pre></div><p><em>Result</em>: <code>Stack with id chrome-flashcard-backend does not exist</code> (Status confirmed).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-dev --region ap-southeast-1
+</span></span></code></pre></div><p><em>Result</em>: <code>Stack with id chrome-flashcard-dev does not exist</code> (Status confirmed).</p>
 </li>
 <li>
 <p><strong>DynamoDB Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables --region ap-southeast-1
 </span></span></code></pre></div><p><em>Result</em>: Verified zero remaining project-related table instances.</p>
 </li>
 <li>
 <p><strong>CloudWatch Log Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span> --region ap-southeast-1
 </span></span></code></pre></div><p><em>Result</em>: Log groups successfully purged or set to short retention windows, completing system decommissioning.</p>
 </li>
 </ol>
 <h4 id="project-conclusion">Project Conclusion</h4>
-<p>The project successfully demonstrated an <strong>offline-first Chrome Extension (MV3)</strong> combined with a scalable, secure <strong>AWS Serverless infrastructure</strong> (API Gateway, Lambda, DynamoDB, Amazon Translate, and S3). System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.</p>
+<p>The project successfully demonstrated an <strong>offline-first Chrome Extension (MV3)</strong> combined with a scalable, secure <strong>AWS Serverless infrastructure</strong> (API Gateway, Lambda, DynamoDB, and S3). System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.</p>
 
 
 
@@ -1285,7 +1285,7 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 	 
 	 
 		
-			<a class="nav nav-prev" href="/5-workshop/5.5-translate-export/" title="Study Web Application, Translation Engine &amp; Data Export"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/5-workshop/5.5-translate-export/" title="Study Web Application &amp; Data Export"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/6-self-evaluation/" title="Self-Assessment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1298,19 +1298,19 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785043262"></script>
-    <script src="/js/jquery.sticky.js?1785043262"></script>
-    <script src="/js/featherlight.min.js?1785043262"></script>
-    <script src="/js/highlight.pack.js?1785043262"></script>
+    <script src="/js/clipboard.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
+    <script src="/js/jquery.sticky.js?1785057752"></script>
+    <script src="/js/featherlight.min.js?1785057752"></script>
+    <script src="/js/highlight.pack.js?1785057752"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785043262"></script>
-    <script src="/js/learn.js?1785043262"></script>
-    <script src="/js/hugo-learn.js?1785043262"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
+    <script src="/js/learn.js?1785057752"></script>
+    <script src="/js/hugo-learn.js?1785057752"></script>
 
-    <link href="/mermaid/mermaid.css?1785043262" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785043262"></script>
+    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785057752"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

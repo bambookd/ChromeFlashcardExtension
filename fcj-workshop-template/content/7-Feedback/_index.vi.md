@@ -5,40 +5,34 @@ weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud AI Journey, giúp team FCAJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
 
 ### Đánh giá chung
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCAJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+## Đánh giá về môi trường thực tập
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+### 1. Môi trường làm việc
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+FCAJ mang đến một môi trường làm việc chuyên nghiệp, thân thiện và cởi mở. Mọi thành viên trong nhóm đều luôn sẵn sàng chia sẻ kiến thức, hướng dẫn mỗi khi mình gặp khó khăn và luôn tạo một môi trường học tập cởi mở, hỗ trợ trong suốt kỳ thực tập. Không gian làm việc được bố trí gọn gàng, tạo điều kiện thuận lợi để mọi người tập trung và nâng cao hiệu quả công việc. Đây là một môi trường rất phù hợp để sinh viên thực tập học hỏi và phát triển.
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+### 2. Sự hướng dẫn của Mentor và sự hỗ trợ từ Team
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+Trong suốt quá trình thực tập, mentor luôn theo sát, hướng dẫn tận tình và giải thích chi tiết những nội dung mình chưa nắm rõ. Không chỉ hỗ trợ trong giờ làm việc, mentor còn sẵn sàng giải đáp thắc mắc ngoài giờ hành chính khi cần thiết. Bên cạnh việc hướng dẫn chuyên môn, mentor còn chia sẻ nhiều kinh nghiệm thực tế về quy trình phát triển hệ thống, phương pháp giải quyết vấn đề và định hướng nghề nghiệp trong lĩnh vực Cloud Computing và AWS Services.
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+Ngoài ra, Team Admin và các thành viên trong nhóm luôn hỗ trợ nhanh chóng về thủ tục, tài liệu cũng như các vấn đề phát sinh trong quá trình thực tập, giúp mình có thể tập trung hoàn thành tốt các nhiệm vụ được giao.
 
+### 3. Nội dung công việc và cơ hội học hỏi
 
-### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+Nội dung học tập và công việc có sự liên quan chặt chẽ đến chuyên ngành mình đang theo học và phù hợp với định hướng nghề nghiệp trong lĩnh vực Cloud Computing. Trong quá trình thực tập, mình có cơ hội thực hành trực tiếp với các dịch vụ AWS, quy trình triển khai hệ thống, công cụ quản lý và các tiêu chuẩn làm việc trong doanh nghiệp.
 
+Không chỉ được vận dụng những kiến thức đã học tại trường, mình còn được tiếp cận nhiều công nghệ và quy trình mới, từ đó mở rộng kiến thức chuyên môn và nâng cao kỹ năng thực hành.
+
+### 4. Văn hóa doanh nghiệp và tinh thần đồng đội
+
+Một trong những điểm mình ấn tượng nhất là văn hóa làm việc tích cực của công ty. Mọi người luôn tôn trọng ý kiến của nhau, sẵn sàng hỗ trợ nhau và cùng hướng đến mục tiêu chung. Các thành viên đều chủ động phối hợp, chia sẻ công việc và hỗ trợ lẫn nhau mà không phân biệt vị trí hay vai trò.
+
+### 5. Đánh giá chung
+
+Nhìn chung, kỳ thực tập tại FCAJ là một trải nghiệm rất ý nghĩa đối với mình. Mình không chỉ tích lũy được kiến thức và kỹ năng chuyên môn về Cloud Computing và AWS Services mà còn rèn luyện được tác phong làm việc chuyên nghiệp, kỹ năng giao tiếp, làm việc nhóm và tư duy giải quyết vấn đề. Những kinh nghiệm và bài học thu được trong thời gian thực tập sẽ là nền tảng quan trọng giúp mình tự tin hơn trong quá trình học tập cũng như công việc sau khi tốt nghiệp.
 
 ### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+- Mình xin chân thành cảm ơn AWS và Team Admin FCAJ đã luôn nhiệt tình hỗ trợ, hướng dẫn và tạo điều kiện để mình hoàn thành tốt kỳ thực tập. Đây là một trải nghiệm vô cùng ý nghĩa, giúp mình tích lũy nhiều kiến thức, kỹ năng và kinh nghiệm thực tế, đồng thời định hướng rõ ràng hơn cho con đường phát triển nghề nghiệp trong lĩnh vực Cloud Computing và AWS Services.

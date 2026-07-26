@@ -37,7 +37,6 @@ ChromeFlashcardExtension/
 │   ├── lambda.js                # AWS Lambda handler wrapper via serverless-http
 │   └── src/
 │       ├── dynamoRepositories.js # DynamoDB CRUD operations
-│       ├── translateService.js  # Amazon Translate SDK integration
 │       └── exportService.js     # Amazon S3 Pre-signed URL generation
 └── infra/
     └── template.yaml            # AWS SAM CloudFormation infrastructure definition

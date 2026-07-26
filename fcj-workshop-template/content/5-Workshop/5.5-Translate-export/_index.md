@@ -1,5 +1,5 @@
 ---
-title: "Study Web Application, Translation Engine & Data Export"
+title: "Study Web Application & Data Export"
 date: 2024-01-01
 weight: 5
 chapter: false
@@ -8,32 +8,7 @@ pre: " <b> 5.5. </b> "
 
 #### Overview & Integration Details
 
-This section details the implementation of the **Study Web Application**, automated translation via **Amazon Translate**, and secure document exports using **Amazon S3 Pre-signed URLs**.
-
-#### Amazon Translate SDK Integration Engine
-
-Machine translation is integrated into the Express serverless backend via `@aws-sdk/client-translate`. When a client sends a request to `POST /api/translate`, Lambda programmatically calls the Amazon Translate service.
-
-```javascript
-// Module: backend/src/translateService.js
-const { TranslateClient, TranslateTextCommand } = require('@aws-sdk/client-translate');
-
-async function translateText(text, sourceLang = 'en', targetLang = 'vi') {
-  const client = new TranslateClient({ region: process.env.AWS_REGION || 'us-east-1' });
-  const command = new TranslateTextCommand({
-    Text: text.trim(),
-    SourceLanguageCode: sourceLang,
-    TargetLanguageCode: targetLang
-  });
-  
-  const response = await client.send(command);
-  return {
-    translatedText: response.TranslatedText,
-    sourceLanguage: response.SourceLanguageCode,
-    targetLanguage: response.TargetLanguageCode
-  };
-}
-```
+This section details the implementation of the **Study Web Application** and secure document exports using **Amazon S3 Pre-signed URLs**.
 
 #### Study Web Application Architecture
 
@@ -70,27 +45,42 @@ Client Popup / App               AWS Lambda                         Amazon S3 (P
 
 ```javascript
 // Module: backend/src/exportService.js
-const { S3Client, PutObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3');
-const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
+import { GetObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-async function exportUserFlashcards(userId, username, flashcards) {
-  const s3Client = new S3Client({ region: process.env.AWS_REGION });
-  const objectKey = `${userId}/flashcards-${username}-${Date.now()}.json`;
-  const bucketName = process.env.EXPORT_BUCKET;
+export function createExportService(config) {
+  const s3 = new S3Client({ region: config.awsRegion });
 
-  // Write JSON payload to private S3 bucket
-  await s3Client.send(new PutObjectCommand({
-    Bucket: bucketName,
-    Key: objectKey,
-    Body: JSON.stringify(flashcards, null, 2),
-    ContentType: 'application/json'
-  }));
+  return {
+    async exportFlashcards(user, flashcards) {
+      const generatedAt = new Date();
+      const fileName = `flashcards-${user.username}-${formatTimestamp(generatedAt)}.json`;
+      const body = `${JSON.stringify({
+        generatedAt: generatedAt.toISOString(),
+        user: { userId: user.userId, username: user.username },
+        count: flashcards.length,
+        flashcards
+      }, null, 2)}\n`;
 
-  // Generate 15-minute Pre-signed GET URL (900 seconds)
-  const getCommand = new GetObjectCommand({ Bucket: bucketName, Key: objectKey });
-  const downloadUrl = await getSignedUrl(s3Client, getCommand, { expiresIn: 900 });
+      if (config.dataStore === "dynamodb") {
+        const key = `${user.userId}/${fileName}`;
+        await s3.send(new PutObjectCommand({
+          Bucket: config.exportBucket,
+          Key: key,
+          Body: body,
+          ContentType: "application/json"
+        }));
 
-  return { downloadUrl, objectKey, expiresInSeconds: 900 };
+        const downloadUrl = await getSignedUrl(
+          s3,
+          new GetObjectCommand({ Bucket: config.exportBucket, Key: key }),
+          { expiresIn: 900 }
+        );
+
+        return { ok: true, fileName, downloadUrl };
+      }
+    }
+  };
 }
 ```
 

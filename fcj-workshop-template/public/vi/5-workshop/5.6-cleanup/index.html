@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -15,21 +15,21 @@
     <title>Giải phóng Tài nguyên &amp; Đánh giá Vận hành :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785043262" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785043262" rel="stylesheet">
-    <link href="/css/hybrid.css?1785043262" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785043262" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785043262" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785043262" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785043262" rel="stylesheet">
-    <link href="/css/theme.css?1785043262" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785043262" rel="stylesheet">
+    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
+    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
+    <link href="/css/theme.css?1785057752" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785043262" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785043262"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785043262"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785043262"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785043262"></script>
+<script type="text/javascript" src="/js/search.js?1785057752"></script>
  
   </div>
 
@@ -479,7 +479,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.5-translate-export/"
-  title="Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
   class="dd-item 
         
         
@@ -487,7 +487,7 @@
         "
 >
   <a href="/vi/5-workshop/5.5-translate-export/">
-     <b> 5.5. </b> Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu 
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -586,14 +586,14 @@
                        
                 <option
                   id="en"
-                  value="https://workshop-sample.awsfcaj.com/5-workshop/5.6-cleanup/"
+                  value="http://localhost:1313/5-workshop/5.6-cleanup/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="https://workshop-sample.awsfcaj.com/vi/5-workshop/5.6-cleanup/"
+                  value="http://localhost:1313/vi/5-workshop/5.6-cleanup/"
                   selected
                 >
                   Tiếng Việt
@@ -730,25 +730,25 @@
 
 
 
-	<h4 id="tóm-tắt-teardown--vận-hành">Tóm tắt Teardown &amp; Vận hành</h4>
-<p>Phần này trình bày chi tiết quy trình teardown tài nguyên, workflow hủy stack, quản lý chi phí và các bước xác minh sau vận hành cho hạ tầng AWS cloud đã triển khai.</p>
-<h4 id="quy-trình-decommission-hạ-tầng-tự-động">Quy trình Decommission Hạ tầng Tự động</h4>
+	<h4 id="tóm-tắt-quy-trình-teardown--vận-hành">Tóm tắt Quy trình Teardown &amp; Vận hành</h4>
+<p>Phần này mô tả chi tiết quy trình teardown (giải phóng) tài nguyên, workflow hủy stack, quản lý chi phí và các bước kiểm tra (audit) sau vận hành cho hạ tầng AWS cloud đã triển khai.</p>
+<h4 id="quy-trình-decommission-gỡ-bỏ-hạ-tầng-tự-động">Quy trình Decommission (Gỡ bỏ) Hạ tầng Tự động</h4>
 <p>Để tránh phát sinh chi phí không cần thiết và đảm bảo dọn dẹp toàn bộ tài nguyên sau khi hoàn tất đánh giá dự án, quy trình teardown được thực thi theo các bước:</p>
 <ol>
 <li>
-<p><strong>Giai đoạn Xóa sạch Dữ liệu</strong>:
-Trước khi xóa CloudFormation stack, toàn bộ object trong private và public S3 bucket đều được dọn dẹp sạch:</p>
+<p><strong>Giai đoạn Xóa Dữ liệu</strong>:
+Trước khi xóa CloudFormation stack, toàn bộ object trong private và public S3 bucket đều được xóa sạch:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 rm s3://&lt;export-bucket-name&gt; --recursive
 </span></span></code></pre></div></li>
 <li>
-<p><strong>Hủy CloudFormation Stack</strong>:
+<p><strong>Hủy CloudFormation Stack (Stack Deletion)</strong>:
 Chạy lệnh xóa stack của SAM CLI để hủy toàn bộ tài nguyên đã được provision trong <code>template.yaml</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd infra
 </span></span><span style="display:flex;"><span>sam delete --no-prompts
 </span></span></code></pre></div></li>
 </ol>
-<h4 id="danh-mục-hạ-tầng-đã-decommission">Danh mục Hạ tầng đã Decommission</h4>
-<p>Quá trình gỡ bỏ stack tự động đã giải phóng thành công các tài nguyên đám mây sau:</p>
+<h4 id="danh-mục-các-tài-nguyên-hạ-tầng-đã-gỡ-bỏ-decommissioned">Danh mục các tài nguyên hạ tầng đã gỡ bỏ (Decommissioned)</h4>
+<p>Quá trình gỡ bỏ stack tự động đã giải phóng thành công các tài nguyên cloud sau:</p>
 <table>
 	<thead>
 			<tr>
@@ -760,52 +760,52 @@ Chạy lệnh xóa stack của SAM CLI để hủy toàn bộ tài nguyên đã 
 	<tbody>
 			<tr>
 					<td><strong>API Gateway</strong></td>
-					<td><code>HttpApi</code> (<code>chrome-flashcard-backend-*</code>)</td>
-					<td>Đã hủy &amp; giải phóng các HTTP endpoint</td>
+					<td><code>HttpApi</code> (<code>chrome-flashcard-dev-*</code>)</td>
+					<td>Hủy và giải phóng các HTTP endpoint</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
-					<td><code>ApiFunction</code> (<code>chrome-flashcard-backend-*</code>)</td>
-					<td>Đã xóa function, runtime container &amp; IAM Execution Role</td>
+					<td><code>ApiFunction</code> (<code>chrome-flashcard-dev-*</code>)</td>
+					<td>Xóa function, runtime container và IAM Execution Role</td>
 			</tr>
 			<tr>
 					<td><strong>Bảng DynamoDB</strong></td>
 					<td><code>UsersTable</code>, <code>FlashcardsTable</code>, <code>CategoriesTable</code></td>
-					<td>Đã xóa các bảng &amp; giải phóng RCU/WCU đã provision</td>
+					<td>Xóa các bảng và giải phóng RCU/WCU đã provision</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
 					<td><code>ExportBucket</code></td>
-					<td>Đã xóa bucket policy và container lưu trữ</td>
+					<td>Xóa bucket policy và container lưu trữ</td>
 			</tr>
 			<tr>
 					<td><strong>IAM Policies</strong></td>
 					<td>Inline SAM policies (<code>DynamoDBCrudPolicy</code>, <code>S3CrudPolicy</code>)</td>
-					<td>Đã gỡ liên kết policy và xóa role</td>
+					<td>Gỡ liên kết policy và xóa role</td>
 			</tr>
 	</tbody>
 </table>
-<h4 id="xác-minh--audit-sau-vận-hành">Xác minh &amp; Audit Sau Vận hành</h4>
+<h4 id="kiểm-tra--audit-sau-vận-hành">Kiểm tra &amp; Audit Sau Vận hành</h4>
 <p>Việc hoàn tất quy trình teardown được xác minh trực tiếp bằng AWS CLI:</p>
 <ol>
 <li>
-<p><strong>CloudFormation Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-backend
-</span></span></code></pre></div><p><em>Kết quả</em>: <code>Stack with id chrome-flashcard-backend does not exist</code> (Đã xác nhận trạng thái).</p>
+<p><strong>Kiểm tra CloudFormation Stack</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-dev --region ap-southeast-1
+</span></span></code></pre></div><p><em>Kết quả</em>: <code>Stack with id chrome-flashcard-dev does not exist</code> (Đã xác nhận trạng thái).</p>
 </li>
 <li>
-<p><strong>DynamoDB Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables
+<p><strong>Kiểm tra Bảng DynamoDB</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables --region ap-southeast-1
 </span></span></code></pre></div><p><em>Kết quả</em>: Xác minh không còn bảng nào liên quan đến dự án.</p>
 </li>
 <li>
-<p><strong>CloudWatch Log Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span>
-</span></span></code></pre></div><p><em>Kết quả</em>: Các log group đã được dọn dẹp thành công hoặc đặt retention window ngắn, hoàn tất quá trình decommission hệ thống.</p>
+<p><strong>Kiểm tra Log Group CloudWatch</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span> --region ap-southeast-1
+</span></span></code></pre></div><p><em>Kết quả</em>: Các log group đã được dọn dẹp thành công hoặc cấu hình thời hạn lưu trữ (retention window) ngắn, hoàn tất quá trình decommission hệ thống.</p>
 </li>
 </ol>
-<h4 id="kết-luận-dự-án">Kết luận Dự án</h4>
-<p>Dự án đã chứng minh thành công mô hình <strong>offline-first Chrome Extension (MV3)</strong> kết hợp với hạ tầng <strong>AWS Serverless</strong> bảo mật và có khả năng mở rộng (API Gateway, Lambda, DynamoDB, Amazon Translate và S3). Quá trình xác minh hệ thống khẳng định sự ổn định khi vận hành, cơ chế đồng bộ dữ liệu tin cậy và khả năng quản lý hoàn chỉnh vòng đời tài nguyên trên cloud.</p>
+<h4 id="kết-luận">Kết luận</h4>
+<p>Dự án đã chứng minh sự hiệu quả của mô hình <strong>offline-first Chrome Extension (MV3)</strong> kết hợp với hạ tầng <strong>AWS Serverless</strong> bảo mật và có khả năng mở rộng (API Gateway, Lambda, DynamoDB và S3). Quá trình kiểm thử khẳng định hệ thống vận hành ổn định, cơ chế đồng bộ dữ liệu tin cậy và khả năng kiểm soát hoàn toàn vòng đời (lifecycle) tài nguyên trên cloud.</p>
 
 
 
@@ -1285,7 +1285,7 @@ Chạy lệnh xóa stack của SAM CLI để hủy toàn bộ tài nguyên đã 
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/5-workshop/5.5-translate-export/" title="Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/5-workshop/5.5-translate-export/" title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/vi/6-self-evaluation/" title="Tự đánh giá" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1298,19 +1298,19 @@ Chạy lệnh xóa stack của SAM CLI để hủy toàn bộ tài nguyên đã 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785043262"></script>
-    <script src="/js/jquery.sticky.js?1785043262"></script>
-    <script src="/js/featherlight.min.js?1785043262"></script>
-    <script src="/js/highlight.pack.js?1785043262"></script>
+    <script src="/js/clipboard.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
+    <script src="/js/jquery.sticky.js?1785057752"></script>
+    <script src="/js/featherlight.min.js?1785057752"></script>
+    <script src="/js/highlight.pack.js?1785057752"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785043262"></script>
-    <script src="/js/learn.js?1785043262"></script>
-    <script src="/js/hugo-learn.js?1785043262"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
+    <script src="/js/learn.js?1785057752"></script>
+    <script src="/js/hugo-learn.js?1785057752"></script>
 
-    <link href="/mermaid/mermaid.css?1785043262" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785043262"></script>
+    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785057752"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

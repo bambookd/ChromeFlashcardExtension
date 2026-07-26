@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -15,21 +15,21 @@
     <title>Yêu cầu Môi trường &amp; Thông số Kỹ thuật :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785043262" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785043262" rel="stylesheet">
-    <link href="/css/hybrid.css?1785043262" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785043262" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785043262" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785043262" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785043262" rel="stylesheet">
-    <link href="/css/theme.css?1785043262" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785043262" rel="stylesheet">
+    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
+    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
+    <link href="/css/theme.css?1785057752" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785043262" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785043262"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785043262"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785043262"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785043262"></script>
+<script type="text/javascript" src="/js/search.js?1785057752"></script>
  
   </div>
 
@@ -479,7 +479,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.5-translate-export/"
-  title="Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
   class="dd-item 
         
         
@@ -487,7 +487,7 @@
         "
 >
   <a href="/vi/5-workshop/5.5-translate-export/">
-     <b> 5.5. </b> Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu 
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -586,14 +586,14 @@
                        
                 <option
                   id="en"
-                  value="https://workshop-sample.awsfcaj.com/5-workshop/5.2-prerequiste/"
+                  value="http://localhost:1313/5-workshop/5.2-prerequiste/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="https://workshop-sample.awsfcaj.com/vi/5-workshop/5.2-prerequiste/"
+                  value="http://localhost:1313/vi/5-workshop/5.2-prerequiste/"
                   selected
                 >
                   Tiếng Việt
@@ -731,7 +731,7 @@
 
 
 	<h4 id="yêu-cầu-môi-trường-phát-triển--công-cụ">Yêu cầu Môi trường Phát triển &amp; Công cụ</h4>
-<p>Phần này thông tin chi tiết về thông số phần mềm, dependency phát triển và cấu hình hệ thống cần thiết để build và vận hành ứng dụng.</p>
+<p>Phần này mô tả chi tiết các thông số phần mềm, dependency phát triển và cấu hình hệ thống cần thiết để build và vận hành ứng dụng.</p>
 <h4 id="dependency-kỹ-thuật--yêu-cầu-phiên-bản">Dependency Kỹ thuật &amp; Yêu cầu Phiên bản</h4>
 <table>
 	<thead>
@@ -746,64 +746,63 @@
 			<tr>
 					<td><strong>Node.js</strong></td>
 					<td><code>v18.x</code> / <code>v20.x</code> / <code>v24.x</code></td>
-					<td>JavaScript runtime engine cho backend execution &amp; npm package management</td>
+					<td>Môi trường thực thi JavaScript (runtime) cho backend và quản lý package npm</td>
 					<td><code>node -v</code></td>
 			</tr>
 			<tr>
 					<td><strong>npm</strong></td>
 					<td><code>v9.x</code>+</td>
-					<td>Package dependency manager cho các Node module</td>
+					<td>Trình quản lý package dependency cho Node.js</td>
 					<td><code>npm -v</code></td>
 			</tr>
 			<tr>
 					<td><strong>AWS CLI</strong></td>
 					<td><code>v2.x</code></td>
-					<td>Command-line interface cho AWS authentication &amp; quản lý dịch vụ</td>
+					<td>Công cụ dòng lệnh (CLI) để xác thực (authentication) và quản lý dịch vụ AWS</td>
 					<td><code>aws sts get-caller-identity</code></td>
 			</tr>
 			<tr>
 					<td><strong>AWS SAM CLI</strong></td>
 					<td><code>v1.100.x</code>+</td>
-					<td>Serverless application orchestration, packaging và CloudFormation deployment</td>
+					<td>Đóng gói, điều phối (orchestration) serverless application và triển khai (deploy) CloudFormation</td>
 					<td><code>sam --version</code></td>
 			</tr>
 			<tr>
 					<td><strong>Google Chrome</strong></td>
 					<td>Current Stable (hỗ trợ MV3)</td>
-					<td>Host browser runtime để load Manifest V3 extension và manual test</td>
+					<td>Trình duyệt chạy extension Manifest V3 và phục vụ kiểm thử thủ công (manual testing)</td>
 					<td>N/A</td>
 			</tr>
 	</tbody>
 </table>
 <h4 id="cấu-trúc-repository--layout-tài-nguyên">Cấu trúc Repository &amp; Layout Tài nguyên</h4>
-<p>Repository của dự án (<code>ChromeFlashcardExtension</code>) được cấu trúc theo nguyên tắc phân tách vai trò rõ ràng (separation of concerns):</p>
+<p>Repository của dự án (<code>ChromeFlashcardExtension</code>) được tổ chức tách biệt rõ ràng các thành phần (separation of concerns):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ChromeFlashcardExtension/
 </span></span><span style="display:flex;"><span>├── manifest.json                # Cấu hình Chrome Extension Manifest V3
 </span></span><span style="display:flex;"><span>├── background.js                # Background service worker của extension
-</span></span><span style="display:flex;"><span>├── contentScript.js             # Script inject vào DOM trang web &amp; listener bôi đen văn bản
+</span></span><span style="display:flex;"><span>├── contentScript.js             # Script inject vào DOM trang web &amp; listener sự kiện bôi đen văn bản
 </span></span><span style="display:flex;"><span>├── extension-config.js          # Cấu hình mapping API endpoint phía client
 </span></span><span style="display:flex;"><span>├── popup.html / popup.js        # Giao diện Popup extension &amp; auth controller
 </span></span><span style="display:flex;"><span>├── backend/                     # Ứng dụng Serverless Express backend
 </span></span><span style="display:flex;"><span>│   ├── app.js                   # Khởi tạo ứng dụng Express &amp; middleware
-</span></span><span style="display:flex;"><span>│   ├── server.js                # File entry chạy HTTP server standalone (phát triển Local)
+</span></span><span style="display:flex;"><span>│   ├── server.js                # File entry chạy HTTP server standalone (môi trường local)
 </span></span><span style="display:flex;"><span>│   ├── lambda.js                # Wrapper handler cho AWS Lambda qua serverless-http
 </span></span><span style="display:flex;"><span>│   └── src/
 </span></span><span style="display:flex;"><span>│       ├── dynamoRepositories.js # Các thao tác CRUD với DynamoDB
-</span></span><span style="display:flex;"><span>│       ├── translateService.js  # Tích hợp SDK Amazon Translate
-</span></span><span style="display:flex;"><span>│       └── exportService.js     # Khởi tạo Pre-signed URL cho Amazon S3
+</span></span><span style="display:flex;"><span>│       └── exportService.js     # Tạo pre-signed URL cho Amazon S3
 </span></span><span style="display:flex;"><span>└── infra/
-</span></span><span style="display:flex;"><span>    └── template.yaml            # Khai báo hạ tầng CloudFormation bằng AWS SAM
-</span></span></code></pre></div><h4 id="xác-minh-kiến-trúc-phát-triển-local">Xác minh Kiến trúc Phát triển Local</h4>
-<p>Trước khi triển khai lên cloud AWS, backend ứng dụng được xác minh trong môi trường local bằng cơ chế lưu trữ file JSON (<code>localRepositories.js</code>):</p>
+</span></span><span style="display:flex;"><span>    └── template.yaml            # Định nghĩa hạ tầng CloudFormation bằng AWS SAM
+</span></span></code></pre></div><h4 id="kiểm-thử-kiến-trúc-môi-trường-local">Kiểm thử Kiến trúc Môi trường Local</h4>
+<p>Trước khi deploy lên cloud AWS, backend ứng dụng được kiểm thử ở môi trường local sử dụng cơ chế lưu trữ file JSON (<code>localRepositories.js</code>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Di chuyển vào module backend</span>
 </span></span><span style="display:flex;"><span>cd backend
 </span></span><span style="display:flex;"><span>npm install
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Khởi chạy local development server</span>
 </span></span><span style="display:flex;"><span>npm run dev
-</span></span></code></pre></div><p>Xác minh local xác nhận dịch vụ hoạt động tại <code>http://localhost:3000/api/health</code>, trả về response payload trạng thái:</p>
+</span></span></code></pre></div><p>Kiểm tra ở local xác nhận dịch vụ hoạt động bình thường tại <code>http://localhost:3000/api/health</code>, trả về response payload trạng thái:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>,<span style="color:#f92672">&#34;store&#34;</span>:<span style="color:#e6db74">&#34;local&#34;</span>}
-</span></span></code></pre></div><p>Thiết kế đa môi trường này đảm bảo việc chuyển đổi mượt mà giữa lưu trữ file local (<code>local</code>) và lưu trữ DynamoDB trên cloud (<code>dynamodb</code>) thông qua biến môi trường (<code>DATA_STORE</code>).</p>
+</span></span></code></pre></div><p>Thiết kế đa môi trường này cho phép chuyển đổi linh hoạt giữa lưu trữ file local (<code>local</code>) và lưu trữ DynamoDB trên cloud (<code>dynamodb</code>) chỉ bằng việc thay đổi biến môi trường (<code>DATA_STORE</code>).</p>
 
 
 
@@ -1296,19 +1295,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785043262"></script>
-    <script src="/js/jquery.sticky.js?1785043262"></script>
-    <script src="/js/featherlight.min.js?1785043262"></script>
-    <script src="/js/highlight.pack.js?1785043262"></script>
+    <script src="/js/clipboard.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
+    <script src="/js/jquery.sticky.js?1785057752"></script>
+    <script src="/js/featherlight.min.js?1785057752"></script>
+    <script src="/js/highlight.pack.js?1785057752"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785043262"></script>
-    <script src="/js/learn.js?1785043262"></script>
-    <script src="/js/hugo-learn.js?1785043262"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
+    <script src="/js/learn.js?1785057752"></script>
+    <script src="/js/hugo-learn.js?1785057752"></script>
 
-    <link href="/mermaid/mermaid.css?1785043262" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785043262"></script>
+    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785057752"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

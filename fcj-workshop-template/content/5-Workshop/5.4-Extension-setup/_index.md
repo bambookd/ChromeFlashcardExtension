@@ -44,14 +44,14 @@ The extension architecture leverages modern Chrome Extension Manifest V3 specifi
 #### Core Components & File Responsibilities
 
 1. **`manifest.json`**: Declares Manifest V3 permissions (`storage`, `contextMenus`, `activeTab`), background service worker scripts, and host permissions.
-2. **`background.js` (Service Worker)**: Registers context menu items (`Save "..." as flashcard`), manages message passing between injected content scripts, and routes translation queries to AWS API Gateway to bypass client-side CORS constraints.
+2. **`background.js` (Service Worker)**: Registers context menu items (`Save "..." as flashcard`) and manages message passing between injected content scripts and extension components.
 3. **`contentScript.js` (DOM Controller)**: Injects an interactive floating edit dialog into active web pages when triggered from the context menu, allowing users to modify definitions, word forms, and categories before persisting.
 4. **`popup.html / popup.js`**: Provides the extension popup interface for user registration, authentication (JWT token storage), local card management, batch synchronization (`POST /api/sync`), and data export requests.
 5. **`extension-config.js`**: Defines environment mapping configurations:
    ```javascript
    window.EXTENSION_CONFIG = {
-     API_BASE_URL: "https://<api-id>.execute-api.us-east-1.amazonaws.com",
-     STUDY_APP_URL: "https://<api-id>.execute-api.us-east-1.amazonaws.com/study"
+     API_BASE_URL: "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com",
+     STUDY_APP_URL: "https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/study"
    };
    ```
 

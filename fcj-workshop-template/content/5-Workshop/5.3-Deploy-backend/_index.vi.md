@@ -10,7 +10,7 @@ pre: " <b> 5.3. </b> "
 
 Phần này trình bày chi tiết cấu hình Infrastructure-as-Code (IaC), quy trình build serverless stack và các bước triển khai lên AWS thông qua **AWS SAM (Serverless Application Model)**.
 
-#### Khai báo Hạ tầng (`infra/template.yaml`)
+#### Định nghĩa Hạ tầng bằng Code (`infra/template.yaml`)
 
 Toàn bộ hạ tầng serverless được khai báo theo chuẩn AWS Serverless Application Model. Chi tiết cấu hình tài nguyên bao gồm:
 
@@ -78,34 +78,34 @@ Resources:
    cd infra
    sam build
    ```
-   SAM kiểm tra `template.yaml`, cài đặt các production npm dependency và build các package zip tối ưu cho Node.js 24.x runtime.
+   SAM kiểm tra và xác thực (validate) `template.yaml`, cài đặt các production npm dependency, sau đó đóng gói (build) các file zip tối ưu cho runtime Node.js 24.x.
 
-2. **Khởi tạo CloudFormation Stack**:
+2. **Triển khai CloudFormation Stack (Provisioning)**:
    ```bash
    sam deploy --guided
    ```
    Các giá trị parameter được cung cấp trong quá trình deployment:
-   - **Stack Name**: `chrome-flashcard-backend`
-   - **Target Region**: `us-east-1`
+   - **Stack Name**: `chrome-flashcard-dev`
+   - **Target Region**: `ap-southeast-1`
    - **Parameter JwtSecret**: *(Chuỗi secret key cung cấp tại thời điểm deployment)*
    - **Parameter AllowedOrigins**: `*`
 
-3. **Tóm tắt Tài nguyên Cloud đã Provision**:
-   - `AWS::Serverless::HttpApi` -> API Gateway endpoint URL được khởi tạo: `https://<api-id>.execute-api.us-east-1.amazonaws.com`
-   - `AWS::Lambda::Function` -> Lambda function được gán IAM role có quyền CRUD với DynamoDB & S3.
+3. **Tóm tắt các tài nguyên cloud đã được khởi tạo (provisioned)**:
+   - `AWS::Serverless::HttpApi` -> URL endpoint của API Gateway được khởi tạo: `https://<api-id>.execute-api.ap-southeast-1.amazonaws.com`
+   - `AWS::Lambda::Function` -> Lambda function được gán IAM role với đầy đủ quyền CRUD trên DynamoDB & S3.
    - `AWS::DynamoDB::Table` (3 bảng) -> `UsersTable`, `FlashcardsTable`, và `CategoriesTable`.
-   - `AWS::S3::Bucket` -> Private encrypted S3 bucket lưu trữ export file kèm các quy tắc lifecycle tự động hết hạn.
+   - `AWS::S3::Bucket` -> Private S3 bucket được mã hóa để lưu trữ file export kèm các quy tắc lifecycle (hết hạn tự động).
 
-#### Xác minh Endpoint Vận hành
+#### Kiểm tra (Verify) Endpoint Vận hành
 
-Khả năng hoạt động của hệ thống được xác minh sau deployment thông qua health check tới live API Gateway HTTP API endpoint:
+Trạng thái hoạt động của hệ thống được xác minh sau khi deploy bằng cách gửi request health check tới endpoint live của API Gateway HTTP API:
 
 ```bash
-curl https://<api-id>.execute-api.us-east-1.amazonaws.com/api/health
+curl https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/health
 ```
 
 Kết quả thực thi:
 ```json
-{"status":"ok","store":"dynamodb"}
+{"ok":true,"service":"flashcard-backend"}
 ```
-Response xác nhận kết nối trực tiếp đang hoạt động giữa AWS Lambda và tầng lưu trữ Amazon DynamoDB.
+Response trả về xác nhận kết nối thông suốt giữa API Gateway, AWS Lambda và tầng ứng dụng backend.

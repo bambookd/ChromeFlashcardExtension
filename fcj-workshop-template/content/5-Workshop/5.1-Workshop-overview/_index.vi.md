@@ -12,7 +12,7 @@ Phần này trình bày chi tiết kiến trúc hệ thống, các thành phần
 
 #### Mô hình kiến trúc
 
-Hệ thống áp dụng pattern thiết kế offline-first ở tầng client kết hợp với kiến trúc serverless định hướng microservices trên AWS:
+Hệ thống áp dụng design pattern offline-first ở tầng client kết hợp với kiến trúc serverless hướng microservices trên AWS:
 
 ```text
 +-----------------------+        HTTPS REST         +--------------------------+
@@ -26,31 +26,29 @@ Hệ thống áp dụng pattern thiết kế offline-first ở tầng client k�
 +-----------------------+                           +--------------------------+
                                                                  |
                                        +-------------------------+-------------------------+
-                                       |                         |                         |
-                                       v                         v                         v
-                            +--------------------+    +--------------------+    +--------------------+
-                            |  Amazon DynamoDB   |    |  Amazon Translate  |    |  Amazon S3 Bucket  |
-                            |  (Users, Cards,    |    |  (Dịch tự động     |    |  (Private Export   |
-                            |   Categories)      |    |   + Comprehend)    |    |   Pre-signed URLs) |
-                            +--------------------+    +--------------------+    +--------------------+
+                                       |                                                   |
+                                       v                                                   v
+                            +--------------------+                               +--------------------+
+                            |  Amazon DynamoDB   |                               |  Amazon S3 Bucket  |
+                            |  (Users, Cards,    |                               |  (Private Export   |
+                            |   Categories)      |                               |   Pre-signed URLs) |
+                            +--------------------+                               +--------------------+
 ```
 
 #### Thông số chi tiết các thành phần AWS
 
 | Thành phần | Vai trò trong Kiến trúc | Thông số Vận hành & Đặc tính Kỹ thuật |
 |---|---|---|
-| **API Gateway HTTP API** | Public Gateway & Reverse Proxy | Cung cấp endpoint HTTPS, quản lý authorization CORS preflight, và route toàn bộ request qua proxy integration (`/{proxy+}`) tới Lambda. |
-| **AWS Lambda** | Tầng tính toán Stateless | Thực thi backend Express.js thông qua `serverless-http` trên runtime Node.js 24.x, hỗ trợ khả năng scale-to-zero để tối ưu chi phí. |
-| **Amazon DynamoDB** | Tầng lưu trữ dữ liệu (Persistent Storage) | Các bảng NoSQL (Provisioned/On-demand): `UsersTable` (PK: `username`), `FlashcardsTable` (PK: `userId`, SK: `cardId`), và `CategoriesTable` (PK: `userId`, SK: `categoryName`). |
-| **Amazon Translate** | Engine dịch thuật tự động | Được gọi từ Lambda để thực hiện dịch từ vựng Anh - Việt theo ngữ cảnh. |
-| **Amazon S3 (Private)** | Kho lưu trữ tài liệu mã hóa | Lưu trữ dữ liệu export dạng JSON với policy hạn chế quyền truy cập, chỉ có thể truy cập qua Pre-signed GET URL tạm thời có hiệu lực 15 phút. |
-| **Amazon S3 (Public)** | Hosting Web Asset | Cung cấp các tệp tĩnh HTML, CSS, JavaScript và tệp cấu hình cho Study Web Application. |
-| **Amazon CloudWatch** | Nền tảng Observability | Thu thập execution log, metric vận hành, theo dõi thời gian cold start và tỉ lệ lỗi hệ thống. |
+| **API Gateway HTTP API** | Public Gateway & Reverse Proxy | Cung cấp endpoint HTTPS, xử lý các request CORS preflight, và route toàn bộ request thông qua proxy integration (`/{proxy+}`) tới Lambda. |
+| **AWS Lambda** | Tầng tính toán Stateless (Stateless Compute Layer) | Thực thi backend Express.js thông qua `serverless-http` trên Node.js 24.x runtime, hỗ trợ khả năng scale-to-zero giúp tối ưu chi phí. |
+| **Amazon DynamoDB** | Tầng lưu trữ bền vững (Persistent Storage Layer) | Bảng NoSQL (Provisioned/On-demand): `UsersTable` (PK: `username`), `FlashcardsTable` (PK: `userId`, SK: `cardId`), và `CategoriesTable` (PK: `userId`, SK: `categoryName`). |
+| **Amazon S3 (Private)** | Kho lưu trữ dữ liệu mã hóa (Encrypted Document Store) | Lưu trữ file export JSON với access policy nghiêm ngặt, chỉ cho phép truy cập qua pre-signed GET URL tạm thời có hiệu lực trong 15 phút. |
+| **Amazon S3 (Public)** | Host tài nguyên Web (Web Asset Hosting) | Phục vụ các file HTML, CSS, JavaScript tĩnh và file cấu hình cho Study Web App. |
+| **Amazon CloudWatch** | Nền tảng giám sát (Observability) | Ghi nhận execution log, các metric vận hành, thời gian cold start và tỷ lệ lỗi hệ thống. |
 
 #### Phân tích luồng dữ liệu các thành phần
 
-1. **Giai đoạn thu thập từ vựng**: Browser extension bắt văn bản được bôi đen qua context menu listener. Content script (`contentScript.js`) sẽ render một inline modal và lưu các bản ghi local vào `chrome.storage.local`.
-2. **Giai đoạn đồng bộ Cloud**: Khi người dùng xác thực hoặc chủ động bấm sync, extension gửi danh sách các bản ghi local qua `POST /api/sync` tới API Gateway. Lambda xác thực JWT credential và thực thi batch operation ghi vào DynamoDB.
-3. **Giai đoạn dịch tự động**: Yêu cầu dịch từ background service worker của extension sẽ trigger Lambda gọi `Amazon Translate` (`@aws-sdk/client-translate`), sau đó trả payload kết quả dịch về UI của extension.
-4. **Giai đoạn ôn tập tương tác**: Study Web App tải các flashcard của người dùng từ DynamoDB thông qua REST call đã xác thực, quản lý queue ôn tập và điểm số ghi nhớ.
-5. **Giai đoạn xuất dữ liệu an toàn**: Yêu cầu export sẽ trigger Lambda tạo một JSON snapshot có cấu trúc, ghi tệp vào private S3 bucket và trả về một Pre-signed URL tải xuống tạm thời.
+1. **Giai đoạn thu thập từ vựng**: Extension bắt đoạn văn bản được chọn thông qua context menu listener. Content script (`contentScript.js`) hiển thị (render) một modal nổi (inline modal) và lưu dữ liệu cục bộ vào `chrome.storage.local`.
+2. **Giai đoạn đồng bộ với Cloud**: Khi người dùng đăng nhập hoặc chủ động kích hoạt đồng bộ (sync), extension gửi danh sách các bản ghi lưu cục bộ qua `POST /api/sync` tới API Gateway. Lambda xác thực JWT token và thực hiện batch operation với DynamoDB.
+3. **Giai đoạn ôn tập tương tác**: Study Web App tải các flashcard của người dùng từ DynamoDB thông qua các REST API call đã được xác thực, quản lý hàng chờ (queue) ôn tập và điểm số ghi nhớ.
+4. **Giai đoạn xuất dữ liệu an toàn**: Yêu cầu export sẽ kích hoạt (trigger) Lambda tạo file JSON snapshot có cấu trúc, lưu file vào private S3 bucket và trả về pre-signed URL tạm thời để tải xuống.

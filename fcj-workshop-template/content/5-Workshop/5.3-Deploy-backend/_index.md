@@ -85,13 +85,13 @@ Resources:
    sam deploy --guided
    ```
    Stack parameter inputs provided during deployment:
-   - **Stack Name**: `chrome-flashcard-backend`
-   - **Target Region**: `us-east-1`
+   - **Stack Name**: `chrome-flashcard-dev`
+   - **Target Region**: `ap-southeast-1`
    - **Parameter JwtSecret**: *(Secured string provided at deployment time)*
    - **Parameter AllowedOrigins**: `*`
 
 3. **Provisioned Cloud Resources Summary**:
-   - `AWS::Serverless::HttpApi` -> Provisioned API Gateway endpoint URL: `https://<api-id>.execute-api.us-east-1.amazonaws.com`
+   - `AWS::Serverless::HttpApi` -> Provisioned API Gateway endpoint URL: `https://<api-id>.execute-api.ap-southeast-1.amazonaws.com`
    - `AWS::Lambda::Function` -> Execution function configured with an IAM role granting DynamoDB & S3 CRUD permissions.
    - `AWS::DynamoDB::Table` (3 instances) -> `UsersTable`, `FlashcardsTable`, and `CategoriesTable`.
    - `AWS::S3::Bucket` -> Private encrypted S3 export bucket with lifecycle expiration rules.
@@ -101,11 +101,11 @@ Resources:
 System availability was confirmed post-deployment via an automated health check against the live API Gateway HTTP API endpoint:
 
 ```bash
-curl https://<api-id>.execute-api.us-east-1.amazonaws.com/api/health
+curl https://<api-id>.execute-api.ap-southeast-1.amazonaws.com/api/health
 ```
 
 Execution Output:
 ```json
-{"status":"ok","store":"dynamodb"}
+{"ok":true,"service":"flashcard-backend"}
 ```
-The response verifies active production connectivity between AWS Lambda and the Amazon DynamoDB storage layer.
+The response verifies active production connectivity between AWS Lambda and the backend application layer.

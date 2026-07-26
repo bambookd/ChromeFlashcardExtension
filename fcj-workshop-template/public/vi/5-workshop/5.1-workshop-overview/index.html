@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -15,21 +15,21 @@
     <title>Tổng quan Kiến trúc &amp; Thiết kế Hệ thống :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785043262" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785043262" rel="stylesheet">
-    <link href="/css/hybrid.css?1785043262" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785043262" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785043262" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785043262" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785043262" rel="stylesheet">
-    <link href="/css/theme.css?1785043262" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785043262" rel="stylesheet">
+    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
+    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
+    <link href="/css/theme.css?1785057752" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785043262" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785043262"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785043262"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785043262"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785043262"></script>
+<script type="text/javascript" src="/js/search.js?1785057752"></script>
  
   </div>
 
@@ -479,7 +479,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.5-translate-export/"
-  title="Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
   class="dd-item 
         
         
@@ -487,7 +487,7 @@
         "
 >
   <a href="/vi/5-workshop/5.5-translate-export/">
-     <b> 5.5. </b> Ứng dụng Web Ôn tập, Bộ máy Dịch thuật &amp; Xuất Dữ liệu 
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -586,14 +586,14 @@
                        
                 <option
                   id="en"
-                  value="https://workshop-sample.awsfcaj.com/5-workshop/5.1-workshop-overview/"
+                  value="http://localhost:1313/5-workshop/5.1-workshop-overview/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="https://workshop-sample.awsfcaj.com/vi/5-workshop/5.1-workshop-overview/"
+                  value="http://localhost:1313/vi/5-workshop/5.1-workshop-overview/"
                   selected
                 >
                   Tiếng Việt
@@ -733,7 +733,7 @@
 	<h4 id="tóm-tắt-tổng-quan">Tóm tắt tổng quan</h4>
 <p>Phần này trình bày chi tiết kiến trúc hệ thống, các thành phần kỹ thuật và luồng dữ liệu của ứng dụng serverless <strong>Chrome Flashcard Extension</strong> trên Amazon Web Services (AWS).</p>
 <h4 id="mô-hình-kiến-trúc">Mô hình kiến trúc</h4>
-<p>Hệ thống áp dụng pattern thiết kế offline-first ở tầng client kết hợp với kiến trúc serverless định hướng microservices trên AWS:</p>
+<p>Hệ thống áp dụng design pattern offline-first ở tầng client kết hợp với kiến trúc serverless hướng microservices trên AWS:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+-----------------------+        HTTPS REST         +--------------------------+
 </span></span><span style="display:flex;"><span>|  Chrome Extension     |--------------------------&gt;|  API Gateway (HTTP API)  |
 </span></span><span style="display:flex;"><span>|  (Manifest V3)        |                           +--------------------------+
@@ -745,13 +745,13 @@
 </span></span><span style="display:flex;"><span>+-----------------------+                           +--------------------------+
 </span></span><span style="display:flex;"><span>                                                                 |
 </span></span><span style="display:flex;"><span>                                       +-------------------------+-------------------------+
-</span></span><span style="display:flex;"><span>                                       |                         |                         |
-</span></span><span style="display:flex;"><span>                                       v                         v                         v
-</span></span><span style="display:flex;"><span>                            +--------------------+    +--------------------+    +--------------------+
-</span></span><span style="display:flex;"><span>                            |  Amazon DynamoDB   |    |  Amazon Translate  |    |  Amazon S3 Bucket  |
-</span></span><span style="display:flex;"><span>                            |  (Users, Cards,    |    |  (Dịch tự động     |    |  (Private Export   |
-</span></span><span style="display:flex;"><span>                            |   Categories)      |    |   + Comprehend)    |    |   Pre-signed URLs) |
-</span></span><span style="display:flex;"><span>                            +--------------------+    +--------------------+    +--------------------+
+</span></span><span style="display:flex;"><span>                                       |                                                   |
+</span></span><span style="display:flex;"><span>                                       v                                                   v
+</span></span><span style="display:flex;"><span>                            +--------------------+                               +--------------------+
+</span></span><span style="display:flex;"><span>                            |  Amazon DynamoDB   |                               |  Amazon S3 Bucket  |
+</span></span><span style="display:flex;"><span>                            |  (Users, Cards,    |                               |  (Private Export   |
+</span></span><span style="display:flex;"><span>                            |   Categories)      |                               |   Pre-signed URLs) |
+</span></span><span style="display:flex;"><span>                            +--------------------+                               +--------------------+
 </span></span></code></pre></div><h4 id="thông-số-chi-tiết-các-thành-phần-aws">Thông số chi tiết các thành phần AWS</h4>
 <table>
 	<thead>
@@ -765,47 +765,41 @@
 			<tr>
 					<td><strong>API Gateway HTTP API</strong></td>
 					<td>Public Gateway &amp; Reverse Proxy</td>
-					<td>Cung cấp endpoint HTTPS, quản lý authorization CORS preflight, và route toàn bộ request qua proxy integration (<code>/{proxy+}</code>) tới Lambda.</td>
+					<td>Cung cấp endpoint HTTPS, xử lý các request CORS preflight, và route toàn bộ request thông qua proxy integration (<code>/{proxy+}</code>) tới Lambda.</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
-					<td>Tầng tính toán Stateless</td>
-					<td>Thực thi backend Express.js thông qua <code>serverless-http</code> trên runtime Node.js 24.x, hỗ trợ khả năng scale-to-zero để tối ưu chi phí.</td>
+					<td>Tầng tính toán Stateless (Stateless Compute Layer)</td>
+					<td>Thực thi backend Express.js thông qua <code>serverless-http</code> trên Node.js 24.x runtime, hỗ trợ khả năng scale-to-zero giúp tối ưu chi phí.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon DynamoDB</strong></td>
-					<td>Tầng lưu trữ dữ liệu (Persistent Storage)</td>
-					<td>Các bảng NoSQL (Provisioned/On-demand): <code>UsersTable</code> (PK: <code>username</code>), <code>FlashcardsTable</code> (PK: <code>userId</code>, SK: <code>cardId</code>), và <code>CategoriesTable</code> (PK: <code>userId</code>, SK: <code>categoryName</code>).</td>
-			</tr>
-			<tr>
-					<td><strong>Amazon Translate</strong></td>
-					<td>Engine dịch thuật tự động</td>
-					<td>Được gọi từ Lambda để thực hiện dịch từ vựng Anh - Việt theo ngữ cảnh.</td>
+					<td>Tầng lưu trữ bền vững (Persistent Storage Layer)</td>
+					<td>Bảng NoSQL (Provisioned/On-demand): <code>UsersTable</code> (PK: <code>username</code>), <code>FlashcardsTable</code> (PK: <code>userId</code>, SK: <code>cardId</code>), và <code>CategoriesTable</code> (PK: <code>userId</code>, SK: <code>categoryName</code>).</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3 (Private)</strong></td>
-					<td>Kho lưu trữ tài liệu mã hóa</td>
-					<td>Lưu trữ dữ liệu export dạng JSON với policy hạn chế quyền truy cập, chỉ có thể truy cập qua Pre-signed GET URL tạm thời có hiệu lực 15 phút.</td>
+					<td>Kho lưu trữ dữ liệu mã hóa (Encrypted Document Store)</td>
+					<td>Lưu trữ file export JSON với access policy nghiêm ngặt, chỉ cho phép truy cập qua pre-signed GET URL tạm thời có hiệu lực trong 15 phút.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3 (Public)</strong></td>
-					<td>Hosting Web Asset</td>
-					<td>Cung cấp các tệp tĩnh HTML, CSS, JavaScript và tệp cấu hình cho Study Web Application.</td>
+					<td>Host tài nguyên Web (Web Asset Hosting)</td>
+					<td>Phục vụ các file HTML, CSS, JavaScript tĩnh và file cấu hình cho Study Web App.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon CloudWatch</strong></td>
-					<td>Nền tảng Observability</td>
-					<td>Thu thập execution log, metric vận hành, theo dõi thời gian cold start và tỉ lệ lỗi hệ thống.</td>
+					<td>Nền tảng giám sát (Observability)</td>
+					<td>Ghi nhận execution log, các metric vận hành, thời gian cold start và tỷ lệ lỗi hệ thống.</td>
 			</tr>
 	</tbody>
 </table>
 <h4 id="phân-tích-luồng-dữ-liệu-các-thành-phần">Phân tích luồng dữ liệu các thành phần</h4>
 <ol>
-<li><strong>Giai đoạn thu thập từ vựng</strong>: Browser extension bắt văn bản được bôi đen qua context menu listener. Content script (<code>contentScript.js</code>) sẽ render một inline modal và lưu các bản ghi local vào <code>chrome.storage.local</code>.</li>
-<li><strong>Giai đoạn đồng bộ Cloud</strong>: Khi người dùng xác thực hoặc chủ động bấm sync, extension gửi danh sách các bản ghi local qua <code>POST /api/sync</code> tới API Gateway. Lambda xác thực JWT credential và thực thi batch operation ghi vào DynamoDB.</li>
-<li><strong>Giai đoạn dịch tự động</strong>: Yêu cầu dịch từ background service worker của extension sẽ trigger Lambda gọi <code>Amazon Translate</code> (<code>@aws-sdk/client-translate</code>), sau đó trả payload kết quả dịch về UI của extension.</li>
-<li><strong>Giai đoạn ôn tập tương tác</strong>: Study Web App tải các flashcard của người dùng từ DynamoDB thông qua REST call đã xác thực, quản lý queue ôn tập và điểm số ghi nhớ.</li>
-<li><strong>Giai đoạn xuất dữ liệu an toàn</strong>: Yêu cầu export sẽ trigger Lambda tạo một JSON snapshot có cấu trúc, ghi tệp vào private S3 bucket và trả về một Pre-signed URL tải xuống tạm thời.</li>
+<li><strong>Giai đoạn thu thập từ vựng</strong>: Extension bắt đoạn văn bản được chọn thông qua context menu listener. Content script (<code>contentScript.js</code>) hiển thị (render) một modal nổi (inline modal) và lưu dữ liệu cục bộ vào <code>chrome.storage.local</code>.</li>
+<li><strong>Giai đoạn đồng bộ với Cloud</strong>: Khi người dùng đăng nhập hoặc chủ động kích hoạt đồng bộ (sync), extension gửi danh sách các bản ghi lưu cục bộ qua <code>POST /api/sync</code> tới API Gateway. Lambda xác thực JWT token và thực hiện batch operation với DynamoDB.</li>
+<li><strong>Giai đoạn ôn tập tương tác</strong>: Study Web App tải các flashcard của người dùng từ DynamoDB thông qua các REST API call đã được xác thực, quản lý hàng chờ (queue) ôn tập và điểm số ghi nhớ.</li>
+<li><strong>Giai đoạn xuất dữ liệu an toàn</strong>: Yêu cầu export sẽ kích hoạt (trigger) Lambda tạo file JSON snapshot có cấu trúc, lưu file vào private S3 bucket và trả về pre-signed URL tạm thời để tải xuống.</li>
 </ol>
 
 
@@ -1296,19 +1290,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785043262"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785043262"></script>
-    <script src="/js/jquery.sticky.js?1785043262"></script>
-    <script src="/js/featherlight.min.js?1785043262"></script>
-    <script src="/js/highlight.pack.js?1785043262"></script>
+    <script src="/js/clipboard.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
+    <script src="/js/jquery.sticky.js?1785057752"></script>
+    <script src="/js/featherlight.min.js?1785057752"></script>
+    <script src="/js/highlight.pack.js?1785057752"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785043262"></script>
-    <script src="/js/learn.js?1785043262"></script>
-    <script src="/js/hugo-learn.js?1785043262"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
+    <script src="/js/learn.js?1785057752"></script>
+    <script src="/js/hugo-learn.js?1785057752"></script>
 
-    <link href="/mermaid/mermaid.css?1785043262" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785043262"></script>
+    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785057752"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
