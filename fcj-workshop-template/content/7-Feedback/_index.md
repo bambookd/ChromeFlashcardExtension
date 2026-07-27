@@ -102,6 +102,4 @@ Yes. I would recommend it to students interested in cloud computing and software
 
 ## 6. Suggestions and Expectations
 
-I suggest providing clear project milestones, regular mentor meetings, and more technical knowledge-sharing sessions for future interns.
-
-After the internship, I expect to continue improving my AWS, serverless architecture, backend development, DevOps, communication, project-planning, and problem-solving skills.
+Some of the learning materials are outdated. For example, certain labs still reference AWS Cloud9, which is no longer available for new customers. Updating the training materials to use current AWS services and recommended development environments would make the learning experience more relevant and practical for future interns.

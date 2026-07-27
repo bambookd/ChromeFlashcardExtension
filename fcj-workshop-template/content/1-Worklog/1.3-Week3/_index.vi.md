@@ -8,32 +8,18 @@ pre: " <b> 1.3. </b> "
 
 # Tuần 3 — 29/06 – 05/07/2026
 
-### Mục tiêu
+## Tổng quan
 
-Các mục tiêu của Tuần 3 là:
+Logic phiên học, quản lý danh mục, Express.js REST API, và template DynamoDB SAM.
 
-* Cải thiện trải nghiệm học tập cốt lõi của ứng dụng flashcard (thẻ ghi nhớ).
-* Phát triển một luồng (workflow) phiên học tập rõ ràng hơn để ôn tập từ vựng.
-* Thêm các tính năng quản lý danh mục để sắp xếp các flashcard.
-* Mở rộng ứng dụng web Học tập (Study) với một chế độ kiểm tra (test mode) bổ sung.
-* Phân tích những hạn chế của nguyên mẫu lưu trữ và backend ở môi trường máy cá nhân (local) hiện tại.
-* Xác định lộ trình chuyển đổi từ nguyên mẫu local sang kiến trúc serverless trên AWS.
-* Chuẩn bị mô hình dữ liệu DynamoDB ban đầu và template AWS SAM cho việc triển khai trong tương lai.
+### Các Công việc Đã Thực hiện
 
-### Các công việc cần thực hiện
+* **Thuật toán Phiên học Active Recall**: Thiết kế và triển khai luồng ôn tập chính, bao gồm sắp xếp câu hỏi, ghi nhận câu trả lời, tính toán tiến độ và đánh giá mức độ khó của từ vựng.
+* **Quản lý Danh mục (Categories)**: Xây dựng các chức năng CRUD danh mục cho phép người dùng phân loại thẻ học theo chủ đề hoặc cấp độ.
+* **Tối ưu Express.js REST API**: Mở rộng các endpoint backend Express.js local hỗ trợ lọc thẻ, gán danh mục và cấu trúc dữ liệu đa người dùng.
+* **Mô hình Dữ liệu DynamoDB & SAM Template**: Thiết kế cấu trúc bảng NoSQL (`UsersTable`, `FlashcardsTable`, `CategoriesTable`) và biên soạn bản thảo file hạ tầng AWS SAM (`infra/template.yaml`).
 
-| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
-| :--- | :--- | :--- | :--- |
-| Đánh giá tiện ích mở rộng Chrome và ứng dụng web Học tập hiện tại để xác định các tính năng phiên học tập còn thiếu và những hạn chế trong việc quản lý dữ liệu. | ✅ Hoàn thành | 29/06/2026 | 29/06/2026 |
-| Thiết kế luồng phiên học tập, bao gồm thứ tự câu hỏi, theo dõi câu trả lời, tính toán tiến độ, xử lý khi hoàn thành và xem lại kết quả. | ✅ Hoàn thành | 30/06/2026 | 30/06/2026 |
-| Triển khai các chức năng quản lý danh mục để người dùng có thể tạo, cập nhật, xóa và sử dụng các danh mục để phân loại flashcard. | ✅ Hoàn thành | 01/07/2026 | 03/07/2026 |
-| Cải thiện ứng dụng web Học tập và thêm chế độ kiểm tra để thực hành từ vựng thông qua các câu hỏi có cấu trúc và đánh giá câu trả lời. | ✅ Hoàn thành | 03/07/2026 | 05/07/2026 |
-| Xác định kiến trúc serverless ban đầu sử dụng Amazon API Gateway, AWS Lambda, Amazon DynamoDB, Amazon S3, IAM và Amazon CloudWatch. | ✅ Hoàn thành | 05/07/2026 | 05/07/2026 |
-| Chuẩn bị cấu trúc thực thể (entity) DynamoDB ban đầu và phác thảo một template AWS SAM cho hạ tầng backend. | ✅ Hoàn thành | 05/07/2026 | 05/07/2026 |
+### Kết quả Đạt được
 
-### Kết quả
-
-* Đã cải thiện luồng phiên học tập flashcard và tính năng theo dõi câu trả lời.
-* Bổ sung tính năng quản lý danh mục và một chế độ kiểm tra có cấu trúc.
-* Xác định xong kiến trúc serverless AWS ban đầu và mô hình dữ liệu DynamoDB.
-* Chuẩn bị bản phác thảo template AWS SAM để triển khai trong tương lai.
+* **Logic Sản phẩm Cốt lõi**: Hoàn thành luồng phiên học ôn tập Active Recall và tính năng quản lý danh mục từ vựng.
+* **Hạ tầng Backend SAM**: Tạo file template `template.yaml` khởi tạo hạ tầng AWS SAM chứa định nghĩa các bảng DynamoDB, API Gateway HTTP API và Lambda function.

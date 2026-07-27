@@ -10,19 +10,17 @@ pre: " <b> 1.1. </b> "
 
 ## Tổng quan
 
-Thành lập nhóm dự án, thống nhất cách thức làm việc chung và thảo luận về hướng đi ban đầu của dự án.
+Hội nhập chương trình (Onboarding), thiết lập tài khoản AWS, thành lập đội ngũ, thống nhất định hướng ban đầu và khởi động dự án.
 
-### Các công việc đã thực hiện
+### Các Công việc Đã Thực hiện
 
-* Giới thiệu các thành viên trong nhóm và thảo luận về thế mạnh của từng người.
-* Phân công trách nhiệm ban đầu cho mỗi thành viên.
-* Thảo luận về các ý tưởng dự án tiềm năng và chọn ra một hướng đi để tiếp tục xác thực thêm.
+* **Thành lập Đội ngũ & Thống nhất Định hướng**: Giới thiệu thành viên nhóm, phân công trách nhiệm ban đầu và thiết lập quy trình cộng tác làm việc.
+* **Thiết lập Tài khoản AWS**: Khởi tạo tài khoản AWS root, kích hoạt xác thực đa yếu tố (MFA), và tạo tài khoản IAM người dùng cho các công việc kỹ thuật hàng ngày.
+* **Hàng rào Kiểm soát Chi phí**: Cấu hình cảnh báo tự động AWS Budgets tại các ngưỡng $1.00 USD và $5.00 USD trước khi tạo các tài nguyên AWS có tính phí.
+* **Khởi động Dự án & Phạm vi Công việc**: Đánh giá các ý tưởng dự án và thống nhất phạm vi cho **Chrome Flashcard Extension & Serverless Study Platform** (`chrome-flashcard-axiza`).
 
-### Kết quả đạt được
+### Kết quả Đạt được
 
-* Thống nhất được quy trình cộng tác cơ bản và các trách nhiệm ban đầu.
-* Nhóm đã sẵn sàng để bắt đầu quá trình hội nhập (onboarding) và xác thực vấn đề vào tuần tiếp theo.
-
-### Khó khăn
-
-Các thành viên trong nhóm có những ý tưởng dự án khác nhau, do đó chúng tôi đã phải so sánh chúng dựa trên tính khả thi và các yêu cầu của kỳ thực tập trước khi đi đến thống nhất chung.
+* **Đề khung Dự án (Team Charter)**: Thống nhất quy trình làm việc và phân công trách nhiệm chi tiết.
+* **Tài khoản AWS An toàn**: Bảo mật thành công tài khoản AWS với MFA và hàng rào cảnh báo chi phí.
+* **Phạm vi Dự án Ban đầu**: Định hình tầm nhìn sản phẩm cốt lõi để chuẩn bị nghiên cứu các dịch vụ AWS và xác thực bài toán trong Tuần 2.

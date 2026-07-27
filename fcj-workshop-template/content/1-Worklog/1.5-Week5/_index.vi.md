@@ -8,33 +8,19 @@ pre: " <b> 1.5. </b> "
 
 # Tuần 5 — 13/07 – 19/07/2026
 
-## Mục tiêu
+## Tổng quan
 
-Các mục tiêu của Tuần 5 là:
+Triển khai thực tế lần đầu lên AWS cloud, deploy SAM stack, và thiết lập guardrail chi phí.
 
-* Hoàn thành lần triển khai (deployment) thực tế đầu tiên của ứng dụng lên AWS.
-* Xác thực hạ tầng serverless đã triển khai và luồng ứng dụng.
-* Xác định và giải quyết các vấn đề về cấu hình và tích hợp sau khi triển khai.
-* Đánh giá các quyền đối với tài nguyên AWS và cài đặt triển khai.
-* Thêm các rào chắn chi tiêu (spending guardrails).
-* Tài liệu hóa quá trình triển khai và kết quả xác thực.
+### Các Công việc Đã Thực hiện
 
-## Các công việc cần thực hiện
+* **Chuẩn bị Môi trường AWS Cloud**: Cấu hình quyền triển khai IAM và chuẩn bị công cụ AWS SAM CLI để tạo stack đám mây thực tế.
+* **Deploy AWS SAM Stack**: Thực thi các lệnh `sam build` và `sam deploy --guided` triển khai stack đám mây đầu tiên (`chrome-flashcard-dev`) tại khu vực `ap-southeast-1`.
+* **Xác minh Tài nguyên Khởi tạo**: Kiểm tra tính hoạt động của các tài nguyên AWS: API Gateway HTTP API, AWS Lambda Function (`serverless-http`), 3 bảng DynamoDB NoSQL (`UsersTable`, `FlashcardsTable`, `CategoriesTable`), và private S3 export bucket.
+* **Guardrail Chi phí**: Xác minh cảnh báo ngân sách AWS Budgets, cấu hình quy tắc lưu vết nhật ký CloudWatch Log Group 7 ngày và kích hoạt chế độ scale-to-zero.
 
-| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
-| :--- | :--- | :--- | :--- |
-| Đánh giá kiến trúc AWS, checklist triển khai và template hạ tầng đã được chuẩn bị trong các tuần trước. | ✅ Hoàn thành | 13/07/2026 | 13/07/2026 |
-| Cấu hình môi trường AWS được yêu cầu và chuẩn bị ứng dụng để triển khai lên cloud. | ✅ Hoàn thành | 14/07/2026 | 14/07/2026 |
-| Triển khai stack ứng dụng serverless ban đầu lên AWS và xác minh rằng các tài nguyên cần thiết đã được tạo thành công. | ✅ Hoàn thành | 15/07/2026 | 16/07/2026 |
-| Kiểm thử luồng ứng dụng đã triển khai và giải quyết các vấn đề cấu hình hoặc tích hợp được phát hiện sau triển khai. | ✅ Hoàn thành | 16/07/2026 | 17/07/2026 |
-| Đánh giá các tài nguyên đã triển khai, quyền IAM và cấu hình môi trường. | ✅ Hoàn thành | 17/07/2026 | 18/07/2026 |
-| Cấu hình các rào chắn triển khai. | ✅ Hoàn thành | 18/07/2026 | 19/07/2026 |
-| Tài liệu hóa các bước triển khai, kết quả xác thực và các vấn đề còn tồn đọng. | ✅ Hoàn thành | 19/07/2026 | 19/07/2026 |
+### Kết quả Đạt được
 
-## Kết quả
-
-* Đã hoàn thành lần triển khai thực tế đầu tiên lên AWS.
-* Xác thực thành công ứng dụng và các tài nguyên serverless đã triển khai.
-* Giải quyết xong các vấn đề cấu hình và tích hợp ban đầu.
-* Bổ sung tính năng theo dõi chi phí và các rào chắn chi tiêu.
-* Tài liệu hóa quá trình triển khai và các vấn đề còn tồn đọng.
+* **Live Cloud Stack**: Triển khai thành công hạ tầng đám mây thực tế stack `chrome-flashcard-dev`.
+* **Endpoint Vận hành**: Kiểm tra endpoint API thực tế trả về phản hồi `HTTP 200 OK`.
+* **Bảo vệ Tài chính**: Áp dụng thành công các rào chắn ngân sách bảo đảm chi phí duy trì dưới $5 USD/tháng.

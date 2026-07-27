@@ -1,38 +1,26 @@
 ---
-
 title: "Week 4 Worklog"
 date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.4. </b> "
-----------------------
+---
 
 # Week 4 — 06/07 – 12/07/2026
 
-## Objectives
+## Overall
 
-The objectives for Week 4 were to:
+Architecture documentation set, security audit, and UI/UX refinement.
 
-* Document the proposed serverless architecture and main system components.
-* Clarify the responsibilities and data flow between the Chrome extension, Study web application, and AWS backend.
-* Audit the existing implementation to identify technical gaps and deployment risks.
-* Improve the UI/UX of the flashcard and study workflows.
-* Prepare the project for its first real AWS deployment.
+### Tasks Done
 
-## Tasks to Be Carried Out
+* **Architecture Documentation Set**: Compiled comprehensive design specification documents covering system topology, component responsibilities, data flows, and API contract schemas.
+* **Security Audit**: Audited system implementation for vulnerabilities—identifying CORS origins, JWT claim verification, IAM least-privilege scoping, and Amazon S3 Block Public Access policies.
+* **UI/UX Refinement**: Redesigned the Chrome Extension floating editor modal and Study web application dashboard for cleaner responsiveness and seamless user feedback states.
+* **Deployment Checklist**: Prepared pre-flight verification checklist for the initial AWS cloud stack deployment.
 
-| Task                                                                                                                                               | Status | Start Date | Completion Date |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- | --------------- |
-| Review the existing source code, architecture decisions, and project documentation.                                                                | ✅ Done | 06/07/2026 | 06/07/2026      |
-| Create a high-level architecture document covering the Chrome extension, Study web application, API Gateway, Lambda, DynamoDB, S3, and CloudWatch. | ✅ Done | 07/07/2026 | 08/07/2026      |
-| Document the main request flows, data flows, and responsibilities of each system component.                                                        | ✅ Done | 08/07/2026 | 09/07/2026      |
-| Audit the current implementation to identify gaps in storage, validation, error handling, security, and deployment readiness.                      | ✅ Done | 09/07/2026 | 10/07/2026      |
-| Improve the UI/UX of the dashboard, flashcard management, study modes, feedback states, and responsive layout.                                     | ✅ Done | 10/07/2026 | 11/07/2026      |
-| Consolidate the audit findings and prepare a deployment checklist for the first AWS deployment.                                                    | ✅ Done | 11/07/2026 | 12/07/2026      |
+### Results Achieved
 
-## Results
-
-* Completed the initial architecture documentation set.
-* Identified key technical and deployment gaps through a project audit.
-* Improved the consistency and usability of the application interface.
-* Prepared a clear checklist for the first AWS deployment.
+* **Complete Architecture Suite**: Published 11 detailed design and API contract documents.
+* **Audit Findings**: Identified 8 key technical blockers (e.g., exact CORS origin mapping) prior to spending cloud funds.
+* **Polished Interface**: Upgraded extension and study app visual design and responsive layouts.

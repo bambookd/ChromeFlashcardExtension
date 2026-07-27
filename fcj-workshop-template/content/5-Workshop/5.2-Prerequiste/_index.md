@@ -26,20 +26,20 @@ The project repository (`ChromeFlashcardExtension`) is structured with a clear s
 
 ```text
 ChromeFlashcardExtension/
-├── manifest.json                # Chrome Extension Manifest V3 configuration
-├── background.js                # Extension background service worker
-├── contentScript.js             # Webpage DOM injection & selection listener
-├── extension-config.js          # Client-side API endpoint mapping
-├── popup.html / popup.js        # Extension popup user interface & auth controller
-├── backend/                     # Serverless Express backend application
-│   ├── app.js                   # Express application initialization & middleware
-│   ├── server.js                # Standalone HTTP server entry (Local development)
-│   ├── lambda.js                # AWS Lambda handler wrapper via serverless-http
+├── manifest.json                 # Chrome Extension Manifest V3 configuration
+├── background.js                 # Extension background service worker
+├── contentScript.js              # Webpage DOM injection & selection listener
+├── extension-config.js           # Client-side API endpoint mapping (globalThis.FLASHCARD_CONFIG)
+├── popup.html / popup.js         # Extension popup user interface & auth controller
+├── backend/                      # Serverless Express backend application
+│   ├── app.js                    # Express application initialization & middleware
+│   ├── server.js                 # Standalone HTTP server entry (Local development)
+│   ├── lambda.js                 # AWS Lambda handler wrapper via serverless-http
 │   └── src/
 │       ├── dynamoRepositories.js # DynamoDB CRUD operations
-│       └── exportService.js     # Amazon S3 Pre-signed URL generation
+│       └── exportService.js      # Amazon S3 Pre-signed URL generation
 └── infra/
-    └── template.yaml            # AWS SAM CloudFormation infrastructure definition
+    └── template.yaml             # AWS SAM CloudFormation infrastructure definition
 ```
 
 #### Local Development Architecture Verification
@@ -55,8 +55,10 @@ npm install
 npm run dev
 ```
 
-Local verification confirms service availability at `http://localhost:3000/api/health`, returning an operational status payload:
+Local verification confirms service availability at `http://localhost:3000/api/health`.
+
+**Expected result**:
 ```json
-{"status":"ok","store":"local"}
+{"ok":true,"service":"flashcard-backend"}
 ```
 This multi-environment design ensures seamless switching between local file-backed storage (`local`) and cloud DynamoDB persistence (`dynamodb`) via environment variable toggles (`DATA_STORE`).

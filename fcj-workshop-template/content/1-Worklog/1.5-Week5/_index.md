@@ -1,41 +1,26 @@
 ---
-
 title: "Week 5 Worklog"
 date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
-----------------------
+---
 
 # Week 5 — 13/07 – 19/07/2026
 
-## Objectives
+## Overall
 
-The objectives for Week 5 were to:
+First AWS cloud deployment, SAM stack deployment, and cost guardrails.
 
-* Complete the first real deployment of the application to AWS.
-* Validate the deployed serverless infrastructure and application flow.
-* Identify and resolve configuration and integration issues after deployment.
-* Review AWS resource permissions and deployment settings.
-* Add spending guardrails.
-* Document the deployment process and validation results.
+### Tasks Done
 
-## Tasks to Be Carried Out
+* **AWS Cloud Environment Prep**: Configured deployment credentials and prepared AWS SAM CLI environment for live stack creation.
+* **AWS SAM Stack Deployment**: Executed `sam build` and `sam deploy --guided` to launch the initial live cloud stack (`chrome-flashcard-dev`) in region `ap-southeast-1`.
+* **Resource Provisioning Verification**: Verified successfully provisioned cloud resources: API Gateway HTTP API, Node.js Lambda function (`serverless-http`), DynamoDB NoSQL tables (`UsersTable`, `FlashcardsTable`, `CategoriesTable`), and private S3 export bucket.
+* **Financial & Cost Guardrails**: Verified AWS Budget alerts, configured CloudWatch log group 7-day retention rules, and enabled scale-to-zero compute settings.
 
-| Task                                                                                                                     | Status | Start Date | Completion Date |
-| ------------------------------------------------------------------------------------------------------------------------ | ------ | ---------- | --------------- |
-| Review the AWS architecture, deployment checklist, and infrastructure template prepared in the previous weeks.           | ✅ Done | 13/07/2026 | 13/07/2026      |
-| Configure the required AWS environment and prepare the application for cloud deployment.                                 | ✅ Done | 14/07/2026 | 14/07/2026      |
-| Deploy the initial serverless application stack to AWS and verify that the required resources were created successfully. | ✅ Done | 15/07/2026 | 16/07/2026      |
-| Test the deployed application flow and resolve configuration or integration issues found after deployment.               | ✅ Done | 16/07/2026 | 17/07/2026      |
-| Review the deployed resources, IAM permissions, and environment configuration.                                           | ✅ Done | 17/07/2026 | 18/07/2026      |
-| Configure deployment guardrails.                                          | ✅ Done | 18/07/2026 | 19/07/2026      |
-| Document the deployment steps, validation results, and remaining issues.                                                 | ✅ Done | 19/07/2026 | 19/07/2026      |
+### Results Achieved
 
-## Results
-
-* Completed the first real AWS deployment.
-* Validated the deployed application and serverless resources.
-* Resolved initial configuration and integration issues.
-* Added cost-monitoring and spending guardrails.
-* Documented the deployment process and remaining issues.
+* **Live AWS Stack**: Successfully deployed live cloud infrastructure stack `chrome-flashcard-dev`.
+* **Operational Cloud Endpoints**: Verified production API health check returning `HTTP 200 OK`.
+* **Active Cost Protections**: Enforced CloudWatch log retention and AWS budget guardrails ensuring baseline costs stay under $5 USD/month.

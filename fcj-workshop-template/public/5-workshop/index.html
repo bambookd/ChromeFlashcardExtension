@@ -15,21 +15,21 @@
     <title>Workshop Report :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
-    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
-    <link href="/css/theme.css?1785057752" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
+    <link href="/css/nucleus.css?1785179743" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785179743" rel="stylesheet">
+    <link href="/css/hybrid.css?1785179743" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785179743" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785179743" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785179743" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785179743" rel="stylesheet">
+    <link href="/css/theme.css?1785179743" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785179743" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785179743" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785179743"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785179743"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785179743"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785057752"></script>
+<script type="text/javascript" src="/js/search.js?1785179743"></script>
  
   </div>
 
@@ -215,24 +215,6 @@
   </a>
    
 </li>
-    
-            
-<li
-  data-nav-id="/1-worklog/1.8-week8/"
-  title="Week 8 Worklog"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/1-worklog/1.8-week8/">
-     <b> 1.8. </b> Week 8 Worklog 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
      
   </ul>
   
@@ -319,7 +301,7 @@
         "
 >
   <a href="/3-blogsposted/3.3-blog3/">
-     <b> 3.3. </b> Blog 3 
+     <b> 3.3 </b> Blog 3 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -350,7 +332,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.1-event1/"
-  title="Event 1"
+  title="Event 1 (Online)"
   class="dd-item 
         
         
@@ -358,7 +340,7 @@
         "
 >
   <a href="/4-eventparticipated/4.1-event1/">
-     <b> 4.1. </b> Event 1 
+     <b> 2. </b> Event 1 (Online) 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -368,7 +350,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.2-event2/"
-  title="Event 2"
+  title="Event 3 (Online)"
   class="dd-item 
         
         
@@ -376,7 +358,25 @@
         "
 >
   <a href="/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 3. </b> Event 3 (Online) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-eventparticipated/4.3-event3/"
+  title="Event 4: FCAJ x Agentic AI Build Week"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-eventparticipated/4.3-event3/">
+     <b> 4. </b> Event 4: FCAJ x Agentic AI Build Week 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -637,7 +637,7 @@
     <br>
     <b> Last Updated </b> <br>
     <i>
-        <font color=orange>26-07-2026</font>
+        <font color=orange>28-07-2026</font>
     </i>
 </left>
 <left>
@@ -726,20 +726,43 @@
 
 	<h1 id="technical-report-serverless-chrome-flashcard-extension--study-platform-on-aws">Technical Report: Serverless Chrome Flashcard Extension &amp; Study Platform on AWS</h1>
 <h4 id="abstract">Abstract</h4>
-<p>This report documents the architectural design, implementation details, and cloud deployment of the <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong>. The project establishes an offline-first browser extension (Manifest V3) integrated with a fully managed AWS Serverless backend infrastructure. The system enables users to capture vocabulary while reading web pages, perform offline local storage operations, synchronize data with a cloud database, and review flashcards via a dedicated Web Application.</p>
-<p>The cloud infrastructure leverages key AWS managed services:</p>
+<p>This report documents the architectural design, implementation details, and cloud deployment of the <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack: <code>chrome-flashcard-axiza</code>). The project establishes an offline-first browser extension (Manifest V3) integrated with a fully managed AWS Serverless backend infrastructure. The frontend website is hosted on <strong>AWS Amplify Hosting</strong> (pointing to an S3 bucket) under the custom domain <code>axiza.net</code>, while the backend API utilizes the custom domain <code>api.axiza.net</code>, both managed via <strong>Amazon Route 53</strong>. The system enables users to capture vocabulary while reading web pages, perform offline local storage operations, synchronize data with a cloud database, and review flashcards via a dedicated Web Application.</p>
+<h4 id="workshop-contributors--project-team">Workshop Contributors &amp; Project Team</h4>
+<table>
+	<thead>
+			<tr>
+					<th>Member</th>
+					<th>ID</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Nguyễn Minh Triết</strong></td>
+					<td>&lt;&gt;</td>
+			</tr>
+			<tr>
+					<td><strong>Nguyễn Nhật Hiếu</strong></td>
+					<td>&lt;&gt;</td>
+			</tr>
+			<tr>
+					<td><strong>Nguyễn Vũ Tường</strong></td>
+					<td>2313834</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="core-aws-managed-services">Core AWS Managed Services</h4>
 <ul>
-<li><strong>API Gateway HTTP API</strong>: Functions as the central HTTPS REST API gateway handling client requests and CORS policies.</li>
-<li><strong>AWS Lambda</strong>: Executes core application logic using the Node.js 24.x runtime with Express.js via <code>serverless-http</code>.</li>
+<li><strong>Amazon Route 53</strong>: Manages public DNS records, routing apex domain (<code>axiza.net</code>) to AWS Amplify Hosting and API subdomain (<code>api.axiza.net</code>) via A/AAAA Alias records to API Gateway.</li>
+<li><strong>AWS Certificate Manager (ACM)</strong>: Issues and manages public SSL/TLS certificates for <code>axiza.net</code> and <code>api.axiza.net</code>.</li>
+<li><strong>AWS Amplify Hosting</strong>: Serves frontend static web assets stored in an S3 bucket under custom domain <code>axiza.net</code>.</li>
+<li><strong>API Gateway HTTP API</strong>: Functions as the central HTTPS REST API gateway for <code>api.axiza.net</code>, handling client requests and CORS authorization for <code>https://axiza.net</code>.</li>
+<li><strong>AWS Lambda</strong>: Executes core application logic using Node.js runtime with Express.js via <code>serverless-http</code>.</li>
 <li><strong>Amazon DynamoDB</strong>: Serves as a persistent NoSQL data store storing user profiles, flashcard collections, and categories.</li>
-<li><strong>Amazon S3 (Private Bucket)</strong>: Provides secure data export storage with 15-minute pre-signed URL retrieval.</li>
-<li><strong>Amazon S3 (Public Bucket)</strong>: Hosts static website assets for the Study Web Application.</li>
+<li><strong>Amazon S3</strong>: Stores frontend static web assets for Amplify hosting and private export data with 15-minute pre-signed URL retrieval.</li>
 </ul>
 <h4 id="system-architecture-overview">System Architecture Overview</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Chrome Extension (MV3) ─┐
-</span></span><span style="display:flex;"><span>                        ├─&gt; API Gateway HTTP API -&gt; AWS Lambda -&gt; DynamoDB (Users, Cards, Categories)
-</span></span><span style="display:flex;"><span>Study / Game Web App  ──┘                           └──&gt; Private S3 Bucket (Pre-signed Export URLs)
-</span></span></code></pre></div><h4 id="report-structure">Report Structure</h4>
+<p><img src="/images/5-Workshop/5.1-Workshop-overview/arch.jpg" alt=""></p>
+<h4 id="report-structure">Report Structure</h4>
 <ol>
 <li><a href="/5-workshop/5.1-workshop-overview/">System Architecture &amp; Design Overview</a></li>
 <li><a href="/5-workshop/5.2-prerequiste/">Prerequisites &amp; System Specifications</a></li>
@@ -913,22 +936,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1028,6 +1035,22 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1223,7 +1246,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/4-eventparticipated/4.2-event2/" title="Event 2"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/4-eventparticipated/4.3-event3/" title="Event 4: FCAJ x Agentic AI Build Week"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/5-workshop/5.1-workshop-overview/" title="System Architecture &amp; Design Overview" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -1236,19 +1259,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
-    <script src="/js/jquery.sticky.js?1785057752"></script>
-    <script src="/js/featherlight.min.js?1785057752"></script>
-    <script src="/js/highlight.pack.js?1785057752"></script>
+    <script src="/js/clipboard.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785179743"></script>
+    <script src="/js/jquery.sticky.js?1785179743"></script>
+    <script src="/js/featherlight.min.js?1785179743"></script>
+    <script src="/js/highlight.pack.js?1785179743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
-    <script src="/js/learn.js?1785057752"></script>
-    <script src="/js/hugo-learn.js?1785057752"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785179743"></script>
+    <script src="/js/learn.js?1785179743"></script>
+    <script src="/js/hugo-learn.js?1785179743"></script>
 
-    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785057752"></script>
+    <link href="/mermaid/mermaid.css?1785179743" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785179743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

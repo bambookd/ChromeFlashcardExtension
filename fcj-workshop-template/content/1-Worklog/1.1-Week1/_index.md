@@ -1,5 +1,4 @@
 ---
-
 title: "Week 1 Worklog"
 date: 2026-06-15
 weight: 1
@@ -11,24 +10,17 @@ pre: " <b> 1.1. </b> "
 
 ## Overall
 
-Formed the project team, agreed on how to work together, and discussed the
-initial project direction.
+Onboarding, AWS account setup, team formation, initial alignment, and project kick-off.
 
-### Tasks done
+### Tasks Done
 
-* Introduced team members and discussed individual strengths.
-* Assigned initial responsibilities to each member.
-* Discussed possible project ideas and selected one direction for further
-  validation.
+* **Team Formation & Alignment**: Introduced team members, assigned initial responsibilities, and established collaboration workflows.
+* **AWS Account Onboarding**: Set up AWS root account, enabled Multi-Factor Authentication (MFA), and created non-root IAM credentials for daily engineering tasks.
+* **Cost Guardrails Setup**: Configured AWS Budgets alerts at $1.00 USD and $5.00 USD thresholds before creating any billable cloud resources.
+* **Project Scope & Kick-Off**: Evaluated project ideas and defined the scope boundary for the **Chrome Flashcard Extension & Serverless Study Platform** (`chrome-flashcard-axiza`).
 
-### Results achieved
+### Results Achieved
 
-* A basic collaboration process and initial responsibilities were agreed upon.
-* The team was ready to begin onboarding and problem validation the following
-  week.
-
-
-### Difficulties
-
-Team members had different project ideas, so we compared them based on
-feasibility and internship requirements before reaching an agreement.
+* **Team Charter**: Agreed upon collaboration processes and responsibility matrix.
+* **Secure AWS Account**: Successfully secured AWS account with MFA and cost guardrails.
+* **Initial Scope Boundary**: Defined core product vision to move into AWS service exploration and problem validation in Week 2.

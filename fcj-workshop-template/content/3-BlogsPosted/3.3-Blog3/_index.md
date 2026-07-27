@@ -11,7 +11,7 @@ pre: " <b> 3.3 </b> "
 
 |           |                                                       |
 | --------- | ----------------------------------------------------- |
-| Published | TODO: 26/07/2026                                |
+| Published | 26/07/2026                                |
 | Platform  | AWS Study Group                                       |
 | Link      | https://www.facebook.com/groups/awsstudygroupfcj/posts/2225146494916977/ |                                        |
 | Evidence  | ![](/images/3-BlogsPosted/3.3-Blog3/image.png) |

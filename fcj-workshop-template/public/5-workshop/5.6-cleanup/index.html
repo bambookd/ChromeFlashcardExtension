@@ -15,21 +15,21 @@
     <title>Resource Teardown &amp; Operational Verification :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
-    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
-    <link href="/css/theme.css?1785057752" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
+    <link href="/css/nucleus.css?1785179743" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785179743" rel="stylesheet">
+    <link href="/css/hybrid.css?1785179743" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785179743" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785179743" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785179743" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785179743" rel="stylesheet">
+    <link href="/css/theme.css?1785179743" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785179743" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785179743" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785179743"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785179743"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785179743"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785057752"></script>
+<script type="text/javascript" src="/js/search.js?1785179743"></script>
  
   </div>
 
@@ -215,24 +215,6 @@
   </a>
    
 </li>
-    
-            
-<li
-  data-nav-id="/1-worklog/1.8-week8/"
-  title="Week 8 Worklog"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/1-worklog/1.8-week8/">
-     <b> 1.8. </b> Week 8 Worklog 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
      
   </ul>
   
@@ -319,7 +301,7 @@
         "
 >
   <a href="/3-blogsposted/3.3-blog3/">
-     <b> 3.3. </b> Blog 3 
+     <b> 3.3 </b> Blog 3 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -350,7 +332,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.1-event1/"
-  title="Event 1"
+  title="Event 1 (Online)"
   class="dd-item 
         
         
@@ -358,7 +340,7 @@
         "
 >
   <a href="/4-eventparticipated/4.1-event1/">
-     <b> 4.1. </b> Event 1 
+     <b> 2. </b> Event 1 (Online) 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -368,7 +350,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.2-event2/"
-  title="Event 2"
+  title="Event 3 (Online)"
   class="dd-item 
         
         
@@ -376,7 +358,25 @@
         "
 >
   <a href="/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 3. </b> Event 3 (Online) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-eventparticipated/4.3-event3/"
+  title="Event 4: FCAJ x Agentic AI Build Week"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-eventparticipated/4.3-event3/">
+     <b> 4. </b> Event 4: FCAJ x Agentic AI Build Week 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -637,7 +637,7 @@
     <br>
     <b> Last Updated </b> <br>
     <i>
-        <font color=orange>26-07-2026</font>
+        <font color=orange>28-07-2026</font>
     </i>
 </left>
 <left>
@@ -731,13 +731,50 @@
 
 
 	<h4 id="teardown--operational-summary">Teardown &amp; Operational Summary</h4>
-<p>This section documents the resource teardown procedures, stack destruction workflow, cost management practices, and post-operational verification steps for the deployed AWS cloud infrastructure.</p>
+<p>This section documents the resource teardown procedures, stack destruction workflow, cost management practices, and post-operational verification steps for the deployed AWS cloud infrastructure (<code>chrome-flashcard-axiza</code>) under domain <code>axiza.net</code>.</p>
 <h4 id="automated-resource-decommissioning-workflow">Automated Resource Decommissioning Workflow</h4>
 <p>To prevent unnecessary billing and ensure total resource cleanup upon completion of project evaluation, the following teardown sequence was executed:</p>
 <ol>
 <li>
+<p><strong>Route 53 Custom Domains Record Cleanup</strong>:
+Remove the custom domain Alias record sets (<code>axiza.net</code> and <code>api.axiza.net</code>) from Route 53 Hosted Zone <code>axiza.net</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Remove apex domain axiza.net Alias record</span>
+</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;DELETE&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;axiza.net&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remove backend subdomain api.axiza.net Alias record</span>
+</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;DELETE&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;api.axiza.net&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span></code></pre></div></li>
+<li>
 <p><strong>Storage Purging Phase</strong>:
-Prior to CloudFormation stack deletion, all persistent objects within private and public S3 buckets were purged:</p>
+Prior to CloudFormation stack deletion, all persistent objects within the private S3 bucket and frontend static asset S3 bucket were purged:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 rm s3://&lt;export-bucket-name&gt; --recursive
 </span></span></code></pre></div></li>
 <li>
@@ -759,13 +796,23 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 	</thead>
 	<tbody>
 			<tr>
+					<td><strong>Route 53 Records</strong></td>
+					<td><code>axiza.net</code> &amp; <code>api.axiza.net</code></td>
+					<td>Deleted Alias A-records mapping to AWS Amplify and API Gateway in <code>axiza.net</code> hosted zone</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Amplify</strong></td>
+					<td><code>Amplify App</code> (<code>chrome-flashcard-axiza</code>)</td>
+					<td>Disassociated domain <code>axiza.net</code> and released frontend web host</td>
+			</tr>
+			<tr>
 					<td><strong>API Gateway</strong></td>
-					<td><code>HttpApi</code> (<code>chrome-flashcard-dev-*</code>)</td>
-					<td>Terminated and HTTP endpoints released</td>
+					<td><code>HttpApi</code> (<code>api.axiza.net</code>)</td>
+					<td>Terminated custom domain mapping and HTTP endpoints</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
-					<td><code>ApiFunction</code> (<code>chrome-flashcard-dev-*</code>)</td>
+					<td><code>ApiFunction</code> (<code>chrome-flashcard-axiza-*</code>)</td>
 					<td>Function, execution runtime, and IAM Execution Roles deleted</td>
 			</tr>
 			<tr>
@@ -775,8 +822,8 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
-					<td><code>ExportBucket</code></td>
-					<td>Bucket policy and storage container removed</td>
+					<td>Static Web Bucket &amp; <code>ExportBucket</code></td>
+					<td>Bucket policies and storage containers removed</td>
 			</tr>
 			<tr>
 					<td><strong>IAM Policies</strong></td>
@@ -790,22 +837,22 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
 <ol>
 <li>
 <p><strong>CloudFormation Audit</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-dev --region ap-southeast-1
-</span></span></code></pre></div><p><em>Result</em>: <code>Stack with id chrome-flashcard-dev does not exist</code> (Status confirmed).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-axiza --region ap-southeast-1
+</span></span></code></pre></div><p><strong>Expected result</strong>: <code>Stack with id chrome-flashcard-axiza does not exist</code> (Status confirmed).</p>
 </li>
 <li>
 <p><strong>DynamoDB Audit</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables --region ap-southeast-1
-</span></span></code></pre></div><p><em>Result</em>: Verified zero remaining project-related table instances.</p>
+</span></span></code></pre></div><p><strong>Expected result</strong>: Verified zero remaining project-related table instances.</p>
 </li>
 <li>
 <p><strong>CloudWatch Log Audit</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span> --region ap-southeast-1
-</span></span></code></pre></div><p><em>Result</em>: Log groups successfully purged or set to short retention windows, completing system decommissioning.</p>
+</span></span></code></pre></div><p><strong>Expected result</strong>: Log groups successfully purged or set to short retention windows, completing system decommissioning.</p>
 </li>
 </ol>
 <h4 id="project-conclusion">Project Conclusion</h4>
-<p>The project successfully demonstrated an <strong>offline-first Chrome Extension (MV3)</strong> combined with a scalable, secure <strong>AWS Serverless infrastructure</strong> (API Gateway, Lambda, DynamoDB, and S3). System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.</p>
+<p>The project successfully demonstrated an <strong>offline-first Chrome Extension (MV3)</strong> combined with frontend hosting on <strong>AWS Amplify</strong> (pointing to S3) under custom domain <code>axiza.net</code> managed by <strong>Route 53</strong>, and a scalable, secure <strong>AWS Serverless backend API</strong> mapped to custom domain <code>api.axiza.net</code>. System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.</p>
 
 
 
@@ -971,22 +1018,6 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1086,6 +1117,22 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1298,19 +1345,19 @@ Executing the SAM CLI stack removal command deletes all provisioned resources de
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
-    <script src="/js/jquery.sticky.js?1785057752"></script>
-    <script src="/js/featherlight.min.js?1785057752"></script>
-    <script src="/js/highlight.pack.js?1785057752"></script>
+    <script src="/js/clipboard.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785179743"></script>
+    <script src="/js/jquery.sticky.js?1785179743"></script>
+    <script src="/js/featherlight.min.js?1785179743"></script>
+    <script src="/js/highlight.pack.js?1785179743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
-    <script src="/js/learn.js?1785057752"></script>
-    <script src="/js/hugo-learn.js?1785057752"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785179743"></script>
+    <script src="/js/learn.js?1785179743"></script>
+    <script src="/js/hugo-learn.js?1785179743"></script>
 
-    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785057752"></script>
+    <link href="/mermaid/mermaid.css?1785179743" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785179743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

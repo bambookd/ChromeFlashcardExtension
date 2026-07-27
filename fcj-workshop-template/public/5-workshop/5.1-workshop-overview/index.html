@@ -15,21 +15,21 @@
     <title>System Architecture &amp; Design Overview :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
-    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
-    <link href="/css/theme.css?1785057752" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
+    <link href="/css/nucleus.css?1785179743" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785179743" rel="stylesheet">
+    <link href="/css/hybrid.css?1785179743" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785179743" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785179743" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785179743" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785179743" rel="stylesheet">
+    <link href="/css/theme.css?1785179743" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785179743" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785179743" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785179743"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785179743"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785179743"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785057752"></script>
+<script type="text/javascript" src="/js/search.js?1785179743"></script>
  
   </div>
 
@@ -215,24 +215,6 @@
   </a>
    
 </li>
-    
-            
-<li
-  data-nav-id="/1-worklog/1.8-week8/"
-  title="Week 8 Worklog"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/1-worklog/1.8-week8/">
-     <b> 1.8. </b> Week 8 Worklog 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
      
   </ul>
   
@@ -319,7 +301,7 @@
         "
 >
   <a href="/3-blogsposted/3.3-blog3/">
-     <b> 3.3. </b> Blog 3 
+     <b> 3.3 </b> Blog 3 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -350,7 +332,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.1-event1/"
-  title="Event 1"
+  title="Event 1 (Online)"
   class="dd-item 
         
         
@@ -358,7 +340,7 @@
         "
 >
   <a href="/4-eventparticipated/4.1-event1/">
-     <b> 4.1. </b> Event 1 
+     <b> 2. </b> Event 1 (Online) 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -368,7 +350,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.2-event2/"
-  title="Event 2"
+  title="Event 3 (Online)"
   class="dd-item 
         
         
@@ -376,7 +358,25 @@
         "
 >
   <a href="/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 3. </b> Event 3 (Online) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-eventparticipated/4.3-event3/"
+  title="Event 4: FCAJ x Agentic AI Build Week"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-eventparticipated/4.3-event3/">
+     <b> 4. </b> Event 4: FCAJ x Agentic AI Build Week 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -637,7 +637,7 @@
     <br>
     <b> Last Updated </b> <br>
     <i>
-        <font color=orange>26-07-2026</font>
+        <font color=orange>28-07-2026</font>
     </i>
 </left>
 <left>
@@ -731,28 +731,11 @@
 
 
 	<h4 id="executive-summary">Executive Summary</h4>
-<p>This section details the system architecture, component breakdown, and data communication patterns of the <strong>Chrome Flashcard Extension</strong> serverless application on Amazon Web Services (AWS).</p>
+<p>This section details the system architecture, component breakdown, and data communication patterns of the <strong>Chrome Flashcard Extension</strong> serverless application (<code>chrome-flashcard-axiza</code>) on Amazon Web Services (AWS). The frontend website is hosted using AWS Amplify pointing to an S3 bucket under the custom domain <code>axiza.net</code> managed by Amazon Route 53, while the backend API utilizes the custom domain <code>api.axiza.net</code> also managed via Amazon Route 53 and mapped to API Gateway HTTP API.</p>
 <h4 id="architectural-topology">Architectural Topology</h4>
 <p>The system employs an offline-first design pattern at the client layer coupled with a microservices-inspired serverless topology on AWS:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+-----------------------+        HTTPS REST         +--------------------------+
-</span></span><span style="display:flex;"><span>|  Chrome Extension     |--------------------------&gt;|  API Gateway (HTTP API)  |
-</span></span><span style="display:flex;"><span>|  (Manifest V3)        |                           +--------------------------+
-</span></span><span style="display:flex;"><span>+-----------------------+                                        |
-</span></span><span style="display:flex;"><span>            | (Local Storage Fallback)                           v
-</span></span><span style="display:flex;"><span>+-----------------------+                           +--------------------------+
-</span></span><span style="display:flex;"><span>|  Study &amp; Game Web     |--------------------------&gt;|  AWS Lambda Function     |
-</span></span><span style="display:flex;"><span>|  (Static S3 Bucket)   |                           |  (Node.js 24.x Express)  |
-</span></span><span style="display:flex;"><span>+-----------------------+                           +--------------------------+
-</span></span><span style="display:flex;"><span>                                                                 |
-</span></span><span style="display:flex;"><span>                                       +-------------------------+-------------------------+
-</span></span><span style="display:flex;"><span>                                       |                                                   |
-</span></span><span style="display:flex;"><span>                                       v                                                   v
-</span></span><span style="display:flex;"><span>                            +--------------------+                               +--------------------+
-</span></span><span style="display:flex;"><span>                            |  Amazon DynamoDB   |                               |  Amazon S3 Bucket  |
-</span></span><span style="display:flex;"><span>                            |  (Users, Cards,    |                               |  (Private Export   |
-</span></span><span style="display:flex;"><span>                            |   Categories)      |                               |   Pre-signed URLs) |
-</span></span><span style="display:flex;"><span>                            +--------------------+                               +--------------------+
-</span></span></code></pre></div><h4 id="detailed-aws-component-specifications">Detailed AWS Component Specifications</h4>
+<p><img src="/images/5-Workshop/5.1-Workshop-overview/arch.jpg" alt=""></p>
+<h4 id="detailed-aws-component-specifications">Detailed AWS Component Specifications</h4>
 <table>
 	<thead>
 			<tr>
@@ -763,14 +746,29 @@
 	</thead>
 	<tbody>
 			<tr>
+					<td><strong>AWS Amplify Hosting</strong></td>
+					<td>Frontend Website Host</td>
+					<td>Serves frontend static web assets from S3 bucket under custom domain <code>axiza.net</code>.</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon Route 53</strong></td>
+					<td>DNS &amp; Domain Routing</td>
+					<td>Manages public DNS records for <code>axiza.net</code>, routing apex domain (<code>axiza.net</code>) to AWS Amplify Hosting and API subdomain (<code>api.axiza.net</code>) via A/AAAA Alias records to API Gateway.</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Certificate Manager (ACM)</strong></td>
+					<td>SSL/TLS Certificate Management</td>
+					<td>Provisions, manages, and automatically renews public SSL/TLS certificates for custom domains <code>axiza.net</code> and <code>api.axiza.net</code>, ensuring transport layer HTTPS security.</td>
+			</tr>
+			<tr>
 					<td><strong>API Gateway HTTP API</strong></td>
 					<td>Public Gateway &amp; Reverse Proxy</td>
-					<td>Enforces HTTPS endpoints, manages CORS preflight authorization, and routes all requests via proxy integration (<code>/{proxy+}</code>) to Lambda.</td>
+					<td>Enforces HTTPS on custom domain <code>api.axiza.net</code>, manages CORS preflight authorization for allowed origin <code>https://axiza.net</code>, and routes all requests via proxy integration (<code>/{proxy+}</code>) to Lambda.</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
 					<td>Stateless Compute Layer</td>
-					<td>Executes an Express.js backend via <code>serverless-http</code> on the Node.js 24.x runtime, offering scale-to-zero operational efficiency.</td>
+					<td>Executes an Express.js backend via <code>serverless-http</code> on Node.js runtime, offering scale-to-zero operational efficiency.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon DynamoDB</strong></td>
@@ -778,27 +776,22 @@
 					<td>Provisioned/On-demand NoSQL tables: <code>UsersTable</code> (PK: <code>username</code>), <code>FlashcardsTable</code> (PK: <code>userId</code>, SK: <code>cardId</code>), and <code>CategoriesTable</code> (PK: <code>userId</code>, SK: <code>categoryName</code>).</td>
 			</tr>
 			<tr>
-					<td><strong>Amazon S3 (Private)</strong></td>
-					<td>Encrypted Document Store</td>
-					<td>Holds JSON data exports with restrictive access policies, accessible only via temporary 15-minute pre-signed GET URLs.</td>
-			</tr>
-			<tr>
-					<td><strong>Amazon S3 (Public)</strong></td>
-					<td>Web Asset Hosting</td>
-					<td>Delivers static HTML, CSS, JavaScript, and configuration files for the Study Web Application.</td>
+					<td><strong>Amazon S3</strong></td>
+					<td>Static Web &amp; Encrypted Document Store</td>
+					<td>Bucket for frontend static assets served via Amplify, plus private export bucket holding JSON data exports accessible only via temporary 15-minute pre-signed GET URLs.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon CloudWatch</strong></td>
 					<td>Observability Platform</td>
-					<td>Captures execution logs, operational metrics, cold start timings, and system error rates.</td>
+					<td>Captures execution logs, operational metrics, cold start timings, and system error rates for <code>chrome-flashcard-axiza</code>.</td>
 			</tr>
 	</tbody>
 </table>
 <h4 id="component-data-flow-analysis">Component Data Flow Analysis</h4>
 <ol>
 <li><strong>Vocabulary Acquisition Phase</strong>: The browser extension captures highlighted text via a context menu listener. The content script (<code>contentScript.js</code>) renders an inline modal and persists records locally to <code>chrome.storage.local</code>.</li>
-<li><strong>Cloud Synchronization Phase</strong>: Upon user authentication or explicit sync initiation, the extension transmits accumulated local records via <code>POST /api/sync</code> to API Gateway. Lambda verifies JWT credentials and executes batch operations against DynamoDB.</li>
-<li><strong>Interactive Practice Phase</strong>: The Study Web App loads user flashcards from DynamoDB via authenticated REST calls, managing local study queues and recall scores.</li>
+<li><strong>Cloud Synchronization Phase</strong>: Upon user authentication or explicit sync initiation, the extension transmits accumulated local records via <code>POST https://api.axiza.net/api/sync</code> routed through Route 53 to API Gateway. Lambda verifies JWT credentials and executes batch operations against DynamoDB.</li>
+<li><strong>Interactive Practice Phase</strong>: The Study Web App is hosted via AWS Amplify pointing to S3 at <code>https://axiza.net/study</code> and loads user flashcards from DynamoDB via authenticated REST calls to the backend API (<code>https://api.axiza.net/api/...</code>), managing local study queues and recall scores.</li>
 <li><strong>Secure Export Phase</strong>: Export requests trigger Lambda to assemble a structured JSON snapshot, write the file to the private S3 bucket, and return a signed, temporary download link.</li>
 </ol>
 
@@ -966,22 +959,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1081,6 +1058,22 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1290,19 +1283,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
-    <script src="/js/jquery.sticky.js?1785057752"></script>
-    <script src="/js/featherlight.min.js?1785057752"></script>
-    <script src="/js/highlight.pack.js?1785057752"></script>
+    <script src="/js/clipboard.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785179743"></script>
+    <script src="/js/jquery.sticky.js?1785179743"></script>
+    <script src="/js/featherlight.min.js?1785179743"></script>
+    <script src="/js/highlight.pack.js?1785179743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
-    <script src="/js/learn.js?1785057752"></script>
-    <script src="/js/hugo-learn.js?1785057752"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785179743"></script>
+    <script src="/js/learn.js?1785179743"></script>
+    <script src="/js/hugo-learn.js?1785179743"></script>
 
-    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785057752"></script>
+    <link href="/mermaid/mermaid.css?1785179743" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785179743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

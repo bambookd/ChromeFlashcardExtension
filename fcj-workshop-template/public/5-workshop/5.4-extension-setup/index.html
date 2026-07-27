@@ -15,21 +15,21 @@
     <title>Chrome Extension Architecture &amp; Client-Side Sync :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785057752" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785057752" rel="stylesheet">
-    <link href="/css/hybrid.css?1785057752" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785057752" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785057752" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785057752" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785057752" rel="stylesheet">
-    <link href="/css/theme.css?1785057752" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785057752" rel="stylesheet">
+    <link href="/css/nucleus.css?1785179743" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785179743" rel="stylesheet">
+    <link href="/css/hybrid.css?1785179743" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785179743" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785179743" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785179743" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785179743" rel="stylesheet">
+    <link href="/css/theme.css?1785179743" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785179743" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785057752" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785179743" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785057752"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785179743"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785057752"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785057752"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785179743"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785179743"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785057752"></script>
+<script type="text/javascript" src="/js/search.js?1785179743"></script>
  
   </div>
 
@@ -215,24 +215,6 @@
   </a>
    
 </li>
-    
-            
-<li
-  data-nav-id="/1-worklog/1.8-week8/"
-  title="Week 8 Worklog"
-  class="dd-item 
-        
-        
-        
-        "
->
-  <a href="/1-worklog/1.8-week8/">
-     <b> 1.8. </b> Week 8 Worklog 
-    <i class="fas fa-check read-icon"></i>
-    
-  </a>
-   
-</li>
      
   </ul>
   
@@ -319,7 +301,7 @@
         "
 >
   <a href="/3-blogsposted/3.3-blog3/">
-     <b> 3.3. </b> Blog 3 
+     <b> 3.3 </b> Blog 3 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -350,7 +332,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.1-event1/"
-  title="Event 1"
+  title="Event 1 (Online)"
   class="dd-item 
         
         
@@ -358,7 +340,7 @@
         "
 >
   <a href="/4-eventparticipated/4.1-event1/">
-     <b> 4.1. </b> Event 1 
+     <b> 2. </b> Event 1 (Online) 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -368,7 +350,7 @@
             
 <li
   data-nav-id="/4-eventparticipated/4.2-event2/"
-  title="Event 2"
+  title="Event 3 (Online)"
   class="dd-item 
         
         
@@ -376,7 +358,25 @@
         "
 >
   <a href="/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 3. </b> Event 3 (Online) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/4-eventparticipated/4.3-event3/"
+  title="Event 4: FCAJ x Agentic AI Build Week"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/4-eventparticipated/4.3-event3/">
+     <b> 4. </b> Event 4: FCAJ x Agentic AI Build Week 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -637,7 +637,7 @@
     <br>
     <b> Last Updated </b> <br>
     <i>
-        <font color=orange>26-07-2026</font>
+        <font color=orange>28-07-2026</font>
     </i>
 </left>
 <left>
@@ -731,43 +731,44 @@
 
 
 	<h4 id="client-component-system-architecture">Client Component System Architecture</h4>
-<p>This section documents the Manifest V3 implementation of the <strong>Chrome Flashcard Extension</strong>, its local storage architecture, offline resilience mechanisms, and cloud synchronization flow.</p>
+<p>This section documents the Manifest V3 implementation of the <strong>Chrome Flashcard Extension</strong>, its local storage architecture, offline resilience mechanisms, and cloud synchronization flow with domain <code>axiza.net</code>.</p>
 <h4 id="manifest-v3-architecture--component-specification">Manifest V3 Architecture &amp; Component Specification</h4>
 <p>The extension architecture leverages modern Chrome Extension Manifest V3 specifications to maximize browser security and resource efficiency:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+-------------------------------------------------------------------------+
-</span></span><span style="display:flex;"><span>|                         Chrome Extension (MV3)                          |
-</span></span><span style="display:flex;"><span>|                                                                         |
-</span></span><span style="display:flex;"><span>|  +---------------------+   Messaging    +----------------------------+  |
-</span></span><span style="display:flex;"><span>|  | Context Menu Event  |---------------&gt;| Background Service Worker  |  |
-</span></span><span style="display:flex;"><span>|  | (Browser Selection) |                | (background.js)            |  |
-</span></span><span style="display:flex;"><span>|  +---------------------+                +----------------------------+  |
-</span></span><span style="display:flex;"><span>|             |                                        |                  |
-</span></span><span style="display:flex;"><span>|             v                                        v                  |
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+----------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>|                         Chrome Extension (MV3)                             |
+</span></span><span style="display:flex;"><span>|                                                                            |
+</span></span><span style="display:flex;"><span>|  +---------------------+   Messaging    +----------------------------+     |
+</span></span><span style="display:flex;"><span>|  | Context Menu Event  |---------------&gt;| Background Service Worker  |     |
+</span></span><span style="display:flex;"><span>|  | (Browser Selection) |                | (background.js)            |     |
+</span></span><span style="display:flex;"><span>|  +---------------------+                +----------------------------+     |
+</span></span><span style="display:flex;"><span>|             |                                        |                     |
+</span></span><span style="display:flex;"><span>|             v                                        v                     |
 </span></span><span style="display:flex;"><span>|  +---------------------+   Local Storage   +----------------------------+  |
 </span></span><span style="display:flex;"><span>|  | Injected DOM Modal  |------------------&gt;| chrome.storage.local       |  |
-</span></span><span style="display:flex;"><span>|  | (contentScript.js)  |                   | (Offline Persistence)      |  |
+</span></span><span style="display:flex;"><span>|  | (contentScript.js)  |                   | (Offline Persistence Cache)|  |
 </span></span><span style="display:flex;"><span>|  +---------------------+                   +----------------------------+  |
-</span></span><span style="display:flex;"><span>|                                                      ^                  |
-</span></span><span style="display:flex;"><span>|                                                      | Auth &amp; Sync      |
-</span></span><span style="display:flex;"><span>|  +---------------------+                             v                  |
-</span></span><span style="display:flex;"><span>|  | Extension Popup UI  |------------------------------------------------+  |
-</span></span><span style="display:flex;"><span>|  | (popup.js / html)   |                                                |
-</span></span><span style="display:flex;"><span>+--+---------------------+------------------------------------------------+
-</span></span><span style="display:flex;"><span>                                                       |
-</span></span><span style="display:flex;"><span>                                                       v HTTPS REST API
-</span></span><span style="display:flex;"><span>                                        +------------------------------+
-</span></span><span style="display:flex;"><span>                                        | AWS API Gateway / Lambda     |
-</span></span><span style="display:flex;"><span>                                        +------------------------------+
+</span></span><span style="display:flex;"><span>|                                                      ^                     |
+</span></span><span style="display:flex;"><span>|                                                      | Read/Write State    |
+</span></span><span style="display:flex;"><span>|  +---------------------+                             | &amp; Auth Token        |
+</span></span><span style="display:flex;"><span>|  | Extension Popup UI  |-----------------------------+                     |
+</span></span><span style="display:flex;"><span>|  | (popup.js / html)   |                                                   |
+</span></span><span style="display:flex;"><span>|  +----------+----------+                                                   |
+</span></span><span style="display:flex;"><span>+-------------|--------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>              |
+</span></span><span style="display:flex;"><span>              v HTTPS REST API (https://api.axiza.net) [Login / Sync / Export]
+</span></span><span style="display:flex;"><span>+----------------------------------------------------------------------------+
+</span></span><span style="display:flex;"><span>|                       Amazon Route 53 / API Gateway                        |
+</span></span><span style="display:flex;"><span>+----------------------------------------------------------------------------+
 </span></span></code></pre></div><h4 id="core-components--file-responsibilities">Core Components &amp; File Responsibilities</h4>
 <ol>
 <li><strong><code>manifest.json</code></strong>: Declares Manifest V3 permissions (<code>storage</code>, <code>contextMenus</code>, <code>activeTab</code>), background service worker scripts, and host permissions.</li>
 <li><strong><code>background.js</code> (Service Worker)</strong>: Registers context menu items (<code>Save &quot;...&quot; as flashcard</code>) and manages message passing between injected content scripts and extension components.</li>
 <li><strong><code>contentScript.js</code> (DOM Controller)</strong>: Injects an interactive floating edit dialog into active web pages when triggered from the context menu, allowing users to modify definitions, word forms, and categories before persisting.</li>
 <li><strong><code>popup.html / popup.js</code></strong>: Provides the extension popup interface for user registration, authentication (JWT token storage), local card management, batch synchronization (<code>POST /api/sync</code>), and data export requests.</li>
-<li><strong><code>extension-config.js</code></strong>: Defines environment mapping configurations:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span>window.<span style="color:#a6e22e">EXTENSION_CONFIG</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">API_BASE_URL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">STUDY_APP_URL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com/study&#34;</span>
+<li><strong><code>extension-config.js</code></strong>: Defines environment mapping configurations using <code>globalThis.FLASHCARD_CONFIG</code>:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">globalThis</span>.<span style="color:#a6e22e">FLASHCARD_CONFIG</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">API_BASE_URL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://api.axiza.net&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">STUDY_URL</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;https://axiza.net/study&#34;</span>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div></li>
 </ol>
@@ -776,22 +777,22 @@
 <li>
 <p><strong>Local Storage Schema</strong>: Flashcards created offline are formatted as JSON items and appended directly to <code>chrome.storage.local</code> under the <code>flashcards</code> array key:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;card-1722000000000&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;a1b2c3d4-e5f6-7890-abcd-1234567890ef&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;word&#34;</span>: <span style="color:#e6db74">&#34;serverless&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;meaning&#34;</span>: <span style="color:#e6db74">&#34;không cần máy chủ&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;wordForm&#34;</span>: <span style="color:#e6db74">&#34;adjective&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;wordform&#34;</span>: <span style="color:#e6db74">&#34;adjective&#34;</span>,
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;AWS&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;synced&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;createdAt&#34;</span>: <span style="color:#ae81ff">1722000000000</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;syncedAt&#34;</span>: <span style="color:#66d9ef">null</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;createdAt&#34;</span>: <span style="color:#e6db74">&#34;2026-07-26T21:30:00.000Z&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 <li>
 <p><strong>Cloud Batch Synchronization Procedure</strong>:</p>
 <ul>
-<li>The user authenticates via the Popup UI (<code>POST /api/auth/login</code>), storing the returned JWT token securely in local extension state.</li>
-<li>Upon clicking <strong>Sync Now</strong>, <code>popup.js</code> extracts unsynced local records and posts a JSON batch request payload to <code>POST /api/sync</code>.</li>
+<li>The user authenticates via the Popup UI (<code>POST https://api.axiza.net/api/auth/login</code>), storing the returned JWT token securely in local extension state.</li>
+<li>Upon clicking <strong>Sync Now</strong>, <code>popup.js</code> extracts unsynced local records (<code>syncedAt === null</code>) and posts a JSON batch request payload to <code>POST /api/sync</code> at <code>https://api.axiza.net</code>.</li>
 <li>AWS Lambda processes the payload, executes idempotent conditional writes (<code>PutItem</code>) into the DynamoDB <code>FlashcardsTable</code>, and returns confirmation metadata.</li>
-<li>The client marks records as <code>synced: true</code>, ensuring data consistency between client-side local storage and the cloud database.</li>
+<li>The client marks records with an ISO timestamp string <code>syncedAt: &quot;2026-07-26T21:30:05.000Z&quot;</code>, ensuring data consistency between client-side local storage and the cloud database.</li>
 </ul>
 </li>
 </ol>
@@ -960,22 +961,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1075,6 +1060,22 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1287,19 +1288,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785057752"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785057752"></script>
-    <script src="/js/jquery.sticky.js?1785057752"></script>
-    <script src="/js/featherlight.min.js?1785057752"></script>
-    <script src="/js/highlight.pack.js?1785057752"></script>
+    <script src="/js/clipboard.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785179743"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785179743"></script>
+    <script src="/js/jquery.sticky.js?1785179743"></script>
+    <script src="/js/featherlight.min.js?1785179743"></script>
+    <script src="/js/highlight.pack.js?1785179743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785057752"></script>
-    <script src="/js/learn.js?1785057752"></script>
-    <script src="/js/hugo-learn.js?1785057752"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785179743"></script>
+    <script src="/js/learn.js?1785179743"></script>
+    <script src="/js/hugo-learn.js?1785179743"></script>
 
-    <link href="/mermaid/mermaid.css?1785057752" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785057752"></script>
+    <link href="/mermaid/mermaid.css?1785179743" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785179743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -11,7 +11,7 @@ pre: " <b> 3.3 </b> "
 
 |            |                                                                          |
 | ---------- | ------------------------------------------------------------------------ |
-| Ngày đăng  | TODO: 26/07/2026                                                         |
+| Ngày đăng  | 26/07/2026                                                         |
 | Nền tảng   | AWS Study Group                                                          |
 | Liên kết   | https://www.facebook.com/groups/awsstudygroupfcj/posts/2225146494916977/ |
 | Minh chứng | ![](/images/3-BlogsPosted/3.3-Blog3/image.png)             |

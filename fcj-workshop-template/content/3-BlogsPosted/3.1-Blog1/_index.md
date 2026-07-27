@@ -65,8 +65,6 @@ The central component of the new DDoS protection mechanism is **Amazon GameLift 
 
 Player Gateway provides a relay networking layer between the game client and the game server.
 
-![Amazon GameLift Servers Player Gateway architecture](/images/3-blogs/blog-02-player-gateway.png)
-
 The general connection flow is:
 
 ```text
@@ -333,6 +331,3 @@ The mechanism is especially useful for UDP-based multiplayer games with low-late
 
 * [Amazon GameLift Servers DDoS protection](https://docs.aws.amazon.com/gameliftservers/latest/developerguide/ddos-protection-intro.html)
 * [AWS — Amazon GameLift Servers](https://aws.amazon.com/gamelift/servers/)
-* {{TODO: AWS announcement URL}}
-* {{TODO: AWS technical blog URL}}
-

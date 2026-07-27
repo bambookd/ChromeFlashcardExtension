@@ -10,29 +10,28 @@ pre: " <b> 1.7. </b> "
 
 ## Mục tiêu
 
-Các mục tiêu của Tuần 7 là:
+Các mục tiêu cho Tuần 7 bao gồm:
 
-* Tổng hợp tài liệu dự án và nhật ký công việc thực tập.
-* Chuẩn bị báo cáo tổng kết dự án.
-* Tạo một luồng trình diễn (demonstration flow) rõ ràng cho ứng dụng.
-* Đánh giá hệ thống đã triển khai và xác minh các tính năng chính.
-* Dọn dẹp mã nguồn, các tệp cấu hình và cấu trúc dự án.
+* Tổng hợp toàn bộ tài liệu kỹ thuật và hoàn thiện các nhật ký công việc thực tập.
+* Biên soạn và chuẩn hóa bộ tài liệu Workshop 5 gồm 6 bài thực hành chi tiết ([`content/5-Workshop`](file:///Users/axiza/Documents/GitHub/ChromeFlashcardExtension/fcj-workshop-template/content/5-Workshop/_index.vi.md)).
+* Xây dựng kịch bản kiểm thử demo bao gồm các thao tác lưu từ vựng từ Extension, ôn tập thẻ Active Recall và xuất dữ liệu S3 Pre-signed URL.
+* Kiểm thử các script tự động dọn dẹp tài nguyên (xóa bản ghi Route 53 và hủy stack CloudFormation `sam delete --no-prompts`).
+* Tối ưu hóa cấu trúc dự án, build ứng dụng Hugo static site và chuẩn bị hồ sơ bàn giao cuối cùng.
 
-## Các công việc cần thực hiện
+## Các Công việc Đã Thực hiện
 
-| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
+| Nhiệm vụ | Trạng thái | Ngày Bắt đầu | Ngày Hoàn thành |
 | :--- | :--- | :--- | :--- |
-| Đánh giá lại các công việc đã hoàn thành trong những tuần trước và thu thập các kết quả kỹ thuật chính. | ✅ Hoàn thành | 27/07/2026 | 27/07/2026 |
-| Sắp xếp tài liệu dự án, các mô tả kiến trúc, kết quả kiểm thử và ghi chú triển khai. | ✅ Hoàn thành | 28/07/2026 | 28/07/2026 |
-| Soạn thảo và chỉnh sửa báo cáo tổng kết dự án. | ✅ Hoàn thành | 29/07/2026 | 30/07/2026 |
-| Chuẩn bị kịch bản trình diễn bao gồm việc tạo flashcard, quản lý danh mục, các chế độ học tập và các thao tác dữ liệu trên đám mây. | ✅ Hoàn thành | 30/07/2026 | 31/07/2026 |
-| Kiểm thử toàn bộ luồng trình diễn và giải quyết các vấn đề có thể ảnh hưởng đến buổi thuyết trình. | ✅ Hoàn thành | 31/07/2026 | 01/08/2026 |
-| Dọn dẹp mã nguồn không sử dụng, các tệp tạm thời, cấu hình lỗi thời và tài liệu chưa hoàn chỉnh. | ✅ Hoàn thành | 01/08/2026 | 02/08/2026 |
+| Tổng kết toàn bộ kiến trúc kỹ thuật, bảng thông số thành phần AWS và các bằng chứng triển khai đám mây. | ✅ Hoàn thành | 27/07/2026 | 27/07/2026 |
+| Xây dựng và tinh chỉnh bộ tài liệu Workshop 5 (Tổng quan, Yêu cầu, Deploy Backend, Cấu hình Extension, Study Web App, Cleanup). | ✅ Hoàn thành | 28/07/2026 | 28/07/2026 |
+| Cập nhật tài liệu đề xuất dự án (`content/2-Proposal`) thống nhất các mục tiêu, kiến trúc, lộ trình 7 tuần, ngân sách và lộ trình workshop. | ✅ Hoàn thành | 29/07/2026 | 29/07/2026 |
+| Kiểm thử kịch bản demo hệ thống trên các tên miền thực tế `https://axiza.net` và `https://api.axiza.net`. | ✅ Hoàn thành | 30/07/2026 | 31/07/2026 |
+| Xác minh các lệnh tự động giải phóng tài nguyên (`aws route53 change-resource-record-sets`, `aws s3 rm`, `sam delete`). | ✅ Hoàn thành | 31/07/2026 | 01/08/2026 |
+| Biên dịch lại trang web bằng Hugo (`hugo`) và thực hiện dọn dẹp tối ưu hóa mã nguồn. | ✅ Hoàn thành | 02/08/2026 | 02/08/2026 |
 
-## Kết quả
+## Kết quả Đạt được
 
-* Đã hoàn thành báo cáo tổng kết dự án.
-* Chuẩn bị và kiểm thử xong luồng trình diễn ứng dụng.
-* Tổng hợp thành công tài liệu kỹ thuật và tài liệu triển khai.
-* Dọn dẹp cấu trúc dự án và các tệp lỗi thời.
-* Tài liệu hóa những hạn chế còn tồn đọng và các định hướng cải thiện trong tương lai.
+* Hoàn thành bộ báo cáo kỹ thuật và đề xuất dự án tổng thể.
+* Đăng tải đầy đủ bộ tài liệu 6 bài thực hành thuộc Workshop 5 bằng cả tiếng Anh và tiếng Việt.
+* Xác minh thành công các script tự động gỡ bỏ tài nguyên nhằm bảo đảm triệt tiêu hoàn toàn chi phí AWS phát sinh sau workshop.
+* Biên dịch thành công bộ tài nguyên web tĩnh Hugo sạch tại `fcj-workshop-template/public/`.

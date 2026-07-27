@@ -10,22 +10,28 @@ pre: " <b> 5. </b> "
 
 #### Abstract
 
-This report documents the architectural design, implementation details, and cloud deployment of the **Chrome Flashcard Extension & Serverless Study Platform**. The project establishes an offline-first browser extension (Manifest V3) integrated with a fully managed AWS Serverless backend infrastructure. The system enables users to capture vocabulary while reading web pages, perform offline local storage operations, synchronize data with a cloud database, and review flashcards via a dedicated Web Application.
+This report documents the architectural design, implementation details, and cloud deployment of the **Chrome Flashcard Extension & Serverless Study Platform** (Stack: `chrome-flashcard-axiza`). The project establishes an offline-first browser extension (Manifest V3) integrated with a fully managed AWS Serverless backend infrastructure. The frontend website is hosted on **AWS Amplify Hosting** (pointing to an S3 bucket) under the custom domain `axiza.net`, while the backend API utilizes the custom domain `api.axiza.net`, both managed via **Amazon Route 53**. The system enables users to capture vocabulary while reading web pages, perform offline local storage operations, synchronize data with a cloud database, and review flashcards via a dedicated Web Application.
 
-The cloud infrastructure leverages key AWS managed services:
-+ **API Gateway HTTP API**: Functions as the central HTTPS REST API gateway handling client requests and CORS policies.
-+ **AWS Lambda**: Executes core application logic using the Node.js 24.x runtime with Express.js via `serverless-http`.
+#### Workshop Contributors & Project Team
+
+| Member | ID |
+| --- | --- |
+| **Nguyễn Minh Triết** | <> |
+| **Nguyễn Nhật Hiếu** | <> |
+| **Nguyễn Vũ Tường** | 2313834 |
+
+#### Core AWS Managed Services
++ **Amazon Route 53**: Manages public DNS records, routing apex domain (`axiza.net`) to AWS Amplify Hosting and API subdomain (`api.axiza.net`) via A/AAAA Alias records to API Gateway.
++ **AWS Certificate Manager (ACM)**: Issues and manages public SSL/TLS certificates for `axiza.net` and `api.axiza.net`.
++ **AWS Amplify Hosting**: Serves frontend static web assets stored in an S3 bucket under custom domain `axiza.net`.
++ **API Gateway HTTP API**: Functions as the central HTTPS REST API gateway for `api.axiza.net`, handling client requests and CORS authorization for `https://axiza.net`.
++ **AWS Lambda**: Executes core application logic using Node.js runtime with Express.js via `serverless-http`.
 + **Amazon DynamoDB**: Serves as a persistent NoSQL data store storing user profiles, flashcard collections, and categories.
-+ **Amazon S3 (Private Bucket)**: Provides secure data export storage with 15-minute pre-signed URL retrieval.
-+ **Amazon S3 (Public Bucket)**: Hosts static website assets for the Study Web Application.
++ **Amazon S3**: Stores frontend static web assets for Amplify hosting and private export data with 15-minute pre-signed URL retrieval.
 
 #### System Architecture Overview
 
-```text
-Chrome Extension (MV3) ─┐
-                        ├─> API Gateway HTTP API -> AWS Lambda -> DynamoDB (Users, Cards, Categories)
-Study / Game Web App  ──┘                           └──> Private S3 Bucket (Pre-signed Export URLs)
-```
+![](/images/5-Workshop/5.1-Workshop-overview/arch.jpg)
 
 #### Report Structure
 

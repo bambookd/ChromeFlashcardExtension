@@ -10,24 +10,30 @@ pre: " <b> 5. </b> "
 
 #### Tóm tắt
 
-Báo cáo này trình bày chi tiết thiết kế kiến trúc, quá trình phát triển và triển khai trên cloud của dự án **Chrome Flashcard Extension & Serverless Study Platform**. Dự án xây dựng một tiện ích mở rộng trình duyệt hoạt động theo mô hình offline-first (Manifest V3) tích hợp với hạ tầng backend AWS Serverless được quản lý hoàn toàn (fully managed). Hệ thống cho phép người dùng lưu từ vựng khi đọc trang web, lưu trữ local khi offline, đồng bộ dữ liệu với cơ sở dữ liệu trên cloud và ôn tập flashcard qua một Web App riêng biệt.
+Báo cáo này trình bày chi tiết thiết kế kiến trúc, quá trình phát triển và triển khai trên cloud của dự án **Chrome Flashcard Extension & Serverless Study Platform** (Stack Name: `chrome-flashcard-axiza`). Dự án xây dựng một tiện ích mở rộng trình duyệt hoạt động theo mô hình offline-first (Manifest V3) tích hợp với hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website frontend được lưu trữ trên **AWS Amplify Hosting** (kết nối S3 bucket) với tên miền tùy chỉnh `axiza.net`, trong khi backend API sử dụng tên miền tùy chỉnh `api.axiza.net`, cả hai đều được quản lý bởi **Amazon Route 53**. Hệ thống cho phép người dùng lưu từ vựng khi đọc trang web, lưu trữ local khi offline, đồng bộ dữ liệu với cơ sở dữ liệu trên cloud và ôn tập flashcard qua một Web App riêng biệt.
 
-Hạ tầng cloud của dự án sử dụng các dịch vụ AWS cốt lõi:
-+ **API Gateway HTTP API**: Đóng vai trò là REST API gateway HTTPS trung tâm, xử lý các request từ client và quản lý chính sách CORS.
-+ **AWS Lambda**: Thực thi logic ứng dụng cốt lõi trên Node.js 24.x runtime và Express.js framework thông qua `serverless-http`.
+#### Thành viên Nhóm Thực hiện
+
+| Thành viên | MSSV |
+| --- | --- |
+| **Nguyễn Minh Triết** | <> |
+| **Nguyễn Nhật Hiếu** | <> |
+| **Nguyễn Vũ Tường** | 2313834 |
+
+#### Dịch vụ AWS Cốt lõi
++ **Amazon Route 53**: Quản lý các bản ghi DNS công cộng, điều hướng apex domain (`axiza.net`) tới AWS Amplify Hosting và subdomain API (`api.axiza.net`) thông qua bản ghi A/AAAA Alias tới API Gateway.
++ **AWS Certificate Manager (ACM)**: Cấp phát và quản lý chứng chỉ số SSL/TLS công cộng cho `axiza.net` và `api.axiza.net`.
++ **AWS Amplify Hosting**: Phục vụ tài nguyên trang web tĩnh (frontend static assets) lưu trong S3 bucket với tên miền tùy chỉnh `axiza.net`.
++ **API Gateway HTTP API**: Đóng vai trò là REST API gateway HTTPS trung tâm cho `api.axiza.net`, xử lý các request từ client và quản lý chính sách cấp quyền CORS cho `https://axiza.net`.
++ **AWS Lambda**: Thực thi logic ứng dụng cốt lõi trên Node.js runtime và Express.js framework thông qua `serverless-http`.
 + **Amazon DynamoDB**: Cơ sở dữ liệu NoSQL lưu trữ thông tin người dùng, bộ sưu tập flashcard và danh mục.
-+ **Amazon S3 (Private Bucket)**: Lưu trữ file dữ liệu xuất (export data) an toàn với pre-signed URL có thời hạn 15 phút.
-+ **Amazon S3 (Public Bucket)**: Host các tài nguyên web tĩnh (static assets) cho Web App ôn tập.
++ **Amazon S3**: Lưu trữ tài nguyên web tĩnh cho Amplify hosting và chứa file xuất dữ liệu private với pre-signed URL có thời hạn 15 phút.
 
-#### Sơ đồ kiến trúc tổng quan
+#### Sơ đồ Kiến trúc Tổng quan
 
-```text
-Chrome Extension (MV3) ─┐
-                        ├─> API Gateway HTTP API -> AWS Lambda -> DynamoDB (Users, Cards, Categories)
-Study / Game Web App  ──┘                           └──> Private S3 Bucket (Pre-signed Export URLs)
-```
+![](/images/5-Workshop/5.1-Workshop-overview/arch.jpg)
 
-#### Cấu trúc báo cáo
+#### Cấu trúc Báo cáo
 
 1. [Tổng quan Kiến trúc & Thiết kế Hệ thống](5.1-Workshop-overview/)
 2. [Yêu cầu Môi trường & Thông số Kỹ thuật](5.2-Prerequiste/)

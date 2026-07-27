@@ -13,7 +13,7 @@ pre: " <b> 3.1. </b> "
 | Published | 03/07/2026                                 |
 | Platform  | AWS Study Group                                      |
 | Link      | https://www.facebook.com/photo?fbid=2182481875876802&set=gm.2202654247166202&idorvanity=660548818043427       |                                 |
-| Evidence  | images/3-BlogsPosted/3.1-Blog1/image.png |
+| Evidence  | ![](/images/3-BlogsPosted/3.1-Blog1/image.png) |
 
 ---
 
@@ -63,8 +63,6 @@ Cách tiếp cận này có hai hạn chế:
 Trung tâm của cơ chế DDoS Protection mới là **Amazon GameLift Servers Player Gateway**.
 
 Player Gateway cung cấp một lớp relay networking nằm giữa game client và game server.
-
-![Kiến trúc Amazon GameLift Servers Player Gateway](/images/3-blogs/blog-02-player-gateway.png)
 
 Luồng kết nối tổng quát diễn ra như sau:
 
@@ -334,6 +332,3 @@ Cơ chế này đặc biệt phù hợp với các game multiplayer sử dụng 
 
 * [Amazon GameLift Servers DDoS protection](https://docs.aws.amazon.com/gameliftservers/latest/developerguide/ddos-protection-intro.html)
 * [AWS — Amazon GameLift Servers](https://aws.amazon.com/gamelift/servers/)
-* {{TODO: AWS announcement URL}}
-* {{TODO: AWS technical blog URL}}
-

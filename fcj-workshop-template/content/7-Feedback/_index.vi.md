@@ -95,4 +95,4 @@ Có. Mình sẽ giới thiệu kỳ thực tập này cho những sinh viên qua
 
 ## 6. Đề xuất và kỳ vọng
 
-Sau kỳ thực tập, mình kỳ vọng sẽ tiếp tục cải thiện kiến thức và kỹ năng về AWS, kiến trúc serverless, phát triển backend, DevOps, giao tiếp, lập kế hoạch dự án và giải quyết vấn đề.
+Một số nội dung đào tạo hiện chưa được cập nhật theo những thay đổi mới của AWS. Chẳng hạn, có bài hướng dẫn sử dụng AWS Cloud9, trong khi dịch vụ này không còn được cung cấp cho khách hàng mới. Việc rà soát và cập nhật tài liệu theo các dịch vụ, công cụ và khuyến nghị hiện hành của AWS sẽ giúp chương trình đào tạo sát với thực tế hơn, đồng thời mang lại trải nghiệm học tập hiệu quả và thuận lợi hơn.

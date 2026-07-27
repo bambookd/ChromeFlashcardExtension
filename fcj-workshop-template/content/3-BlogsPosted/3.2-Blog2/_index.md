@@ -11,10 +11,10 @@ pre: " <b> 3.2. </b> "
 
 |           |                                                       |
 | --------- | ----------------------------------------------------- |
-| Published | TODO: 22/07/2026                                |
+| Published | 22/07/2026                                |
 | Platform  | AWS Study Group                                       |
 | Link      | https://www.facebook.com/photo?fbid=4664462010543491&set=gm.2221408125290814&idorvanity=660548818043427 |                                        |
-| Evidence  |![](/images/3-BlogsPosted/3.2-Blog2/image.png)  |
+| Evidence  | ![](/images/3-BlogsPosted/3.2-Blog2/image.png)  |
 
 ---
 
@@ -62,7 +62,7 @@ Total          → 1,250.00
 
 Textract also returns the location of detected data through geometry information such as `BoundingBox` and `Polygon`. An application can therefore determine exactly where a word, table cell, or field appeared in the original document.
 
-![Document-processing workflow with Amazon Textract](/images/3-blogs/blog-03-amazon-textract.png)
+<!-- ![Document-processing workflow with Amazon Textract](/images/3-blogs/blog-03-amazon-textract.png) -->
 
 ## HOW IS TEXTRACT DIFFERENT FROM TRADITIONAL OCR?
 

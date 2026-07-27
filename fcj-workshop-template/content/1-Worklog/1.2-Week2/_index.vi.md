@@ -8,30 +8,19 @@ pre: " <b> 1.2. </b> "
 
 # Tuần 2 — 22/06 – 28/06/2026
 
-### Mục tiêu
+## Tổng quan
 
-Đảm bảo tài khoản AWS an toàn để sử dụng, chọn một vấn đề đáng để giải quyết và chạy thử phiên bản đầu tiên của sản phẩm trên môi trường máy cá nhân (local).
+Nghiên cứu các dịch vụ AWS, định nghĩa bài toán dự án và xây dựng prototype Chrome Extension ban đầu.
 
-## Các công việc đã thực hiện
+### Các Công việc Đã Thực hiện
 
-**Hội nhập chương trình (Onboarding)**
-* Thiết lập tài khoản AWS, bật MFA (Xác thực đa yếu tố) cho người dùng root và tạo một người dùng IAM cho công việc hàng ngày để không bao giờ phải sử dụng lại thông tin đăng nhập root nữa.
-* Tạo **AWS Budget** (Ngân sách AWS) với các cảnh báo ở mức 1 USD và 5 USD *trước khi* tạo bất kỳ tài nguyên nào có tính phí.
-* Cài đặt bộ công cụ: AWS CLI, Node.js 24, Git, VS Code.
+* **Nghiên cứu Dịch vụ AWS**: Tìm hiểu chuyên sâu các thành phần serverless AWS gồm Amazon API Gateway, AWS Lambda, Amazon DynamoDB và Amazon S3.
+* **Định nghĩa Bài toán**: Chuẩn hóa bài toán thực tế—việc thu thập từ vựng tiếng Anh chuyên ngành khi đọc trang web làm gián đoạn luồng đọc, và bộ nhớ trình duyệt local thông thường không có khả năng đồng bộ đám mây.
+* **Xây dựng Prototype Chrome Extension**: Phát triển bộ khung tiện ích mở rộng Manifest V3 tích hợp `background.js` service worker, menu ngữ cảnh khi nhấp chuột phải và `contentScript.js` chèn dialog chỉnh sửa nổi.
+* **Local Backend & Study App**: Xây dựng ứng dụng backend Express.js REST API local với xác thực JWT và giao diện web Study ban đầu để hiển thị danh sách thẻ.
 
-**Xác định vấn đề**
+### Kết quả Đạt được
 
-* Vấn đề đặt ra: từ vựng gặp phải khi đọc các trang web tiếng Anh thường bị lãng quên vì việc lưu lại chúng làm gián đoạn mạch đọc.
-* Thu thập từ vựng trên trình duyệt, lưu trữ trên đám mây.
-
-**Triển khai ban đầu**
-
-* Xây dựng bộ khung tiện ích mở rộng (extension) Chrome trên Manifest V3: service worker `background.js`, menu ngữ cảnh khi nhấp chuột phải và `contentScript.js` để chèn một trình chỉnh sửa ngay cạnh từ được chọn.
-* Xây dựng một backend Express ở local với xác thực JWT và kho lưu trữ bằng file JSON để có thể tinh chỉnh mô hình dữ liệu một cách dễ dàng và ít tốn kém.
-* Xây dựng phiên bản đầu tiên của trang web Học tập (Study) để liệt kê các thẻ đã lưu.
-
-## Kết quả
-
-* Tài khoản AWS đã sẵn sàng sử dụng và có rào chắn bảo vệ chi phí (cost guardrail).
-* Một bản demo đã hoạt động ở local: chọn một từ trên trang bất kỳ → nhấp chuột phải → lưu → xem lại từ đó trên trang Học tập.
-* Commit mã nguồn đầu tiên: `Initial flashcard extension and study app` (22/06/2026).
+* **Prototype Sản phẩm**: Tiện ích mở rộng Chrome Manifest V3 prototype hoạt động với bộ nhớ đệm cục bộ (`chrome.storage.local`).
+* **Xác minh Luồng Local**: Kiểm thử thành công luồng thao tác local: bôi đen từ $\rightarrow$ chuột phải $\rightarrow$ lưu $\rightarrow$ xem thẻ trên trang Study local.
+* **Commit Mã nguồn Đầu tiên**: Khởi tạo repository dự án và push commit nền tảng `Initial flashcard extension and study app` (22/06/2026).

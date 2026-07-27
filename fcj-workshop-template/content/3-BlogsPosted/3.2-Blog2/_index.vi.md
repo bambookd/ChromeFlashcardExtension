@@ -11,10 +11,10 @@ pre: " <b> 3.2. </b> "
 
 |           |                                                       |
 | --------- | ----------------------------------------------------- |
-| Published | TODO: 22/07/2026                                |
+| Published | 22/07/2026                                |
 | Platform  | AWS Study Group                                       |
 | Link      | https://www.facebook.com/photo?fbid=4664462010543491&set=gm.2221408125290814&idorvanity=660548818043427 |                                        |
-| Evidence  | {{TODO: /images/3-blogs/blog-03-amazon-textract.png}} |
+| Evidence  | ![](/images/3-BlogsPosted/3.2-Blog2/image.png) |
 
 ---
 
@@ -64,7 +64,7 @@ Total          → 1,250.00
 
 Textract cũng trả về vị trí của dữ liệu thông qua các tọa độ như `BoundingBox` và `Polygon`. Nhờ đó, ứng dụng có thể xác định chính xác đoạn văn bản, ô bảng hoặc trường dữ liệu nằm ở đâu trong tài liệu gốc.
 
-![Quy trình xử lý tài liệu với Amazon Textract](/images/3-blogs/blog-03-amazon-textract.png)
+<!-- ![Quy trình xử lý tài liệu với Amazon Textract](/images/3-BlogsPosted/3.2-Blog2/image.png) -->
 
 ## AMAZON TEXTRACT KHÁC GÌ OCR TRUYỀN THỐNG?
 
