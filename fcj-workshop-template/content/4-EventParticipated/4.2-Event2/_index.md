@@ -1,126 +1,209 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+
+title: "Event 2 (Online)"
+date: 2026-06-01
+weight: 2
 chapter: false
-pre: " <b> 4.2. </b> "
----
+pre: " <b> 2. </b> "
+--------------------
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event 2 (Participated Online) - FCAJ Community Day - June 2026  - 27/06/2026
+## 1. Overview
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+The event covered cloud-agent platforms, Vietnamese Voice AI, DevOps automation, HR recruitment, and secure private connectivity for enterprise AI systems.
 
-### Event Objectives
+The event demonstrated that successful AI adoption requires mature cloud infrastructure, reliable observability, strong governance, and appropriate security controls. AI agents can improve operational efficiency, but they still require human supervision for important technical and business decisions.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+## 2. Topics
 
-### Speakers
+### 2.1. Cloud Agentic Platforms and Career Evolution - Steve Tran
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+This session explained how cloud careers are evolving from traditional server administration toward cloud engineering and AI-supported agentic platforms.
 
-### Key Highlights
+As AI tools automate more implementation tasks, organisations increasingly require engineers who can understand architecture, system logic, security, and operational decision-making.
 
-#### Identifying the drawbacks of legacy application architecture
+CloudThinker's platform was introduced as a solution for automating areas such as:
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+* Incident management.
+* FinOps.
+* Cloud security.
+* Infrastructure monitoring.
+* Operational recommendations.
 
-#### Transitioning to modern application architecture – Microservices
+The session also compared single-agent and multi-agent architectures.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+A single general-purpose agent may complete most tasks, but it can suffer from large context windows, higher costs, and weaker permission boundaries.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+A multi-agent architecture uses specialised agents with limited responsibilities. This approach can improve:
 
-#### Domain-Driven Design (DDD)
+* Context accuracy.
+* Role-Based Access Control.
+* Security.
+* Performance.
+* Cost management.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+The main lesson was that cloud engineers should become AI-fluent while continuing to develop strong infrastructure, security, and architectural knowledge.
 
-#### Event-Driven Architecture
+### 2.2. Voice AI and the Vietnamese Language Gap - Nghi Danh, Kiet, Trung
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+This session focused on the challenges of implementing Voice AI for Vietnamese users.
 
-#### Compute Evolution
+Vietnamese was described as a low-resource language compared with English and other widely supported languages. This creates challenges involving speech recognition, pronunciation, accents, context, and response quality.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+The presenters recommended using a modular Voice AI pipeline:
 
-#### Amazon Q Developer
+**Speech-to-Text -> Large Language Model -> Text-to-Speech**
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+This approach provides more control than a direct speech-to-speech model.
 
-### Key Takeaways
+The modular architecture allows developers to apply:
 
-#### Design Mindset
+* Deterministic guardrails.
+* Hallucination controls.
+* Content validation.
+* Tool-calling restrictions.
+* Compliance requirements.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+A demonstration presented an Apple product enquiry system built with Amazon Bedrock.
 
-#### Technical Architecture
+The system included features such as:
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+* Real-time speech interaction.
+* Context-aware interruption handling.
+* Gender detection.
+* Product information retrieval.
+* Tool calling for actions such as card blocking.
 
-#### Modernization Strategy
+The session explained that industries such as banking require strong control over AI responses. A modular pipeline allows each stage to be monitored and validated before the system performs a sensitive action.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+### 2.3. The Rise of DevOps AI Agents - Bao, Nguyen
 
-### Applying to Work
+This session introduced AI agents designed to support cloud operations and DevOps teams.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+The primary goal of a DevOps AI agent is to reduce:
 
-### Event Experience
+* Mean Time to Detect.
+* Mean Time to Recovery.
+* Manual investigation effort.
+* Operational downtime.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+The session introduced the concept of an **Agent Space**, which acts as a logical environment where agents learn system topology and understand relationships between cloud resources.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+Examples of connected resources included:
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+* Amazon ECS.
+* AWS IAM.
+* Amazon RDS.
+* Application logs.
+* Monitoring metrics.
+* Security configurations.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+The agent platform was based on six pillars:
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+* Context.
+* Control.
+* Integration.
+* Collaboration.
+* Convenience.
+* Cost.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+A live demonstration simulated a distributed denial-of-service attack against an e-commerce application.
 
-#### Some event photos
-*Add your event photos here*  
+The AI agent analysed available information, identified the possible root cause, and suggested a mitigation plan within several minutes.
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+However, the agent did not automatically terminate the affected resource. It waited for human approval before performing a high-impact action.
+
+This demonstrated the importance of the **Human-in-the-Loop** approach.
+
+The AI agent can analyse data and recommend actions, but an authorised engineer remains responsible for the final decision.
+
+The session also introduced a pricing model of approximately **$0.083 per second**, showing that operational benefits must be balanced with usage costs.
+
+### 2.4. Transforming HR Through Amazon Q - Truong, Minh Anh
+
+This session demonstrated how Amazon Q can support recruitment and talent-management processes.
+
+Traditional CV screening may require significant time and can be affected by inconsistency or personal bias.
+
+Amazon Q was used to automate tasks such as:
+
+* Creating job descriptions.
+* Screening candidate CVs.
+* Identifying technical skills.
+* Estimating candidate seniority.
+* Generating talent reports.
+* Comparing salary expectations.
+
+During the demonstration, the system evaluated a candidate named Thinh.
+
+The AI identified technical experience involving AWS and Kubernetes and estimated the candidate's seniority with an accuracy of approximately 98% to 99%.
+
+The system also used an objective scoring approach to compare candidates with job requirements.
+
+This approach can reduce recruitment time and support more consistent hiring decisions.
+
+However, the session also highlighted the importance of protecting candidate information and ensuring that enterprise data remains within an approved and secure environment.
+
+### 2.5. Securing Enterprise AI with Private Connectivity and MCP - Toan Nguyen, Nghi Danh
+
+The final session focused on protecting enterprise AI applications through private network connectivity.
+
+The presenters explained that AI systems may access sensitive internal data, application services, and business tools. Allowing this communication to travel through the public internet can increase the risk of data leakage and Man-in-the-Middle attacks.
+
+The proposed architecture used:
+
+* Model Context Protocol.
+* Amazon VPC connections.
+* Interface endpoints.
+* Route 53 Resolvers.
+* Private Application Load Balancers.
+* Private Amazon EC2 instances.
+* Privately hosted MCP servers.
+
+The Model Context Protocol allows AI systems to communicate with tools and enterprise data sources through a controlled interface.
+
+Private connectivity ensures that application data does not need to travel through the public internet.
+
+The estimated monthly cost of the private architecture was approximately **$250 to $350**.
+
+Route 53 Resolvers were identified as a major cost component, accounting for approximately **$180 per month**.
+
+Although the architecture introduces additional cost, it supports:
+
+* Data privacy.
+* Zero Trust security.
+* Controlled network access.
+* Enterprise compliance.
+* Reduced exposure to public-network threats.
+
+The session demonstrated that security and network architecture are essential requirements for enterprise AI adoption.
+
+## 3. What I Learned
+
+From Event 2, I learned how cloud computing is evolving toward agentic cloud platforms.
+
+Traditional cloud operations rely heavily on manual monitoring, investigation, and response. Agentic cloud systems introduce AI agents that can analyse logs, metrics, dependencies, and cloud-resource relationships.
+
+These agents can help reduce investigation time and provide faster recommendations during incidents.
+
+I also learned that AI agents are most effective when the underlying infrastructure is mature. An agent cannot provide reliable recommendations without access to accurate logs, metrics, resource relationships, and security information.
+
+The Voice AI session showed that modular architectures are especially important for Vietnamese-language applications. Separating speech recognition, language processing, and speech generation provides better control over hallucinations and sensitive actions.
+
+The DevOps session reinforced the importance of Human-in-the-Loop controls. AI agents should support engineers rather than automatically performing every high-risk action.
+
+The HR session demonstrated that Amazon Q can support recruitment by analysing CVs, matching skills, and generating candidate reports. However, human review remains necessary for final recruitment decisions.
+
+The security session showed that private connectivity is critical when enterprise AI systems access internal data and tools. Services such as VPC endpoints, Route 53 Resolvers, and private load balancers can prevent sensitive traffic from travelling through the public internet.
+
+AI can perform data collection, analysis, and recommendation tasks, while experienced engineers remain responsible for strategic decisions, security approval, and operational risk.
+
+## 4. Feedback
+
+The event provided strong technical value through practical demonstrations and real enterprise use cases.
+
+## 5. Expectations
+
+After this event, I expect to learn more about agentic cloud systems and how they can be applied safely in real applications.
+
+These activities would help me improve my knowledge of AI agents, cloud operations, enterprise security, private networking, and responsible AI implementation.

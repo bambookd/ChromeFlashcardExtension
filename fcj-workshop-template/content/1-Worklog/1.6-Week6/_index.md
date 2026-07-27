@@ -1,57 +1,39 @@
 ---
+
 title: "Week 6 Worklog"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
----
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+----------------------
+
+# Week 6 — 20/07 – 26/07/2026
+
+## Objectives
+
+The objectives for Week 6 were to:
+
+* Test the main application features in the deployed AWS environment.
+* Verify communication between the Chrome extension, Study web application, and serverless backend.
+* Identify and resolve functional, integration, and user-interface issues.
+* Evaluate application response times and resource usage.
+* Improve frontend and backend performance.
+
+## Tasks to Be Carried Out
+
+| Task                                                                                                          | Status | Start Date | Completion Date |
+| ------------------------------------------------------------------------------------------------------------- | ------ | ---------- | --------------- |
+| Prepare test cases for flashcard management, category management, study modes, and data retrieval.            | ✅ Done | 20/07/2026 | 20/07/2026      |
+| Test the main application workflows in the deployed AWS environment.                                          | ✅ Done | 21/07/2026 | 22/07/2026      |
+| Verify API requests, Lambda responses, DynamoDB operations, and error-handling behaviour.                     | ✅ Done | 22/07/2026 | 23/07/2026      |
+| Identify and fix functional, integration, and user-interface issues found during testing.                     | ✅ Done | 23/07/2026 | 24/07/2026      |
+| Review application response times and optimise unnecessary requests, data processing, and frontend rendering. | ✅ Done | 24/07/2026 | 25/07/2026      |
+| Re-test the application after performance improvements and confirm that the main workflows remained stable.   | ✅ Done | 25/07/2026 | 26/07/2026      |
 
 
-### Week 6 Objectives:
+## Results
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
-
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Week 6 Achievements:
-
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Tested the main application workflows in the AWS environment.
+* Fixed functional and integration issues discovered during testing.
+* Improved application response time and frontend performance.
+* Confirmed that the main features remained stable after optimisation.

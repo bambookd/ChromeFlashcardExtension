@@ -1,59 +1,39 @@
 ---
-title: "Worklog Tuần 3"
-date: 2024-01-01
+title: "Nhật ký công việc Tuần 3"
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tuần 3 — 29/06 – 05/07/2026
 
-### Mục tiêu tuần 3:
+### Mục tiêu
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+Các mục tiêu của Tuần 3 là:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* Cải thiện trải nghiệm học tập cốt lõi của ứng dụng flashcard (thẻ ghi nhớ).
+* Phát triển một luồng (workflow) phiên học tập rõ ràng hơn để ôn tập từ vựng.
+* Thêm các tính năng quản lý danh mục để sắp xếp các flashcard.
+* Mở rộng ứng dụng web Học tập (Study) với một chế độ kiểm tra (test mode) bổ sung.
+* Phân tích những hạn chế của nguyên mẫu lưu trữ và backend ở môi trường máy cá nhân (local) hiện tại.
+* Xác định lộ trình chuyển đổi từ nguyên mẫu local sang kiến trúc serverless trên AWS.
+* Chuẩn bị mô hình dữ liệu DynamoDB ban đầu và template AWS SAM cho việc triển khai trong tương lai.
 
+### Các công việc cần thực hiện
 
-### Kết quả đạt được tuần 3:
+| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
+| :--- | :--- | :--- | :--- |
+| Đánh giá tiện ích mở rộng Chrome và ứng dụng web Học tập hiện tại để xác định các tính năng phiên học tập còn thiếu và những hạn chế trong việc quản lý dữ liệu. | ✅ Hoàn thành | 29/06/2026 | 29/06/2026 |
+| Thiết kế luồng phiên học tập, bao gồm thứ tự câu hỏi, theo dõi câu trả lời, tính toán tiến độ, xử lý khi hoàn thành và xem lại kết quả. | ✅ Hoàn thành | 30/06/2026 | 30/06/2026 |
+| Triển khai các chức năng quản lý danh mục để người dùng có thể tạo, cập nhật, xóa và sử dụng các danh mục để phân loại flashcard. | ✅ Hoàn thành | 01/07/2026 | 03/07/2026 |
+| Cải thiện ứng dụng web Học tập và thêm chế độ kiểm tra để thực hành từ vựng thông qua các câu hỏi có cấu trúc và đánh giá câu trả lời. | ✅ Hoàn thành | 03/07/2026 | 05/07/2026 |
+| Xác định kiến trúc serverless ban đầu sử dụng Amazon API Gateway, AWS Lambda, Amazon DynamoDB, Amazon S3, IAM và Amazon CloudWatch. | ✅ Hoàn thành | 05/07/2026 | 05/07/2026 |
+| Chuẩn bị cấu trúc thực thể (entity) DynamoDB ban đầu và phác thảo một template AWS SAM cho hạ tầng backend. | ✅ Hoàn thành | 05/07/2026 | 05/07/2026 |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### Kết quả
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Đã cải thiện luồng phiên học tập flashcard và tính năng theo dõi câu trả lời.
+* Bổ sung tính năng quản lý danh mục và một chế độ kiểm tra có cấu trúc.
+* Xác định xong kiến trúc serverless AWS ban đầu và mô hình dữ liệu DynamoDB.
+* Chuẩn bị bản phác thảo template AWS SAM để triển khai trong tương lai.

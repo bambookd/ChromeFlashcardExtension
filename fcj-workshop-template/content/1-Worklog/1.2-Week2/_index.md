@@ -1,57 +1,48 @@
 ---
 title: "Week 2 Worklog"
-date: 2024-01-01
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+# Week 2 — 22/06 – 28/06/2026
 
-### Week 2 Objectives:
+### Overall
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+Onboarding week: get the AWS account safe to use, pick a problem worth solving,
+and get a first version of the product running locally.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+## Tasks done
 
+**Program onboarding**
 
-### Week 2 Achievements:
+* Attended the FCJ kick-off session and read the internship requirements.
+* Set up an AWS account, enabled MFA on the root user, and created an IAM user
+  for daily work so the root credentials are never used again.
+* Created an **AWS Budget** with alerts at 1 USD and 5 USD *before* creating any
+  billable resource.
+* Installed the toolchain: AWS CLI, Node.js 24, Git, VS Code.
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+**Problem definition**
 
-* Successfully created and configured an AWS Free Tier account.
+* Wrote down the problem: vocabulary met while reading English web pages is
+  lost because capturing it breaks the reading flow.
+* Decided on the product shape: capture in the browser, store in the cloud.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+**First implementation**
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Built the Chrome extension skeleton on Manifest V3: `background.js` service
+  worker, a right-click context menu, and `contentScript.js` that injects an
+  editor next to the selected word.
+* Built a local Express backend with JWT authentication and a JSON-file
+  repository so the data model could be iterated cheaply.
+* Built the first version of the Study web page that lists saved cards.
 
-* Used AWS CLI to perform basic operations such as:
+## Results
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* AWS account is usable and has a cost guardrail.
+* A working local demo: select a word on any page → right click → save → see it
+  on the Study page.
+* Initial commit `Initial flashcard extension and study app` (22/06/2026).
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...

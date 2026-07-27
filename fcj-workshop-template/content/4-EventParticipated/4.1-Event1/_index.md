@@ -1,126 +1,127 @@
 ---
+
 title: "Event 1"
-date: 2024-01-01
+date: 2026-07-26
 weight: 1
 chapter: false
-pre: " <b> 4.1. </b> "
----
+pre: " <b> 1. </b> "
+--------------------
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+## 1. Overview
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+Event 1 included three technical sessions related to AWS Cloud, system monitoring, and application security.
 
-### Event Objectives
+The event introduced the AWS Certified Cloud Practitioner examination, explained the importance of monitoring real user activities, and presented AWS Security Agent as a tool for supporting security reviews and automated penetration testing.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+The sessions helped me connect foundational AWS knowledge with practical topics such as cloud operations, incident detection, customer experience, and secure software development.
 
-### Speakers
+## 2. Topics
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### 2.1. AWS Cloud Practitioner Examination - Ngo Le Tan Huy
 
-### Key Highlights
+The AWS Certified Cloud Practitioner examination is a foundational certification that focuses on general AWS concepts and service use cases.
 
-#### Identifying the drawbacks of legacy application architecture
+The examination includes 65 questions, has a duration of 90 minutes, and requires a passing score of 700 out of 1,000.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+The examination is divided into four domains:
 
-#### Transitioning to modern application architecture – Microservices
+* **Cloud Concepts — 24%**
+* **Security and Compliance — 30%**
+* **Cloud Technology and Services — 34%**
+* **Billing, Pricing, and Support — 12%**
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+The session introduced important topics such as the AWS Shared Responsibility Model, AWS IAM, cloud pricing, support plans, and common AWS services including EC2, Lambda, S3, RDS, DynamoDB, VPC, and Route 53.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+The speaker recommended learning AWS services through their practical use cases and keywords. Reviewing incorrect mock-test answers was also introduced as an effective preparation method.
 
-#### Domain-Driven Design (DDD)
+### 2.2. SLA and Monitoring - Nguyen Huynh Son
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+The central message of this session was:
 
-#### Event-Driven Architecture
+**Healthy infrastructure does not always mean a healthy user experience.**
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+A server may have normal CPU and memory usage while users are still unable to log in or complete important operations.
 
-#### Compute Evolution
+AWS service SLAs cover individual AWS services, while application owners remain responsible for the complete customer experience.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+The monitoring model included five levels:
 
-#### Amazon Q Developer
+* Cloud provider.
+* Infrastructure.
+* Application.
+* Business.
+* Customer experience.
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+The live demonstration showed that a health-check endpoint could return a successful response while the login endpoint failed because of a database connection problem.
 
-### Key Takeaways
+The session also introduced an alerting flow using a custom metric, Amazon CloudWatch Alarm, Amazon SNS, and email or Slack notifications.
 
-#### Design Mindset
+This session demonstrated that monitoring should include user actions such as login, checkout, payment, and search success rather than relying only on infrastructure metrics.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+### 2.3. AWS Security Agent - Thinh Nguyen
 
-#### Technical Architecture
+AWS Security Agent was introduced as an automated security solution powered by Amazon Bedrock.
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+The solution supports three main activities:
 
-#### Modernization Strategy
+* Design security review.
+* Code security review.
+* Automated penetration testing.
 
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+For design reviews, the agent can analyse architecture documents, Markdown files, and Terraform code. It can compare the system design with security frameworks such as PCI DSS, NIST Cybersecurity Framework, and AWS Well-Architected guidance.
 
-### Applying to Work
+For code reviews, the agent can integrate with GitHub or GitLab pull requests, detect vulnerabilities, identify exposed secrets, and suggest code fixes.
 
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+For penetration testing, the agent can test running applications, authenticate as a user, attempt multi-step attacks, and provide evidence for verified findings.
 
-### Event Experience
+The session also discussed several limitations. Authentication methods such as MFA, biometrics, and mutual TLS may block the agent. Complex business-logic vulnerabilities may still require human analysis.
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Cost must also be monitored because complex applications can consume many task-hours. Automated security tools can support security professionals, but they do not completely replace human review.
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+## 3. What I Learned
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+From Event 1, I learned more about AWS certification, application monitoring, and cloud security.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+The AWS Cloud Practitioner session helped me understand the main AWS service categories, the Shared Responsibility Model, security concepts, pricing models, and examination-preparation strategies.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+The monitoring session taught me that technical metrics alone cannot represent the complete health of an application. Infrastructure metrics are useful for identifying root causes, but business and customer-experience metrics show whether users are actually affected.
 
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+I also learned how Amazon CloudWatch and Amazon SNS can be used to detect failures and notify the responsible team.
 
-#### Some event photos
-*Add your event photos here*  
+The AWS Security Agent session helped me understand how security can be included throughout the development lifecycle, from architecture design and code review to testing a deployed application.
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+I also learned that automated security tools can support developers and security engineers, but they cannot completely replace human review, application context, and cost management.
+
+The event improved my ability to:
+
+* Connect AWS theory with practical scenarios.
+* Evaluate systems from the user's perspective.
+* Consider monitoring, security, and cost during development.
+* Summarise technical presentations.
+* Identify areas that require further study.
+
+## 4. Feedback
+
+The event was informative and well organised. The speakers explained the topics clearly and used practical examples.
+
+The monitoring demonstration was especially useful because it showed the difference between infrastructure health and user experience.
+
+Future events could include more hands-on exercises and additional time for questions.
+
+## 5. Expectations
+
+After Event 1, I expect to continue improving my AWS knowledge and preparing for AWS certifications.
+
+I also want to apply the monitoring concepts to my internship project by creating metrics for login failures, API errors, study-session completion, and other important user actions.
+
+For security, I expect to review application architecture, infrastructure-as-code templates, and source code earlier in the development process.
+
+Useful future activities could include:
+
+* An AWS Cloud Practitioner mock examination.
+* A practical Amazon CloudWatch lab.
+* An incident-response simulation.
+* A security review of an AWS SAM or Terraform project.
+* A comparison between automated and manual security testing.
+
+These activities would help me improve my cloud, monitoring, incident-response, and application-security skills.

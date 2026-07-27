@@ -1,22 +1,38 @@
 ---
-title: "Các bài blog đã đăng"
+
+title: "Các blog đã đăng"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
----
+--------------------
 
-{{% notice warning %}}  
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Các blog đã đăng
 
-Phần này tổng hợp và giới thiệu các bài blog đã đăng trên cộng đồng [AWS Study Group](https://www.facebook.com/groups/awsstudygroupfcj). Ví dụ:
+### Tổng quan
 
-###  [Blog 1 - SESSION POLICIES TRONG AMAZON EKS POD IDENTITY](3.1-Blog1/)
-Bài viết giới thiệu tính năng Session Policies mới trong Amazon EKS Pod Identity, cho phép thu hẹp quyền hạn IAM linh hoạt và chuẩn xác cho từng pod mà không cần khởi tạo nhiều IAM role riêng biệt. Đây là cải tiến quan trọng giúp thực thi nguyên tắc quyền tối thiểu (least privilege) hiệu quả hơn trong cụm Kubernetes quy mô lớn.
+Phần này giới thiệu các bài viết kỹ thuật đã được đăng trong cộng đồng AWS Study
+Group trong thời gian thực tập.
 
-###  [Blog 2 - HƯỚNG DẪN TỐI ƯU CHI PHÍ VỚI AWS SAVINGS PLANS & SPOT INSTANCES](3.2-Blog2/)
-Bài viết chia sẻ phương pháp tối ưu hóa chi phí vận hành trên AWS thông qua việc kết hợp chiến lược AWS Savings Plans và tận dụng tài nguyên dư thừa với Amazon EC2 Spot Instances cho các ứng dụng có khả năng chịu lỗi cao.
+### [Blog 1 — Tìm hiểu cơ chế bảo vệ DDoS trong Amazon GameLift Servers](3.1-Blog1/)
 
-###  [Blog 3 - XÂY DỰNG HỆ THỐNG GIÁM SÁT TẬP TRUNG VỚI AMAZON CLOUDWATCH & GRAFANA](3.3-Blog3/)
-Bài viết hướng dẫn từng bước thiết lập giải pháp giám sát tập trung toàn diện cho các dịch vụ AWS, kết hợp giữa khả năng thu thập metric của Amazon CloudWatch và giao diện trực quan hóa sinh động của Grafana.
+Giải thích cách Amazon GameLift Servers bảo vệ lưu lượng game nhiều người chơi
+theo thời gian thực trước các cuộc tấn công từ chối dịch vụ phân tán. Bài viết
+giới thiệu Player Gateway, xác thực bằng token, giới hạn tốc độ, nhiều relay
+endpoint và cơ chế dynamic failover.
+
+### [Blog 2 — Dịch vụ OCR thông minh của AWS](3.2-Blog2/)
+
+Giới thiệu Amazon Textract, một dịch vụ máy học của AWS có khả năng trích xuất
+văn bản, chữ viết tay, bố cục tài liệu, biểu mẫu và bảng biểu từ tài liệu được
+quét hoặc tài liệu số. Bài viết trình bày các tính năng chính, use case phổ biến,
+ưu điểm thực tế và một số hạn chế, bao gồm quá trình hậu xử lý dữ liệu đầu ra và
+việc chưa hỗ trợ tiếng Việt.
+
+### [Blog 3 — Bảo mật dữ liệu trên Cloud: Tìm hiểu AWS Key Management Service](3.3-Blog3/)
+
+Giới thiệu AWS Key Management Service, một dịch vụ được quản lý hoàn toàn để tạo,
+kiểm soát và luân chuyển các khóa mật mã. Bài viết giải thích cơ chế bảo vệ khóa
+bằng phần cứng, khả năng tích hợp với các dịch vụ AWS, kiểm soát quyền truy cập
+và kiểm toán, quy trình envelope encryption, cùng sự khác biệt giữa AWS KMS và
+AWS Secrets Manager.

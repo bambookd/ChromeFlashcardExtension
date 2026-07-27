@@ -1,38 +1,107 @@
 ---
+
 title: "Sharing and Feedback"
-date: 2024-01-01
+date: 2026-07-26
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
----
+--------------------
 
-### Overall Assessment
+## 1. Working Environment
 
-## Internship Environment Evaluation
+The internship provided me with a professional and practical working environment where I could apply the knowledge gained at university to a real cloud-development project.
 
-### 1. Working Environment
+The environment encouraged independent learning, responsibility, and continuous improvement. I had opportunities to research unfamiliar technologies, test different solutions, document technical decisions, and gradually develop a complete project from the initial idea to deployment.
 
-FCAJ provides a professional, friendly, and open working environment. All team members were always willing to share their knowledge, provide guidance whenever I encountered difficulties, and foster a welcoming and supportive learning environment throughout my internship. The workspace is neatly arranged, providing favorable conditions for everyone to focus and enhance work efficiency. This is a very suitable environment for interns to learn and grow.
+While working on the **ChromeFlashCardExtension — Serverless Flashcard Platform**, I became familiar with a realistic software-development process. This included requirement analysis, system design, implementation, testing, deployment, monitoring, security review, cost estimation, risk management, and technical documentation.
 
-### 2. Mentor Guidance and Team Support
+The working environment was generally positive and suitable for learning. However, I sometimes found it challenging to balance development, troubleshooting, testing, and documentation. This experience helped me understand the importance of planning tasks carefully, managing time effectively, and maintaining consistent work discipline.
 
-Throughout the internship, the mentor closely followed up, provided dedicated guidance, and explained in detail any content I had not yet mastered. Not only supporting during work hours, the mentor was also ready to answer questions outside regular business hours when necessary. Beyond technical guidance, the mentor shared extensive practical experience regarding system development processes, problem-solving methodologies, and career orientation within Cloud Computing and AWS Services.
+## 2. Support from the Team and Administration
 
-Additionally, the Admin Team and team members consistently provided quick support regarding procedures, documentation, and any issues arising during the internship, enabling me to focus on successfully completing my assigned tasks.
+The support from the team and administrative staff contributed positively to my internship experience.
 
-### 3. Work Content and Learning Opportunities
+The team provided guidance when I encountered difficulties and helped clarify the expectations related to my project and internship responsibilities. Their feedback allowed me to recognise weaknesses in my technical approach, communication, documentation, and task-management habits.
 
-The learning content was closely aligned with my academic major and well-suited to my career goals in Cloud Computing. During the internship, I had the opportunity to gain hands-on experience with AWS services, system deployment workflows, management tools, and enterprise working standards.
+I especially appreciated receiving support when working with unfamiliar AWS services and deployment processes. Although I was expected to research and solve many problems independently, advice from the team helped me avoid unnecessary mistakes and make more appropriate technical decisions.
 
-I was able to not only apply the knowledge learned at university but also gain exposure to many new technologies and processes, thereby expanding my technical expertise and enhancing my practical skills.
+The administrative staff also helped communicate reporting requirements, internship procedures, and important deadlines. This allowed me to understand what was expected during each stage of the internship.
 
-### 4. Corporate Culture and Teamwork Spirit
+For future internships, regular feedback sessions could make the learning process more structured. A short weekly review with clear priorities, strengths, weaknesses, and next steps would help interns monitor their progress more effectively.
 
-One of the aspects that impressed me most was the company's positive working culture. Everyone respects each other's opinions, is willing to support colleagues, and works towards common goals. Members proactively collaborate, share workloads, and assist one another without distinction of position or role.
+## 3. Skills and Knowledge Learned
 
-### 5. Overall Conclusion
+During the internship, I developed both technical and professional skills.
 
-Overall, the internship at FCAJ was a highly meaningful experience for me. I not only accumulated technical knowledge and skills in Cloud Computing and AWS Services, but also developed a professional work ethic, communication skills, teamwork, and problem-solving mindset. The experiences and lessons gained during this internship will serve as a crucial foundation helping me become more confident in my studies as well as in my career after graduation.
+### Technical Knowledge
 
-### Suggestions & Expectations
-- I would like to express my sincere thanks to AWS and the FCAJ Admin Team for their enthusiastic support, guidance, and for creating favorable conditions for me to complete my internship successfully. This has been an extremely meaningful experience that helped me gain practical knowledge, skills, and experience, while providing clear direction for my career development path in Cloud Computing and AWS Services.
+The most important technical knowledge I gained was related to **serverless cloud architecture**. I learned how different AWS services could be combined to create a complete, secure, scalable, and cost-conscious application.
+
+I gained practical experience with:
+
+* **AWS Lambda** for running backend application logic without managing servers.
+* **Amazon API Gateway** for exposing secure HTTP endpoints.
+* **Amazon DynamoDB** for storing user information and flashcard data.
+* **Amazon S3** for hosting static applications and securely storing exported data.
+* **Amazon CloudWatch** for logs, metrics, monitoring, and alarms.
+* **AWS IAM** for managing permissions and applying the principle of least privilege.
+* **AWS SAM and CloudFormation** for managing infrastructure as code.
+* **GitHub Actions** for supporting automated deployment workflows.
+* **JWT authentication** for identifying users and protecting API operations.
+* **CORS configuration**, request throttling, input validation, and secure data access.
+* **Budget alerts, lifecycle policies, and cost estimation** for controlling cloud expenses.
+
+I also improved my ability to compare technical alternatives. For example, I learned to consider cost, security, scalability, maintenance, and actual application requirements when selecting cloud services.
+
+### Development and Problem-Solving Skills
+
+The internship improved my ability to investigate and resolve technical problems. I encountered issues involving CORS, deployment configuration, authentication, permissions, account service availability, and cloud-resource settings.
+
+Through these situations, I learned that an effective problem-solving process should include:
+
+1. Defining the problem clearly.
+2. Collecting logs and relevant evidence.
+3. Identifying the possible root cause.
+4. Comparing alternative solutions.
+5. Testing the selected solution.
+6. Recording the final result.
+
+I still need to improve this process, but the internship gave me practical experience that could not be gained through classroom exercises alone.
+
+### Professional Skills
+
+In addition to technical knowledge, I improved several professional skills:
+
+* Planning and dividing a large project into smaller tasks.
+* Writing technical documents and internship reports.
+* Communicating progress and technical difficulties.
+* Receiving feedback and applying it to my work.
+* Managing time and prioritising important deliverables.
+* Taking responsibility for the quality of a completed project.
+* Considering security, cost, maintainability, and user needs during development.
+
+## 4. Feedback About Teammates
+
+My teammates were supportive, professional, and willing to share their knowledge. Their guidance helped me solve technical problems and understand professional teamwork better.
+
+I also learned that I should communicate blockers earlier, ask more focused questions, and provide clearer progress updates.
+
+## 5. Additional Questions
+
+### What did you find most satisfying during your internship?
+
+The most satisfying achievement was successfully developing and deploying a complete serverless flashcard platform. It allowed me to apply cloud, backend, security, deployment, and documentation knowledge to a real project.
+
+### What should the company improve for future interns?
+
+The company could provide a clearer internship roadmap, more regular feedback sessions, and additional opportunities for interns to observe real development workflows.
+
+### Would you recommend this internship to a friend?
+
+Yes. I would recommend it to students interested in cloud computing and software development because it provides valuable practical experience and encourages independent learning.
+
+## 6. Suggestions and Expectations
+
+I suggest providing clear project milestones, regular mentor meetings, and more technical knowledge-sharing sessions for future interns.
+
+After the internship, I expect to continue improving my AWS, serverless architecture, backend development, DevOps, communication, project-planning, and problem-solving skills.

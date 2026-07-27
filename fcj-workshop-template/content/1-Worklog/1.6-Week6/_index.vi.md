@@ -1,58 +1,37 @@
 ---
-title: "Worklog Tuần 6"
-date: 2024-01-01
+title: "Nhật ký công việc Tuần 6"
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tuần 6 — 20/07 – 26/07/2026
 
-### Mục tiêu tuần 6:
+## Mục tiêu
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+Các mục tiêu của Tuần 6 là:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* Kiểm thử các tính năng chính của ứng dụng trên môi trường AWS đã triển khai.
+* Xác minh sự giao tiếp giữa tiện ích mở rộng Chrome, ứng dụng web Học tập (Study) và backend serverless.
+* Xác định và giải quyết các vấn đề về chức năng, tích hợp và giao diện người dùng.
+* Đánh giá thời gian phản hồi của ứng dụng và mức độ sử dụng tài nguyên.
+* Cải thiện hiệu suất frontend và backend.
 
+## Các công việc cần thực hiện
 
-### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
+| :--- | :--- | :--- | :--- |
+| Chuẩn bị các kịch bản kiểm thử (test cases) cho quản lý flashcard, quản lý danh mục, các chế độ học tập và truy xuất dữ liệu. | ✅ Hoàn thành | 20/07/2026 | 20/07/2026 |
+| Kiểm thử các luồng công việc (workflows) chính của ứng dụng trên môi trường AWS đã triển khai. | ✅ Hoàn thành | 21/07/2026 | 22/07/2026 |
+| Xác minh các yêu cầu API, phản hồi Lambda, thao tác trên DynamoDB và hành vi xử lý lỗi. | ✅ Hoàn thành | 22/07/2026 | 23/07/2026 |
+| Xác định và sửa các lỗi về chức năng, tích hợp và giao diện người dùng phát hiện trong quá trình kiểm thử. | ✅ Hoàn thành | 23/07/2026 | 24/07/2026 |
+| Đánh giá thời gian phản hồi của ứng dụng và tối ưu hóa các yêu cầu không cần thiết, quá trình xử lý dữ liệu và render giao diện frontend. | ✅ Hoàn thành | 24/07/2026 | 25/07/2026 |
+| Kiểm thử lại ứng dụng sau khi cải thiện hiệu suất và xác nhận rằng các luồng chính vẫn hoạt động ổn định. | ✅ Hoàn thành | 25/07/2026 | 26/07/2026 |
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+## Kết quả
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Đã kiểm thử các luồng công việc chính của ứng dụng trên môi trường AWS.
+* Sửa các lỗi chức năng và tích hợp được phát hiện trong quá trình kiểm thử.
+* Cải thiện thời gian phản hồi ứng dụng và hiệu suất frontend.
+* Xác nhận các tính năng chính vẫn hoạt động ổn định sau khi tối ưu hóa.

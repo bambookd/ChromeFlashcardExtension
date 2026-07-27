@@ -1,59 +1,40 @@
 ---
-title: "Worklog Tuần 5"
-date: 2024-01-01
+title: "Nhật ký công việc Tuần 5"
+date: 2026-06-15
 weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+# Tuần 5 — 13/07 – 19/07/2026
 
-### Mục tiêu tuần 5:
+## Mục tiêu
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+Các mục tiêu của Tuần 5 là:
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+* Hoàn thành lần triển khai (deployment) thực tế đầu tiên của ứng dụng lên AWS.
+* Xác thực hạ tầng serverless đã triển khai và luồng ứng dụng.
+* Xác định và giải quyết các vấn đề về cấu hình và tích hợp sau khi triển khai.
+* Đánh giá các quyền đối với tài nguyên AWS và cài đặt triển khai.
+* Thêm các rào chắn chi tiêu (spending guardrails).
+* Tài liệu hóa quá trình triển khai và kết quả xác thực.
 
+## Các công việc cần thực hiện
 
-### Kết quả đạt được tuần 5:
+| Nhiệm vụ | Trạng thái | Ngày bắt đầu | Ngày hoàn thành |
+| :--- | :--- | :--- | :--- |
+| Đánh giá kiến trúc AWS, checklist triển khai và template hạ tầng đã được chuẩn bị trong các tuần trước. | ✅ Hoàn thành | 13/07/2026 | 13/07/2026 |
+| Cấu hình môi trường AWS được yêu cầu và chuẩn bị ứng dụng để triển khai lên cloud. | ✅ Hoàn thành | 14/07/2026 | 14/07/2026 |
+| Triển khai stack ứng dụng serverless ban đầu lên AWS và xác minh rằng các tài nguyên cần thiết đã được tạo thành công. | ✅ Hoàn thành | 15/07/2026 | 16/07/2026 |
+| Kiểm thử luồng ứng dụng đã triển khai và giải quyết các vấn đề cấu hình hoặc tích hợp được phát hiện sau triển khai. | ✅ Hoàn thành | 16/07/2026 | 17/07/2026 |
+| Đánh giá các tài nguyên đã triển khai, quyền IAM và cấu hình môi trường. | ✅ Hoàn thành | 17/07/2026 | 18/07/2026 |
+| Cấu hình các rào chắn triển khai. | ✅ Hoàn thành | 18/07/2026 | 19/07/2026 |
+| Tài liệu hóa các bước triển khai, kết quả xác thực và các vấn đề còn tồn đọng. | ✅ Hoàn thành | 19/07/2026 | 19/07/2026 |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+## Kết quả
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Đã hoàn thành lần triển khai thực tế đầu tiên lên AWS.
+* Xác thực thành công ứng dụng và các tài nguyên serverless đã triển khai.
+* Giải quyết xong các vấn đề cấu hình và tích hợp ban đầu.
+* Bổ sung tính năng theo dõi chi phí và các rào chắn chi tiêu.
+* Tài liệu hóa quá trình triển khai và các vấn đề còn tồn đọng.

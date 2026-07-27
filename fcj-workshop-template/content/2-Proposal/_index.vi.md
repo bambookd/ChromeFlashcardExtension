@@ -1,107 +1,200 @@
 ---
-title: "Bản đề xuất"
-date: 2024-01-01
+title: "Proposal"
+date: 2026-07-21
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
+
+# Đề xuất dự án — Nền tảng Flashcard Serverless
+
+### Tổng quan
+
+Đề xuất cho một dự án cloud cá nhân: một Chrome extension lưu từ vựng ngay khi
+bạn đọc web, dựa trên kiến trúc serverless AWS để lưu trữ, đồng bộ và xuất dữ liệu.
+
+| Mục | Giá trị |
+| --- | --- |
+| Tên dự án | ChromeFlashCardExtension — Nền tảng Flashcard Serverless |
+| Tác giả | {{TODO: Họ và tên}} |
+| Ngày | {{TODO: dd/mm/yyyy}} |
+| Region | `ap-southeast-1` (Singapore) |
+| Dịch vụ AWS | API Gateway, Lambda, DynamoDB, S3, CloudWatch (+ CloudFormation/SAM, IAM, Budgets) |
+| Trạng thái | Đã deploy — stack `chrome-flashcard-dev` |
+
+## 1. Bài toán
+
+Một người học tiếng Anh bằng cách đọc nội dung thật — tài liệu kỹ thuật, tin tức,
+blog — sẽ gặp 10 đến 30 từ lạ trong một buổi đọc. Gần như toàn bộ số đó bị mất
+đi, vì ba lý do:
+
+**Việc lưu lại làm đứt mạch đọc.** Chuyển sang app khác, gõ từ, gõ nghĩa, rồi
+quay lại tốn 20–30 giây và làm mất mạch suy nghĩ. Hầu hết mọi người bỏ cuộc sau
+vài từ.
+  
+**Ngữ cảnh biến mất.** Một từ được nhớ mà không có câu chứa nó thì khó gợi lại
+hơn nhiều. Các app flashcard thông thường lưu từ, chứ không lưu trang đã tìm thấy
+nó.
+
+**Dữ liệu bị mắc kẹt.** Ghi chú trong local storage của trình duyệt chỉ tồn tại
+trên một máy, trong một profile. Cài lại trình duyệt là mất sạch từ vựng.
+
+Các công cụ hiện có giải quyết được nhiều nhất một trong ba vấn đề. Extension từ
+điển hiện nghĩa rồi quên. App flashcard lưu card tốt nhưng bắt nhập tay. Không có
+gì nối được "khoảnh khắc bạn gặp từ" với "bộ thẻ bạn học sau đó".
+
+## 2. Người dùng mục tiêu
+
+| Người dùng | Họ cần gì |
+| --- | --- |
+| Sinh viên Việt Nam đọc tài liệu kỹ thuật tiếng Anh | Lưu từ mà không mất mạch đọc; ôn lại sau |
+| Người tự học luyện IELTS/TOEIC | Bộ thẻ dựng từ chính nội dung họ đọc, không phải danh sách từ chung chung |
+| Bất kỳ ai dùng nhiều hơn một máy tính | Cùng một kho từ vựng ở mọi nơi |
+
+## 3. Mục tiêu
+
+**Mục tiêu chính.** Giảm chi phí lưu một từ mới xuống dưới 5 giây mà không rời
+trang, và làm cho bộ thẻ thu được truy cập được từ trình duyệt bất kỳ.
+
+**Sản phẩm cụ thể**
+
+| # | Sản phẩm | Tiêu chí thành công |
+| --- | --- | --- |
+| O1 | Chrome extension (Manifest V3) | Bôi đen từ → chuột phải → lưu, dưới 5 giây |
+| O2 | REST API serverless | Endpoint HTTPS công khai, bảo vệ bằng JWT, `/api/health` trả 200 |
+| O3 | Lưu trữ bền vững theo từng user | Card sống sót qua lần cài lại trình duyệt; không user nào đọc được dữ liệu của user khác |
+| O4 | Ứng dụng web Study | Phiên học và bài test trắc nghiệm trên chính card của mình |
+| O5 | Export riêng tư | Tải JSON qua URL có hạn; URL object thô trả về 403 |
+| O6 | Khả năng quan sát | Log, metric và alarm cho lỗi, throttle và độ trễ |
+| O7 | Kiểm soát chi phí | Dưới 5 USD/tháng với traffic demo, có cảnh báo ngân sách |
+
+**Không thuộc phạm vi giai đoạn này.** Multiplayer realtime, bảng xếp hạng toàn
+cục, xác thực bằng Cognito, custom domain, và phát hành lên Chrome Web Store. Các
+mục này được ghi lại là việc tương lai, không phải âm thầm bỏ đi.
+
+## 4. Kiến trúc giải pháp
+
+![Kiến trúc giải pháp](/images/2-proposal/architecture.png)
+
+```text
+                    ┌──────────────────────┐
+Trình duyệt user ──►│ Chrome Extension MV3 │──┐
+                    └──────────────────────┘  │  HTTPS + JWT
+                    ┌──────────────────────┐  │
+Trình duyệt user ──►│ Web Study / Game     │──┤
+                    └──────────▲───────────┘  │
+                               │ tĩnh         ▼
+                      ┌────────┴───────┐  ┌────────────────────────┐
+                      │ S3 bucket site │  │ API Gateway (HTTP API) │
+                      │  (đọc công khai)│ │  CORS + throttling     │
+                      └────────────────┘  └───────────┬────────────┘
+                                                      │ proxy ANY /{proxy+}
+                                          ┌───────────▼────────────┐
+                                          │ AWS Lambda (Node.js 24)│
+                                          │ Express + serverless-  │
+                                          │ http, IAM role         │
+                                          └───┬────────────────┬───┘
+                                              │                │
+                         ┌────────────────────▼───┐   ┌────────▼──────────────┐
+                         │ DynamoDB               │   │ S3 bucket export      │
+                         │ Users / Flashcards /   │   │ (chặn toàn bộ truy    │
+                         │ Categories             │   │  cập công khai)       │
+                         └────────────────────────┘   └────────┬──────────────┘
+                                                               │ pre-signed GET 15 phút
+                                              ┌────────────────▼──────────────┐
+                                              │ CloudWatch log, metric,       │
+                                              │ alarm  ◄── Lambda + API GW    │
+                                              └───────────────────────────────┘
+```
+
+### Vì sao chọn từng dịch vụ
+
+| Dịch vụ | Vì sao chọn | Phương án bị loại |
+| --- | --- | --- |
+| **API Gateway HTTP API** | Một endpoint HTTPS được quản lý, có sẵn CORS và throttling. Chọn HTTP API thay vì REST API: rẻ hơn khoảng 70% và đủ dùng cho tích hợp proxy. | ALB cần VPC và tính tiền theo giờ kể cả khi rảnh |
+| **AWS Lambda** | Traffic chỉ vài request mỗi ngày với khoảng nghỉ dài. Scale-to-zero nghĩa là lúc rảnh không tốn gì, và Express app sẵn có chạy nguyên vẹn qua `serverless-http`. | EC2/ECS tính tiền liên tục và phải vá hệ điều hành |
+| **DynamoDB** | Access pattern đúng là "lấy các item của một user", thứ mà partition key trả lời trực tiếp. Serverless, không phải chọn kích cỡ instance. | RDS tính tiền theo giờ và schema quan hệ không đem lại lợi ích gì ở đây |
+| **S3** | Hai nhiệm vụ khác nhau, hai bucket: host web tĩnh, và một bucket hoàn toàn riêng tư cho file export phục vụ qua pre-signed URL. | Phục vụ file tĩnh từ Lambda là lãng phí lượt gọi |
+| **CloudWatch** | Đi kèm sẵn với Lambda và API Gateway, không phải cài agent. Retention của log cấu hình được, điều này quan trọng về chi phí. | Công cụ APM bên thứ ba là thừa và tốn thêm tiền |
+| **CloudFormation / SAM** | Toàn bộ backend nằm trong một file review được, và `delete-stack` xóa sạch trong một thao tác — chính điều đó khiến việc dọn dẹp đáng tin cậy. | Tạo tay bằng console thì không review được và không xóa sạch được chắc chắn |
+
+### Thiết kế bảo mật
+
+- **Không có credential dài hạn ở bất cứ đâu.** Lambda nhận quyền từ execution
+  role; GitHub Actions nhận credential ngắn hạn qua OIDC.
+- **Quyền tối thiểu.** Lambda role có năm action DynamoDB trên đúng ba ARN bảng,
+  cộng `GetObject`/`PutObject` trên một bucket. Không có `Scan`, không wildcard.
+- **Chủ sở hữu lấy từ token.** Mọi request suy ra `userId` từ claim `sub` của JWT
+  đã verify. `userId` do client gửi lên bị bỏ qua.
+- **Hai bucket, hai tư thế bảo mật.** Export bucket bật Block Public Access toàn
+  bộ và không bao giờ được mở công khai chỉ để chữa lỗi tải file.
+- **CORS theo origin chính xác.** Không dùng `*`. Và CORS không phải cơ chế phân
+  quyền — kiểm tra JWT phải tự đứng vững, vì `curl` bỏ qua CORS hoàn toàn.
+
+## 5. Timeline
+
+![Timeline](/images/2-proposal/timeline.png)
+
+| Giai đoạn | Tuần | Sản phẩm |
+| --- | --- | --- |
+| Khảo sát & prototype | 1–2 | Xác nhận bài toán, extension + backend local chạy được |
+| Tầng dữ liệu & IaC | 3 | Repository DynamoDB, SAM template đầu tiên |
+| Audit & tài liệu | 4 | 11 tài liệu thiết kế, tìm ra 8 blocker trước khi tiêu tiền |
+| Deploy & CI/CD | 5 | Stack chạy thật, pipeline OIDC, hàng rào chi phí |
+| Kiểm chứng | 6 | Chạy trọn bộ test end-to-end, thu thập bằng chứng |
+| Khả năng quan sát | 7 | Structured log, alarm, dashboard |
+| Siết bảo mật | 8 | Validate đầu vào, rà soát IAM, rà soát XSS |
+| Tối ưu | 9 | Đo chi phí và hiệu năng |
+| Cộng đồng | 10 | Đăng 3 bài blog |
+| Workshop | 11 | Lab tái lập được, kiểm chứng trên tài khoản sạch |
+| Kết thúc | 12 | Báo cáo cuối, demo, dọn dẹp |
+
+## 6. Ngân sách
+
+Chi phí ước tính mỗi tháng ở mức traffic demo (≈1.000 request/tháng), region
+`ap-southeast-1`:
+
+| Dịch vụ | Yếu tố tính tiền | Ước tính |
+| --- | --- | --- |
+| Lambda | ~1.000 lượt gọi, 256 MB, ~200 ms | Trong free tier ≈ 0,00 USD |
+| API Gateway HTTP API | ~1.000 request | < 0,01 USD |
+| DynamoDB | 3 bảng × 1 RCU + 1 WCU, **tính tiền cả khi rảnh** | ≈ 1,50–2,00 USD |
+| S3 | < 100 MB lưu trữ, vài nghìn request | < 0,10 USD |
+| CloudWatch Logs | < 50 MB ingest, retention 7 ngày | < 0,10 USD |
+| **Tổng** | | **≈ 2 USD/tháng** |
+
 {{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
+Đừng coi đây là báo giá. Giá thay đổi theo region và theo tài khoản, và điều kiện
+free tier sẽ hết hạn. Hãy tính lại bằng
+[AWS Pricing Calculator](https://calculator.aws/) và ghi rõ ngày cùng region.
+
+Hãy chú ý hình dạng của hóa đơn: chi phí lớn nhất là **DynamoDB provisioned
+capacity, thứ tính tiền bất kể có ai dùng app hay không**. Mọi thứ tính theo mức
+sử dụng thật đều làm tròn về 0 ở quy mô này. Chuyển các bảng đó sang on-demand là
+thay đổi có giá trị cao nhất về chi phí (Tuần 9).
 {{% /notice %}}
 
-Phần này tóm tắt các nội dung chính trong workshop mà bạn **dự kiến** triển khai.
+**Hàng rào đang áp dụng:** cảnh báo ngân sách ở 1 USD và 5 USD, throttle API
+2 req/s, lifecycle export 7 ngày, log retention 7 ngày.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+## 7. Rủi ro
 
-### 1. Tóm tắt dự án  
-Nền tảng IoT Weather Platform được thiết kế riêng cho phòng nghiên cứu *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Hệ thống hiện hỗ trợ 5 trạm thời tiết và có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp vi điều khiển ESP32 để truyền dữ liệu qua giao thức MQTT. Bằng việc ứng dụng các dịch vụ AWS Serverless, giải pháp mang lại khả năng giám sát theo thời gian thực, phân tích dự đoán và tiết kiệm chi phí vận hành, đồng thời phân quyền truy cập an toàn cho các thành viên phòng lab qua Amazon Cognito.  
+| # | Rủi ro | Khả năng | Tác động | Biện pháp | Trạng thái |
+| --- | --- | --- | --- | --- | --- |
+| R1 | CORS chặn một lời gọi vốn chạy được ở local | Cao | Demo hỏng | Allowlist origin chính xác, đồng bộ giữa API Gateway và Express; test từ origin thật, không bao giờ tin local | **Đã xảy ra** — phát hiện trong audit Tuần 4 |
+| R2 | Một dịch vụ AWS không khả dụng trên tài khoản | Trung bình | Tính năng chết | Kiểm tra dịch vụ có dùng được không trước khi thiết kế phụ thuộc vào nó | **Đã xảy ra** — Translate trả `OptInRequired`; đã gỡ tính năng |
+| R3 | Chi phí ngoài dự kiến | Trung bình | Thiệt hại tài chính cá nhân | Đặt cảnh báo ngân sách trước tài nguyên đầu tiên; throttle; lifecycle; capacity thấp | Đã kiểm soát |
+| R4 | Xoay `JwtSecret` làm đăng xuất toàn bộ user | Trung bình | Demo hỏng | Ghi rõ cạm bẫy `NoEcho`; lưu secret trong GitHub Secrets; deploy qua CI | Đã kiểm soát |
+| R5 | Cold start của Lambda làm demo trông chậm | Trung bình | Ấn tượng xấu | Làm ấm endpoint trước khi demo; giữ gói nhỏ; chỉ cân nhắc provisioned concurrency nếu đã đo | Chấp nhận |
+| R6 | DynamoDB throttle ở mức 1 RCU/WCU | Thấp | 5xx khi sync | Alarm trên `ThrottledRequests`; tăng capacity tạm thời nếu cần | Đang giám sát |
+| R7 | Rò rỉ pre-signed URL | Thấp | Lộ dữ liệu | Hạn 15 phút; không bao giờ log hay chụp màn hình; lifecycle object 7 ngày | Đã kiểm soát |
+| R8 | Phình phạm vi sang multiplayer realtime | Cao | Không hoàn thành gì | Ghi thành ADR-06, tuyên bố rõ ngoài phạm vi | Đã kiểm soát |
 
-### 2. Thực trạng & Giải pháp  
-**Thực trạng & Khó khăn:**  
-Việc thu thập dữ liệu tại các trạm thời tiết hiện vẫn thực hiện thủ công, gây khó khăn cho khâu quản lý khi số lượng trạm gia tăng. Hệ thống thiếu một nền tảng tập trung để lưu trữ cũng như phân tích dữ liệu theo thời gian thực. Bên cạnh đó, các giải pháp thương mại từ bên thứ ba thường đắt đỏ và phức tạp không cần thiết.  
+## 8. Hướng phát triển
 
-**Giải pháp đề xuất:**  
-Nền tảng ứng dụng AWS IoT Core để tiếp nhận dữ liệu MQTT từ các thiết bị, AWS Lambda kết hợp API Gateway đảm nhận xử lý logic, và Amazon S3 làm kho lưu trữ tập trung (Data Lake). Ngoài ra, AWS Glue Crawlers và các tác vụ ETL tự động trích xuất, chuyển đổi và nạp dữ liệu từ S3 Data Lake sang S3 bucket chuyên biệt cho phân tích. Giao diện web được phát triển bằng Next.js triển khai trên AWS Amplify, cùng Amazon Cognito quản lý xác thực an toàn. Tương tự như ThingsBoard hay CoreIoT, giải pháp cho phép đăng ký và quản lý kết nối thiết bị mới nhưng được tối ưu hóa gọn nhẹ cho nhu cầu nội bộ, nổi bật với bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành tối ưu.  
-
-**Lợi ích & Hiệu quả đầu tư (ROI):**  
-Dự án đặt nền móng vững chắc giúp phòng lab mở rộng hệ thống IoT trong tương lai, đồng thời cung cấp nguồn dữ liệu chuẩn hóa phục vụ huấn luyện các mô hình AI và phân tích chuyên sâu. Hệ thống tập trung giúp loại bỏ hoàn toàn quy trình báo cáo thủ công tại từng trạm, đơn giản hóa công tác quản lý - bảo trì và nâng cao độ tin cậy của dữ liệu. Chi phí vận hành ước tính rất thấp, chỉ khoảng 0.66 USD/tháng (tương đương 7.92 USD/năm theo AWS Pricing Calculator). Do tận dụng phần cứng có sẵn, dự án không phát sinh chi phí mua sắm thiết bị mới. Thời gian hoàn vốn dự kiến từ 6 đến 12 tháng nhờ tiết kiệm được đáng kể nhân lực và thời gian thao tác thủ công.  
-
-### 3. Kiến trúc giải pháp  
-Hệ thống được xây dựng trên kiến trúc AWS Serverless để quản lý dữ liệu từ các trạm thời tiết dựa trên Raspberry Pi (khả năng mở rộng từ 5 lên 15 trạm). Dữ liệu thu thập được gửi về AWS IoT Core, lưu trữ tại S3 Data Lake, sau đó được AWS Glue Crawlers và các tác vụ ETL tự động trích xuất, chuyển đổi và đưa vào S3 bucket phân tích. AWS Lambda và API Gateway đảm nhận xử lý các API nghiệp vụ, trong khi AWS Amplify hosting giao diện dashboard Next.js tích hợp xác thực Amazon Cognito.  
-
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
-
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
-
-**Các dịch vụ AWS sử dụng:**  
-- **AWS IoT Core**: Tiếp nhận dữ liệu MQTT từ 5 trạm, có thể mở rộng lên 15 trạm.  
-- **AWS Lambda**: Xử lý dữ liệu nghiệp vụ và kích hoạt các tác vụ AWS Glue (gồm 2 hàm Lambda).  
-- **Amazon API Gateway**: Định tuyến và cung cấp cổng kết nối REST API cho ứng dụng web.  
-- **Amazon S3**: Lưu trữ dữ liệu thô (Data Lake) và dữ liệu đã qua xử lý (gồm 2 S3 bucket).  
-- **AWS Glue**: Crawlers lập chỉ mục sơ đồ dữ liệu, các tác vụ ETL thực hiện chuyển đổi và nạp dữ liệu.  
-- **AWS Amplify**: Hosting ứng dụng web fullstack Next.js.  
-- **Amazon Cognito**: Quản lý đăng nhập và phân quyền an toàn cho người dùng phòng lab.  
-
-**Thiết kế chi tiết thành phần:**  
-- **Thiết bị biên (Edge Device)**: Raspberry Pi thu thập, tiền xử lý và lọc dữ liệu từ cảm biến trước khi gửi về AWS IoT Core.  
-- **Tiếp nhận dữ liệu**: AWS IoT Core tiếp nhận các thông điệp MQTT từ thiết bị biên.  
-- **Lưu trữ dữ liệu**: Dữ liệu thô lưu tại S3 Data Lake; dữ liệu sau xử lý được lưu trữ tại S3 bucket riêng biệt.  
-- **Xử lý dữ liệu**: AWS Glue Crawlers lập chỉ mục dữ liệu; các tác vụ ETL chuyển đổi dữ liệu phục vụ phân tích.  
-- **Giao diện web**: AWS Amplify lưu trữ ứng dụng Next.js cung cấp bảng điều khiển thời gian thực và biểu đồ phân tích.  
-- **Quản lý người dùng**: Amazon Cognito giới hạn và bảo vệ quyền truy cập cho 5 tài khoản phòng lab.  
-
-### 4. Kế hoạch triển khai kỹ thuật  
-**Các giai đoạn thực hiện:**  
-Dự án chia làm 2 hợp phần chính (thiết lập trạm biên và phát triển nền tảng đám mây), mỗi hợp phần trải qua 4 giai đoạn:  
-1. **Nghiên cứu & Thiết kế kiến trúc**: Nghiên cứu kết nối Raspberry Pi với cảm biến ESP32, thiết kế mô hình kiến trúc AWS Serverless (thực hiện 1 tháng trước kỳ thực tập).  
-2. **Ước tính chi phí & Đánh giá tính khả thi**: Sử dụng công cụ AWS Pricing Calculator để tính toán và tối ưu ngân sách (Tháng 1).  
-3. **Tối ưu hóa kiến trúc & giải pháp**: Tinh chỉnh các thành phần (như tối ưu hóa Lambda khi kết hợp Next.js) để đạt hiệu quả chi phí tốt nhất (Tháng 2).  
-4. **Phát triển, Kiểm thử & Triển khai**: Lập trình phần cứng Raspberry Pi, cấu hình các dịch vụ AWS qua CDK/SDK và xây dựng ứng dụng Next.js; tiến hành kiểm thử toàn diện và đưa vào vận hành (Tháng 2–3).  
-
-**Yêu cầu kỹ thuật:**  
-- **Trạm thời tiết biên**: Cảm biến đo nhiệt độ, độ ẩm, lượng mưa, tốc độ gió; vi điều khiển ESP32 kết nối với thiết bị biên Raspberry Pi. Raspberry Pi chạy hệ điều hành Raspbian, sử dụng Docker để lọc dữ liệu và gửi khoảng 1 MB/ngày/trạm thông qua giao thức MQTT qua kết nối Wi-Fi.  
-- **Nền tảng đám mây**: Ứng dụng thành thạo các dịch vụ AWS Amplify (hosting Next.js), Lambda, AWS Glue (ETL), Amazon S3 (2 bucket), AWS IoT Core (Rules & Gateway) và Amazon Cognito (phân quyền 5 tài khoản). Sử dụng AWS CDK/SDK để hạ tầng hóa mã nguồn (như định tuyến dữ liệu từ IoT Core sang S3). Việc tích hợp Next.js giúp giảm tải số lượng hàm Lambda cho ứng dụng fullstack.  
-
-### 5. Lộ trình & Các mốc triển khai  
-- **Giai đoạn chuẩn bị (Tháng 0)**: 1 tháng lập kế hoạch và khảo sát đánh giá hệ thống trạm hiện tại.  
-- **Kỳ thực tập (Tháng 1–3)**:  
-    - Tháng 1: Tìm hiểu sâu các dịch vụ AWS và nâng cấp phần cứng trạm biên.  
-    - Tháng 2: Thiết kế chi tiết và hoàn thiện kiến trúc hệ thống.  
-    - Tháng 3: Triển khai hạ tầng, kiểm thử tích hợp và đưa hệ thống vào vận hành.  
-- **Sau triển khai**: Tiếp tục vận hành và mở rộng nghiên cứu trong vòng 1 năm.  
-
-### 6. Ước tính ngân sách & Chi phí  
-Chi tiết dự toán chi phí có thể tham khảo trực tiếp trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01) hoặc tải [bảng ước tính ngân sách PDF](../attachments/budget_estimation.pdf).  
-
-**Dự toán chi phí hạ tầng AWS:**  
-- AWS Lambda: 0.00 USD/tháng (1,000 yêu cầu, 512 MB lưu trữ).  
-- Amazon S3 Standard: 0.15 USD/tháng (6 GB lưu trữ, 2,100 yêu cầu, 1 GB quét dữ liệu).  
-- Truyền dữ liệu (Data Transfer): 0.02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0.35 USD/tháng (256 MB, thời gian phản hồi 500 ms).  
-- Amazon API Gateway: 0.01 USD/tháng (2,000 yêu cầu).  
-- AWS Glue ETL Jobs: 0.02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0.07 USD/tháng (1 crawler).  
-- AWS IoT Core (MQTT): 0.08 USD/tháng (5 thiết bị, 45,000 thông điệp).  
-
-**Tổng chi phí hạ tầng AWS:** ~0.70 USD/tháng (~8.40 USD/năm).  
-- **Chi phí phần cứng**: ~265 USD (đầu tư một lần cho Raspberry Pi 5 và các cảm biến).  
-
-### 7. Phân tích rủi ro & Kế hoạch ứng phó  
-**Ma trận rủi ro:**  
-- **Sự cố mất kết nối mạng**: Mức độ ảnh hưởng: Trung bình | Xác suất xảy ra: Trung bình.  
-- **Hỏng hóc cảm biến**: Mức độ ảnh hưởng: Cao | Xác suất xảy ra: Thấp.  
-- **Phát sinh vượt ngân sách**: Mức độ ảnh hưởng: Trung bình | Xác suất xảy ra: Thấp.  
-
-**Chiến lược giảm thiểu rủi ro:**  
-- **Mạng kết nối**: Cấu hình lưu trữ dữ liệu tạm thời cục bộ (buffer) trên Raspberry Pi sử dụng container Docker.  
-- **Cảm biến**: Thực hiện bảo trì, kiểm tra định kỳ và chuẩn bị sẵn linh kiện dự phòng.  
-- **Chi phí**: Thiết lập cảnh báo ngân sách (AWS Budgets) và liên tục theo dõi, tối ưu tài nguyên.  
-
-**Kế hoạch dự phòng:**  
-- Chuyển sang chế độ thu thập thủ công tạm thời nếu hệ thống AWS gặp sự cố gián đoạn.  
-- Triển khai lại hạ tầng chuẩn xác bằng AWS CloudFormation / SAM nếu cần khôi phục trạng thái ban đầu.  
-
-### 8. Kết quả kỳ vọng & Giá trị mang lại  
-- **Cải tiến kỹ thuật**: Tự động hóa toàn bộ quy trình thu thập và phân tích dữ liệu theo thời gian thực thay cho phương pháp thủ công, sẵn sàng mở rộng lên 10–15 trạm.  
-- **Giá trị dài hạn**: Xây dựng kho dữ liệu thời tiết chuẩn hóa trong 1 năm phục vụ các bài toán nghiên cứu AI và có thể tái sử dụng hạ tầng cho các dự án tiếp theo.
+- CloudFront + Origin Access Control để có HTTPS và URL gọn.
+- Amazon Cognito thay cho JWT tự viết, để có cơ chế thu hồi và refresh token.
+- API Gateway WebSocket API + bảng connections cho prototype multiplayer realtime
+  vốn không chuyển lên Lambda được.
+- Point-in-time recovery cho DynamoDB và phân trang cho bộ thẻ lớn.
+- Lịch ôn tập ngắt quãng (spaced repetition) thay cho việc xáo bài đơn giản.

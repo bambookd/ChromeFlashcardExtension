@@ -1,46 +1,80 @@
 ---
+
 title: "Các sự kiện đã tham gia"
-date: 2024-01-01
+date: 2026-07-26
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
+--------------------
+
+# Các sự kiện đã tham gia
+
+Trong thời gian thực tập, mình đã tham gia bốn sự kiện liên quan đến AWS Cloud, Agentic AI, bảo mật, vận hành hệ thống và định hướng nghề nghiệp.
+
+Mỗi sự kiện mang đến một góc nhìn khác nhau, từ kiến thức nền tảng về AWS, giám sát ứng dụng, bảo mật tự động cho đến việc ứng dụng AI agent trong doanh nghiệp. Những hoạt động này giúp mình mở rộng kiến thức kỹ thuật, hiểu thêm về nhu cầu thực tế của ngành và cải thiện khả năng tự học.
+
+### [Sự kiện 1](4.1-Event1/)
+
+ **Tên sự kiện:** AWS Cloud, Monitoring and Security
+
+ **Ngày:** 11/07/2026
+
+ **Hình thức:** Tham gia sự kiện kỹ thuật
+
+ **Vai trò:** Người tham dự
+
+ **Nội dung chính:** AWS Cloud Practitioner, SLA và giám sát hệ thống, AWS Security Agent.
+
+ **Giá trị nhận được:** Mình hiểu thêm về các dịch vụ AWS, mô hình Shared Responsibility, cách giám sát trải nghiệm người dùng bằng Amazon CloudWatch và cách đưa bảo mật vào vòng đời phát triển phần mềm.
+
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+### [Sự kiện 2](4.2-Event2/)
 
-> Trong phần này, bạn cần liệt kê và mô tả chi tiết các sự kiện (event) đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo cấu trúc Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (Người tham dự, Hỗ trợ tổ chức, Diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và các hoạt động chính
-> * Kết quả hoặc giá trị đạt được (bài học kinh nghiệm, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ mức độ chủ động tham gia thực tế, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
+ **Tên sự kiện:** FCAJ Community Day – June 2026
 
+ **Thời gian:** 27/06/2026
 
-Trong quá trình thực tập, tôi đã có cơ hội tham gia 2 sự kiện tiêu biểu. Mỗi sự kiện đều mang đến những trải nghiệm thực tế quý giá, giúp mở rộng kiến thức chuyên môn, tích lũy kinh nghiệm và gắn kết hơn với cộng đồng.
+ **Hình thức:** Tham gia trực tuyến
 
-### [Event 1: GenAI-powered App-DB Modernization Workshop](4.1-Event1/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+ **Vai trò:** Người tham dự
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+ **Nội dung chính:** Cloud Agentic Platform, Voice AI cho tiếng Việt, DevOps AI Agent, Amazon Q trong tuyển dụng và kết nối riêng cho hệ thống AI doanh nghiệp.
 
-&emsp;**Địa điểm:** Tầng 26, Tòa nhà Bitexco, số 02 đường Hải Triều, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
+ **Giá trị nhận được:** Mình hiểu rõ hơn về Agentic Cloud, Human-in-the-Loop, kiến trúc Voice AI dạng module và tầm quan trọng của mạng riêng, bảo mật và quản trị khi triển khai AI trong doanh nghiệp.
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+---
 
+### [Sự kiện 3](4.3-Event3/)
 
+ **Tên sự kiện:** AWS Enterprise Cloud Architectures and Industry Applications Study Tour
 
-### [Event 2: AWS Cloud Day & Community Tech Talk](4.2-Event2/)
-&emsp;**Tên sự kiện:** AWS Cloud Day & Community Tech Talk
+ **Ngày:** 04/07/2026
 
-&emsp;**Thời gian:** 09:00 ngày 20/09/2025
+ **Hình thức:** Tham gia trực tuyến
 
-&emsp;**Địa điểm:** Tầng 26, Tòa nhà Bitexco, số 02 đường Hải Triều, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh
+ **Vai trò:** Người tham dự
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+ **Nội dung chính:** Xu hướng nghề nghiệp cloud, Data Engineering trong doanh nghiệp, xây dựng mạng lưới nghề nghiệp và tư duy làm việc với AI.
 
+ **Giá trị nhận được:** Mình nhận ra rằng kỹ năng kỹ thuật cần đi cùng khả năng giao tiếp, hiểu nghiệp vụ, tinh thần trách nhiệm và sự nhất quán. Mình cũng học được rằng AI nên hỗ trợ kỹ sư, nhưng không thể thay thế kiến thức nền tảng và khả năng kiểm tra kết quả.
+
+---
+
+### [Sự kiện 4](4.4-Event4/)
+
+ **Tên sự kiện:** FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!
+
+ **Ngày:** 25/07/2026
+
+ **Hình thức:** Tham gia trực tuyến
+
+ **Vai trò:** Người tham dự
+
+ **Nội dung chính:** Agentic AI trong bán lẻ, phân tích cạnh tranh, thiết kế kiến trúc cloud, quản lý đám đông và điều tra chống rửa tiền.
+
+ **Giá trị nhận được:** Mình hiểu thêm về quy trình Agentic AI, bộ nhớ của agent, tool calling, reasoning log, Human-in-the-Loop và quá trình chuyển đổi một proof of concept thành giải pháp có khả năng triển khai trong doanh nghiệp.
+
+---
+
+Thông qua bốn sự kiện, mình đã mở rộng kiến thức về AWS Cloud, AI agent, giám sát hệ thống, bảo mật, Data Engineering và định hướng nghề nghiệp. Đây cũng là cơ hội để mình kết nối kiến thức học thuật với các tình huống thực tế trong doanh nghiệp.
