@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="thienlh@thienlu.com" />
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Blog 2 :: Báo cáo thực tập</title>
+
+    
+    <link href="/css/nucleus.css?1785234976" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785234976" rel="stylesheet">
+    <link href="/css/hybrid.css?1785234976" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785234976" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785234976" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785234976" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785234976" rel="stylesheet">
+    <link href="/css/theme.css?1785234976" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785234976" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1785234976" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1785234976"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="/vi/3-blogsposted/3.2-blog2/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#fff;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1785234976"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785234976"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1785234976"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Worklog"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/">
+     <b> 1. </b> Worklog 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Nhật ký công việc Tuần 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Nhật ký công việc Tuần 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Nhật ký công việc Tuần 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Nhật ký công việc Tuần 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Nhật ký công việc Tuần 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Nhật ký công việc Tuần 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Nhật ký công việc Tuần 4"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Nhật ký công việc Tuần 4 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Nhật ký công việc Tuần 5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Nhật ký công việc Tuần 5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Nhật ký công việc Tuần 6"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Nhật ký công việc Tuần 6 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Nhật ký công việc Tuần 7"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Nhật ký công việc Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Đề xuất"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/2-proposal/">
+     <b> 2. </b> Đề xuất 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/3-blogsposted/"
+  title="Các blog đã đăng"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/">
+     <b> 3. </b> Các blog đã đăng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.1-blog1/"
+  title="Blog 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.1-blog1/">
+     <b> 3.1. </b> Blog 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.2-blog2/"
+  title="Blog 2"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.2-blog2/">
+     <b> 3.2. </b> Blog 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.3-blog3/"
+  title="Blog 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.3-blog3/">
+     <b> 3.3 </b> Blog 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/4-eventparticipated/"
+  title="Các sự kiện đã tham gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/">
+     <b> 4. </b> Các sự kiện đã tham gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.1-event1/"
+  title="Sự kiện 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.1-event1/">
+     <b> 1. </b> Sự kiện 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.2-event2/"
+  title="Sự kiện 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.2-event2/">
+     <b> 2. </b> Sự kiện 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.3-event3/"
+  title="Sự kiện 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.3-event3/">
+     <b> 3. </b> Sự kiện 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/5-workshop/"
+  title="Báo cáo Workshop"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/">
+     <b> 5. </b> Báo cáo Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
+  title="System Architecture &amp; Design Overview"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.1-workshop-overview/">
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.2-prerequiste/"
+  title="Yêu cầu Môi trường &amp; Thông số Kỹ thuật"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Yêu cầu Môi trường &amp; Thông số Kỹ thuật 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.3-deploy-backend/">
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-extension-setup/"
+  title="Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.4-extension-setup/">
+     <b> 5.4. </b> Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.5-translate-export/"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.5-translate-export/">
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.6-cleanup/"
+  title="Resource Teardown &amp; Operational Verification"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.6-cleanup/">
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/6-self-evaluation/"
+  title="Tự đánh giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/6-self-evaluation/">
+     <b> 6. </b> Tự đánh giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/7-feedback/"
+  title="Chia sẻ và phản hồi"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/7-feedback/">
+     <b> 7. </b> Chia sẻ và phản hồi 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/8-references/"
+  title="Tài liệu tham khảo"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/8-references/">
+     <b> 8. </b> Tài liệu tham khảo 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="http://awsstudygroup.com"
+            ><i class='fab fa-aws'></i> AWS Study Group - Blog</a
+          >
+        </li>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"
+            ><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/3-blogsposted/3.2-blog2/"
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/vi/3-blogsposted/3.2-blog2/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i>
+        <font color=orange>28-07-2026</font>
+    </i>
+</left>
+<left>
+    <br>
+    <br>
+    <b> Team </b> <br>
+    <i>
+        <a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud AI Journey</a>
+    </i>
+</left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script></section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/3-blogsposted/'>Các blog đã đăng</a> > Blog 2
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#giới-thiệu">GIỚI THIỆU</a></li>
+    <li><a href="#amazon-textract-là-gì">AMAZON TEXTRACT LÀ GÌ?</a></li>
+    <li><a href="#amazon-textract-khác-gì-ocr-truyền-thống">AMAZON TEXTRACT KHÁC GÌ OCR TRUYỀN THỐNG?</a>
+      <ul>
+        <li><a href="#ocr-truyền-thống">OCR truyền thống</a></li>
+        <li><a href="#amazon-textract">Amazon Textract</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-tính-năng-chính">CÁC TÍNH NĂNG CHÍNH</a></li>
+    <li><a href="#1-phát-hiện-văn-bản">1. PHÁT HIỆN VĂN BẢN</a></li>
+    <li><a href="#2-trích-xuất-biểu-mẫu">2. TRÍCH XUẤT BIỂU MẪU</a></li>
+    <li><a href="#3-trích-xuất-bảng-biểu">3. TRÍCH XUẤT BẢNG BIỂU</a></li>
+    <li><a href="#4-phân-tích-bố-cục">4. PHÂN TÍCH BỐ CỤC</a></li>
+    <li><a href="#5-tính-năng-queries">5. TÍNH NĂNG QUERIES</a></li>
+    <li><a href="#6-xử-lý-hóa-đơn-và-biên-lai">6. XỬ LÝ HÓA ĐƠN VÀ BIÊN LAI</a></li>
+    <li><a href="#7-phân-tích-giấy-tờ-định-danh-và-hồ-sơ-vay">7. PHÂN TÍCH GIẤY TỜ ĐỊNH DANH VÀ HỒ SƠ VAY</a></li>
+    <li><a href="#tại-sao-nên-sử-dụng-amazon-textract">TẠI SAO NÊN SỬ DỤNG AMAZON TEXTRACT?</a></li>
+    <li><a href="#vượt-trội-hơn-ocr-truyền-thống">VƯỢT TRỘI HƠN OCR TRUYỀN THỐNG</a></li>
+    <li><a href="#giảm-công-việc-nhập-liệu-thủ-công">GIẢM CÔNG VIỆC NHẬP LIỆU THỦ CÔNG</a></li>
+    <li><a href="#tự-động-hóa-và-tích-hợp">TỰ ĐỘNG HÓA VÀ TÍCH HỢP</a></li>
+    <li><a href="#khả-năng-mở-rộng">KHẢ NĂNG MỞ RỘNG</a></li>
+    <li><a href="#thanh-toán-theo-mức-sử-dụng">THANH TOÁN THEO MỨC SỬ DỤNG</a></li>
+    <li><a href="#các-use-case-nổi-bật">CÁC USE CASE NỔI BẬT</a></li>
+    <li><a href="#dịch-vụ-tài-chính">DỊCH VỤ TÀI CHÍNH</a></li>
+    <li><a href="#chăm-sóc-sức-khỏe">CHĂM SÓC SỨC KHỎE</a></li>
+    <li><a href="#khu-vực-công">KHU VỰC CÔNG</a></li>
+    <li><a href="#bảo-hiểm">BẢO HIỂM</a></li>
+    <li><a href="#nhân-sự-và-tuyển-dụng">NHÂN SỰ VÀ TUYỂN DỤNG</a></li>
+    <li><a href="#quy-trình-hoạt-động">QUY TRÌNH HOẠT ĐỘNG</a></li>
+    <li><a href="#ưu-điểm-và-hạn-chế-từ-trải-nghiệm-thực-tế">ƯU ĐIỂM VÀ HẠN CHẾ TỪ TRẢI NGHIỆM THỰC TẾ</a></li>
+    <li><a href="#ưu-điểm">ƯU ĐIỂM</a>
+      <ul>
+        <li><a href="#xử-lý-tốt-pdf-và-bảng-biểu">XỬ LÝ TỐT PDF VÀ BẢNG BIỂU</a></li>
+        <li><a href="#phù-hợp-với-hóa-đơn-và-biểu-mẫu">PHÙ HỢP VỚI HÓA ĐƠN VÀ BIỂU MẪU</a></li>
+        <li><a href="#dễ-tích-hợp-với-hệ-sinh-thái-aws">DỄ TÍCH HỢP VỚI HỆ SINH THÁI AWS</a></li>
+      </ul>
+    </li>
+    <li><a href="#nhược-điểm-và-hạn-chế">NHƯỢC ĐIỂM VÀ HẠN CHẾ</a>
+      <ul>
+        <li><a href="#kết-quả-json-có-thể-phức-tạp">KẾT QUẢ JSON CÓ THỂ PHỨC TẠP</a></li>
+        <li><a href="#phụ-thuộc-vào-chất-lượng-tài-liệu">PHỤ THUỘC VÀO CHẤT LƯỢNG TÀI LIỆU</a></li>
+        <li><a href="#có-thể-sai-ký-tự-và-dấu-câu">CÓ THỂ SAI KÝ TỰ VÀ DẤU CÂU</a></li>
+        <li><a href="#không-hỗ-trợ-tiếng-việt">KHÔNG HỖ TRỢ TIẾNG VIỆT</a></li>
+        <li><a href="#cần-quản-lý-confidence">CẦN QUẢN LÝ CONFIDENCE</a></li>
+        <li><a href="#chi-phí-có-thể-tăng-theo-số-trang">CHI PHÍ CÓ THỂ TĂNG THEO SỐ TRANG</a></li>
+      </ul>
+    </li>
+    <li><a href="#có-nên-kết-hợp-textract-với-llm">CÓ NÊN KẾT HỢP TEXTRACT VỚI LLM?</a></li>
+    <li><a href="#khi-nào-nên-sử-dụng-textract">KHI NÀO NÊN SỬ DỤNG TEXTRACT?</a></li>
+    <li><a href="#khi-nào-không-nên-sử-dụng-textract">KHI NÀO KHÔNG NÊN SỬ DỤNG TEXTRACT?</a></li>
+    <li><a href="#kết-luận">KẾT LUẬN</a></li>
+    <li><a href="#nguồn-tham-khảo">NGUỒN THAM KHẢO</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Blog 2
+            </h1>
+          
+
+        
+
+
+
+	<hr>
+<h1 id="tìm-hiểu-amazon-textract-dịch-vụ-ocr-thông-minh-của-aws">Tìm Hiểu Amazon Textract: Dịch Vụ OCR Thông Minh Của AWS</h1>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Published</td>
+					<td>22/07/2026</td>
+			</tr>
+			<tr>
+					<td>Platform</td>
+					<td>AWS Study Group</td>
+			</tr>
+			<tr>
+					<td>Link</td>
+					<td><a href="https://www.facebook.com/photo?fbid=4664462010543491&amp;set=gm.2221408125290814&amp;idorvanity=660548818043427">https://www.facebook.com/photo?fbid=4664462010543491&set=gm.2221408125290814&idorvanity=660548818043427</a></td>
+			</tr>
+			<tr>
+					<td>Evidence</td>
+					<td><img src="/images/3-BlogsPosted/3.2-Blog2/image.png" alt=""></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="giới-thiệu">GIỚI THIỆU</h2>
+<p>Xin chào mọi người!</p>
+<p>Mình hiện đang tìm hiểu về các dịch vụ trên nền tảng điện toán đám mây của AWS. Hôm nay, mình muốn giới thiệu đến mọi người một dịch vụ khá thú vị, được xây dựng để giải quyết bài toán số hóa và tự động xử lý tài liệu: <strong>Amazon Textract</strong>.</p>
+<p>Trong nhiều hệ thống, dữ liệu quan trọng vẫn tồn tại dưới dạng tài liệu PDF, biểu mẫu được quét, hóa đơn, biên lai, hồ sơ y tế hoặc ảnh chụp giấy tờ. Con người có thể đọc những tài liệu này tương đối dễ dàng, nhưng để đưa dữ liệu vào phần mềm, doanh nghiệp thường phải nhập liệu thủ công hoặc sử dụng các công cụ OCR truyền thống.</p>
+<p>Amazon Textract giúp tự động hóa quá trình này bằng cách sử dụng machine learning để nhận diện văn bản và cấu trúc của tài liệu.</p>
+<h2 id="amazon-textract-là-gì">AMAZON TEXTRACT LÀ GÌ?</h2>
+<p>Amazon Textract là một dịch vụ machine learning của AWS, giúp tự động trích xuất:</p>
+<ul>
+<li>văn bản in;</li>
+<li>chữ viết tay;</li>
+<li>bảng biểu;</li>
+<li>cặp khóa và giá trị trong biểu mẫu;</li>
+<li>thành phần bố cục;</li>
+<li>ô lựa chọn như checkbox;</li>
+<li>chữ ký;</li>
+<li>dữ liệu từ hóa đơn và biên lai;</li>
+<li>câu trả lời cho các truy vấn cụ thể.</li>
+</ul>
+<p>Điểm khác biệt lớn nhất của Amazon Textract là dịch vụ không chỉ thực hiện OCR theo cách truyền thống.</p>
+<p>OCR thông thường chủ yếu chuyển các ký tự trong hình ảnh thành một chuỗi văn bản thô:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Invoice Number: INV-2026-001
+</span></span><span style="display:flex;"><span>Invoice Date: 21/07/2026
+</span></span><span style="display:flex;"><span>Total: 1,250.00
+</span></span></code></pre></div><p>Amazon Textract có thể đi xa hơn bằng cách xác định mối quan hệ giữa các thành phần trong tài liệu.</p>
+<p>Ví dụ, dịch vụ có thể hiểu rằng:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Invoice Number → INV-2026-001
+</span></span><span style="display:flex;"><span>Invoice Date   → 21/07/2026
+</span></span><span style="display:flex;"><span>Total          → 1,250.00
+</span></span></code></pre></div><p>Textract cũng trả về vị trí của dữ liệu thông qua các tọa độ như <code>BoundingBox</code> và <code>Polygon</code>. Nhờ đó, ứng dụng có thể xác định chính xác đoạn văn bản, ô bảng hoặc trường dữ liệu nằm ở đâu trong tài liệu gốc.</p>
+<!-- ![Quy trình xử lý tài liệu với Amazon Textract](/images/3-BlogsPosted/3.2-Blog2/image.png) -->
+<h2 id="amazon-textract-khác-gì-ocr-truyền-thống">AMAZON TEXTRACT KHÁC GÌ OCR TRUYỀN THỐNG?</h2>
+<p>Có thể hình dung sự khác biệt thông qua hai quy trình sau.</p>
+<h3 id="ocr-truyền-thống">OCR truyền thống</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Tài liệu
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Nhận diện ký tự
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Văn bản thô
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Tự viết logic phân tích
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Dữ liệu có cấu trúc
+</span></span></code></pre></div><h3 id="amazon-textract">Amazon Textract</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Tài liệu
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Nhận diện văn bản và bố cục
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Phân tích bảng, biểu mẫu và mối quan hệ
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Dữ liệu có cấu trúc kèm tọa độ và độ tin cậy
+</span></span></code></pre></div><p>Với OCR truyền thống, developer thường phải tự viết biểu thức chính quy, logic nhận diện vị trí hoặc quy tắc riêng cho từng mẫu tài liệu.</p>
+<p>Khi biểu mẫu thay đổi bố cục, những quy tắc này có thể không còn hoạt động chính xác.</p>
+<p>Amazon Textract sử dụng mô hình machine learning đã được huấn luyện sẵn để nhận diện cấu trúc tài liệu, nhờ đó giảm số lượng quy tắc thủ công cần duy trì.</p>
+<h2 id="các-tính-năng-chính">CÁC TÍNH NĂNG CHÍNH</h2>
+<h2 id="1-phát-hiện-văn-bản">1. PHÁT HIỆN VĂN BẢN</h2>
+<p>Textract có thể phát hiện từ và dòng văn bản trong tài liệu.</p>
+<p>Kết quả không chỉ chứa nội dung chữ mà còn có thêm các thông tin như:</p>
+<ul>
+<li>loại block;</li>
+<li>vị trí trên trang;</li>
+<li>chiều rộng và chiều cao;</li>
+<li>tọa độ polygon;</li>
+<li>độ tin cậy;</li>
+<li>mối quan hệ với các block khác.</li>
+</ul>
+<p>Một phần kết quả đơn giản có thể có dạng:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;BlockType&#34;</span>: <span style="color:#e6db74">&#34;WORD&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Text&#34;</span>: <span style="color:#e6db74">&#34;Invoice&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Confidence&#34;</span>: <span style="color:#ae81ff">99.7</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Geometry&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;BoundingBox&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Width&#34;</span>: <span style="color:#ae81ff">0.08</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Height&#34;</span>: <span style="color:#ae81ff">0.02</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Left&#34;</span>: <span style="color:#ae81ff">0.10</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Top&#34;</span>: <span style="color:#ae81ff">0.12</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Thông tin vị trí cho phép ứng dụng đánh dấu kết quả trên tài liệu gốc, xây dựng giao diện kiểm tra hoặc liên kết văn bản với các vùng cụ thể trên trang.</p>
+<h2 id="2-trích-xuất-biểu-mẫu">2. TRÍCH XUẤT BIỂU MẪU</h2>
+<p>Trong biểu mẫu, thông tin thường được tổ chức dưới dạng cặp khóa và giá trị.</p>
+<p>Ví dụ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Khóa</th>
+					<th>Giá trị</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Full Name</td>
+					<td>Nguyen Van A</td>
+			</tr>
+			<tr>
+					<td>Date of Birth</td>
+					<td>01/01/2000</td>
+			</tr>
+			<tr>
+					<td>Customer ID</td>
+					<td>CUS-00125</td>
+			</tr>
+	</tbody>
+</table>
+<p>Textract có thể xác định mối quan hệ giữa phần nhãn và phần giá trị tương ứng.</p>
+<p>Điều này hữu ích khi xử lý:</p>
+<ul>
+<li>đơn đăng ký;</li>
+<li>hồ sơ vay vốn;</li>
+<li>biểu mẫu bảo hiểm;</li>
+<li>hồ sơ bệnh nhân;</li>
+<li>biểu mẫu hành chính;</li>
+<li>tài liệu nhân sự.</li>
+</ul>
+<h2 id="3-trích-xuất-bảng-biểu">3. TRÍCH XUẤT BẢNG BIỂU</h2>
+<p>Textract có thể nhận diện:</p>
+<ul>
+<li>bảng;</li>
+<li>hàng;</li>
+<li>cột;</li>
+<li>ô;</li>
+<li>tiêu đề bảng;</li>
+<li>ô được gộp;</li>
+<li>nội dung nằm trong từng ô.</li>
+</ul>
+<p>Ví dụ, từ một bảng trong PDF, ứng dụng có thể tái tạo lại dữ liệu:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Product</th>
+					<th style="text-align: right">Quantity</th>
+					<th style="text-align: right">Price</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Keyboard</td>
+					<td style="text-align: right">2</td>
+					<td style="text-align: right">50.00</td>
+			</tr>
+			<tr>
+					<td>Mouse</td>
+					<td style="text-align: right">4</td>
+					<td style="text-align: right">20.00</td>
+			</tr>
+	</tbody>
+</table>
+<p>Đây là một điểm mạnh đáng chú ý vì bảng biểu thường khó xử lý bằng OCR truyền thống. Nếu chỉ nhận được văn bản thô, ứng dụng có thể không biết từ nào thuộc hàng hoặc cột nào.</p>
+<h2 id="4-phân-tích-bố-cục">4. PHÂN TÍCH BỐ CỤC</h2>
+<p>Tính năng Layout giúp nhận diện các thành phần ngữ nghĩa trong tài liệu, chẳng hạn:</p>
+<ul>
+<li>tiêu đề;</li>
+<li>đoạn văn;</li>
+<li>danh sách;</li>
+<li>header;</li>
+<li>footer;</li>
+<li>số trang;</li>
+<li>bảng;</li>
+<li>hình ảnh;</li>
+<li>section title.</li>
+</ul>
+<p>Nhờ đó, ứng dụng có thể tái tạo thứ tự đọc và cấu trúc tài liệu tốt hơn thay vì chỉ nhận một danh sách từ rời rạc.</p>
+<h2 id="5-tính-năng-queries">5. TÍNH NĂNG QUERIES</h2>
+<p>Queries cho phép ứng dụng đặt câu hỏi trực tiếp về nội dung tài liệu.</p>
+<p>Thay vì trích xuất toàn bộ văn bản rồi tự tìm thông tin, developer có thể gửi những câu hỏi như:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>What is the invoice number?
+</span></span><span style="display:flex;"><span>What is the total amount?
+</span></span><span style="display:flex;"><span>Who is the customer?
+</span></span><span style="display:flex;"><span>When is the payment due?
+</span></span></code></pre></div><p>Textract trả về:</p>
+<ul>
+<li>câu hỏi;</li>
+<li>câu trả lời;</li>
+<li>độ tin cậy;</li>
+<li>vị trí của câu trả lời trong tài liệu.</li>
+</ul>
+<p>Ví dụ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Query&#34;</span>: <span style="color:#e6db74">&#34;What is the total amount?&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Answer&#34;</span>: <span style="color:#e6db74">&#34;$1,250.00&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Confidence&#34;</span>: <span style="color:#ae81ff">98.4</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Queries đặc biệt hữu ích khi ứng dụng chỉ cần một số trường cụ thể và không muốn tự xây dựng toàn bộ logic phân tích tài liệu.</p>
+<p>Tuy nhiên, hiện tại tính năng Query detection chỉ hỗ trợ tài liệu tiếng Anh.</p>
+<h2 id="6-xử-lý-hóa-đơn-và-biên-lai">6. XỬ LÝ HÓA ĐƠN VÀ BIÊN LAI</h2>
+<p>Textract cung cấp API chuyên biệt để phân tích hóa đơn và biên lai.</p>
+<p>Dịch vụ có thể nhận diện các trường phổ biến như:</p>
+<ul>
+<li>tên nhà cung cấp;</li>
+<li>ngày lập hóa đơn;</li>
+<li>mã hóa đơn;</li>
+<li>tổng tiền;</li>
+<li>thuế;</li>
+<li>địa chỉ;</li>
+<li>danh sách mặt hàng;</li>
+<li>số lượng;</li>
+<li>đơn giá.</li>
+</ul>
+<p>Các trường có thể được chuẩn hóa về những tên chung, giúp ứng dụng xử lý nhiều mẫu hóa đơn khác nhau mà không cần viết logic riêng cho từng nhà cung cấp.</p>
+<h2 id="7-phân-tích-giấy-tờ-định-danh-và-hồ-sơ-vay">7. PHÂN TÍCH GIẤY TỜ ĐỊNH DANH VÀ HỒ SƠ VAY</h2>
+<p>Ngoài API phân tích tài liệu tổng quát, Textract còn có những API chuyên biệt cho một số nhóm tài liệu.</p>
+<p><code>AnalyzeID</code> được thiết kế để trích xuất thông tin từ giấy tờ nhận dạng được hỗ trợ, chẳng hạn giấy phép lái xe và hộ chiếu Hoa Kỳ.</p>
+<p><code>AnalyzeLending</code> hỗ trợ phân loại và trích xuất dữ liệu từ các bộ hồ sơ liên quan đến quy trình cho vay thế chấp.</p>
+<p>Các API chuyên biệt giúp giảm lượng logic hậu xử lý, nhưng phạm vi tài liệu và khu vực hỗ trợ có thể hẹp hơn so với API OCR tổng quát.</p>
+<h2 id="tại-sao-nên-sử-dụng-amazon-textract">TẠI SAO NÊN SỬ DỤNG AMAZON TEXTRACT?</h2>
+<h2 id="vượt-trội-hơn-ocr-truyền-thống">VƯỢT TRỘI HƠN OCR TRUYỀN THỐNG</h2>
+<p>Textract không chỉ trả về văn bản thô mà còn cung cấp:</p>
+<ul>
+<li>cấu trúc của tài liệu;</li>
+<li>vị trí của dữ liệu;</li>
+<li>mối quan hệ giữa khóa và giá trị;</li>
+<li>hàng, cột và ô trong bảng;</li>
+<li>điểm confidence cho kết quả.</li>
+</ul>
+<p>Điều này giúp giảm đáng kể lượng code cần thiết để chuyển văn bản OCR thành dữ liệu có thể sử dụng.</p>
+<h2 id="giảm-công-việc-nhập-liệu-thủ-công">GIẢM CÔNG VIỆC NHẬP LIỆU THỦ CÔNG</h2>
+<p>Trong các quy trình truyền thống, nhân viên có thể phải mở từng tài liệu và nhập dữ liệu vào hệ thống.</p>
+<p>Textract cho phép tự động hóa các bước:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Upload tài liệu
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Phân tích bằng Textract
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Kiểm tra confidence
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Chuẩn hóa dữ liệu
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Lưu vào cơ sở dữ liệu
+</span></span></code></pre></div><p>Con người chỉ cần kiểm tra những trường có confidence thấp hoặc những tài liệu không đạt yêu cầu.</p>
+<h2 id="tự-động-hóa-và-tích-hợp">TỰ ĐỘNG HÓA VÀ TÍCH HỢP</h2>
+<p>Textract có thể được kết hợp với nhiều dịch vụ AWS khác.</p>
+<p>Một kiến trúc xử lý tài liệu có thể gồm:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Amazon S3
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>AWS Lambda
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon Textract
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon DynamoDB
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon OpenSearch Service hoặc ứng dụng nội bộ
+</span></span></code></pre></div><p>Khi người dùng tải tài liệu lên Amazon S3, một Lambda function có thể tự động bắt đầu công việc phân tích.</p>
+<p>Kết quả sau đó được chuẩn hóa và lưu vào cơ sở dữ liệu hoặc chuyển đến hệ thống tìm kiếm.</p>
+<h2 id="khả-năng-mở-rộng">KHẢ NĂNG MỞ RỘNG</h2>
+<p>Textract là dịch vụ được AWS quản lý. Developer không phải tự triển khai hoặc vận hành máy chủ OCR.</p>
+<p>Hệ thống có thể xử lý từ một số lượng nhỏ tài liệu đến các quy trình lớn hơn, miễn là ứng dụng tuân thủ service quota và triển khai cơ chế retry, queue và kiểm soát tốc độ phù hợp.</p>
+<p>Textract cung cấp cả API đồng bộ và bất đồng bộ. Các tác vụ bất đồng bộ phù hợp hơn với PDF hoặc TIFF nhiều trang.</p>
+<h2 id="thanh-toán-theo-mức-sử-dụng">THANH TOÁN THEO MỨC SỬ DỤNG</h2>
+<p>Textract không yêu cầu mua giấy phép OCR hoặc vận hành cụm máy chủ riêng.</p>
+<p>Chi phí phụ thuộc vào:</p>
+<ul>
+<li>số trang được xử lý;</li>
+<li>loại API;</li>
+<li>loại tính năng phân tích;</li>
+<li>Region AWS;</li>
+<li>việc sử dụng adapter hoặc tính năng chuyên biệt.</li>
+</ul>
+<p>Mỗi tính năng như text detection, forms, tables hoặc queries có thể có cách tính phí khác nhau. Vì vậy, cần ước tính chi phí dựa trên loại tài liệu và số trang thực tế.</p>
+<h2 id="các-use-case-nổi-bật">CÁC USE CASE NỔI BẬT</h2>
+<h2 id="dịch-vụ-tài-chính">DỊCH VỤ TÀI CHÍNH</h2>
+<p>Các tổ chức tài chính thường xử lý nhiều loại tài liệu như:</p>
+<ul>
+<li>đơn xin vay;</li>
+<li>sao kê;</li>
+<li>biểu mẫu thế chấp;</li>
+<li>hóa đơn;</li>
+<li>giấy tờ xác minh;</li>
+<li>hồ sơ thu nhập.</li>
+</ul>
+<p>Textract có thể trích xuất các dữ liệu quan trọng như:</p>
+<ul>
+<li>tên người đăng ký;</li>
+<li>số tiền vay;</li>
+<li>giá trị hóa đơn;</li>
+<li>ngày lập hồ sơ;</li>
+<li>số tài khoản;</li>
+<li>thông tin liên hệ.</li>
+</ul>
+<p>Dữ liệu sau khi trích xuất có thể được đưa vào hệ thống xét duyệt hoặc kiểm tra tự động.</p>
+<h2 id="chăm-sóc-sức-khỏe">CHĂM SÓC SỨC KHỎE</h2>
+<p>Trong lĩnh vực chăm sóc sức khỏe, Textract có thể hỗ trợ số hóa:</p>
+<ul>
+<li>biểu mẫu tiếp nhận bệnh nhân;</li>
+<li>hồ sơ y tế;</li>
+<li>yêu cầu bồi thường bảo hiểm;</li>
+<li>hóa đơn y tế;</li>
+<li>biểu mẫu đồng ý;</li>
+<li>kết quả kiểm tra được quét.</li>
+</ul>
+<p>Dịch vụ giúp giảm công việc nhập liệu thủ công, nhưng hệ thống vẫn cần triển khai các biện pháp bảo vệ dữ liệu, kiểm soát truy cập và tuân thủ quy định phù hợp.</p>
+<h2 id="khu-vực-công">KHU VỰC CÔNG</h2>
+<p>Cơ quan nhà nước có thể sử dụng xử lý tài liệu tự động cho:</p>
+<ul>
+<li>biểu mẫu hành chính;</li>
+<li>tờ khai thuế;</li>
+<li>đơn đăng ký;</li>
+<li>giấy phép;</li>
+<li>hồ sơ khoản vay cho doanh nghiệp nhỏ;</li>
+<li>tài liệu lưu trữ đã được quét.</li>
+</ul>
+<p>Việc chuyển dữ liệu từ tài liệu giấy sang dạng có cấu trúc giúp tăng khả năng tìm kiếm và giảm thời gian xử lý hồ sơ.</p>
+<h2 id="bảo-hiểm">BẢO HIỂM</h2>
+<p>Doanh nghiệp bảo hiểm có thể sử dụng Textract để xử lý:</p>
+<ul>
+<li>biểu mẫu yêu cầu bồi thường;</li>
+<li>báo cáo thiệt hại;</li>
+<li>hóa đơn sửa chữa;</li>
+<li>giấy tờ khách hàng;</li>
+<li>tài liệu giám định.</li>
+</ul>
+<p>Các trường có confidence cao có thể được tự động xử lý, trong khi các trường có confidence thấp được chuyển cho nhân viên kiểm tra.</p>
+<h2 id="nhân-sự-và-tuyển-dụng">NHÂN SỰ VÀ TUYỂN DỤNG</h2>
+<p>Textract có thể hỗ trợ trích xuất dữ liệu từ:</p>
+<ul>
+<li>sơ yếu lý lịch;</li>
+<li>đơn ứng tuyển;</li>
+<li>biểu mẫu nhân sự;</li>
+<li>bảng chấm công;</li>
+<li>tài liệu onboarding.</li>
+</ul>
+<p>Tuy nhiên, kết quả OCR không nên được xem là quyết định tuyển dụng. Dịch vụ chỉ đóng vai trò hỗ trợ số hóa và tổ chức dữ liệu.</p>
+<h2 id="quy-trình-hoạt-động">QUY TRÌNH HOẠT ĐỘNG</h2>
+<p>Một quy trình Textract cơ bản có thể gồm các bước sau:</p>
+<ol>
+<li>Người dùng tải PDF hoặc hình ảnh lên Amazon S3.</li>
+<li>Ứng dụng kiểm tra định dạng và chất lượng tài liệu.</li>
+<li>Backend gọi API Textract phù hợp.</li>
+<li>Textract phân tích văn bản và cấu trúc.</li>
+<li>Ứng dụng nhận kết quả dưới dạng JSON.</li>
+<li>Dữ liệu được chuẩn hóa thành mô hình nghiệp vụ.</li>
+<li>Các trường có confidence thấp được gửi đi kiểm tra thủ công.</li>
+<li>Kết quả cuối cùng được lưu vào cơ sở dữ liệu.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Document
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon S3
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon Textract
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Raw JSON response
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Post-processing
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Structured business data
+</span></span></code></pre></div><h2 id="ưu-điểm-và-hạn-chế-từ-trải-nghiệm-thực-tế">ƯU ĐIỂM VÀ HẠN CHẾ TỪ TRẢI NGHIỆM THỰC TẾ</h2>
+<p>Các đánh giá cộng đồng có thể cung cấp góc nhìn thực tế, nhưng không nên được xem là benchmark chính thức. Hiệu quả của Textract phụ thuộc đáng kể vào loại tài liệu, chất lượng ảnh và cấu trúc dữ liệu.</p>
+<h2 id="ưu-điểm">ƯU ĐIỂM</h2>
+<h3 id="xử-lý-tốt-pdf-và-bảng-biểu">XỬ LÝ TỐT PDF VÀ BẢNG BIỂU</h3>
+<p>Một số người dùng đánh giá Textract hoạt động tốt với PDF và trích xuất bảng biểu.</p>
+<p>Khả năng trả về cấu trúc, vị trí và mối quan hệ giữa các ô giúp Textract hữu ích hơn các công cụ chỉ trả về văn bản thô.</p>
+<h3 id="phù-hợp-với-hóa-đơn-và-biểu-mẫu">PHÙ HỢP VỚI HÓA ĐƠN VÀ BIỂU MẪU</h3>
+<p>Textract được thiết kế cho những loại tài liệu có cấu trúc phổ biến như:</p>
+<ul>
+<li>hóa đơn;</li>
+<li>biên lai;</li>
+<li>đơn đăng ký;</li>
+<li>bảng biểu;</li>
+<li>hồ sơ tài chính.</li>
+</ul>
+<p>Các API chuyên biệt có thể giảm đáng kể lượng logic cần viết cho những trường dữ liệu thông dụng.</p>
+<h3 id="dễ-tích-hợp-với-hệ-sinh-thái-aws">DỄ TÍCH HỢP VỚI HỆ SINH THÁI AWS</h3>
+<p>Textract có thể kết hợp tự nhiên với S3, Lambda, Step Functions, SNS, SQS và DynamoDB.</p>
+<p>Điều này thuận tiện khi xây dựng pipeline xử lý tài liệu theo hướng event-driven.</p>
+<h2 id="nhược-điểm-và-hạn-chế">NHƯỢC ĐIỂM VÀ HẠN CHẾ</h2>
+<h3 id="kết-quả-json-có-thể-phức-tạp">KẾT QUẢ JSON CÓ THỂ PHỨC TẠP</h3>
+<p>Kết quả Textract được tổ chức dưới dạng tập hợp các <code>Block</code>.</p>
+<p>Mỗi block có thể đại diện cho:</p>
+<ul>
+<li>trang;</li>
+<li>dòng;</li>
+<li>từ;</li>
+<li>bảng;</li>
+<li>ô;</li>
+<li>key;</li>
+<li>value;</li>
+<li>query;</li>
+<li>query result;</li>
+<li>thành phần layout.</li>
+</ul>
+<p>Các block được liên kết với nhau thông qua ID và <code>Relationships</code>.</p>
+<p>Với tài liệu nhiều trang, kết quả có thể trở nên lớn và khó sử dụng trực tiếp. Developer thường cần một lớp post-processing để:</p>
+<ul>
+<li>duyệt quan hệ giữa các block;</li>
+<li>tái tạo bảng;</li>
+<li>ghép key với value;</li>
+<li>chuyển tọa độ;</li>
+<li>lọc theo confidence;</li>
+<li>chuẩn hóa dữ liệu;</li>
+<li>xử lý trường bị thiếu.</li>
+</ul>
+<p>Textract cung cấp kết quả phân tích, nhưng không tự động biến mọi tài liệu thành mô hình dữ liệu nghiệp vụ hoàn chỉnh.</p>
+<h3 id="phụ-thuộc-vào-chất-lượng-tài-liệu">PHỤ THUỘC VÀO CHẤT LƯỢNG TÀI LIỆU</h3>
+<p>Kết quả OCR có thể giảm chất lượng khi tài liệu:</p>
+<ul>
+<li>bị mờ;</li>
+<li>có độ phân giải thấp;</li>
+<li>bị nghiêng;</li>
+<li>thiếu sáng;</li>
+<li>có nhiều nhiễu;</li>
+<li>bị gấp hoặc che khuất;</li>
+<li>sử dụng font quá nhỏ;</li>
+<li>có chữ viết tay khó đọc.</li>
+</ul>
+<p>AWS khuyến nghị sử dụng hình ảnh chất lượng cao, lý tưởng là từ khoảng 150 DPI trở lên.</p>
+<p>Ngay cả với tài liệu tốt, ứng dụng vẫn nên sử dụng <code>Confidence</code> để quyết định trường nào có thể xử lý tự động và trường nào cần con người kiểm tra.</p>
+<h3 id="có-thể-sai-ký-tự-và-dấu-câu">CÓ THỂ SAI KÝ TỰ VÀ DẤU CÂU</h3>
+<p>OCR không đảm bảo độ chính xác tuyệt đối.</p>
+<p>Một số ký tự có hình dạng tương tự có thể bị nhầm, chẳng hạn:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>0 ↔ O
+</span></span><span style="display:flex;"><span>1 ↔ I ↔ l
+</span></span><span style="display:flex;"><span>5 ↔ S
+</span></span><span style="display:flex;"><span>8 ↔ B
+</span></span></code></pre></div><p>Khoảng trắng, dấu câu, ký hiệu tiền tệ và định dạng số cũng có thể bị nhận diện sai trong tài liệu chất lượng thấp.</p>
+<p>Vì vậy, những trường quan trọng như số tài khoản, số hóa đơn hoặc số tiền cần có thêm bước kiểm tra và validation.</p>
+<h3 id="không-hỗ-trợ-tiếng-việt">KHÔNG HỖ TRỢ TIẾNG VIỆT</h3>
+<p>Đây là một hạn chế quan trọng đối với các dự án tại Việt Nam.</p>
+<p>Hiện tại, Amazon Textract hỗ trợ text detection cho:</p>
+<ul>
+<li>tiếng Anh;</li>
+<li>tiếng Pháp;</li>
+<li>tiếng Đức;</li>
+<li>tiếng Ý;</li>
+<li>tiếng Bồ Đào Nha;</li>
+<li>tiếng Tây Ban Nha.</li>
+</ul>
+<p>Tiếng Việt chưa nằm trong danh sách ngôn ngữ được hỗ trợ chính thức.</p>
+<p>Ngoài ra, Textract không trả về ngôn ngữ mà dịch vụ đã phát hiện trong kết quả.</p>
+<p>Tính năng Query detection hiện chỉ hỗ trợ tài liệu tiếng Anh. Một số API chuyên biệt cũng chỉ áp dụng cho những loại tài liệu hoặc thị trường cụ thể.</p>
+<p>Điều này có nghĩa là Textract không phải lựa chọn phù hợp cho quy trình OCR tiếng Việt yêu cầu độ chính xác cao và được AWS hỗ trợ chính thức.</p>
+<h3 id="cần-quản-lý-confidence">CẦN QUẢN LÝ CONFIDENCE</h3>
+<p>Textract trả về confidence score, nhưng ứng dụng phải tự quyết định ngưỡng chấp nhận.</p>
+<p>Ví dụ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Confidence ≥ 98% → Tự động chấp nhận
+</span></span><span style="display:flex;"><span>90%–98%         → Kiểm tra thêm bằng rule
+</span></span><span style="display:flex;"><span>&lt; 90%           → Chuyển cho con người xác minh
+</span></span></code></pre></div><p>Ngưỡng thực tế cần được xác định bằng cách thử nghiệm trên chính tập tài liệu của dự án, không nên sử dụng một con số chung cho mọi trường hợp.</p>
+<h3 id="chi-phí-có-thể-tăng-theo-số-trang">CHI PHÍ CÓ THỂ TĂNG THEO SỐ TRANG</h3>
+<p>Mô hình thanh toán theo mức sử dụng thuận tiện khi bắt đầu, nhưng chi phí có thể tăng khi hệ thống xử lý hàng triệu trang.</p>
+<p>Trước khi triển khai production, nên đánh giá:</p>
+<ul>
+<li>số tài liệu mỗi tháng;</li>
+<li>số trang trung bình;</li>
+<li>loại API được sử dụng;</li>
+<li>số lần tài liệu phải xử lý lại;</li>
+<li>tỷ lệ tài liệu cần post-processing;</li>
+<li>chi phí lưu trữ và xử lý bổ sung.</li>
+</ul>
+<h2 id="có-nên-kết-hợp-textract-với-llm">CÓ NÊN KẾT HỢP TEXTRACT VỚI LLM?</h2>
+<p>Large Language Model có thể hỗ trợ xử lý kết quả Textract, chẳng hạn:</p>
+<ul>
+<li>chuẩn hóa tên trường;</li>
+<li>ánh xạ nhiều định dạng về một schema;</li>
+<li>tóm tắt nội dung;</li>
+<li>phân loại tài liệu;</li>
+<li>phát hiện dữ liệu bị thiếu;</li>
+<li>chuyển văn bản thành cấu trúc dễ sử dụng.</li>
+</ul>
+<p>Một kiến trúc có thể được xây dựng như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Document
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon Textract
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Extracted text and structure
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Validation and business rules
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>LLM
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Normalized output
+</span></span></code></pre></div><p>Tuy nhiên, không nên chuyển toàn bộ JSON Textract rất lớn trực tiếp vào LLM.</p>
+<p>Ứng dụng nên:</p>
+<ol>
+<li>Chỉ lấy những block cần thiết.</li>
+<li>Tái tạo văn bản hoặc bảng trước.</li>
+<li>Loại bỏ metadata không cần thiết.</li>
+<li>Chia nhỏ tài liệu dài.</li>
+<li>Kiểm tra kết quả LLM trước khi lưu.</li>
+<li>Không để LLM tự sửa những dữ liệu quan trọng mà không có validation.</li>
+</ol>
+<p>Textract chịu trách nhiệm đọc tài liệu. LLM có thể hỗ trợ diễn giải và chuẩn hóa, nhưng không thay thế bước kiểm tra dữ liệu.</p>
+<h2 id="khi-nào-nên-sử-dụng-textract">KHI NÀO NÊN SỬ DỤNG TEXTRACT?</h2>
+<p>Amazon Textract phù hợp khi:</p>
+<ul>
+<li>tài liệu sử dụng ngôn ngữ được hỗ trợ;</li>
+<li>phần lớn dữ liệu nằm trong PDF, biểu mẫu hoặc bảng;</li>
+<li>hệ thống cần xử lý số lượng tài liệu lớn;</li>
+<li>dự án đã sử dụng hệ sinh thái AWS;</li>
+<li>cần lấy vị trí của dữ liệu trong tài liệu;</li>
+<li>cần tự động trích xuất hóa đơn hoặc biên lai;</li>
+<li>chấp nhận xây dựng lớp post-processing;</li>
+<li>có quy trình kiểm tra các trường confidence thấp.</li>
+</ul>
+<h2 id="khi-nào-không-nên-sử-dụng-textract">KHI NÀO KHÔNG NÊN SỬ DỤNG TEXTRACT?</h2>
+<p>Textract có thể không phù hợp khi:</p>
+<ul>
+<li>tài liệu chủ yếu sử dụng tiếng Việt;</li>
+<li>chỉ cần OCR một lượng rất nhỏ tài liệu;</li>
+<li>không muốn xử lý JSON hoặc quan hệ giữa các block;</li>
+<li>tài liệu có chất lượng đầu vào rất thấp;</li>
+<li>dự án yêu cầu độ chính xác tuyệt đối mà không có human review;</li>
+<li>chi phí theo số trang không phù hợp với quy mô hệ thống;</li>
+<li>dữ liệu phải được xử lý hoàn toàn ngoài AWS.</li>
+</ul>
+<h2 id="kết-luận">KẾT LUẬN</h2>
+<p>Amazon Textract là một dịch vụ OCR và document analysis mạnh mẽ của AWS.</p>
+<p>Dịch vụ không chỉ chuyển hình ảnh thành văn bản mà còn có thể nhận diện:</p>
+<ul>
+<li>cấu trúc tài liệu;</li>
+<li>bảng biểu;</li>
+<li>biểu mẫu;</li>
+<li>khóa và giá trị;</li>
+<li>thành phần bố cục;</li>
+<li>câu trả lời cho truy vấn;</li>
+<li>dữ liệu chuyên biệt từ hóa đơn và biên lai.</li>
+</ul>
+<p>Textract đặc biệt phù hợp với những dự án cần xử lý khối lượng lớn tài liệu tiếng Anh, PDF, bảng biểu, hóa đơn hoặc biểu mẫu trong hệ sinh thái AWS.</p>
+<p>Tuy nhiên, developer cần chuẩn bị cho quá trình hậu xử lý kết quả JSON, kiểm tra confidence và xử lý những tài liệu có chất lượng thấp.</p>
+<p>Hạn chế lớn đối với các dự án tại Việt Nam là Textract hiện chưa hỗ trợ tiếng Việt chính thức. Queries cũng chỉ hỗ trợ tài liệu tiếng Anh.</p>
+<p>Vì vậy, trước khi lựa chọn Textract, nên thử nghiệm với một tập tài liệu thực tế của dự án để đánh giá:</p>
+<ul>
+<li>độ chính xác;</li>
+<li>khả năng trích xuất trường;</li>
+<li>độ phức tạp của post-processing;</li>
+<li>chi phí;</li>
+<li>tỷ lệ cần con người kiểm tra.</li>
+</ul>
+<p>Textract có thể xử lý phần đọc và phân tích tài liệu. Nhưng để xây dựng một hệ thống document processing hoàn chỉnh, ứng dụng vẫn cần thêm validation, business rules, monitoring và human review.</p>
+<h2 id="nguồn-tham-khảo">NGUỒN THAM KHẢO</h2>
+<ul>
+<li><a href="https://aws.amazon.com/textract/">Amazon Textract</a></li>
+<li><a href="https://aws.amazon.com/textract/faqs/">Amazon Textract FAQs</a></li>
+<li><a href="https://docs.aws.amazon.com/textract/">Amazon Textract Documentation</a></li>
+<li><a href="https://docs.aws.amazon.com/textract/latest/dg/what-is.html">What is Amazon Textract?</a></li>
+<li><a href="https://docs.aws.amazon.com/textract/latest/dg/textract-best-practices.html">Amazon Textract best practices</a></li>
+<li><a href="https://docs.aws.amazon.com/textract/latest/dg/limits-document.html">Amazon Textract service limits</a></li>
+<li><a href="https://docs.aws.amazon.com/textract/latest/dg/queryresponse.html">Amazon Textract Queries</a></li>
+</ul>
+<hr>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/3-blogsposted/3.1-blog1/" title="Blog 1"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/3-blogsposted/3.3-blog3/" title="Blog 3" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1785234976"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785234976"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785234976"></script>
+    <script src="/js/jquery.sticky.js?1785234976"></script>
+    <script src="/js/featherlight.min.js?1785234976"></script>
+    <script src="/js/highlight.pack.js?1785234976"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785234976"></script>
+    <script src="/js/learn.js?1785234976"></script>
+    <script src="/js/hugo-learn.js?1785234976"></script>
+
+    <link href="/mermaid/mermaid.css?1785234976" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785234976"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+
+  </body>
+</html>
