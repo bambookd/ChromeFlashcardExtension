@@ -77,8 +77,6 @@ The project will:
 
 ## 4. Proposed architecture
 
-![Solution architecture](/images/2-proposal/architecture.png)
-
 ```text
 +-----------------------+        HTTPS REST         +--------------------------+
 | Chrome Extension MV3  |-------------------------->| API Gateway (HTTP API)   |
