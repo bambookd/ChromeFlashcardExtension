@@ -8,7 +8,7 @@ pre: " <b> 2. </b> "
 
 # Đề xuất Dự án & Kế hoạch Triển khai Workshop — Serverless Flashcard Platform
 
-### Tóm tắt Tổng quan (Executive Summary)
+### Tóm tắt Tổng quan
 
 Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng **Chrome Flashcard Extension & Serverless Study Platform** (Stack Name: `chrome-flashcard-axiza`). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Trang web frontend được lưu trữ trên dịch vụ **AWS Amplify Hosting** (kết nối S3 bucket) dưới tên miền tùy chỉnh `axiza.net`, trong khi backend API sử dụng tên miền tùy chỉnh `api.axiza.net`, cả hai đều được quản lý bởi **Amazon Route 53** với chứng chỉ số SSL/TLS cấp phát bởi **AWS Certificate Manager (ACM)**.
 

@@ -4,6 +4,6 @@ window.FLASHCARD_CONFIG = {
   GAME_URL: "/game/"
 
   // AWS deployment example:
-  // API_BASE_URL: "https://YOUR_API_ID.execute-api.ap-southeast-1.amazonaws.com",
-  // GAME_URL: "http://YOUR_GAME_BUCKET.s3-website-ap-southeast-1.amazonaws.com"
+  // API_BASE_URL: "https://api.axiza.net",
+  // GAME_URL: "https://axiza.net/game/"
 };

@@ -64,12 +64,13 @@ AWS lưu ý rằng khi HTTP API CORS được bật, API Gateway xử lý prefli
 - Categories: query partition của current user.
 - Provisioned `1 RCU/1 WCU` phù hợp demo traffic thấp; monitor throttling. Theo AWS, 1 RCU phục vụ một strongly consistent read/s cho item tới 4 KB (hoặc hai eventually consistent reads), 1 WCU phục vụ một write/s cho item tới 1 KB. Source: [DynamoDB provisioned capacity](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 
-### S3 public static site bucket
+### S3 public static site bucket & AWS Amplify
 
-- Chỉ chứa HTML/CSS/JS/config public.
-- Đề xuất một bucket với prefixes `study/` và `game/` để relative links `/study/`, `/game/` hoạt động.
+- Chỉ chứa HTML/CSS/JS/config public cho Study + Game assets.
+- S3 bucket kết nối với AWS Amplify Hosting để phục vụ website frontend.
+- Tên miền tùy chỉnh `axiza.net` được quản lý bởi Route 53 (chỏ Alias A-record tới AWS Amplify).
+- Backend API truy cập qua tên miền tùy chỉnh `api.axiza.net` (được quản lý bởi Route 53, chỏ Alias A-record tới API Gateway HTTP API).
 - Không chứa secret, `.env`, source map nhạy cảm hay export.
-- Website endpoint HTTP-only; demo-only. Production dùng CloudFront/Amplify HTTPS.
 
 ### S3 private export bucket
 

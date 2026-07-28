@@ -1,209 +1,127 @@
 ---
 
-title: "Event 1 (Online)"
-date: 2026-06-01
-weight: 2
+title: "Event 1"
+date: 2026-07-26
+weight: 1
 chapter: false
-pre: " <b> 2. </b> "
+pre: " <b> 1. </b> "
 --------------------
 
-# Event 2 (Participated Online) - FCAJ Community Day - June 2026  - 27/06/2026
 ## 1. Overview
 
-The event covered cloud-agent platforms, Vietnamese Voice AI, DevOps automation, HR recruitment, and secure private connectivity for enterprise AI systems.
+Event 1 included three technical sessions related to AWS Cloud, system monitoring, and application security.
 
-The event demonstrated that successful AI adoption requires mature cloud infrastructure, reliable observability, strong governance, and appropriate security controls. AI agents can improve operational efficiency, but they still require human supervision for important technical and business decisions.
+The event introduced the AWS Certified Cloud Practitioner examination, explained the importance of monitoring real user activities, and presented AWS Security Agent as a tool for supporting security reviews and automated penetration testing.
+
+The sessions helped me connect foundational AWS knowledge with practical topics such as cloud operations, incident detection, customer experience, and secure software development.
 
 ## 2. Topics
 
-### 2.1. Cloud Agentic Platforms and Career Evolution - Steve Tran
+### 2.1. AWS Cloud Practitioner Examination - Ngo Le Tan Huy
 
-This session explained how cloud careers are evolving from traditional server administration toward cloud engineering and AI-supported agentic platforms.
+The AWS Certified Cloud Practitioner examination is a foundational certification that focuses on general AWS concepts and service use cases.
 
-As AI tools automate more implementation tasks, organisations increasingly require engineers who can understand architecture, system logic, security, and operational decision-making.
+The examination includes 65 questions, has a duration of 90 minutes, and requires a passing score of 700 out of 1,000.
 
-CloudThinker's platform was introduced as a solution for automating areas such as:
+The examination is divided into four domains:
 
-* Incident management.
-* FinOps.
-* Cloud security.
-* Infrastructure monitoring.
-* Operational recommendations.
+* **Cloud Concepts — 24%**
+* **Security and Compliance — 30%**
+* **Cloud Technology and Services — 34%**
+* **Billing, Pricing, and Support — 12%**
 
-The session also compared single-agent and multi-agent architectures.
+The session introduced important topics such as the AWS Shared Responsibility Model, AWS IAM, cloud pricing, support plans, and common AWS services including EC2, Lambda, S3, RDS, DynamoDB, VPC, and Route 53.
 
-A single general-purpose agent may complete most tasks, but it can suffer from large context windows, higher costs, and weaker permission boundaries.
+The speaker recommended learning AWS services through their practical use cases and keywords. Reviewing incorrect mock-test answers was also introduced as an effective preparation method.
 
-A multi-agent architecture uses specialised agents with limited responsibilities. This approach can improve:
+### 2.2. SLA and Monitoring - Nguyen Huynh Son
 
-* Context accuracy.
-* Role-Based Access Control.
-* Security.
-* Performance.
-* Cost management.
+The central message of this session was:
 
-The main lesson was that cloud engineers should become AI-fluent while continuing to develop strong infrastructure, security, and architectural knowledge.
+**Healthy infrastructure does not always mean a healthy user experience.**
 
-### 2.2. Voice AI and the Vietnamese Language Gap - Nghi Danh, Kiet, Trung
+A server may have normal CPU and memory usage while users are still unable to log in or complete important operations.
 
-This session focused on the challenges of implementing Voice AI for Vietnamese users.
+AWS service SLAs cover individual AWS services, while application owners remain responsible for the complete customer experience.
 
-Vietnamese was described as a low-resource language compared with English and other widely supported languages. This creates challenges involving speech recognition, pronunciation, accents, context, and response quality.
+The monitoring model included five levels:
 
-The presenters recommended using a modular Voice AI pipeline:
+* Cloud provider.
+* Infrastructure.
+* Application.
+* Business.
+* Customer experience.
 
-**Speech-to-Text -> Large Language Model -> Text-to-Speech**
+The live demonstration showed that a health-check endpoint could return a successful response while the login endpoint failed because of a database connection problem.
 
-This approach provides more control than a direct speech-to-speech model.
+The session also introduced an alerting flow using a custom metric, Amazon CloudWatch Alarm, Amazon SNS, and email or Slack notifications.
 
-The modular architecture allows developers to apply:
+This session demonstrated that monitoring should include user actions such as login, checkout, payment, and search success rather than relying only on infrastructure metrics.
 
-* Deterministic guardrails.
-* Hallucination controls.
-* Content validation.
-* Tool-calling restrictions.
-* Compliance requirements.
+### 2.3. AWS Security Agent - Thinh Nguyen
 
-A demonstration presented an Apple product enquiry system built with Amazon Bedrock.
+AWS Security Agent was introduced as an automated security solution powered by Amazon Bedrock.
 
-The system included features such as:
+The solution supports three main activities:
 
-* Real-time speech interaction.
-* Context-aware interruption handling.
-* Gender detection.
-* Product information retrieval.
-* Tool calling for actions such as card blocking.
+* Design security review.
+* Code security review.
+* Automated penetration testing.
 
-The session explained that industries such as banking require strong control over AI responses. A modular pipeline allows each stage to be monitored and validated before the system performs a sensitive action.
+For design reviews, the agent can analyse architecture documents, Markdown files, and Terraform code. It can compare the system design with security frameworks such as PCI DSS, NIST Cybersecurity Framework, and AWS Well-Architected guidance.
 
-### 2.3. The Rise of DevOps AI Agents - Bao, Nguyen
+For code reviews, the agent can integrate with GitHub or GitLab pull requests, detect vulnerabilities, identify exposed secrets, and suggest code fixes.
 
-This session introduced AI agents designed to support cloud operations and DevOps teams.
+For penetration testing, the agent can test running applications, authenticate as a user, attempt multi-step attacks, and provide evidence for verified findings.
 
-The primary goal of a DevOps AI agent is to reduce:
+The session also discussed several limitations. Authentication methods such as MFA, biometrics, and mutual TLS may block the agent. Complex business-logic vulnerabilities may still require human analysis.
 
-* Mean Time to Detect.
-* Mean Time to Recovery.
-* Manual investigation effort.
-* Operational downtime.
-
-The session introduced the concept of an **Agent Space**, which acts as a logical environment where agents learn system topology and understand relationships between cloud resources.
-
-Examples of connected resources included:
-
-* Amazon ECS.
-* AWS IAM.
-* Amazon RDS.
-* Application logs.
-* Monitoring metrics.
-* Security configurations.
-
-The agent platform was based on six pillars:
-
-* Context.
-* Control.
-* Integration.
-* Collaboration.
-* Convenience.
-* Cost.
-
-A live demonstration simulated a distributed denial-of-service attack against an e-commerce application.
-
-The AI agent analysed available information, identified the possible root cause, and suggested a mitigation plan within several minutes.
-
-However, the agent did not automatically terminate the affected resource. It waited for human approval before performing a high-impact action.
-
-This demonstrated the importance of the **Human-in-the-Loop** approach.
-
-The AI agent can analyse data and recommend actions, but an authorised engineer remains responsible for the final decision.
-
-The session also introduced a pricing model of approximately **$0.083 per second**, showing that operational benefits must be balanced with usage costs.
-
-### 2.4. Transforming HR Through Amazon Q - Truong, Minh Anh
-
-This session demonstrated how Amazon Q can support recruitment and talent-management processes.
-
-Traditional CV screening may require significant time and can be affected by inconsistency or personal bias.
-
-Amazon Q was used to automate tasks such as:
-
-* Creating job descriptions.
-* Screening candidate CVs.
-* Identifying technical skills.
-* Estimating candidate seniority.
-* Generating talent reports.
-* Comparing salary expectations.
-
-During the demonstration, the system evaluated a candidate named Thinh.
-
-The AI identified technical experience involving AWS and Kubernetes and estimated the candidate's seniority with an accuracy of approximately 98% to 99%.
-
-The system also used an objective scoring approach to compare candidates with job requirements.
-
-This approach can reduce recruitment time and support more consistent hiring decisions.
-
-However, the session also highlighted the importance of protecting candidate information and ensuring that enterprise data remains within an approved and secure environment.
-
-### 2.5. Securing Enterprise AI with Private Connectivity and MCP - Toan Nguyen, Nghi Danh
-
-The final session focused on protecting enterprise AI applications through private network connectivity.
-
-The presenters explained that AI systems may access sensitive internal data, application services, and business tools. Allowing this communication to travel through the public internet can increase the risk of data leakage and Man-in-the-Middle attacks.
-
-The proposed architecture used:
-
-* Model Context Protocol.
-* Amazon VPC connections.
-* Interface endpoints.
-* Route 53 Resolvers.
-* Private Application Load Balancers.
-* Private Amazon EC2 instances.
-* Privately hosted MCP servers.
-
-The Model Context Protocol allows AI systems to communicate with tools and enterprise data sources through a controlled interface.
-
-Private connectivity ensures that application data does not need to travel through the public internet.
-
-The estimated monthly cost of the private architecture was approximately **$250 to $350**.
-
-Route 53 Resolvers were identified as a major cost component, accounting for approximately **$180 per month**.
-
-Although the architecture introduces additional cost, it supports:
-
-* Data privacy.
-* Zero Trust security.
-* Controlled network access.
-* Enterprise compliance.
-* Reduced exposure to public-network threats.
-
-The session demonstrated that security and network architecture are essential requirements for enterprise AI adoption.
+Cost must also be monitored because complex applications can consume many task-hours. Automated security tools can support security professionals, but they do not completely replace human review.
 
 ## 3. What I Learned
 
-From Event 2, I learned how cloud computing is evolving toward agentic cloud platforms.
+From Event 1, I learned more about AWS certification, application monitoring, and cloud security.
 
-Traditional cloud operations rely heavily on manual monitoring, investigation, and response. Agentic cloud systems introduce AI agents that can analyse logs, metrics, dependencies, and cloud-resource relationships.
+The AWS Cloud Practitioner session helped me understand the main AWS service categories, the Shared Responsibility Model, security concepts, pricing models, and examination-preparation strategies.
 
-These agents can help reduce investigation time and provide faster recommendations during incidents.
+The monitoring session taught me that technical metrics alone cannot represent the complete health of an application. Infrastructure metrics are useful for identifying root causes, but business and customer-experience metrics show whether users are actually affected.
 
-I also learned that AI agents are most effective when the underlying infrastructure is mature. An agent cannot provide reliable recommendations without access to accurate logs, metrics, resource relationships, and security information.
+I also learned how Amazon CloudWatch and Amazon SNS can be used to detect failures and notify the responsible team.
 
-The Voice AI session showed that modular architectures are especially important for Vietnamese-language applications. Separating speech recognition, language processing, and speech generation provides better control over hallucinations and sensitive actions.
+The AWS Security Agent session helped me understand how security can be included throughout the development lifecycle, from architecture design and code review to testing a deployed application.
 
-The DevOps session reinforced the importance of Human-in-the-Loop controls. AI agents should support engineers rather than automatically performing every high-risk action.
+I also learned that automated security tools can support developers and security engineers, but they cannot completely replace human review, application context, and cost management.
 
-The HR session demonstrated that Amazon Q can support recruitment by analysing CVs, matching skills, and generating candidate reports. However, human review remains necessary for final recruitment decisions.
+The event improved my ability to:
 
-The security session showed that private connectivity is critical when enterprise AI systems access internal data and tools. Services such as VPC endpoints, Route 53 Resolvers, and private load balancers can prevent sensitive traffic from travelling through the public internet.
-
-AI can perform data collection, analysis, and recommendation tasks, while experienced engineers remain responsible for strategic decisions, security approval, and operational risk.
+* Connect AWS theory with practical scenarios.
+* Evaluate systems from the user's perspective.
+* Consider monitoring, security, and cost during development.
+* Summarise technical presentations.
+* Identify areas that require further study.
 
 ## 4. Feedback
 
-The event provided strong technical value through practical demonstrations and real enterprise use cases.
+The event was informative and well organised. The speakers explained the topics clearly and used practical examples.
+
+The monitoring demonstration was especially useful because it showed the difference between infrastructure health and user experience.
+
+Future events could include more hands-on exercises and additional time for questions.
 
 ## 5. Expectations
 
-After this event, I expect to learn more about agentic cloud systems and how they can be applied safely in real applications.
+After Event 1, I expect to continue improving my AWS knowledge and preparing for AWS certifications.
 
-These activities would help me improve my knowledge of AI agents, cloud operations, enterprise security, private networking, and responsible AI implementation.
+I also want to apply the monitoring concepts to my internship project by creating metrics for login failures, API errors, study-session completion, and other important user actions.
+
+For security, I expect to review application architecture, infrastructure-as-code templates, and source code earlier in the development process.
+
+Useful future activities could include:
+
+* An AWS Cloud Practitioner mock examination.
+* A practical Amazon CloudWatch lab.
+* An incident-response simulation.
+* A security review of an AWS SAM or Terraform project.
+* A comparison between automated and manual security testing.
+
+These activities would help me improve my cloud, monitoring, incident-response, and application-security skills.

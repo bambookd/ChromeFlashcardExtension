@@ -1,209 +1,209 @@
 ---
 
-title: "Event 3 (Online)"
-date: 2026-07-26
-weight: 3
+title: "Event 2 (Online)"
+date: 2026-06-27
+weight: 2
 chapter: false
-pre: " <b> 3. </b> "
+pre: " <b> 2. </b> "
 --------------------
 
-# Event 3 (Participated Online)
+# Event 2 (Participated Online) - FCAJ Community Day - June 2026  - 27/06/2026
 ## 1. Overview
 
-The AWS Enterprise Cloud Architectures and Industry Applications Study Tour connected academic cloud-computing knowledge with the practical requirements of the technology industry.
+The event covered cloud-agent platforms, Vietnamese Voice AI, DevOps automation, HR recruitment, and secure private connectivity for enterprise AI systems.
 
-The event was organised through the continuing collaboration between Swinburne Vietnam and the AWS First Cloud AI Journey community. Students from the Swinburne Can Tho campus travelled approximately 180 kilometres to attend the programme at the AWS office.
-
-The study tour helped students understand how cloud services are applied, managed, governed, and scaled in enterprise environments. It also introduced current career expectations in cloud computing, data engineering, professional networking, and AI-supported software development.
-
-The sessions showed that technical knowledge remains important, but modern engineers also need business awareness, communication skills, professional visibility, consistency, and the ability to validate AI-generated results.
+The event demonstrated that successful AI adoption requires mature cloud infrastructure, reliable observability, strong governance, and appropriate security controls. AI agents can improve operational efficiency, but they still require human supervision for important technical and business decisions.
 
 ## 2. Topics
 
-### 2.1. Cloud Computing Career Trends and Market Outlook - Nguyen Gia Hung
+### 2.1. Cloud Agentic Platforms and Career Evolution - Steve Tran
 
-This session presented current cloud-computing trends and career opportunities in Vietnam.
+This session explained how cloud careers are evolving from traditional server administration toward cloud engineering and AI-supported agentic platforms.
 
-Cloud adoption has increased significantly as organisations move away from traditional hardware infrastructure. Vietnam is also becoming an important technology talent centre for international companies.
+As AI tools automate more implementation tasks, organisations increasingly require engineers who can understand architecture, system logic, security, and operational decision-making.
 
-However, the demand for cloud professionals has created a significant skills gap. Employers increasingly expect graduates to understand cloud-native technologies and demonstrate practical problem-solving ability.
+CloudThinker's platform was introduced as a solution for automating areas such as:
 
-The session explained that traditional junior roles are changing because AI tools can automate many basic implementation tasks. New graduates are therefore expected to develop a **Senior and AI-ready mindset** from the beginning of their careers.
+* Incident management.
+* FinOps.
+* Cloud security.
+* Infrastructure monitoring.
+* Operational recommendations.
 
-Important technical areas include:
+The session also compared single-agent and multi-agent architectures.
 
-* Cloud-native architecture.
-* Containers and Kubernetes.
-* Infrastructure automation.
-* Security and governance.
-* AI-supported engineering.
-* Business-oriented problem solving.
+A single general-purpose agent may complete most tasks, but it can suffer from large context windows, higher costs, and weaker permission boundaries.
 
-The session also identified six industries with strong cloud demand in Vietnam:
+A multi-agent architecture uses specialised agents with limited responsibilities. This approach can improve:
 
-* Banking and FinTech.
-* Retail.
-* Manufacturing.
-* Logistics and food services.
-* Media and entertainment.
-* Energy and utilities.
+* Context accuracy.
+* Role-Based Access Control.
+* Security.
+* Performance.
+* Cost management.
 
-The main lesson was that students should develop practical cloud skills instead of depending only on academic results and theoretical knowledge.
+The main lesson was that cloud engineers should become AI-fluent while continuing to develop strong infrastructure, security, and architectural knowledge.
 
-### 2.2. Data Engineering: From Academic Theory to Enterprise Reality - Banh Cam Vinh
+### 2.2. Voice AI and the Vietnamese Language Gap - Nghi Danh, Kiet, Trung
 
-This session compared university data projects with real enterprise data-engineering environments.
+This session focused on the challenges of implementing Voice AI for Vietnamese users.
 
-Academic projects often use clean and organised datasets. In enterprise systems, data may be incomplete, inconsistent, duplicated, or distributed across multiple platforms.
+Vietnamese was described as a low-resource language compared with English and other widely supported languages. This creates challenges involving speech recognition, pronunciation, accents, context, and response quality.
 
-Requirements can also change frequently according to business priorities.
+The presenters recommended using a modular Voice AI pipeline:
 
-A modern data platform contains several important components:
+**Speech-to-Text -> Large Language Model -> Text-to-Speech**
 
-* Data ingestion.
-* Data storage.
-* Data processing.
-* Data governance.
-* Data cataloguing.
-* Data analytics.
+This approach provides more control than a direct speech-to-speech model.
 
-Data engineers must ensure that these components remain reliable because a failed data pipeline can affect reporting, decision-making, and business continuity.
+The modular architecture allows developers to apply:
 
-Two important professional principles were highlighted.
+* Deterministic guardrails.
+* Hallucination controls.
+* Content validation.
+* Tool-calling restrictions.
+* Compliance requirements.
 
-The first was **ownership**. Engineers must accept responsibility for their technical decisions, system reliability, and data quality.
+A demonstration presented an Apple product enquiry system built with Amazon Bedrock.
 
-The second was **business understanding**. Technical definitions must match the needs of different departments.
+The system included features such as:
 
-For example, Marketing and Finance may define an active user differently. A data engineer must understand these differences before designing metrics or reports.
+* Real-time speech interaction.
+* Context-aware interruption handling.
+* Gender detection.
+* Product information retrieval.
+* Tool calling for actions such as card blocking.
 
-The session showed that successful data engineering requires both technical skills and the ability to understand business requirements.
+The session explained that industries such as banking require strong control over AI responses. A modular pipeline allows each stage to be monitored and validated before the system performs a sensitive action.
 
-### 2.3. Navigating Fears and Finding Professional Blue Oceans - Nhu Tran
+### 2.3. The Rise of DevOps AI Agents - Bao, Nguyen
 
-This session focused on the psychological and communication challenges students experience when entering the workplace.
+This session introduced AI agents designed to support cloud operations and DevOps teams.
 
-One common barrier is the fear of making mistakes. Students may avoid asking questions, sharing ideas, or applying for opportunities because they are afraid of being incorrect.
+The primary goal of a DevOps AI agent is to reduce:
 
-The session encouraged students to move beyond highly competitive **Red Ocean** job platforms and search for **Blue Ocean** opportunities.
+* Mean Time to Detect.
+* Mean Time to Recovery.
+* Manual investigation effort.
+* Operational downtime.
 
-Red Ocean opportunities include public job boards where many candidates compete for the same positions.
+The session introduced the concept of an **Agent Space**, which acts as a logical environment where agents learn system topology and understand relationships between cloud resources.
 
-Blue Ocean opportunities are often discovered through:
+Examples of connected resources included:
 
-* Professional communities.
-* Industry events.
-* Personal referrals.
-* Networking activities.
-* Technical sharing.
-* Professional visibility.
+* Amazon ECS.
+* AWS IAM.
+* Amazon RDS.
+* Application logs.
+* Monitoring metrics.
+* Security configurations.
 
-The session explained that career development depends not only on technical correctness but also on the ability to communicate value.
+The agent platform was based on six pillars:
 
-Persistence was also presented as an important professional quality. The speaker joined Amazon after multiple attempts, showing that rejection does not necessarily mean that a career goal is impossible.
+* Context.
+* Control.
+* Integration.
+* Collaboration.
+* Convenience.
+* Cost.
 
-The main lesson was that students should remain consistent, build professional relationships, and actively create visibility within relevant communities.
+A live demonstration simulated a distributed denial-of-service attack against an e-commerce application.
 
-### 2.4. AI Integration and Career Mindset for Modern Engineers - Khang Nguyen
+The AI agent analysed available information, identified the possible root cause, and suggested a mitigation plan within several minutes.
 
-This session explained how engineers should approach AI-supported development.
+However, the agent did not automatically terminate the affected resource. It waited for human approval before performing a high-impact action.
 
-AI was described as an **amplifier** rather than a complete replacement for engineers.
+This demonstrated the importance of the **Human-in-the-Loop** approach.
 
-Developers may use AI to generate code, suggest architecture, analyse errors, or accelerate research. However, they must still understand and validate the generated output.
+The AI agent can analyse data and recommend actions, but an authorised engineer remains responsible for the final decision.
 
-The main principle was:
+The session also introduced a pricing model of approximately **$0.083 per second**, showing that operational benefits must be balanced with usage costs.
 
-**Thinking can be supported by AI, but understanding cannot be outsourced.**
+### 2.4. Transforming HR Through Amazon Q - Truong, Minh Anh
 
-An engineer without foundational knowledge may be unable to identify incorrect code, insecure architecture, or unsuitable technical recommendations produced by AI.
+This session demonstrated how Amazon Q can support recruitment and talent-management processes.
 
-The session also introduced integrity as an important learning habit.
+Traditional CV screening may require significant time and can be affected by inconsistency or personal bias.
 
-For example, completing optional course modules can provide knowledge that is not immediately graded but may later become essential when debugging AI-generated systems.
+Amazon Q was used to automate tasks such as:
 
-The speaker described three circles of professional work:
+* Creating job descriptions.
+* Screening candidate CVs.
+* Identifying technical skills.
+* Estimating candidate seniority.
+* Generating talent reports.
+* Comparing salary expectations.
 
-1. **Passion:** Work that a person enjoys.
-2. **Responsibility:** Work that must be completed as part of the role.
-3. **Benefit:** The salary, knowledge, network, and growth gained from the work.
+During the demonstration, the system evaluated a candidate named Thinh.
 
-A sustainable career requires balancing all three areas instead of focusing only on personal interest.
+The AI identified technical experience involving AWS and Kubernetes and estimated the candidate's seniority with an accuracy of approximately 98% to 99%.
 
-The session encouraged students to develop discipline, foundational knowledge, and a professional mindset before depending heavily on AI tools.
+The system also used an objective scoring approach to compare candidates with job requirements.
+
+This approach can reduce recruitment time and support more consistent hiring decisions.
+
+However, the session also highlighted the importance of protecting candidate information and ensuring that enterprise data remains within an approved and secure environment.
+
+### 2.5. Securing Enterprise AI with Private Connectivity and MCP - Toan Nguyen, Nghi Danh
+
+The final session focused on protecting enterprise AI applications through private network connectivity.
+
+The presenters explained that AI systems may access sensitive internal data, application services, and business tools. Allowing this communication to travel through the public internet can increase the risk of data leakage and Man-in-the-Middle attacks.
+
+The proposed architecture used:
+
+* Model Context Protocol.
+* Amazon VPC connections.
+* Interface endpoints.
+* Route 53 Resolvers.
+* Private Application Load Balancers.
+* Private Amazon EC2 instances.
+* Privately hosted MCP servers.
+
+The Model Context Protocol allows AI systems to communicate with tools and enterprise data sources through a controlled interface.
+
+Private connectivity ensures that application data does not need to travel through the public internet.
+
+The estimated monthly cost of the private architecture was approximately **$250 to $350**.
+
+Route 53 Resolvers were identified as a major cost component, accounting for approximately **$180 per month**.
+
+Although the architecture introduces additional cost, it supports:
+
+* Data privacy.
+* Zero Trust security.
+* Controlled network access.
+* Enterprise compliance.
+* Reduced exposure to public-network threats.
+
+The session demonstrated that security and network architecture are essential requirements for enterprise AI adoption.
 
 ## 3. What I Learned
 
-From Event 3, I learned that a successful cloud career requires more than technical knowledge.
+From Event 2, I learned how cloud computing is evolving toward agentic cloud platforms.
 
-The cloud market is growing, but employers increasingly expect candidates to understand cloud-native architecture, containers, security, data systems, and AI-supported workflows.
+Traditional cloud operations rely heavily on manual monitoring, investigation, and response. Agentic cloud systems introduce AI agents that can analyse logs, metrics, dependencies, and cloud-resource relationships.
 
-The data-engineering session showed me that enterprise data is more complex than academic datasets. Engineers must manage changing requirements, unreliable data sources, and business-specific definitions.
+These agents can help reduce investigation time and provide faster recommendations during incidents.
 
-I also learned that ownership is an essential professional quality. Engineers must take responsibility for architectural decisions, data integrity, and system reliability.
+I also learned that AI agents are most effective when the underlying infrastructure is mature. An agent cannot provide reliable recommendations without access to accurate logs, metrics, resource relationships, and security information.
 
-The career session taught me that professional opportunities are not always available through public job boards. Communities, referrals, technical events, and professional relationships can provide access to opportunities that are less visible.
+The Voice AI session showed that modular architectures are especially important for Vietnamese-language applications. Separating speech recognition, language processing, and speech generation provides better control over hallucinations and sensitive actions.
 
-A useful career-development formula from the event was:
+The DevOps session reinforced the importance of Human-in-the-Loop controls. AI agents should support engineers rather than automatically performing every high-risk action.
 
-**Result = Capability × Visibility × Consistency**
+The HR session demonstrated that Amazon Q can support recruitment by analysing CVs, matching skills, and generating candidate reports. However, human review remains necessary for final recruitment decisions.
 
-Technical capability is important, but it produces limited career value when other people are unaware of it. Consistency is also essential because long-term progress depends on continuous learning and participation.
+The security session showed that private connectivity is critical when enterprise AI systems access internal data and tools. Services such as VPC endpoints, Route 53 Resolvers, and private load balancers can prevent sensitive traffic from travelling through the public internet.
 
-The AI session helped me understand that AI tools should support engineering work rather than replace technical understanding.
-
-Engineers must be able to:
-
-* Review AI-generated code.
-* Validate architecture recommendations.
-* Identify security problems.
-* Check whether a solution matches business requirements.
-* Debug incorrect AI output.
-* Accept responsibility for the final result.
-
-The event also demonstrated the difference between an academic mindset and a professional mindset.
-
-Academic work often focuses on completing instructions and achieving correct answers. Professional work focuses on creating value, maintaining reliable systems, adapting to change, and solving business problems.
-
-The event improved my understanding of:
-
-* Cloud-computing career trends.
-* Cloud-native skill requirements.
-* Enterprise data engineering.
-* Technical ownership.
-* Business-oriented system design.
-* Professional networking.
-* Career visibility and consistency.
-* AI-assisted engineering.
-* Validation of AI-generated results.
-* Professional integrity and responsibility.
+AI can perform data collection, analysis, and recommendation tasks, while experienced engineers remain responsible for strategic decisions, security approval, and operational risk.
 
 ## 4. Feedback
 
-The study tour was highly informative and interactive.
-
-The different perspectives from cloud architecture, data engineering, account management, and solution architecture provided a broad understanding of the technology industry.
-
-The participation of a Swinburne alumnus also made the career guidance more practical and relatable for students.
+The event provided strong technical value through practical demonstrations and real enterprise use cases.
 
 ## 5. Expectations
 
-After Event 3, I expect to develop both my technical and professional abilities.
+After this event, I expect to learn more about agentic cloud systems and how they can be applied safely in real applications.
 
-I want to improve my knowledge of cloud-native technologies, Kubernetes, enterprise data platforms, networking, security, and AI-supported development.
-
-Future activities could include:
-
-* Industry-specific cloud labs.
-* Secure FinTech architecture exercises.
-* Enterprise data-pipeline workshops.
-* Kubernetes and container-management practice.
-* Professional networking simulations.
-* Elevator-pitch and communication activities.
-* AI-generated code debugging exercises.
-* Architecture-validation workshops.
-* Cloud security and networking scenarios.
-
-I also expect future study tours to provide more opportunities for students to communicate directly with cloud professionals and receive feedback about their technical skills and career plans.
-
-These activities would help students build practical portfolios, improve professional visibility, and prepare for the Senior and AI-ready expectations of the modern cloud industry.
+These activities would help me improve my knowledge of AI agents, cloud operations, enterprise security, private networking, and responsible AI implementation.

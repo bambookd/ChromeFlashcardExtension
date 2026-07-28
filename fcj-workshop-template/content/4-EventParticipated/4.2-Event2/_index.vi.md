@@ -1,154 +1,212 @@
 ---
-title: "Event 1"
-date: 2024-01-01
-weight: 1
+
+title: "Sự kiện 2 (Trực tuyến)"
+date: 2026-06-27
+weight: 2
 chapter: false
-pre: " <b> 4.1. </b> "
----
+pre: " <b> 2. </b> "
+--------------------
 
+# Sự kiện 2 (Tham gia trực tuyến)
 
-# Bài thu hoạch Event 1: AWS Cloud, Monitoring và Bảo mật ứng dụng
+## 1. Tổng quan
 
-### Mục Đích Của Sự Kiện
+Sự kiện đề cập đến các nền tảng Cloud Agentic, Voice AI dành cho tiếng Việt, tự động hóa DevOps, ứng dụng AI trong tuyển dụng và kết nối mạng riêng an toàn cho các hệ thống AI doanh nghiệp.
 
-- Giúp người tham dự hiểu vai trò của **Service Level Agreement (SLA)** và monitoring trong quản trị rủi ro dịch vụ
-- Làm rõ sự khác biệt giữa hạ tầng hoạt động ổn định và trải nghiệm thực tế của người dùng
-- Cung cấp lộ trình học tập và chiến lược chuẩn bị cho kỳ thi **AWS Certified Cloud Practitioner (CLF-C02)**
-- Củng cố kiến thức nền tảng về cloud concepts, security, AWS services, billing và support
-- Giới thiệu cách ứng dụng **AWS Security Agent** vào design review, code review và automated penetration testing
-- Nâng cao nhận thức về vận hành, bảo mật và trách nhiệm của đội ngũ xây dựng hệ thống trên AWS
+Sự kiện cho thấy việc áp dụng AI thành công đòi hỏi hạ tầng đám mây trưởng thành, khả năng quan sát hệ thống đáng tin cậy, cơ chế quản trị chặt chẽ và các biện pháp bảo mật phù hợp.
 
-### Danh Sách Diễn Giả
+AI agent có thể cải thiện hiệu quả vận hành, nhưng vẫn cần con người giám sát đối với những quyết định kỹ thuật và kinh doanh quan trọng.
 
-- **Nguyễn Huỳnh Sơn** - Infrastructure Support Engineer tại Endava, thành viên AWS Student Builder Group HUFLIT
-- **Ngô Lê Tấn Huy** - Diễn giả chủ đề *Inside the Exam: AWS Cloud Practitioner*
-- **Nguyễn Tuấn Thịnh** - DevOps/DevSecOps/Cloud Engineer tại Styl Solutions, First Cloud AI Journey
+## 2. Các chủ đề
 
-### Nội Dung Nổi Bật
+### 2.1. Nền tảng Cloud Agentic và sự phát triển nghề nghiệp - Steve Tran
 
-#### Chủ đề 1: SLA and Monitoring - From SLA to Monitoring What Really Matters
+Phiên chia sẻ giải thích cách nghề nghiệp trong lĩnh vực cloud đang chuyển dịch từ quản trị máy chủ truyền thống sang kỹ thuật đám mây và các nền tảng agentic được hỗ trợ bởi AI.
 
-**Service Level Agreement (SLA)** là thỏa thuận chính thức xác định mức dịch vụ được kỳ vọng giữa nhà cung cấp và khách hàng. SLA giúp thiết lập kỳ vọng rõ ràng, tăng trách nhiệm cung cấp dịch vụ, hỗ trợ quản trị rủi ro và tạo cơ sở đo lường hiệu suất.
+Khi các công cụ AI tự động hóa nhiều công việc triển khai, doanh nghiệp ngày càng cần những kỹ sư có khả năng hiểu kiến trúc, logic hệ thống, bảo mật và quy trình ra quyết định trong vận hành.
 
-Tuy nhiên, SLA của cloud provider không bảo đảm toàn bộ ứng dụng luôn mang lại trải nghiệm tốt cho người dùng. AWS services, server và health check có thể vẫn hiển thị trạng thái ổn định, trong khi người dùng không thể đăng nhập hoặc hoàn thành một tác vụ nghiệp vụ quan trọng.
+Nền tảng của CloudThinker được giới thiệu như một giải pháp hỗ trợ tự động hóa các lĩnh vực:
 
-- **Risk management loop**: Identify risk → Monitor signals → Respond → Improve
-- **Monitor signals**: Metrics, logs và alarms
-- **Response mechanisms**: CloudWatch Alarm, Amazon SNS, email hoặc Slack notification và SOP xử lý sự cố
-- **Customer journey metrics**: Login success, checkout, payment, search và order success
-- **Application metrics**: Errors, latency, requests và dependency status
-- **Infrastructure metrics**: CPU, memory, disk, network và healthy host
+* Quản lý sự cố.
+* FinOps.
+* Bảo mật đám mây.
+* Giám sát hạ tầng.
+* Đề xuất phương án vận hành.
 
-Mô hình monitoring được trình bày theo nhiều tầng, từ cloud provider, infrastructure và application cho đến business metrics và customer experience. Các chỉ số tầng dưới hỗ trợ tìm nguyên nhân sự cố, còn các chỉ số tầng trên cho biết người dùng và hoạt động kinh doanh có đang bị ảnh hưởng hay không.
+Phiên chia sẻ cũng so sánh kiến trúc single-agent và multi-agent.
 
-Thông điệp chính của chủ đề:
+Một agent đa năng có thể hoàn thành phần lớn công việc, nhưng có thể gặp hạn chế do context window quá lớn, chi phí cao và ranh giới quyền hạn không rõ ràng.
 
-> **Healthy Infrastructure ≠ Healthy User Experience**
+Kiến trúc multi-agent sử dụng nhiều agent chuyên biệt với phạm vi trách nhiệm giới hạn. Cách tiếp cận này có thể cải thiện:
 
-#### Chủ đề 2: Inside the Exam - AWS Cloud Practitioner
+* Độ chính xác của ngữ cảnh.
+* Role-Based Access Control.
+* Bảo mật.
+* Hiệu năng.
+* Quản lý chi phí.
 
-Chủ đề thứ hai giới thiệu tổng quan về kỳ thi **AWS Certified Cloud Practitioner (CLF-C02)**. Đây là chứng chỉ nền tảng, tập trung vào bức tranh tổng thể của AWS Cloud và không yêu cầu thí sinh phải biết lập trình hoặc thực hiện cấu hình hệ thống chuyên sâu.
+Bài học chính là kỹ sư cloud cần hiểu và sử dụng AI hiệu quả, đồng thời tiếp tục xây dựng kiến thức vững chắc về hạ tầng, bảo mật và kiến trúc hệ thống.
 
-Cấu trúc nội dung của kỳ thi gồm bốn domain:
+### 2.2. Voice AI và khoảng cách ngôn ngữ tiếng Việt - Nghi Danh, Kiet, Trung
 
-- **Domain 1 - Cloud Concepts (24%)**: Lợi ích của AWS Cloud, AWS Well-Architected Framework và AWS Cloud Adoption Framework
-- **Domain 2 - Security and Compliance (30%)**: Shared Responsibility Model, IAM, nguyên tắc least privilege, Security Groups, NACLs, AWS Shield, AWS WAF và AWS Artifact
-- **Domain 3 - Cloud Technology and Services (34%)**: Region, Availability Zone, Edge Location, EC2, Lambda, S3, EBS, EFS, RDS, DynamoDB, VPC và Route 53
-- **Domain 4 - Billing, Pricing, and Support (12%)**: Các mô hình giá EC2, AWS Cost Explorer, AWS Budgets và AWS Support Plans
+Phiên chia sẻ tập trung vào những thách thức khi triển khai Voice AI cho người dùng Việt Nam.
 
-Các thông tin về hình thức thi được trình bày trong sự kiện bao gồm 65 câu hỏi, thời gian làm bài 90 phút và điểm đạt là 700 trên thang điểm từ 100 đến 1.000. Chứng chỉ có thời hạn ba năm và có thể thi tại Pearson VUE hoặc thi online với remote proctoring.
+Tiếng Việt được xem là một ngôn ngữ có nguồn dữ liệu hạn chế hơn so với tiếng Anh và nhiều ngôn ngữ phổ biến khác. Điều này tạo ra những khó khăn liên quan đến nhận dạng giọng nói, cách phát âm, vùng miền, ngữ cảnh và chất lượng phản hồi.
 
-Diễn giả cũng chia sẻ một số phương pháp chuẩn bị:
+Các diễn giả đề xuất sử dụng quy trình Voice AI theo kiến trúc module:
 
-- **Map Keyword Thinking**: Liên kết từng AWS service với một hoặc hai từ khóa use case
-- **Review Mistakes**: Phân tích lý do đáp án đúng và lý do các đáp án còn lại không phù hợp
-- **Hands-on Practice**: Thực hành EC2, S3, IAM và các dịch vụ cơ bản trên AWS Free Tier
-- **Reference Materials**: AWS Skill Builder, Udemy courses và mock exams
-- **Exam Strategy**: Dùng phương pháp loại trừ, chú ý các từ khóa như “NOT”, “least cost”, “most scalable” và không suy diễn câu hỏi quá phức tạp
-- **Time Management**: Đánh dấu câu chưa chắc chắn bằng chức năng flag for review và quay lại sau
+**Speech-to-Text → Large Language Model → Text-to-Speech**
 
-#### Chủ đề 3: Securing Your Web Apps With AWS Security Agent
+Cách tiếp cận này cho phép kiểm soát hệ thống tốt hơn so với mô hình speech-to-speech trực tiếp.
 
-Chủ đề cuối tập trung vào những hạn chế của quy trình kiểm thử bảo mật thủ công và cách một security agent có thể hỗ trợ tự động hóa. Theo nội dung trình bày, manual penetration testing thường mất nhiều thời gian, cần nhân sự chuyên môn cao, có chi phí lớn và mức độ bao phủ có thể không đồng đều.
+Kiến trúc module cho phép nhà phát triển áp dụng:
 
-AWS Security Agent được giới thiệu với khả năng autonomous reasoning dựa trên Amazon Bedrock, cho phép lập kế hoạch và thực hiện các tác vụ bảo mật trong nhiều giai đoạn của vòng đời phát triển ứng dụng.
+* Guardrail có tính xác định.
+* Kiểm soát hallucination.
+* Xác thực nội dung.
+* Giới hạn tool calling.
+* Các yêu cầu tuân thủ.
 
-Ba nhóm khả năng chính gồm:
+Phần trình diễn giới thiệu một hệ thống tư vấn sản phẩm Apple được xây dựng bằng Amazon Bedrock.
 
-- **Design Security Review**: Phân tích architecture documents, Markdown hoặc Terraform trước khi code được triển khai; kiểm tra thiết kế theo các managed packs như PCI DSS, NIST CSF và AWS Well-Architected
-- **Code Security Review**: Tích hợp với GitHub hoặc GitLab pull requests, phát hiện vulnerabilities và secrets, comment trực tiếp trên dòng code và đề xuất bản sửa lỗi
-- **Automated Pentesting**: Kiểm thử ứng dụng đang chạy, xác thực như người dùng thực, thực hiện multi-step exploit chains và cung cấp attack graph cùng bằng chứng có thể kiểm chứng
+Hệ thống có các tính năng:
 
-Bên cạnh lợi ích, diễn giả cũng nêu một số giới hạn quan trọng:
+* Tương tác giọng nói theo thời gian thực.
+* Xử lý việc người dùng ngắt lời dựa trên ngữ cảnh.
+* Nhận diện giới tính.
+* Truy xuất thông tin sản phẩm.
+* Tool calling cho các hành động như khóa thẻ.
 
-- MFA, biometrics và mTLS có thể ngăn agent truy cập vào luồng cần kiểm thử
-- Business logic flaws khó phát hiện nếu agent không có đủ context nghiệp vụ
-- Ứng dụng phức tạp có thể tiêu thụ nhiều task-hours nên cần theo dõi chi phí chặt chẽ
-- Agent không thay thế hoàn toàn chuyên gia bảo mật mà đóng vai trò tăng tốc và mở rộng phạm vi kiểm tra
+Phiên chia sẻ giải thích rằng các ngành như ngân hàng cần kiểm soát chặt chẽ phản hồi của AI. Kiến trúc module cho phép từng giai đoạn được giám sát và xác thực trước khi hệ thống thực hiện một hành động nhạy cảm.
 
-### Những Gì Học Được
+### 2.3. Sự phát triển của DevOps AI Agent - Bao, Nguyen
 
-#### Tư Duy Monitoring và Reliability
+Phiên chia sẻ giới thiệu các AI agent được thiết kế để hỗ trợ hoạt động cloud và các nhóm DevOps.
 
-- Monitoring cần bắt đầu từ **customer journey**, không chỉ từ CPU hoặc memory
-- Các business metrics như login success rate và order success phản ánh trực tiếp ảnh hưởng tới người dùng
-- Health check đơn giản có thể bỏ sót lỗi dependency như database connection
-- CloudWatch custom metrics, alarms và SNS giúp phát hiện và thông báo sự cố trước khi khách hàng phản ánh
-- SLA cần được hiểu đúng phạm vi; cloud provider bảo đảm dịch vụ cloud, còn đội ngũ phát triển chịu trách nhiệm về trải nghiệm end-to-end
+Mục tiêu chính của DevOps AI Agent là giảm:
 
-#### Nền Tảng AWS và Chiến Lược Học Chứng Chỉ
+* Mean Time to Detect.
+* Mean Time to Recovery.
+* Công sức điều tra thủ công.
+* Thời gian gián đoạn hệ thống.
 
-- Hiểu bốn domain của CLF-C02 giúp phân bổ thời gian học tập hợp lý
-- Shared Responsibility Model là kiến thức xuyên suốt giữa vận hành và bảo mật
-- Học AWS services theo use case và keyword giúp ghi nhớ hiệu quả hơn
-- Việc phân tích câu sai có giá trị hơn chỉ làm thật nhiều mock tests
-- Hands-on practice giúp kết nối khái niệm lý thuyết với hệ thống thực tế
+Phiên chia sẻ giới thiệu khái niệm **Agent Space**, một môi trường logic nơi agent học cấu trúc hệ thống và hiểu mối quan hệ giữa các tài nguyên cloud.
 
-#### Tư Duy DevSecOps và Tự Động Hóa Bảo Mật
+Những tài nguyên được kết nối có thể bao gồm:
 
-- Security nên được kiểm tra từ giai đoạn thiết kế thay vì chờ đến khi ứng dụng hoàn thành
-- Tích hợp security review vào pull request giúp phát hiện lỗi sớm trong development workflow
-- Automated pentesting có thể mở rộng phạm vi kiểm tra và tạo bằng chứng rõ ràng
-- AI agent vẫn cần con người cung cấp context, đánh giá kết quả và kiểm soát phạm vi cũng như chi phí
-- Bảo mật, monitoring và reliability cần được thiết kế như những thành phần liên kết của cùng một hệ thống
+* Amazon ECS.
+* AWS IAM.
+* Amazon RDS.
+* Log ứng dụng.
+* Chỉ số giám sát.
+* Cấu hình bảo mật.
 
+Nền tảng agent được xây dựng dựa trên sáu yếu tố:
 
-### Trải nghiệm trong event
+* Context.
+* Control.
+* Integration.
+* Collaboration.
+* Convenience.
+* Cost.
 
-Tham gia Event là một trải nghiệm hữu ích vì ba chủ đề đã kết nối kiến thức nền tảng, hoạt động vận hành và bảo mật thành một bức tranh tương đối hoàn chỉnh về AWS. Tôi không chỉ được học về các dịch vụ cloud mà còn hiểu rõ hơn cách những dịch vụ đó cần được giám sát, bảo vệ và gắn với trải nghiệm thực tế của người dùng.
+Phần trình diễn trực tiếp mô phỏng một cuộc tấn công từ chối dịch vụ phân tán vào ứng dụng thương mại điện tử.
 
-#### Học hỏi từ các diễn giả có kinh nghiệm thực tế
+AI agent phân tích thông tin có sẵn, xác định nguyên nhân có thể xảy ra và đề xuất phương án giảm thiểu trong vòng vài phút.
 
-- Các diễn giả chia sẻ nội dung từ nhiều góc nhìn gồm infrastructure support, cloud certification và DevSecOps
-- Những ví dụ thực tế giúp các khái niệm như SLA, customer journey monitoring và security review trở nên dễ hiểu hơn
-- Các kinh nghiệm luyện thi giúp tôi xác định phương pháp học có hệ thống thay vì chỉ ghi nhớ tên dịch vụ
+Tuy nhiên, agent không tự động chấm dứt tài nguyên bị ảnh hưởng. Hệ thống chờ con người phê duyệt trước khi thực hiện hành động có mức ảnh hưởng cao.
 
-#### Trải nghiệm kỹ thuật thực tế
+Điều này cho thấy tầm quan trọng của phương pháp **Human-in-the-Loop**.
 
-- Demo về hai endpoint cho thấy health check thành công chưa chắc đồng nghĩa với login thành công
-- Luồng custom metric → CloudWatch Alarm → SNS giúp tôi hình dung rõ quy trình cảnh báo sự cố
-- Phần automated pentesting cho thấy AI agent có thể kiểm thử theo nhiều bước và cung cấp bằng chứng thay vì chỉ đưa ra nhận xét chung
+AI agent có thể phân tích dữ liệu và đề xuất hành động, nhưng kỹ sư được cấp quyền vẫn chịu trách nhiệm đối với quyết định cuối cùng.
 
-#### Ứng dụng công cụ hiện đại
+Phiên chia sẻ cũng giới thiệu mức giá khoảng **0,083 USD mỗi giây**, cho thấy lợi ích vận hành cần được cân bằng với chi phí sử dụng.
 
-- Tìm hiểu cách sử dụng CloudWatch metrics, alarms và SNS trong monitoring
-- Biết thêm các nguồn học như AWS Skill Builder và AWS Free Tier để chuẩn bị chứng chỉ
-- Tiếp cận mô hình security agent hỗ trợ design review, code review và penetration testing
+### 2.4. Chuyển đổi quy trình nhân sự với Amazon Q - Truong, Minh Anh
 
-#### Kết nối và trao đổi
+Phiên chia sẻ trình bày cách Amazon Q có thể hỗ trợ quy trình tuyển dụng và quản lý nhân tài.
 
-- Event tạo cơ hội trao đổi về lộ trình học AWS, kinh nghiệm thi chứng chỉ và công việc cloud thực tế
-- Qua ba chủ đề, tôi nhận thấy kiến thức cloud không nên được học tách rời giữa development, operations và security
-- Những nội dung được chia sẻ giúp tôi có thêm định hướng cho việc phát triển kỹ năng Cloud, DevOps và DevSecOps
+Việc sàng lọc CV theo phương pháp truyền thống có thể tốn nhiều thời gian và bị ảnh hưởng bởi sự thiếu nhất quán hoặc thiên kiến cá nhân.
 
-#### Bài học rút ra
+Amazon Q được sử dụng để tự động hóa các công việc:
 
-- Một dashboard toàn màu xanh chưa đủ để kết luận hệ thống đang phục vụ người dùng tốt
-- Kiến thức nền tảng từ Cloud Practitioner là cơ sở để tiếp tục học các chứng chỉ và kỹ năng AWS chuyên sâu
-- Security cần được đưa vào toàn bộ vòng đời phát triển, nhưng công cụ tự động không thể thay thế hoàn toàn tư duy và đánh giá của con người
-- Hệ thống đáng tin cậy cần kết hợp đúng kiến thức cloud, monitoring theo trải nghiệm người dùng và quy trình bảo mật chủ động
+* Tạo mô tả công việc.
+* Sàng lọc CV ứng viên.
+* Xác định kỹ năng kỹ thuật.
+* Ước tính cấp độ kinh nghiệm của ứng viên.
+* Tạo báo cáo nhân tài.
+* So sánh kỳ vọng về mức lương.
 
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
+Trong phần trình diễn, hệ thống đánh giá một ứng viên tên Thinh.
 
-> Tổng thể, Event 1 giúp tôi hiểu rằng xây dựng hệ thống trên AWS không chỉ là triển khai tài nguyên. Một giải pháp cloud hoàn chỉnh còn cần được giám sát dựa trên trải nghiệm người dùng, vận hành theo các cam kết phù hợp và bảo vệ xuyên suốt vòng đời phát triển ứng dụng.
+AI xác định kinh nghiệm kỹ thuật liên quan đến AWS và Kubernetes, đồng thời ước tính cấp độ của ứng viên với độ chính xác khoảng 98% đến 99%.
+
+Hệ thống cũng sử dụng phương pháp chấm điểm khách quan để so sánh ứng viên với yêu cầu công việc.
+
+Cách tiếp cận này có thể rút ngắn thời gian tuyển dụng và hỗ trợ quá trình ra quyết định nhất quán hơn.
+
+Tuy nhiên, phiên chia sẻ cũng nhấn mạnh tầm quan trọng của việc bảo vệ thông tin ứng viên và bảo đảm dữ liệu doanh nghiệp chỉ được xử lý trong môi trường an toàn đã được phê duyệt.
+
+### 2.5. Bảo mật AI doanh nghiệp bằng kết nối riêng và MCP - Toan Nguyen, Nghi Danh
+
+Phiên cuối cùng tập trung vào việc bảo vệ các ứng dụng AI doanh nghiệp bằng kết nối mạng riêng.
+
+Các diễn giả giải thích rằng hệ thống AI có thể truy cập dữ liệu nội bộ nhạy cảm, dịch vụ ứng dụng và công cụ kinh doanh. Việc cho phép dữ liệu truyền qua Internet công cộng có thể làm tăng nguy cơ rò rỉ dữ liệu và tấn công Man-in-the-Middle.
+
+Kiến trúc được đề xuất sử dụng:
+
+* Model Context Protocol.
+* Kết nối Amazon VPC.
+* Interface Endpoint.
+* Route 53 Resolver.
+* Application Load Balancer riêng tư.
+* Amazon EC2 riêng tư.
+* MCP server được triển khai trong mạng riêng.
+
+Model Context Protocol cho phép hệ thống AI giao tiếp với các công cụ và nguồn dữ liệu doanh nghiệp thông qua một giao diện được kiểm soát.
+
+Kết nối riêng giúp dữ liệu ứng dụng không cần truyền qua Internet công cộng.
+
+Chi phí hàng tháng ước tính của kiến trúc riêng tư vào khoảng **250 đến 350 USD**.
+
+Route 53 Resolver được xác định là một thành phần chi phí lớn, chiếm khoảng **180 USD mỗi tháng**.
+
+Mặc dù kiến trúc này làm phát sinh thêm chi phí, nó hỗ trợ:
+
+* Bảo vệ quyền riêng tư của dữ liệu.
+* Mô hình bảo mật Zero Trust.
+* Kiểm soát truy cập mạng.
+* Tuân thủ yêu cầu doanh nghiệp.
+* Giảm mức độ tiếp xúc với các mối đe dọa từ mạng công cộng.
+
+Phiên chia sẻ cho thấy bảo mật và kiến trúc mạng là những yêu cầu thiết yếu khi triển khai AI trong môi trường doanh nghiệp.
+
+## 3. Những điều mình học được
+
+Từ Sự kiện 2, mình hiểu thêm về cách điện toán đám mây đang phát triển theo hướng các nền tảng Agentic Cloud.
+
+Hoạt động cloud truyền thống phụ thuộc nhiều vào việc giám sát, điều tra và phản hồi thủ công. Các hệ thống Agentic Cloud sử dụng AI agent để phân tích log, metric, dependency và mối quan hệ giữa các tài nguyên cloud.
+
+Những agent này có thể giảm thời gian điều tra và đưa ra đề xuất nhanh hơn khi xảy ra sự cố.
+
+Mình cũng học được rằng AI agent hoạt động hiệu quả nhất khi hạ tầng nền tảng đã đủ trưởng thành. Agent không thể đưa ra đề xuất đáng tin cậy nếu không có log chính xác, metric phù hợp, thông tin về mối quan hệ tài nguyên và dữ liệu bảo mật.
+
+Phiên Voice AI cho thấy kiến trúc module đặc biệt quan trọng đối với các ứng dụng tiếng Việt. Việc tách riêng nhận dạng giọng nói, xử lý ngôn ngữ và tổng hợp giọng nói giúp kiểm soát hallucination và các hành động nhạy cảm tốt hơn.
+
+Phiên DevOps nhấn mạnh tầm quan trọng của Human-in-the-Loop. AI agent nên hỗ trợ kỹ sư thay vì tự động thực hiện mọi hành động có rủi ro cao.
+
+Phiên nhân sự cho thấy Amazon Q có thể hỗ trợ tuyển dụng thông qua việc phân tích CV, đối chiếu kỹ năng và tạo báo cáo ứng viên. Tuy nhiên, con người vẫn cần tham gia đánh giá trước khi đưa ra quyết định cuối cùng.
+
+Phiên bảo mật cho thấy kết nối riêng rất quan trọng khi hệ thống AI doanh nghiệp truy cập dữ liệu và công cụ nội bộ. Các dịch vụ như VPC Endpoint, Route 53 Resolver và Load Balancer riêng tư có thể ngăn dữ liệu nhạy cảm truyền qua Internet công cộng.
+
+AI có thể thực hiện việc thu thập dữ liệu, phân tích và đưa ra đề xuất, trong khi kỹ sư có kinh nghiệm vẫn chịu trách nhiệm đối với quyết định chiến lược, phê duyệt bảo mật và rủi ro vận hành.
+
+## 4. Phản hồi
+
+Sự kiện mang lại giá trị kỹ thuật cao thông qua các phần trình diễn thực tế và những trường hợp ứng dụng trong doanh nghiệp.
+
+## 5. Kỳ vọng
+
+Sau sự kiện này, mình kỳ vọng sẽ tìm hiểu sâu hơn về các hệ thống Agentic Cloud và cách áp dụng chúng an toàn trong các ứng dụng thực tế.
+
+Những kiến thức này sẽ giúp mình cải thiện hiểu biết về AI agent, vận hành cloud, bảo mật doanh nghiệp, mạng riêng và triển khai AI có trách nhiệm.

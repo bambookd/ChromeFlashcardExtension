@@ -4,6 +4,6 @@ globalThis.FLASHCARD_CONFIG = {
   STUDY_URL: "http://localhost:3000/study"
 
   // AWS deployment example:
-  // API_BASE_URL: "https://YOUR_API_ID.execute-api.ap-southeast-1.amazonaws.com",
-  // STUDY_URL: "http://YOUR_STUDY_BUCKET.s3-website-ap-southeast-1.amazonaws.com"
+  // API_BASE_URL: "https://api.axiza.net",
+  // STUDY_URL: "https://axiza.net/study"
 };

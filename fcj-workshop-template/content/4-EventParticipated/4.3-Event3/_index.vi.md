@@ -1,242 +1,195 @@
 ---
-
-title: "Sự kiện 4: FCAJ x Agentic AI Build Week"
-date: 2026-07-26
-weight: 4
+title: "Sự kiện 3 (Trực tuyến)"
+date: 2026-07-04
+weight: 3
 chapter: false
-pre: " <b> 4. </b> "
---------------------
+pre: " <b> 3. </b> "
+---
 
-# Sự kiện 4 (Tham gia trực tuyến) - FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN! - 25/07/2026
+# Sự kiện 3 (Tham gia trực tuyến) - AWS Enterprise Cloud Architectures and Industry Applications Study Tour - 04/07/2026
 
 ## 1. Tổng quan
 
-FCAJ x Agentic AI Build Week là một sự kiện theo hình thức hackathon, tập trung vào việc thiết kế, phát triển và trình bày các giải pháp Agentic AI nhằm giải quyết những vấn đề thực tế trong nhiều ngành khác nhau.
+Sự kiện **AWS Enterprise Cloud Architectures and Industry Applications Study Tour** đã kết nối kiến thức điện toán đám mây học thuật với các yêu cầu thực tế trong ngành công nghệ thông tin.
 
-Các dự án tại sự kiện cho thấy AI agent có thể được ứng dụng trong bán lẻ, tài chính, kiến trúc cloud, phân tích thông tin cạnh tranh và quản lý hoạt động vật lý.
+Chương trình được tổ chức thông qua sự hợp tác giữa Swinburne Việt Nam và cộng đồng AWS First Cloud AI Journey. Các bạn sinh viên từ cơ sở Swinburne Cần Thơ đã di chuyển quãng đường khoảng 180 km để tham gia chương trình tại văn phòng AWS.
 
-Sự kiện cũng khuyến khích các nhóm nhanh chóng thử nghiệm ý tưởng, xác định giới hạn kỹ thuật và đánh giá khả năng phát triển nguyên mẫu thành giải pháp thực tế cho doanh nghiệp.
+Chuyến tham quan học tập giúp sinh viên hiểu rõ cách các dịch vụ cloud được ứng dụng, quản lý, quản trị và mở rộng quy mô trong môi trường doanh nghiệp. Sự kiện cũng giới thiệu các xu hướng nghề nghiệp hiện tại trong lĩnh vực điện toán đám mây, Data Engineering, xây dựng mạng lưới chuyên môn và phát triển phần mềm có sự hỗ trợ của AI.
 
-Một chủ đề quan trọng của sự kiện là sự chuyển dịch từ các hệ thống tự động hóa truyền thống sang những hệ thống agentic có khả năng suy luận, duy trì ngữ cảnh, sử dụng công cụ và thực hiện các nhiệm vụ nhiều bước.
-
-Tuy nhiên, sự kiện cũng nhấn mạnh rằng con người vẫn cần phê duyệt những quyết định quan trọng liên quan đến kinh doanh, tài chính và an toàn.
+Các phiên chia sẻ cho thấy kiến thức kỹ thuật vẫn đóng vai trò quan trọng, nhưng kỹ sư hiện đại cũng cần phát triển tư duy nghiệp vụ, kỹ năng giao tiếp, sự hiện diện chuyên nghiệp, tính nhất quán và khả năng xác thực các kết quả do AI tạo ra.
 
 ## 2. Các chủ đề
 
-### 2.1. Tư duy mới trong kỷ nguyên Agentic AI - Joseph Morazota
+### 2.1. Xu hướng nghề nghiệp Điện toán Đám mây và Triển vọng Thị trường - Nguyen Gia Hung
 
-Phiên mở đầu giới thiệu một mô hình tư duy mới dành cho quá trình phát triển phần mềm và hoạt động vận hành có sự hỗ trợ của AI.
+Phiên chia sẻ trình bày các xu hướng điện toán đám mây hiện tại và cơ hội nghề nghiệp tại Việt Nam.
 
-Quy trình phát triển phần mềm truyền thống thường phụ thuộc vào các chu kỳ phát hành dài và những quy trình tương đối ổn định. Trong khi đó, hệ thống agentic có thể hỗ trợ thay đổi nhanh hơn, đưa ra đề xuất tự động và triển khai phiên bản thường xuyên hơn.
+Việc ứng dụng cloud đã gia tăng mạnh mẽ khi các tổ chức dịch chuyển từ hạ tầng phần cứng truyền thống sang đám mây. Việt Nam cũng đang trở thành một trung tâm nhân lực công nghệ quan trọng cho các công ty quốc tế.
 
-Phiên chia sẻ sử dụng kinh nghiệm của Amazon trong việc quản lý hơn một triệu robot để giải thích rằng phần cứng không phải là nguồn giá trị duy nhất. Dữ liệu, trí tuệ và hệ thống ra quyết định điều khiển phần cứng cũng đóng vai trò rất quan trọng.
+Tuy nhiên, nhu cầu về nhân sự cloud đã tạo ra một khoảng cách lớn về kỹ năng. Các nhà tuyển dụng ngày càng kỳ vọng sinh viên tốt nghiệp hiểu rõ các công nghệ cloud-native và chứng minh được khả năng giải quyết vấn đề thực tế.
 
-Phiên này cũng nhấn mạnh mô hình **Human-in-the-Loop**. AI có thể phân tích thông tin và đề xuất hành động, nhưng con người vẫn chịu trách nhiệm kiểm tra kết quả và đưa ra quyết định cuối cùng.
+Diễn giả giải thích rằng các vị trí Junior truyền thống đang thay đổi vì các công cụ AI có thể tự động hóa nhiều công việc triển khai cơ bản. Do đó, sinh viên mới tốt nghiệp được kỳ vọng phát triển **tư duy Senior và AI-ready** ngay từ đầu sự nghiệp.
 
-Một bài học khác là tầm quan trọng của việc học tập suốt đời. Công nghệ có thể thay đổi đáng kể chỉ trong vòng hai hoặc ba năm, vì vậy các chuyên gia cần liên tục cập nhật kiến thức kỹ thuật và phương pháp làm việc.
+Các lĩnh vực kỹ thuật quan trọng bao gồm:
 
-### 2.2. KFC Force Agent - One Team
+* Kiến trúc Cloud-native.
+* Container và Kubernetes.
+* Tự động hóa hạ tầng (Infrastructure Automation).
+* Bảo mật và quản trị (Security & Governance).
+* Kỹ thuật có sự hỗ trợ của AI (AI-supported Engineering).
+* Giải quyết bài toán theo hướng giá trị doanh nghiệp.
 
-One Team giới thiệu KFC Force Agent, một giải pháp đặt hàng thông qua hội thoại được tích hợp với các nền tảng nhắn tin như Zalo và WhatsApp.
+Phiên chia sẻ cũng xác định 6 ngành công nghiệp có nhu cầu tuyển dụng cloud cao tại Việt Nam:
 
-Dự án giải quyết vấn đề gián đoạn do người dùng phải chuyển đổi giữa nhiều ứng dụng. Khách hàng có thể từ bỏ đơn hàng khi phải rời khỏi ứng dụng nhắn tin, mở một nền tảng khác, tìm kiếm sản phẩm và nhập lại thông tin.
+* Ngân hàng và FinTech.
+* Bán lẻ (Retail).
+* Sản xuất (Manufacturing).
+* Logistics và dịch vụ ăn uống.
+* Truyền thông và giải trí.
+* Năng lượng và tiện ích cộng đồng.
 
-KFC Force Agent cho phép người dùng hoàn thành quá trình đặt hàng ngay trong cùng một cuộc trò chuyện.
+Bài học chính là sinh viên nên phát triển các kỹ năng cloud thực tế thay vì chỉ phụ thuộc vào kết quả học tập lý thuyết trên lớp.
 
-Giải pháp sử dụng:
+### 2.2. Data Engineering: Từ Lý thuyết Học thuật đến Thực tế Doanh nghiệp - Banh Cam Vinh
 
-* Các dịch vụ AWS-native.
-* Tiny Fish để thu thập thực đơn theo thời gian thực.
-* Agent Core để quản lý bộ nhớ và ngữ cảnh.
-* Giao diện hội thoại trên Zalo và WhatsApp.
+Phiên chia sẻ so sánh các dự án dữ liệu ở trường đại học với môi trường Data Engineering thực tế trong doanh nghiệp.
 
-Việc thu thập thực đơn theo thời gian thực giúp agent không phụ thuộc hoàn toàn vào dữ liệu sản phẩm tĩnh.
+Các dự án học thuật thường sử dụng bộ dữ liệu sạch và được tổ chức sẵn. Trong hệ thống doanh nghiệp, dữ liệu có thể bị thiếu, không nhất quán, trùng lặp hoặc phân tán trên nhiều nền tảng khác nhau.
 
-Bộ nhớ liên tục cũng giúp hệ thống duy trì ngữ cảnh trong cuộc hội thoại và hiểu các yêu cầu trước đó của khách hàng.
+Các yêu cầu cũng có thể thay đổi thường xuyên theo ưu tiên kinh doanh của doanh nghiệp.
 
-Nhóm ước tính chi phí vận hành khoảng **0,006 USD cho mỗi đơn hàng**, cho thấy AI hội thoại có khả năng giảm chi phí vận hành so với quy trình đặt hàng thủ công.
+Một nền tảng dữ liệu hiện đại bao gồm nhiều thành phần quan trọng:
 
-### 2.3. Signal Scout - Team Signal Scout
+* Thu thập dữ liệu (Data Ingestion).
+* Lưu trữ dữ liệu (Data Storage).
+* Xử lý dữ liệu (Data Processing).
+* Quản trị dữ liệu (Data Governance).
+* Phân loại dữ liệu (Data Cataloguing).
+* Phân tích dữ liệu (Data Analytics).
 
-Signal Scout tập trung vào việc thu thập và phân tích thông tin cạnh tranh trong kinh doanh.
+Các kỹ sư dữ liệu phải bảo đảm những thành thành phần này hoạt động ổn định vì một pipeline dữ liệu gặp sự cố có thể ảnh hưởng đến báo cáo, quá trình ra quyết định và tính liên tục của doanh nghiệp.
 
-Các tín hiệu kinh doanh có thể nằm rải rác trong báo cáo tài chính, bản ghi nội dung công khai, website và nhiều nguồn bên ngoài khác. Việc thu thập những thông tin này theo phương pháp thủ công có thể tốn nhiều thời gian.
+Hai nguyên tắc nghề nghiệp quan trọng đã được nhấn mạnh:
 
-Nhóm sử dụng **Value Creation and Delivery Canvas** để kết nối chức năng kỹ thuật với giá trị kinh doanh và lợi tức đầu tư dự kiến.
+Thứ nhất là **Tinh thần trách nhiệm (Ownership)**. Kỹ sư phải chịu trách nhiệm đối với các quyết định kỹ thuật, độ tin cậy hệ thống và chất lượng dữ liệu.
 
-Giải pháp sử dụng Tiny Fish để thu thập thông tin từ những nguồn khó truy cập bằng các phương pháp duyệt web thông thường.
+Thứ hai là **Thấu hiểu Nghiệp vụ (Business Understanding)**. Định nghĩa kỹ thuật phải phù hợp với nhu cầu của các phòng ban khác nhau.
 
-Kiến trúc cũng sử dụng Amazon Bedrock và LangSmith để hỗ trợ quá trình suy luận và quản lý quy trình AI.
+Ví dụ, phòng Marketing và phòng Tài chính có thể định nghĩa một "người dùng hoạt động" (active user) theo các tiêu chí khác nhau. Kỹ sư dữ liệu cần hiểu sự khác biệt này trước khi thiết kế các chỉ số metric hoặc báo cáo.
 
-Nhóm gặp một số thách thức kỹ thuật:
+Phiên chia sẻ cho thấy Data Engineering thành công đòi hỏi cả kỹ năng kỹ thuật lẫn khả năng hiểu rõ yêu cầu kinh doanh.
 
-* Tính nhất quán của dữ liệu.
-* Quản lý dependency.
-* Tích hợp nhiều dịch vụ AI.
-* Chi phí hạ tầng.
-* Sự phụ thuộc vào công cụ của bên thứ ba.
+### 2.3. Vượt qua Rào cản Tâm lý và Tìm kiếm Cơ hội Blue Ocean - Nhu Tran
 
-Chi phí vận hành hạ tầng được ước tính trong khoảng **35–130 USD mỗi tháng**, tùy theo khối lượng sử dụng.
+Phiên chia sẻ tập trung vào những thách thức về tâm lý và giao tiếp mà sinh viên thường gặp phải khi bắt đầu bước vào môi trường làm việc.
 
-Phiên chia sẻ cho thấy việc lựa chọn giữa các dịch vụ AWS-native và công cụ bên ngoài có thể ảnh hưởng đến chi phí, khả năng bảo trì và độ phức tạp khi tích hợp.
+Rào cản phổ biến là nỗi sợ mắc sai lầm. Sinh viên có thể ngại đặt câu hỏi, chia sẻ ý tưởng hoặc ứng tuyển vì sợ đưa ra câu trả lời không chính xác.
 
-### 2.4. SA Professional AI Native App - Team Plan D
+Diễn giả khuyến khích sinh viên vượt ra khỏi thị trường tuyển dụng cạnh tranh khốc liệt **Red Ocean** trên các trang tuyển dụng đại trà để tìm kiếm các cơ hội **Blue Ocean**.
 
-Team Plan D phát triển một trợ lý AI dành cho Solution Architect.
+Các cơ hội Red Ocean là các trang tuyển dụng công cộng nơi rất nhiều ứng viên cùng cạnh tranh cho một vị trí.
 
-Dự án giải quyết vấn đề bắt đầu từ một trang trắng, khi kiến trúc sư có thể mất nhiều giờ để chuẩn bị phiên bản đầu tiên của sơ đồ kiến trúc hoặc infrastructure template.
+Các cơ hội Blue Ocean thường được phát hiện thông qua:
 
-Hệ thống có thể chuyển đổi các yêu cầu chưa được cấu trúc thành:
+* Các cộng đồng chuyên môn.
+* Sự kiện trong ngành.
+* Lời giới thiệu cá nhân (Referrals).
+* Hoạt động kết nối mạng lưới (Networking).
+* Chia sẻ kiến thức kỹ thuật.
+* Xây dựng sự hiện diện chuyên nghiệp (Visibility).
 
-* Terraform template.
-* CloudFormation template.
-* Sơ đồ kiến trúc Draw.io.
-* Đề xuất thiết kế cloud ban đầu.
+Phiên chia sẻ giải thích rằng sự phát triển nghề nghiệp không chỉ phụ thuộc vào việc làm đúng kỹ thuật mà còn ở khả năng truyền tải giá trị.
 
-Ứng dụng cũng có thể tiếp nhận các chính sách nội bộ và ràng buộc kỹ thuật của doanh nghiệp.
+Sự kiên trì cũng là một phẩm chất nghề nghiệp quan trọng. Diễn giả gia nhập Amazon sau nhiều lần nộp hồ sơ, cho thấy việc bị từ chối không có nghĩa là mục tiêu nghề nghiệp không thể đạt được.
 
-Điều này giúp kiến trúc được tạo ra có thể xem xét các yêu cầu nội bộ ngay từ đầu, thay vì bổ sung các điều chỉnh về tuân thủ ở giai đoạn sau.
+Bài học chính là sinh viên nên duy trì tính nhất quán, xây dựng các mối quan hệ chuyên môn và chủ động tạo sự hiện diện trong các cộng đồng phù hợp.
 
-Dự án thể hiện sự thay đổi trong vai trò của Solution Architect, từ việc tự tạo toàn bộ tài liệu ban đầu sang kiểm tra và xác thực các thiết kế do AI tạo ra.
+### 2.4. Tích hợp AI và Tư duy Nghề nghiệp cho Kỹ sư Hiện đại - Khang Nguyen
 
-Tuy nhiên, kiến trúc sư vẫn phải chịu trách nhiệm kiểm tra các yếu tố:
+Phiên chia sẻ giải thích cách các kỹ sư nên tiếp cận việc phát triển phần mềm có sự hỗ trợ của AI.
 
-* Bảo mật.
-* Khả năng mở rộng.
-* Độ tin cậy.
-* Chi phí.
-* Tuân thủ.
+AI được mô tả như một **công cụ khuếch đại (Amplifier)** thay vì thay thế hoàn toàn kỹ sư.
 
-### 2.5. Shepherd - Team 3K
+Lập trình viên có thể sử dụng AI để tạo mã nguồn, đề xuất kiến trúc, phân tích lỗi hoặc tăng tốc nghiên cứu. Tuy nhiên, họ vẫn phải hiểu và xác thực kết quả do AI tạo ra.
 
-Team 3K giới thiệu Shepherd, một công cụ hỗ trợ điều hành nhằm quản lý luồng di chuyển của đám đông tại những khu vực có mật độ cao như sân bay.
+Nguyên tắc cốt lõi là:
 
-Giải pháp sử dụng các công nghệ thị giác máy tính như YOLO và ByteTrack để theo dõi mật độ đám đông từ luồng video.
+> **AI có thể hỗ trợ tư duy, nhưng không thể thay thế sự thấu hiểu.**
 
-Hệ thống có thể phân tích tình trạng ùn tắc và đề xuất điều chuyển nhân viên nhằm cải thiện luồng di chuyển.
+Một kỹ sư thiếu kiến thức nền tảng sẽ không thể nhận biết mã nguồn sai, kiến trúc không an toàn hoặc các đề xuất kỹ thuật không phù hợp do AI tạo ra.
 
-Kiến trúc kết nối quá trình phân tích video kỹ thuật số với các quyết định vận hành trong môi trường thực tế.
+Phiên chia sẻ cũng giới thiệu tính trung thực như một thói quen học tập quan trọng.
 
-Nhóm cũng so sánh nhiều mô hình thị giác máy tính khác nhau.
+Ví dụ, việc hoàn thành các bài học tự chọn có thể cung cấp kiến thức không được tính điểm ngay lập tức nhưng lại trở nên thiết yếu khi xử lý lỗi trong các hệ thống do AI tạo ra.
 
-Mô hình YOLO lớn có thể mang lại hiệu năng tốt hơn nhưng yêu cầu hạ tầng có chi phí cao hơn. Nhóm lựa chọn mô hình nhỏ để phù hợp với ngân sách hiện có.
+Diễn giả mô tả 3 vòng tròn công việc chuyên nghiệp:
 
-Nhóm ước tính chi phí lưu trữ mô hình trên SageMaker khoảng **48 USD trong ba giờ**.
+1. **Đam mê (Passion):** Công việc bản thân yêu thích.
+2. **Trách nhiệm (Responsibility):** Công việc phải hoàn thành theo vị trí công tác.
+3. **Lợi ích (Benefit):** Mức lương, kiến thức, mạng lưới mối quan hệ và sự phát triển nhận được.
 
-Quyết định này cho thấy việc lựa chọn mô hình không chỉ dựa trên độ chính xác mà còn cần xem xét tốc độ suy luận, chi phí vận hành và yêu cầu thực tế của bài toán.
+Một sự nghiệp bền vững đòi hỏi cân bằng cả ba yếu tố thay vì chỉ tập trung vào sở thích cá nhân.
 
-### 2.6. Adaptive Workflow Engine cho AML - Team Six Pillar
-
-Team Six Pillar tập trung vào việc cải thiện quy trình điều tra chống rửa tiền.
-
-Các hệ thống AML truyền thống có thể tạo ra số lượng lớn cảnh báo sai. Theo nội dung trình bày, tỷ lệ false positive có thể đạt khoảng 90–95%, trong khi mỗi lượt kiểm tra thủ công có thể tốn khoảng 20–25 USD.
-
-Nhóm đề xuất kiến trúc ba tầng:
-
-1. **Phát hiện nhanh**
-2. **Điều tra bằng Agentic AI**
-3. **Quản lý vụ việc**
-
-Tầng phát hiện nhanh sử dụng XGBoost trên Amazon SageMaker.
-
-Tầng điều tra sử dụng:
-
-* Amazon Kinesis Data Streams để thu thập dữ liệu.
-* Amazon OpenSearch để tìm kiếm vector.
-* Amazon Bedrock để suy luận.
-* Quy trình thu thập bằng chứng tự động.
-
-Tầng quản lý vụ việc hỗ trợ đánh giá và chuyển tiếp đến con người.
-
-Agent thu thập các bằng chứng liên quan và tóm tắt quá trình điều tra trước khi chuyển vụ việc cho chuyên gia.
-
-Cách tiếp cận này có thể rút ngắn quá trình điều tra từ vài giờ xuống còn vài phút.
-
-Giải pháp giúp chuyên gia tập trung vào những trường hợp có xác suất rủi ro cao, thay vì mất thời gian xem xét số lượng lớn cảnh báo có mức độ rủi ro thấp.
+Phiên chia sẻ khuyến khích sinh viên phát triển tính kỷ luật, kiến thức nền tảng và tư duy chuyên nghiệp trước khi phụ thuộc nhiều vào các công cụ AI.
 
 ## 3. Những điều mình học được
 
-Từ Sự kiện 4, mình hiểu rằng Agentic AI đang thay đổi quá trình phát triển phần mềm từ việc viết logic theo từng dòng mã sang thiết kế và điều phối toàn bộ hệ thống.
+Từ Sự kiện 3, mình hiểu rằng một sự nghiệp cloud thành công đòi hỏi nhiều hơn chỉ là kiến thức kỹ thuật đơn thuần.
 
-Tự động hóa truyền thống thường hoạt động theo các quy tắc được định nghĩa sẵn. Hệ thống agentic có thể duy trì bộ nhớ, phân tích ngữ cảnh, sử dụng công cụ, lập kế hoạch nhiều bước và thích ứng với thông tin mới.
+Thị trường cloud đang phát triển, nhưng nhà tuyển dụng ngày càng kỳ vọng ứng viên hiểu rõ kiến trúc cloud-native, container, bảo mật, hệ thống dữ liệu và quy trình làm việc có sự hỗ trợ của AI.
 
-Tuy nhiên, một hệ thống agentic đáng tin cậy cần nhiều thành phần hơn một mô hình ngôn ngữ.
+Phiên Data Engineering cho thấy dữ liệu doanh nghiệp phức tạp hơn nhiều so với các bộ dữ liệu học thuật. Kỹ sư phải quản lý các yêu cầu thay đổi, nguồn dữ liệu không tin cậy và các định nghĩa theo từng nghiệp vụ.
 
-Hệ thống còn cần:
+Mình cũng học được rằng tinh thần trách nhiệm (Ownership) là phẩm chất nghề nghiệp thiết yếu. Kỹ sư phải chịu trách nhiệm đối với các quyết định kiến trúc, tính toàn vẹn của dữ liệu và độ tin cậy của hệ thống.
 
-* Mục tiêu rõ ràng.
-* Bộ nhớ liên tục.
-* Khả năng tích hợp công cụ.
-* Log suy luận.
-* Cơ chế bảo mật.
-* Giám sát chi phí.
-* Sự phê duyệt của con người.
-* Hạ tầng cloud ổn định.
+Phiên định hướng nghề nghiệp dạy mình rằng các cơ hội tốt không phải lúc nào cũng có sẵn trên các trang tuyển dụng công cộng. Cộng đồng, sự giới thiệu, sự kiện kỹ thuật và các mối quan hệ chuyên môn có thể mang lại cơ hội truy cập vào những vị trí ít cạnh tranh hơn.
 
-Sự kiện tiếp tục nhấn mạnh tầm quan trọng của mô hình Human-in-the-Loop.
+Công thức phát triển sự nghiệp hữu ích từ sự kiện:
 
-Đối với các trường hợp có mức rủi ro cao như điều tra AML, quản lý đám đông, giao dịch tài chính hoặc triển khai kiến trúc, AI nên cung cấp đề xuất và bằng chứng, trong khi người có thẩm quyền đưa ra quyết định cuối cùng.
+> **Kết quả = Năng lực × Sự hiện diện × Tính nhất quán**
+> *(Result = Capability × Visibility × Consistency)*
 
-Mình cũng học được rằng log suy luận rất quan trọng đối với niềm tin của doanh nghiệp. Tổ chức cần hiểu lý do agent đưa ra một đề xuất, đặc biệt khi quyết định đó ảnh hưởng đến tuân thủ, bảo mật, an toàn hoặc tài chính.
+Năng lực kỹ thuật rất quan trọng, nhưng sẽ mang lại giá trị hạn chế nếu không ai biết đến. Tính nhất quán cũng là yếu tố bắt buộc vì sự phát triển dài hạn phụ thuộc vào việc học hỏi và tham gia liên tục.
 
-Các dự án thể hiện giá trị của việc nhanh chóng xây dựng nguyên mẫu. Các nhóm có thể chuyển từ ý tưởng sang proof of concept hoạt động được trong thời gian ngắn.
+Phiên chia sẻ về AI giúp mình hiểu rằng công cụ AI nên hỗ trợ công việc kỹ thuật thay vì thay thế sự hiểu biết chuyên môn.
 
-Tuy nhiên, quá trình phát triển nhanh cũng có thể tạo ra những vấn đề:
+Kỹ sư phải có khả năng:
 
-* Nợ kiến trúc.
-* Dependency không ổn định.
-* Token usage không được kiểm soát.
-* Chi phí hạ tầng cao.
-* Cơ chế bảo mật còn hạn chế.
-* Kiểm thử chưa đầy đủ.
+* Rà soát mã nguồn do AI tạo ra.
+* Xác thực các đề xuất kiến trúc.
+* Nhận diện các vấn đề bảo mật.
+* Kiểm tra giải pháp có phù hợp với yêu cầu kinh doanh hay không.
+* Xử lý lỗi từ kết quả AI chưa chính xác.
+* Chịu trách nhiệm đối với kết quả cuối cùng.
 
-Dự án Signal Scout cho thấy việc phụ thuộc nhiều vào công cụ bên thứ ba có thể làm tăng chi phí và độ phức tạp khi tích hợp.
+Sự kiện cũng cho thấy sự khác biệt giữa tư duy học thuật và tư duy doanh nghiệp.
 
-Dự án Shepherd cho thấy việc lựa chọn mô hình cần cân bằng giữa hiệu năng và chi phí.
-
-Dự án AML cho thấy agent có thể giảm thời gian điều tra thủ công bằng cách thu thập bằng chứng và tóm tắt thông tin phức tạp.
-
-Trợ lý dành cho Solution Architect cho thấy AI có thể tăng tốc quá trình thiết kế ban đầu, nhưng kỹ sư có kinh nghiệm vẫn phải xác thực kiến trúc được tạo ra.
-
-Sự kiện giúp mình hiểu rõ hơn về:
-
-* Quy trình Agentic AI.
-* Suy luận AI nhiều bước.
-* Bộ nhớ liên tục của agent.
-* Tool calling.
-* Cơ chế Human-in-the-Loop.
-* Thiết kế kiến trúc có sự hỗ trợ của AI.
-* Hoạt động sử dụng thị giác máy tính.
-* Tự động hóa điều tra AML.
-* Chi phí hạ tầng AI.
-* Phát triển proof of concept nhanh.
-* Bảo mật và quản trị AI trong doanh nghiệp.
+Công việc học thuật thường tập trung vào việc tuân thủ hướng dẫn và đạt điểm số. Công việc doanh nghiệp tập trung vào việc tạo ra giá trị, duy trì hệ thống ổn định, thích ứng với thay đổi và giải quyết các bài toán kinh doanh.
 
 ## 4. Phản hồi
 
-Sự kiện mang lại giá trị thực tế cao thông qua sự hỗ trợ của các chuyên gia kỹ thuật, những nguyên mẫu trực tiếp và quá trình đánh giá dự án dựa trên giá trị kinh doanh.
+Chuyến tham quan học tập mang lại nhiều thông tin bổ ích và có tính tương tác cao.
 
-Tuy nhiên, độ ổn định của Internet và số lượng AI credit giới hạn đã ảnh hưởng đến một số phần trình diễn. Các sự kiện trong tương lai có thể cải thiện đường truyền và phân bổ tài nguyên linh hoạt hơn.
+Những góc nhìn đa dạng từ kiến trúc cloud, Data Engineering, quản lý tài khoản và Solution Architecture giúp sinh viên có cái nhìn toàn diện về ngành công nghệ.
+
+Sự tham gia của cựu sinh viên Swinburne cũng làm cho các định hướng nghề nghiệp trở nên thực tế và gần gũi hơn.
 
 ## 5. Kỳ vọng
 
-Sau Sự kiện 4, mình kỳ vọng sẽ tiếp tục tìm hiểu cách phát triển Agentic AI an toàn và chuyển đổi các nguyên mẫu thành hệ thống sẵn sàng cho môi trường production.
+Sau Sự kiện 3, mình kỳ vọng sẽ tiếp tục phát triển cả năng lực kỹ thuật lẫn tác phong chuyên nghiệp.
 
-Một số hoạt động trong tương lai có thể bao gồm:
+Mình muốn nâng cao hiểu biết về các công nghệ cloud-native, Kubernetes, nền tảng dữ liệu doanh nghiệp, mạng máy tính, bảo mật và phát triển ứng dụng có sự hỗ trợ của AI.
 
-* Xây dựng một quy trình multi-agent đơn giản.
-* Triển khai bộ nhớ liên tục cho AI agent.
-* Thêm cơ chế phê duyệt Human-in-the-Loop.
-* Tạo log suy luận và audit log.
-* Kiểm thử bảo mật và giới hạn quyền của agent.
-* Giám sát chi phí model, token và hạ tầng.
-* Tích hợp AWS Security Hub và AWS KMS.
-* Thiết kế cơ chế bảo vệ và lưu trữ dữ liệu an toàn.
-* So sánh dịch vụ AWS-native với công cụ AI bên thứ ba.
-* Chuyển đổi proof of concept thành kiến trúc sẵn sàng cho production.
+Một số hoạt động hữu ích trong tương lai có thể bao gồm:
 
-Các sự kiện Build Week trong tương lai cũng nên cung cấp kết nối Internet tốc độ cao cho những ứng dụng xử lý video theo thời gian thực và nhiều credit hơn cho quá trình kiểm thử model.
+* Các bài thực hành cloud theo chuyên ngành.
+* Bài tập thiết kế kiến trúc FinTech an toàn.
+* Workshop xây dựng data pipeline doanh nghiệp.
+* Thực hành quản lý container và Kubernetes.
+* Mô phỏng hoạt động networking chuyên nghiệp.
+* Bài tập giao tiếp và Elevator Pitch.
+* Bài tập xử lý lỗi mã nguồn do AI tạo ra.
+* Workshop xác thực kiến trúc hệ thống.
+* Kịch bản bảo mật và mạng trên AWS Cloud.
 
-Bảo mật doanh nghiệp cần được quan tâm ngay từ giai đoạn đầu, bao gồm mã hóa, kiểm soát truy cập, giám sát, khả năng giải thích và triển khai an toàn.
-
-Những hoạt động này sẽ giúp người tham gia phát triển các hệ thống Agentic AI không chỉ hoạt động được mà còn an toàn, đáng tin cậy, tối ưu chi phí và phù hợp với môi trường doanh nghiệp.
+Những hoạt động này sẽ giúp sinh viên xây dựng portfolio thực tế, tăng cường sự hiện diện chuyên nghiệp và chuẩn bị đáp ứng các kỳ vọng Senior & AI-ready của ngành công nghệ đám mây hiện đại.
