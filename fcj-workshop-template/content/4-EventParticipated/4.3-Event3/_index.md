@@ -17,6 +17,7 @@ The projects demonstrated how AI agents could support retail, finance, cloud arc
 The event also encouraged teams to test ideas quickly, identify technical limitations, and evaluate whether their prototypes could become practical enterprise solutions.
 
 A major theme was the transition from traditional automation to agentic systems capable of reasoning, maintaining context, using tools, and completing multi-step tasks. However, the event also reinforced that human approval remains necessary for important business, financial, and safety-related decisions.
+![25-07-2026](/images/4-event/2507.jpg)
 
 ## 2. Topics
 

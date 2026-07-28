@@ -20,6 +20,9 @@ This report documents the architectural design, implementation details, and clou
 | **Nguyễn Nhật Hiếu** | 2352330 |
 | **Nguyễn Vũ Tường** | 2313834 |
 
+#### Source Code & Project Repository
+- **GitHub Repository**: [https://github.com/bambookd/ChromeFlashcardExtension](https://github.com/bambookd/ChromeFlashcardExtension)
+
 #### Core AWS Managed Services
 + **Amazon Route 53**: Manages public DNS records for Hosted Zone `axiza.net`, providing a CNAME record for canonical frontend domain `www.axiza.net`, apex HTTP/HTTPS redirection, and an Alias A/AAAA record mapping `api.axiza.net` to the API Gateway Custom Domain Name regional endpoint.
 + **AWS Certificate Manager (ACM)**: Issues and manages public SSL/TLS certificates for `www.axiza.net`, `axiza.net`, and `api.axiza.net`.

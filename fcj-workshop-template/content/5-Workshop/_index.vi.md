@@ -20,6 +20,9 @@ Báo cáo này trình bày chi tiết thiết kế kiến trúc, quá trình ph�
 | **Nguyễn Nhật Hiếu** | 2352330 |
 | **Nguyễn Vũ Tường** | 2313834 |
 
+#### Mã nguồn & Repository Dự án
+- **GitHub Repository**: [https://github.com/bambookd/ChromeFlashcardExtension](https://github.com/bambookd/ChromeFlashcardExtension)
+
 #### Dịch vụ AWS Cốt lõi
 + **Amazon Route 53**: Quản lý các bản ghi DNS công cộng cho Hosted Zone `axiza.net`, phục vụ bản ghi CNAME cho tên miền chuẩn `www.axiza.net`, điều hướng apex domain, và bản ghi A/AAAA Alias trỏ `api.axiza.net` tới Regional domain endpoint của API Gateway Custom Domain.
 + **AWS Certificate Manager (ACM)**: Cấp phát và quản lý chứng chỉ số SSL/TLS công cộng cho `www.axiza.net`, `axiza.net` và `api.axiza.net`.
