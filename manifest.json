@@ -1,5 +1,6 @@
 {
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnqilorP6E+R752Jhp0tmxAG+pRQMunoTpg5Y+DZLZynGM+fUClD8wAyOUUovKIYWYpHjGHesrMBizlRHfHB9kYgr0gvcaWbHcAuFk2srmvjdjG75+P93JNcMgmZOnM2YsJqescMHlopWmJ6wcezNzrWK7s5EKHDIVCCHnLmdmq+Fn5NcRszPRFJ6M5xj/45zh8xNtSnu4s+2Wq4A4q05SKHQhDLMo3l/59/JNjlu4HhjikaBgCNT0Oh8MOSTxSMA+bDJgjkjpJYqF+0zmahA7gMbbMHg0BeZBBIWXj4ppxWiIsDEXyTOLjCIqquNyRxB/y+DzFnH5Oc4toXesvrSMwIDAQAB",
   "name": "Flashcard Vocabulary",
   "description": "Capture vocabulary, organize flashcards, and sync them to your study workspace.",
   "version": "1.0.0",

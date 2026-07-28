@@ -1,4 +1,4 @@
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -14,7 +14,13 @@ await mkdir(outputRoot, { recursive: true });
 
 await Promise.all([
   copySurface("study"),
-  copySurface("game")
+  copySurface("game"),
+  // Trang gốc chỉ chuyển hướng sang /study/. Nếu thiếu file này thì
+  // http://<site>/ trả về lỗi 404 NoSuchKey của S3.
+  copyFile(
+    path.join(backendRoot, "public", "index.html"),
+    path.join(outputRoot, "index.html")
+  )
 ]);
 
 await writeFile(

@@ -55,8 +55,8 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       DefaultRouteSettings:
-        ThrottlingBurstLimit: 5
-        ThrottlingRateLimit: 2
+        ThrottlingBurstLimit: 40
+        ThrottlingRateLimit: 20
       CorsConfiguration:
         AllowMethods:
           - GET
@@ -72,10 +72,7 @@ Resources:
   UsersTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      BillingMode: PROVISIONED
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+      BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: username
           AttributeType: S
@@ -86,10 +83,7 @@ Resources:
   FlashcardsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      BillingMode: PROVISIONED
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+      BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
@@ -104,10 +98,7 @@ Resources:
   CategoriesTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      BillingMode: PROVISIONED
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
+      BillingMode: PAY_PER_REQUEST
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
