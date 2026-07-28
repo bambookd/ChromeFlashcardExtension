@@ -1,19 +1,32 @@
 ---
-title: "Proposal"
+title: "Đề xuất"
 date: 2026-07-21
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
 
+<<<<<<< HEAD
 # Đề xuất Dự án & Kế hoạch Triển khai Workshop — Serverless Flashcard Platform
+=======
+# Đề xuất dự án — Chrome Flashcard Extension Serverless trên AWS
+>>>>>>> 3d3d3d6 (proposal)
 
 ### Tóm tắt Tổng quan (Executive Summary)
 
+<<<<<<< HEAD
 Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng **Chrome Flashcard Extension & Serverless Study Platform** (Stack Name: `chrome-flashcard-axiza`). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Trang web frontend được lưu trữ trên dịch vụ **AWS Amplify Hosting** (kết nối S3 bucket) dưới tên miền tùy chỉnh `axiza.net`, trong khi backend API sử dụng tên miền tùy chỉnh `api.axiza.net`, cả hai đều được quản lý bởi **Amazon Route 53** với chứng chỉ số SSL/TLS cấp phát bởi **AWS Certificate Manager (ACM)**.
+=======
+Dự án xây dựng và mô tả một Chrome extension theo hướng offline-first, giúp
+người dùng lưu từ vựng khi đọc web, đồng bộ flashcard lên AWS, ôn tập qua ứng
+dụng web và xuất dữ liệu an toàn. Phần triển khai được trình bày dưới dạng
+workshop có thể thực hiện lại, bao quát toàn bộ vòng đời từ chuẩn bị môi trường,
+deploy, kiểm tra đến dọn dẹp tài nguyên.
+>>>>>>> 3d3d3d6 (proposal)
 
 | Thông số | Giá trị Cấu hình |
 | --- | --- |
+<<<<<<< HEAD
 | **Tên Dự án** | ChromeFlashCardExtension — Serverless Flashcard Platform |
 | **Tên Cloud Stack** | `chrome-flashcard-axiza` |
 | **AWS Region Triển khai** | `ap-southeast-1` (Singapore) |
@@ -21,9 +34,19 @@ Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc 
 | **Tên miền Backend API** | `https://api.axiza.net` (Amazon Route 53 + API Gateway HTTP API) |
 | **Dịch vụ AWS Cốt lõi** | Route 53, Amplify Hosting, API Gateway, Lambda, DynamoDB, S3, ACM, CloudWatch |
 | **Trạng thái Triển khai** | Đã hoàn tất & Kiểm thử thành công — Chuẩn bị triển khai Workshop 5 |
+=======
+| Dự án | Chrome Flashcard Extension & Study Platform |
+| Nền tảng | Chrome Extension Manifest V3 và AWS |
+| Region | `ap-southeast-1` (Singapore) |
+| Dịch vụ chính | API Gateway HTTP API, Lambda, DynamoDB, S3, CloudWatch |
+| Infrastructure as Code | AWS SAM / CloudFormation |
+| Backend | Node.js 24.x, Express.js, `serverless-http` |
+| Kết quả workshop | Deploy, cấu hình, kiểm thử, export và gỡ bỏ hệ thống |
+>>>>>>> 3d3d3d6 (proposal)
 
 ---
 
+<<<<<<< HEAD
 ## 1. Đặt vấn đề & Thách thức Kỹ thuật
 
 Người học ngôn ngữ và kỹ sư phần mềm khi đọc tài liệu kỹ thuật, bài báo khoa học hoặc tin tức tiếng Anh thường gặp phải 3 rào cản lớn trong việc tích lũy từ vựng:
@@ -47,6 +70,54 @@ Các giải pháp hiện có chỉ giải quyết đơn lẻ từng vấn đề�
 ---
 
 ## 3. Mục tiêu Dự án & Kết quả Đạt được
+=======
+Người học thường gặp từ lạ khi đọc website, tài liệu kỹ thuật và bài viết trực
+tuyến. Việc chuyển sang ứng dụng khác để tạo flashcard làm gián đoạn mạch đọc,
+trong khi dữ liệu chỉ lưu trên trình duyệt khó đồng bộ và dễ mất.
+
+Giải pháp đề xuất kết nối thời điểm người học gặp một từ với quá trình ôn tập về
+sau. Người dùng bôi đen nội dung trên trang, chọn thao tác từ context menu, kiểm
+tra thẻ trong hộp thoại nổi và lưu cục bộ. Sau khi xác thực, các thẻ này có thể
+được đồng bộ lên AWS và ôn tập bằng Study Web App.
+
+## 2. Mục tiêu dự án
+
+Dự án sẽ:
+
+1. Xây dựng Chrome extension Manifest V3 để lưu và chỉnh sửa từ vựng ngay trên
+   trang web.
+2. Lưu flashcard offline bằng `chrome.storage.local`.
+3. Đồng bộ dữ liệu có xác thực JWT qua `POST /api/sync`.
+4. Deploy backend Express.js lên AWS Lambda phía sau API Gateway HTTP API.
+5. Lưu user, flashcard và category trong Amazon DynamoDB.
+6. Cung cấp Study Web App có lọc theo category và các mức active recall
+   (`Again`, `Hard`, `Good`, `Easy`).
+7. Export flashcard của người dùng thành JSON qua Amazon S3 pre-signed URL có
+   hiệu lực 15 phút, đồng thời giữ bucket export ở chế độ private.
+8. Kiểm tra hệ thống đã deploy và xóa an toàn toàn bộ tài nguyên của workshop.
+
+## 3. Phạm vi
+
+### Bao gồm
+
+- Chuẩn bị môi trường local và các dependency.
+- Giới thiệu cấu trúc repository và các thành phần.
+- Build bằng AWS SAM và deploy qua CloudFormation.
+- API Gateway, Lambda, DynamoDB, S3 private cho export và log CloudWatch.
+- Cấu hình extension, xác thực, lưu offline và đồng bộ theo lô.
+- Truy cập Study Web App và ôn tập flashcard.
+- Export JSON an toàn và kiểm tra quyền truy cập trực tiếp vào object.
+- Xóa stack CloudFormation và audit sau khi dọn dẹp.
+
+### Không bao gồm
+
+- Multiplayer realtime và bảng xếp hạng toàn cục.
+- Amazon Cognito hoặc nhà cung cấp danh tính bên thứ ba.
+- Custom domain, CloudFront và phát hành lên Chrome Web Store.
+- Disaster recovery ở quy mô production và triển khai đa region.
+
+## 4. Kiến trúc đề xuất
+>>>>>>> 3d3d3d6 (proposal)
 
 ### Mục tiêu Cốt lõi
 Tối ưu hóa quy trình thu thập và lưu trữ từ vựng mới xuống **dưới 5 giây** mỗi từ mà không cần rời khỏi trang web đang xem, đồng thời cung cấp khả năng truy cập bộ thẻ học mọi lúc mọi nơi thông qua kiến trúc serverless bảo mật trên cloud.
@@ -70,6 +141,7 @@ Tối ưu hóa quy trình thu thập và lưu trữ từ vựng mới xuống **
 ### Sơ đồ Kiến trúc Hệ thống (System Topology)
 
 ```text
+<<<<<<< HEAD
 +-----------------------+        HTTPS REST (api.axiza.net)         +--------------------------+
 |  Chrome Extension     |------------------------------------------>|  Amazon Route 53         |
 |  (Manifest V3)        |                                           |  (Hosted Zone: axiza.net)|
@@ -218,3 +290,81 @@ Ngân sách vận hành cho hệ thống được tối ưu hóa nằm gọn tro
 2. **Tích hợp Amazon Cognito**: Nâng cấp hệ thống xác thực JWT tùy chỉnh sang Amazon Cognito User Pools nhằm đạt chuẩn OAuth2/OIDC, hỗ trợ Refresh Token và xác thực hai yếu tố (MFA).
 3. **Thuật toán Ghi nhớ Lặp lại Ngắt quãng (Spaced Repetition)**: Nâng cấp thuật toán hàng chờ Active Recall sang thuật toán SuperMemo SM-2 giúp tối ưu hóa khả năng ghi nhớ dài hạn của người học.
 4. **Phát hành trên Chrome Web Store**: Đóng gói extension Manifest V3 cùng bộ tài nguyên cửa hàng để chính thức đăng tải lên Chrome Web Store.
+=======
++-----------------------+        HTTPS REST         +--------------------------+
+| Chrome Extension MV3  |-------------------------->| API Gateway (HTTP API)   |
+| + lưu dữ liệu local   |                           +------------+-------------+
++-----------------------+                                        |
+                                                                 v
++-----------------------+                           +--------------------------+
+| Study Web Application |-------------------------->| AWS Lambda               |
+| static web client     |                           | Express + serverless-http|
++-----------------------+                           +------------+-------------+
+                                                                 |
+                                       +-------------------------+------------------+
+                                       |                                            |
+                                       v                                            v
+                            +--------------------+                       +--------------------+
+                            | Amazon DynamoDB    |                       | Amazon S3         |
+                            | Users / Cards /    |                       | JSON export private|
+                            | Categories         |                       | pre-signed GET URL |
+                            +--------------------+                       +--------------------+
+```
+
+### Vai trò các thành phần
+
+| Thành phần | Trách nhiệm |
+| --- | --- |
+| Chrome Extension | Lưu nội dung được chọn, chỉnh sửa thẻ, lưu local, xác thực và kích hoạt đồng bộ |
+| API Gateway HTTP API | Cung cấp endpoint HTTPS, xử lý CORS và proxy request đến Lambda |
+| AWS Lambda | Chạy backend Express, xác minh JWT, xử lý API và điều phối lưu trữ/export |
+| DynamoDB | Lưu user, flashcard và category bằng các khóa theo từng user |
+| Study Web App | Lấy flashcard đã xác thực và cung cấp phiên ôn tập active recall |
+| S3 bucket private | Lưu file JSON export và chỉ phục vụ qua signed URL tạm thời |
+| CloudWatch | Ghi execution log và metric vận hành dùng trong bước kiểm tra |
+
+## 5. Quy trình workshop
+
+Đề xuất được ánh xạ trực tiếp với nội dung workshop:
+
+| Phần workshop | Hoạt động | Kết quả mong đợi |
+| --- | --- | --- |
+| 5.1 Tổng quan kiến trúc | Xem các thành phần và luồng dữ liệu đầu-cuối | Hiểu cách extension, web app và các dịch vụ AWS tương tác |
+| 5.2 Yêu cầu môi trường | Cài công cụ, xem repository và chạy backend local | Health endpoint local hoạt động |
+| 5.3 Deploy backend | Chạy `sam build`, `sam deploy --guided` và kiểm tra `/api/health` | API serverless trả `{"ok":true,"service":"flashcard-backend"}` |
+| 5.4 Cấu hình extension | Cấu hình API URL, load extension, xác thực, tạo thẻ và sync | Thẻ được lưu local và đồng bộ vào DynamoDB |
+| 5.5 Study và export | Ôn tập thẻ đã sync và yêu cầu export JSON | Signed URL tải được file; URL S3 trực tiếp trả `403 Forbidden` |
+| 5.6 Cleanup | Xóa object S3 cần thiết, xóa stack và audit tài nguyên | Các tài nguyên cloud của workshop được gỡ bỏ |
+
+## 6. Luồng dữ liệu
+
+1. Người dùng bôi đen một từ và chọn thao tác từ context menu của extension.
+2. `contentScript.js` hiển thị trình chỉnh sửa nổi và lưu flashcard vào
+   `chrome.storage.local`.
+3. Popup xác thực user và gửi các thẻ chưa đồng bộ tới `POST /api/sync`.
+4. API Gateway chuyển request đến Lambda; backend xác minh JWT và ghi dữ liệu
+   theo từng user vào DynamoDB.
+5. Study Web App lấy thẻ của user qua REST API đã xác thực.
+6. Yêu cầu export tạo object JSON trong S3 bucket private và trả về pre-signed
+   GET URL có hiệu lực 900 giây.
+
+## 7. Tiêu chí hoàn thành
+
+Dự án hoàn thành khi người tham gia workshop có thể:
+
+- Chạy backend local và xác nhận health endpoint.
+- Deploy SAM stack tại `ap-southeast-1`.
+- Load và cấu hình extension Manifest V3.
+- Tạo flashcard offline và đồng bộ sau khi đăng nhập.
+- Lấy và ôn tập các thẻ đã đồng bộ trong Study Web App.
+- Tải JSON export bằng pre-signed URL và xác nhận truy cập public trực tiếp bị
+  từ chối.
+- Xóa stack và kiểm tra các bảng DynamoDB cùng CloudWatch log group không còn
+  tồn tại.
+
+## 8. Kết quả mong đợi
+
+Sản phẩm cuối là một nền tảng flashcard serverless hoạt động được, có tài liệu
+đầy đủ, cùng workshop sáu phần trình bày kiến trúc, chuẩn bị môi trường, deploy,
+đồng bộ client, chức năng study/export và quy trình teardown có trách nhiệm.
+>>>>>>> 3d3d3d6 (proposal)
