@@ -1,122 +1,67 @@
-# Flashcard Vocabulary Chrome Extension
+# Flashcard Vocabulary — Chrome Extension
 
-Offline-first Chrome Extension for saving vocabulary flashcards locally with `chrome.storage.local`, plus a localhost API for cloud sync and JSON export.
+Extension bắt từ vựng khi đọc web, lưu offline, rồi đồng bộ lên cloud để ôn tập
+trên Study Web. Bản này để **cài thủ công (unpacked)** vì chưa phát hành lên
+Chrome Web Store.
 
-## Project Structure
+Nếu bạn chỉ muốn học/ôn tập (không cần bắt từ khi lướt web), bạn **không cần
+extension** — vào thẳng Study Web:
 
-```text
-.
-├── manifest.json
-├── popup.html
-├── popup.css
-├── popup.js
-└── backend
-    ├── package.json
-    └── server.js
+> 🌐 **https://axiza.net/study/**
+
+Extension chỉ cần khi bạn muốn bôi đen từ trên bất kỳ trang web nào rồi lưu nhanh
+vào bộ thẻ của mình.
+
+---
+
+## Cài đặt (Chrome / Edge / Brave)
+
+1. Tải mã nguồn này về (nút **Code → Download ZIP**, rồi giải nén — hoặc
+   `git clone` nhánh này).
+2. Mở trình duyệt, vào `chrome://extensions`.
+3. Bật **Developer mode** (góc trên bên phải).
+4. Bấm **Load unpacked**.
+5. Chọn **thư mục vừa giải nén** (thư mục có chứa file `manifest.json`).
+6. Extension **Flashcard Vocabulary** xuất hiện trên thanh công cụ. Xong.
+
+> Extension này đã **ghim ID cố định**, nên mọi người cài đều dùng chung một
+> danh tính và đồng bộ cloud chạy được ngay — không cần xin cấp quyền gì thêm.
+
+## Cách dùng
+
+1. **Đăng nhập / đăng ký:** bấm icon extension → tạo tài khoản (hoặc dùng tài
+   khoản bạn đã tạo ở Study Web — chung một hệ thống).
+2. **Bắt từ:** bôi đen một từ/cụm từ trên trang web → chuột phải → **Save "…" as
+   flashcard** → cửa sổ nhỏ hiện ra cho bạn sửa nghĩa, loại từ, category → **Save**.
+   Thẻ được lưu ngay vào máy (hoạt động cả khi offline).
+3. **Đồng bộ:** mở popup extension → **Sync** để đẩy các thẻ mới lên cloud.
+4. **Ôn tập:** vào https://axiza.net/study/ để học, làm test, chỉnh sửa thẻ.
+
+## Cấu hình
+
+File `extension-config.js` đã trỏ sẵn tới backend đang chạy:
+
+```js
+API_BASE_URL: "https://api.axiza.net"
+STUDY_URL:    "https://axiza.net/study/"
 ```
 
-## Run The Local Backend
+Bạn không cần sửa gì. (Nếu tự dựng backend riêng thì thay hai giá trị này.)
 
-Prerequisite: Node.js 18 or newer.
+## File trong extension
 
-```bash
-cd backend
-npm install
-npm run dev
-```
+| File | Vai trò |
+|---|---|
+| `manifest.json` | Khai báo Manifest V3, quyền, và key ghim extension ID |
+| `background.js` | Service worker: context menu, điều phối message |
+| `contentScript.js` | Chèn cửa sổ sửa thẻ vào trang web đang đọc |
+| `popup.html` / `popup.js` / `popup.css` | Giao diện đăng nhập, quản lý thẻ, sync, export |
+| `extension-config.js` | Địa chỉ API / Study Web |
 
-The API runs at:
+## Ghi chú
 
-```text
-http://localhost:3000
-```
-
-The study web app runs at:
-
-```text
-http://localhost:3000/study
-```
-
-Sample local accounts are seeded automatically on server start:
-
-```text
-student / password123
-teacher / password123
-```
-
-Available endpoints:
-
-```text
-GET  /api/health
-POST /api/auth/register
-POST /api/auth/login
-GET  /api/me
-GET  /api/flashcards
-POST /api/flashcards
-PUT  /api/flashcards/:id
-DELETE /api/flashcards/:id
-GET  /api/categories
-POST /api/categories
-DELETE /api/categories/:category
-GET  /api/study/random
-POST /api/sync        { "flashcards": [...] }
-POST /api/export      { "flashcards": [...] }
-GET  /exports/:fileName
-```
-
-User data is written to `backend/data/users.json`. Cloud-synced flashcards are written to `backend/data/flashcards.json`. The latest sync payload is also mirrored to `backend/data/cloud-store.json` for debugging. Exported JSON files are written to `backend/exports/`.
-
-## Load The Extension In Chrome
-
-1. Open `chrome://extensions`.
-2. Enable `Developer mode`.
-3. Click `Load unpacked`.
-4. Select this project folder: `ChromeFlashCardExtension`.
-5. Pin and open the extension.
-
-Keep the backend running before using `Sync`, `Export JSON`, or the study web app. Saving and deleting flashcards in the extension works offline because the extension uses `chrome.storage.local`.
-
-## Save From A Web Page
-
-1. Open a normal web page such as a blog, article, or documentation page.
-2. Select a word or short phrase.
-3. Right-click the selected text.
-4. Choose `Save "..." as flashcard`.
-5. Edit the floating flashcard form near the selection.
-6. Click `Save`.
-
-Open the extension popup from the Chrome toolbar to review, delete, sync, or export saved flashcards.
-
-Chrome does not allow content scripts on internal pages such as `chrome://extensions`, so the right-click editor will not appear there.
-
-If the right-click option appears but the editor does not show, reload the extension from `chrome://extensions`, then refresh the web page and try again. Existing tabs may not have the latest content script immediately after a development reload.
-
-## Study Web App
-
-Open:
-
-```text
-http://localhost:3000/study
-```
-
-The study app logs in with the same local account system as the extension. It loads all cloud flashcards for the logged-in user into browser memory, then lets you:
-
-- filter by category
-- start a focused study session from the selected category
-- shuffle once per session or study in saved order
-- recall the answer before flipping the card
-- rate the result with `Again`, `Hard`, `Good`, or `Easy`
-- send `Again` cards back to the end of the current queue
-- track session progress and completion summary
-- add flashcards
-- edit flashcards
-- delete flashcards
-
-The current study logic is session-based, not full spaced repetition yet. The API and data model keep `updatedAt` and sync metadata so persistent review fields such as `lastReviewedAt`, `nextReviewAt`, streak, and difficulty can be added later.
-
-## Production Mapping
-
-The current localhost API is shaped to map cleanly to AWS later:
-
-- `POST /api/sync` can become API Gateway + Lambda + DynamoDB.
-- `POST /api/export` can generate a JSON file and return a pre-signed S3 URL.
+- Extension lưu thẻ vào `chrome.storage.local` trước, nên bắt từ được cả khi
+  không có mạng; đồng bộ khi online.
+- Dữ liệu demo, không dùng cho thông tin nhạy cảm.
+- Mã nguồn đầy đủ của cả project (backend, hạ tầng, tài liệu) nằm ở nhánh
+  `final-ver`.
