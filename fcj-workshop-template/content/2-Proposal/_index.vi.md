@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 1.6 seconds
-Output:
 ---
 title: "Đề xuất"
 date: 2026-07-21
