@@ -18,9 +18,9 @@ Mỗi sự kiện mang lại một trải nghiệm học tập độc đáo, t�
 
  **Ngày:** 20/06/2026
 
- **Hình thức:** Tham gia trực tuyến
+ **Hình thức:** Trực tiếp (Offline)
 
- **Vai trò:** Người tham dự / Quan sát viên
+ **Vai trò:** Khán giả
 
  **Nội dung chính:** Cuộc thi đối kháng 8 đội qua 3 vòng loại (10 câu hỏi kịch bản / vòng, tổng cộng 30 câu) với độ khó chứng chỉ tăng dần (CLF-C02 $\rightarrow$ SAA-C03 $\rightarrow$ SAP-C02), khôi phục sau thảm họa đa vùng (RTO/RPO) và thiết kế kiến trúc serverless linh hoạt.
 
@@ -34,9 +34,9 @@ Mỗi sự kiện mang lại một trải nghiệm học tập độc đáo, t�
 
  **Ngày:** 11/07/2026
 
- **Hình thức:** Tham gia sự kiện kỹ thuật
+ **Hình thức:** Trực tiếp (Offline)
 
- **Vai trò:** Người tham dự
+ **Vai trò:** Khán giả
 
  **Nội dung chính:** Ôn luyện chứng chỉ AWS Cloud Practitioner, cam kết SLA, giám sát hành trình người dùng với CloudWatch, và rà soát bảo mật tự động bằng AWS Security Agent.
 
@@ -50,9 +50,9 @@ Mỗi sự kiện mang lại một trải nghiệm học tập độc đáo, t�
 
  **Ngày:** 25/07/2026
 
- **Hình thức:** Tham gia trực tuyến
+ **Hình thức:** Trực tiếp (Offline)
 
- **Vai trò:** Người tham dự
+ **Vai trò:** Khán giả
 
  **Nội dung chính:** Các giải pháp hackathon Agentic AI trong bán lẻ, phân tích thông tin cạnh tranh, thiết kế kiến trúc, quản lý đám đông và điều tra chống rửa tiền (AML).
 

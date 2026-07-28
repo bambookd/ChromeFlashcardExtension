@@ -18,9 +18,9 @@ Each event provided a unique learning experience, ranging from analyzing scenari
 
  **Date:** June 20, 2026
 
- **Participation Format:** Online
+ **Participation Format:** Offline (In-Person)
 
- **Role:** Attendee / Spectator
+ **Role:** Attendee
 
  **Main Topics:** 8-team knockout competition across 3 rounds (10 scenario-based questions per round, 30 total) with a progressive certification difficulty curve (CLF-C02 $\rightarrow$ SAA-C03 $\rightarrow$ SAP-C02), multi-region disaster recovery (RTO/RPO), and resilient serverless architecture design.
 
@@ -34,7 +34,7 @@ Each event provided a unique learning experience, ranging from analyzing scenari
 
  **Date:** July 11, 2026
 
- **Participation Format:** Technical event
+ **Participation Format:** Offline (In-Person)
 
  **Role:** Attendee
 
@@ -50,7 +50,7 @@ Each event provided a unique learning experience, ranging from analyzing scenari
 
  **Date:** July 25, 2026
 
- **Participation Format:** Online
+ **Participation Format:** Offline (In-Person)
 
  **Role:** Attendee
 
