@@ -16,7 +16,7 @@ This report documents the architectural design, implementation details, and clou
 
 | Member | ID |
 | --- | --- |
-| **Nguyễn Minh Triết** | <> |
+| **Nguyễn Minh Triết** | 2353214 |
 | **Nguyễn Nhật Hiếu** | 2352330 |
 | **Nguyễn Vũ Tường** | 2313834 |
 
