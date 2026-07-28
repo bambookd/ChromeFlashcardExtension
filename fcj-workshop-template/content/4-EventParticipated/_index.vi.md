@@ -1,19 +1,34 @@
 ---
-
 title: "Các sự kiện đã tham gia"
 date: 2026-07-26
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
---------------------
+---
 
 # Các sự kiện đã tham gia
 
-Trong thời gian thực tập, mình đã tham gia bốn sự kiện liên quan đến AWS Cloud, Agentic AI, bảo mật, vận hành hệ thống và định hướng nghề nghiệp.
+Trong thời gian thực tập, mình đã tham gia ba sự kiện kỹ thuật tập trung vào thiết kế kiến trúc cloud, bảo mật và giám sát hệ thống AWS, và các ứng dụng Agentic AI.
 
-Mỗi sự kiện mang đến một góc nhìn khác nhau, từ kiến thức nền tảng về AWS, giám sát ứng dụng, bảo mật tự động cho đến việc ứng dụng AI agent trong doanh nghiệp. Những hoạt động này giúp mình mở rộng kiến thức kỹ thuật, hiểu thêm về nhu cầu thực tế của ngành và cải thiện khả năng tự học.
+Mỗi sự kiện mang lại một trải nghiệm học tập độc đáo, từ việc phân tích các kịch bản đề thi chứng chỉ, giám sát hành trình trải nghiệm người dùng đến việc đánh giá các hệ thống AI đa agent trong quy trình doanh nghiệp.
 
 ### [Sự kiện 1](4.1-Event1/)
+
+ **Tên sự kiện:** AWS Cloud Architecture Championship: CLF, SAA & SAP Battle
+
+ **Ngày:** 20/06/2026
+
+ **Hình thức:** Tham gia trực tuyến
+
+ **Vai trò:** Người tham dự / Quan sát viên
+
+ **Nội dung chính:** Cuộc thi đối kháng 8 đội qua 3 vòng loại (10 câu hỏi kịch bản / vòng, tổng cộng 30 câu) với độ khó chứng chỉ tăng dần (CLF-C02 $\rightarrow$ SAA-C03 $\rightarrow$ SAP-C02), khôi phục sau thảm họa đa vùng (RTO/RPO) và thiết kế kiến trúc serverless linh hoạt.
+
+ **Giá trị nhận được:** Mình nhận thức sâu sắc về sự phát triển tư duy qua các cấp độ kiến trúc CLF, SAA và SAP, cách đánh giá các điểm đánh đổi giữa chi phí và độ tin cậy, thiết kế cơ chế dự phòng linh hoạt (SQS, DLQ, Circuit Breakers) và kỹ năng phân tích kịch bản đề thi phức tạp dưới áp lực thời gian.
+
+---
+
+### [Sự kiện 2](4.2-Event2/)
 
  **Tên sự kiện:** AWS Cloud, Monitoring and Security
 
@@ -23,45 +38,13 @@ Mỗi sự kiện mang đến một góc nhìn khác nhau, từ kiến thức n�
 
  **Vai trò:** Người tham dự
 
- **Nội dung chính:** AWS Cloud Practitioner, SLA và giám sát hệ thống, AWS Security Agent.
+ **Nội dung chính:** Ôn luyện chứng chỉ AWS Cloud Practitioner, cam kết SLA, giám sát hành trình người dùng với CloudWatch, và rà soát bảo mật tự động bằng AWS Security Agent.
 
- **Giá trị nhận được:** Mình hiểu thêm về các dịch vụ AWS, mô hình Shared Responsibility, cách giám sát trải nghiệm người dùng bằng Amazon CloudWatch và cách đưa bảo mật vào vòng đời phát triển phần mềm.
-
----
-
-### [Sự kiện 2](4.2-Event2/)
-
- **Tên sự kiện:** FCAJ Community Day – June 2026
-
- **Thời gian:** 27/06/2026
-
- **Hình thức:** Tham gia trực tuyến
-
- **Vai trò:** Người tham dự
-
- **Nội dung chính:** Cloud Agentic Platform, Voice AI cho tiếng Việt, DevOps AI Agent, Amazon Q trong tuyển dụng và kết nối riêng cho hệ thống AI doanh nghiệp.
-
- **Giá trị nhận được:** Mình hiểu rõ hơn về Agentic Cloud, Human-in-the-Loop, kiến trúc Voice AI dạng module và tầm quan trọng của mạng riêng, bảo mật và quản trị khi triển khai AI trong doanh nghiệp.
+ **Giá trị nhận được:** Mình học được cách vượt qua các chỉ số hạ tầng đơn thuần để giám sát trải nghiệm người dùng end-to-end, hiểu Mô hình Trách nhiệm Phân chia trong bảo mật ứng dụng, và ứng dụng AI Security Agent trong rà soát thiết kế và code review.
 
 ---
 
 ### [Sự kiện 3](4.3-Event3/)
-
- **Tên sự kiện:** AWS Enterprise Cloud Architectures and Industry Applications Study Tour
-
- **Ngày:** 04/07/2026
-
- **Hình thức:** Tham gia trực tuyến
-
- **Vai trò:** Người tham dự
-
- **Nội dung chính:** Xu hướng nghề nghiệp cloud, Data Engineering trong doanh nghiệp, xây dựng mạng lưới nghề nghiệp và tư duy làm việc với AI.
-
- **Giá trị nhận được:** Mình nhận ra rằng kỹ năng kỹ thuật cần đi cùng khả năng giao tiếp, hiểu nghiệp vụ, tinh thần trách nhiệm và sự nhất quán. Mình cũng học được rằng AI nên hỗ trợ kỹ sư, nhưng không thể thay thế kiến thức nền tảng và khả năng kiểm tra kết quả.
-
----
-
-### [Sự kiện 4](4.4-Event4/)
 
  **Tên sự kiện:** FCAJ x Agentic AI Build Week: Show Up. Build. Pitch. WIN!
 
@@ -71,10 +54,10 @@ Mỗi sự kiện mang đến một góc nhìn khác nhau, từ kiến thức n�
 
  **Vai trò:** Người tham dự
 
- **Nội dung chính:** Agentic AI trong bán lẻ, phân tích cạnh tranh, thiết kế kiến trúc cloud, quản lý đám đông và điều tra chống rửa tiền.
+ **Nội dung chính:** Các giải pháp hackathon Agentic AI trong bán lẻ, phân tích thông tin cạnh tranh, thiết kế kiến trúc, quản lý đám đông và điều tra chống rửa tiền (AML).
 
- **Giá trị nhận được:** Mình hiểu thêm về quy trình Agentic AI, bộ nhớ của agent, tool calling, reasoning log, Human-in-the-Loop và quá trình chuyển đổi một proof of concept thành giải pháp có khả năng triển khai trong doanh nghiệp.
+ **Giá trị nhận được:** Mình hiểu rõ hơn về quy trình Agentic AI, bộ nhớ của agent, tool calling, reasoning log, cơ chế Human-in-the-Loop và cách đánh giá một proof of concept trước khi triển khai vào môi trường production.
 
 ---
 
-Thông qua bốn sự kiện, mình đã mở rộng kiến thức về AWS Cloud, AI agent, giám sát hệ thống, bảo mật, Data Engineering và định hướng nghề nghiệp. Đây cũng là cơ hội để mình kết nối kiến thức học thuật với các tình huống thực tế trong doanh nghiệp.
+Thông qua ba sự kiện này, mình đã mở rộng kiến thức kỹ thuật về kiến trúc AWS Cloud, giám sát hệ thống, tự động hóa DevSecOps và các hệ thống Agentic AI, kết nối các khái niệm lý thuyết với các ứng dụng thực tế trong ngành công nghiệp.

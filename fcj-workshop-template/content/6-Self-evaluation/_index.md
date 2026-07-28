@@ -39,10 +39,10 @@ To reflect objectively on my internship performance, I evaluated myself accordin
 |   2 | **Ability to learn**                     | Learning new technologies, understanding instructions, and adapting to unfamiliar tasks                                         |   ☐  |   ✅  |    ☐    |
 |   3 | **Proactiveness**                        | Taking initiative, researching possible solutions, and seeking additional tasks or clarification when necessary                 |   ✅  |   ☐  |    ☐    |
 |   4 | **Sense of responsibility**              | Completing assigned tasks on time, taking ownership of the results, and maintaining work quality                                |   ✅  |   ☐  |    ☐    |
-|   5 | **Discipline**                           | Following schedules, workplace regulations, technical procedures, and organizational processes consistently                     |   ☐  |   ☐  |    ✅    |
-|   6 | **Progressive mindset**                  | Accepting constructive feedback, recognizing weaknesses, and making an effort to improve                                        |   ☐  |   ✅  |    ☐    |
+|   5 | **Discipline**                           | Following schedules, workplace regulations, technical procedures, and organizational processes consistently                     |   ☐  |   ✅  |    ☐    |
+|   6 | **Progressive mindset**                  | Accepting constructive feedback, recognizing weaknesses, and making an effort to improve                                        |  ✅  |  ☐  |      ☐     |
 |   7 | **Communication**                        | Presenting ideas, discussing technical issues, asking clear questions, and reporting progress effectively                       |   ☐  |   ✅  |    ☐    |
-|   8 | **Teamwork**                             | Cooperating with colleagues, sharing information, and contributing positively to group activities                               |   ✅  |   ☐  |    ☐    |
+|   8 | **Teamwork**                             | Cooperating with colleagues, sharing information, and contributing positively to group activities                               |   ☐  |   ✅  |    ☐    |
 |   9 | **Professional conduct**                 | Respecting colleagues, maintaining an appropriate attitude, and behaving responsibly in the workplace                           |   ✅  |   ☐  |    ☐    |
 |  10 | **Problem-solving skills**               | Identifying the causes of problems, evaluating alternatives, and proposing practical solutions                                  |   ☐  |   ✅  |    ☐    |
 |  11 | **Contribution to the project and team** | Producing useful work, completing project deliverables, and contributing ideas or technical improvements                        |   ✅  |   ☐  |    ☐    |

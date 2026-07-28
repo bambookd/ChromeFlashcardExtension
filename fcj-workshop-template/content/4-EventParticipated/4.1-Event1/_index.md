@@ -1,127 +1,87 @@
 ---
-
 title: "Event 1"
-date: 2026-07-26
+date: 2026-06-20
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
---------------------
+---
+
+# Event 1 AWS Cloud Architecture Championship: CLF, SAA & SAP Battle - 20/06/2026
 
 ## 1. Overview
 
-Event 1 included three technical sessions related to AWS Cloud, system monitoring, and application security.
+The **AWS Cloud Architecture Championship** was an interactive competitive event focused on evaluating cloud architectural knowledge, scenario analysis under time pressure, and system design expertise.
 
-The event introduced the AWS Certified Cloud Practitioner examination, explained the importance of monitoring real user activities, and presented AWS Security Agent as a tool for supporting security reviews and automated penetration testing.
+The event brought together **8 competing teams** of cloud engineers, solutions architects, and students to compete through **3 elimination rounds**. The competition was strictly question-based, featuring **10 scenario-based questions per round** (30 questions total) with a progressive difficulty curve across three AWS certification levels: **AWS Certified Cloud Practitioner (CLF-C02)**, **AWS Certified Solutions Architect – Associate (SAA-C03)**, and **AWS Certified Solutions Architect – Professional (SAP-C02)**.
 
-The sessions helped me connect foundational AWS knowledge with practical topics such as cloud operations, incident detection, customer experience, and secure software development.
+Attending this competition as an observer provided deep insights into how experienced engineers analyze complex exam scenarios, evaluate cost versus reliability trade-offs, and choose optimal cloud designs under strict time limits.
+![20-06-2026](/images/4-event/2006.JPG)
 
-## 2. Topics
 
-### 2.1. AWS Cloud Practitioner Examination - Ngo Le Tan Huy
+## 2. Competition Structure & Exam Domains
 
-The AWS Certified Cloud Practitioner examination is a foundational certification that focuses on general AWS concepts and service use cases.
+### 2.1. Event Setup & Competition Format
 
-The examination includes 65 questions, has a duration of 90 minutes, and requires a passing score of 700 out of 1,000.
+The competition featured 8 teams competing in a knockout format across 3 distinct rounds. Each round contained exactly 10 scenario-based questions with a structured ratio of Cloud Practitioner, Solutions Architect Associate, and Solutions Architect Professional questions:
 
-The examination is divided into four domains:
+* **8 Competing Teams**: Formed from university groups, cloud community members, and enterprise builder teams.
+* **3 Knockout Rounds (10 Questions Each)**: 30 total scenario-based questions with a progressive certification tier distribution.
+* **Pure Question-Based Format**: No live whiteboard design or coding; focus was 100% on analyzing complex architectural scenarios and selecting optimal AWS solutions.
 
-* **Cloud Concepts — 24%**
-* **Security and Compliance — 30%**
-* **Cloud Technology and Services — 34%**
-* **Billing, Pricing, and Support — 12%**
+### 2.2. Round 1: 10 Questions — Breakdown: 7 CLF / 2 SAA / 1 SAP
 
-The session introduced important topics such as the AWS Shared Responsibility Model, AWS IAM, cloud pricing, support plans, and common AWS services including EC2, Lambda, S3, RDS, DynamoDB, VPC, and Route 53.
+The opening round tested all 8 teams across **10 scenario questions** with a heavy focus on foundational Cloud Practitioner concepts while introducing associate and professional scenarios:
 
-The speaker recommended learning AWS services through their practical use cases and keywords. Reviewing incorrect mock-test answers was also introduced as an effective preparation method.
+* **7 Cloud Practitioner (CLF-C02) Questions**: AWS Region, Availability Zone, Edge Location benefits, IAM users vs roles, Security Groups, EC2/S3/EFS service selection, AWS Cost Explorer, and AWS Budgets.
+* **2 Solutions Architect Associate (SAA-C03) Questions**: Designing basic public/private VPC subnets and configuring NAT Gateways with Auto Scaling.
+* **1 Solutions Architect Professional (SAP-C02) Question**: Multi-tier application high availability and basic cost optimization.
 
-### 2.2. SLA and Monitoring - Nguyen Huynh Son
+Out of 8 teams, the 4 highest-scoring teams advanced to Round 2.
 
-The central message of this session was:
+### 2.3. Round 2: 10 Questions — Breakdown: 6 CLF / 2 SAA / 2 SAP
 
-**Healthy infrastructure does not always mean a healthy user experience.**
+Round 2 elevated the technical difficulty for the 4 surviving teams, increasing the proportion of advanced architecture questions:
 
-A server may have normal CPU and memory usage while users are still unable to log in or complete important operations.
+* **6 Cloud Practitioner (CLF-C02) Questions**: Advanced Shared Responsibility Model scenarios, IAM role delegation, AWS KMS vs Secrets Manager, and billing alarm configurations.
+* **2 Solutions Architect Associate (SAA-C03) Questions**: Amazon RDS Multi-AZ vs Read Replicas, ALB path-based routing, and S3 Lifecycle transition policies.
+* **2 Solutions Architect Professional (SAP-C02) Questions**: Asynchronous event-driven architectures (SQS, SNS, Lambda) and cross-region data replication.
 
-AWS service SLAs cover individual AWS services, while application owners remain responsible for the complete customer experience.
+The top 2 surviving teams secured their spots in the Grand Final.
 
-The monitoring model included five levels:
+### 2.4. Round 3: 10 Questions — Breakdown: 5 CLF / 2 SAA / 3 SAP
 
-* Cloud provider.
-* Infrastructure.
-* Application.
-* Business.
-* Customer experience.
+The final round pitted the top 2 teams against each other in a high-pressure championship round with the highest concentration of professional-level scenarios:
 
-The live demonstration showed that a health-check endpoint could return a successful response while the login endpoint failed because of a database connection problem.
-
-The session also introduced an alerting flow using a custom metric, Amazon CloudWatch Alarm, Amazon SNS, and email or Slack notifications.
-
-This session demonstrated that monitoring should include user actions such as login, checkout, payment, and search success rather than relying only on infrastructure metrics.
-
-### 2.3. AWS Security Agent - Thinh Nguyen
-
-AWS Security Agent was introduced as an automated security solution powered by Amazon Bedrock.
-
-The solution supports three main activities:
-
-* Design security review.
-* Code security review.
-* Automated penetration testing.
-
-For design reviews, the agent can analyse architecture documents, Markdown files, and Terraform code. It can compare the system design with security frameworks such as PCI DSS, NIST Cybersecurity Framework, and AWS Well-Architected guidance.
-
-For code reviews, the agent can integrate with GitHub or GitLab pull requests, detect vulnerabilities, identify exposed secrets, and suggest code fixes.
-
-For penetration testing, the agent can test running applications, authenticate as a user, attempt multi-step attacks, and provide evidence for verified findings.
-
-The session also discussed several limitations. Authentication methods such as MFA, biometrics, and mutual TLS may block the agent. Complex business-logic vulnerabilities may still require human analysis.
-
-Cost must also be monitored because complex applications can consume many task-hours. Automated security tools can support security professionals, but they do not completely replace human review.
+* **5 Cloud Practitioner (CLF-C02) Questions**: Complex AWS Well-Architected Framework reviews, enterprise support plans, and global service governance.
+* **2 Solutions Architect Associate (SAA-C03) Questions**: Resilient microservices integration, API Gateway throttling, and SQS Dead-Letter Queue (DLQ) error handling.
+* **3 Solutions Architect Professional (SAP-C02) Questions**: Multi-region active-active vs active-passive disaster recovery (**RTO < 5 minutes**, **RPO < 1 minute**), AWS Transit Gateway hybrid routing, and enterprise migration strategies using AWS Migration Hub and DMS.
 
 ## 3. What I Learned
 
-From Event 1, I learned more about AWS certification, application monitoring, and cloud security.
+Observing the AWS Cloud Architecture Championship provided valuable lessons across all three certification tiers:
 
-The AWS Cloud Practitioner session helped me understand the main AWS service categories, the Shared Responsibility Model, security concepts, pricing models, and examination-preparation strategies.
+1. **Evolution Across CLF, SAA, and SAP Mindsets**:
+   * **CLF (Practitioner)** focuses on identifying core AWS services, billing models, and the Shared Responsibility Model.
+   * **SAA (Associate)** focuses on selecting the single best AWS service for a given functional requirement.
+   * **SAP (Professional)** focuses on multi-region enterprise synthesis, complex trade-offs, cost governance, RTO/RPO compliance, and disaster recovery.
 
-The monitoring session taught me that technical metrics alone cannot represent the complete health of an application. Infrastructure metrics are useful for identifying root causes, but business and customer-experience metrics show whether users are actually affected.
+2. **RTO and RPO Trade-offs**:
+   * Scenario questions demonstrated how lower RTO/RPO requirements increase cost and architectural complexity, requiring engineers to balance business impact against cost.
 
-I also learned how Amazon CloudWatch and Amazon SNS can be used to detect failures and notify the responsible team.
+3. **Importance of Asynchronous Decoupling**:
+   * High-availability architecture questions highlighted asynchronous messaging (Amazon SQS), Lambda event processing, and dead-letter queues to prevent cascading system failures.
 
-The AWS Security Agent session helped me understand how security can be included throughout the development lifecycle, from architecture design and code review to testing a deployed application.
-
-I also learned that automated security tools can support developers and security engineers, but they cannot completely replace human review, application context, and cost management.
-
-The event improved my ability to:
-
-* Connect AWS theory with practical scenarios.
-* Evaluate systems from the user's perspective.
-* Consider monitoring, security, and cost during development.
-* Summarise technical presentations.
-* Identify areas that require further study.
+4. **Scenario Analysis under Time Pressure**:
+   * Analyzing exam questions under time limits requires quickly identifying key requirements (e.g., "least operational overhead", "most cost-effective", "highest availability") and eliminating distractors.
 
 ## 4. Feedback
 
-The event was informative and well organised. The speakers explained the topics clearly and used practical examples.
-
-The monitoring demonstration was especially useful because it showed the difference between infrastructure health and user experience.
-
-Future events could include more hands-on exercises and additional time for questions.
+The event was exceptionally engaging, structured, and informative. The question-based format allowed participants and spectators to test their certification readiness across CLF, SAA, and SAP domains.
 
 ## 5. Expectations
 
-After Event 1, I expect to continue improving my AWS knowledge and preparing for AWS certifications.
+After observing Event 1, I plan to:
 
-I also want to apply the monitoring concepts to my internship project by creating metrics for login failures, API errors, study-session completion, and other important user actions.
-
-For security, I expect to review application architecture, infrastructure-as-code templates, and source code earlier in the development process.
-
-Useful future activities could include:
-
-* An AWS Cloud Practitioner mock examination.
-* A practical Amazon CloudWatch lab.
-* An incident-response simulation.
-* A security review of an AWS SAM or Terraform project.
-* A comparison between automated and manual security testing.
-
-These activities would help me improve my cloud, monitoring, incident-response, and application-security skills.
+* Continue studying for the **AWS Certified Cloud Practitioner (CLF-C02)** and **AWS Certified Solutions Architect – Associate (SAA-C03)** certifications.
+* Apply multi-region resilience and asynchronous queue decoupling patterns to my future serverless projects.
+* Practice scenario-based exam questions to improve speed and accuracy in analyzing complex AWS requirements.

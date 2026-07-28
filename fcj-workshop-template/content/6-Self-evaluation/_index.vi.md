@@ -39,10 +39,10 @@ Về thái độ làm việc, mình luôn cố gắng hoàn thành các nhiệm 
 |   2 | **Khả năng học hỏi**                | Học công nghệ mới, hiểu hướng dẫn và thích ứng với những nhiệm vụ chưa quen thuộc                                              |  ☐  |  ✅  |      ☐     |
 |   3 | **Tính chủ động**                   | Chủ động thực hiện công việc, nghiên cứu giải pháp và yêu cầu thêm nhiệm vụ hoặc làm rõ thông tin khi cần thiết                |  ✅  |  ☐  |      ☐     |
 |   4 | **Tinh thần trách nhiệm**           | Hoàn thành nhiệm vụ đúng thời hạn, chịu trách nhiệm đối với kết quả và duy trì chất lượng công việc                            |  ✅  |  ☐  |      ☐     |
-|   5 | **Tính kỷ luật**                    | Tuân thủ lịch trình, quy định nơi làm việc, quy trình kỹ thuật và quy trình tổ chức một cách nhất quán                         |  ☐  |  ☐  |      ✅     |
-|   6 | **Tinh thần cầu tiến**              | Tiếp nhận phản hồi mang tính xây dựng, nhận ra điểm yếu và cố gắng cải thiện                                                   |  ☐  |  ✅  |      ☐     |
+|   5 | **Tính kỷ luật**                    | Tuân thủ lịch trình, quy định nơi làm việc, quy trình kỹ thuật và quy trình tổ chức một cách nhất quán                         |   ☐  |   ✅  |    ☐    |
+|   6 | **Tinh thần cầu tiến**              | Tiếp nhận phản hồi mang tính xây dựng, nhận ra điểm yếu và cố gắng cải thiện                                                   |  ✅  |  ☐  |      ☐     |
 |   7 | **Khả năng giao tiếp**              | Trình bày ý tưởng, thảo luận vấn đề kỹ thuật, đặt câu hỏi rõ ràng và báo cáo tiến độ hiệu quả                                  |  ☐  |  ✅  |      ☐     |
-|   8 | **Khả năng làm việc nhóm**          | Hợp tác với đồng nghiệp, chia sẻ thông tin và đóng góp tích cực vào hoạt động nhóm                                             |  ✅  |  ☐  |      ☐     |
+|   8 | **Khả năng làm việc nhóm**          | Hợp tác với đồng nghiệp, chia sẻ thông tin và đóng góp tích cực vào hoạt động nhóm                                             |   ☐  |   ✅  |    ☐    |
 |   9 | **Tác phong chuyên nghiệp**         | Tôn trọng đồng nghiệp, duy trì thái độ phù hợp và hành xử có trách nhiệm tại nơi làm việc                                      |  ✅  |  ☐  |      ☐     |
 |  10 | **Kỹ năng giải quyết vấn đề**       | Xác định nguyên nhân của vấn đề, đánh giá các phương án và đề xuất giải pháp thực tế                                           |  ☐  |  ✅  |      ☐     |
 |  11 | **Đóng góp cho dự án và nhóm**      | Tạo ra kết quả hữu ích, hoàn thành các sản phẩm bàn giao và đóng góp ý tưởng hoặc cải tiến kỹ thuật                            |  ✅  |  ☐  |      ☐     |

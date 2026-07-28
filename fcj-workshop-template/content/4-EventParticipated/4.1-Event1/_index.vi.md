@@ -1,129 +1,86 @@
 ---
-
 title: "Sự kiện 1"
-date: 2026-07-26
+date: 2026-06-20
 weight: 1
 chapter: false
 pre: " <b> 1. </b> "
---------------------
+---
 
-# Sự kiện 1
+# Sự kiện 1 Cuộc thi Cuộc chiến Kiến trúc AWS Cloud: CLF, SAA & SAP Battle - 20/06/2026
 
 ## 1. Tổng quan
 
-Sự kiện 1 bao gồm ba phiên chia sẻ kỹ thuật liên quan đến AWS Cloud, giám sát hệ thống và bảo mật ứng dụng.
+**AWS Cloud Architecture Championship** là một sự kiện thi đấu đối kháng trực tiếp, tập trung vào việc đánh giá kiến thức kiến trúc cloud, khả năng phân tích kịch bản dưới áp lực thời gian và tư duy thiết kế hệ thống doanh nghiệp.
 
-Sự kiện giới thiệu về kỳ thi AWS Certified Cloud Practitioner, giải thích tầm quan trọng của việc giám sát các hoạt động thực tế của người dùng, đồng thời trình bày AWS Security Agent như một công cụ hỗ trợ rà soát bảo mật và kiểm thử xâm nhập tự động.
+Sự kiện quy tụ **8 đội thi đấu** gồm các kỹ sư cloud, kiến trúc sư giải pháp và sinh viên công nghệ, tranh tài qua **3 vòng loại trực tiếp**. Cuộc thi hoàn toàn dựa trên hình thức câu hỏi kịch bản tình huống với **10 câu hỏi mỗi vòng** (tổng cộng 30 câu hỏi) có tỷ lệ kết hợp tăng dần giữa ba cấp độ chứng chỉ: **AWS Certified Cloud Practitioner (CLF-C02)**, **AWS Certified Solutions Architect – Associate (SAA-C03)**, và **AWS Certified Solutions Architect – Professional (SAP-C02)**.
 
-Các phiên chia sẻ giúp mình kết nối kiến thức nền tảng về AWS với những chủ đề thực tế như vận hành hệ thống đám mây, phát hiện sự cố, trải nghiệm người dùng và phát triển phần mềm an toàn.
+Tham dự sự kiện với vai trò người quan sát mang lại những góc nhìn sâu sắc về cách các kỹ sư có kinh nghiệm phân tích kịch bản đề thi phức tạp, đánh giá các điểm đánh đổi giữa chi phí và độ tin cậy, và lựa chọn giải pháp tối ưu trong thời gian ngắn.
+![20-06-2026](/images/4-event/2006.JPG)
 
-## 2. Các chủ đề
+## 2. Cấu trúc Cuộc thi & Các Miền Kiến thức
 
-### 2.1. Kỳ thi AWS Cloud Practitioner - Ngo Le Tan Huy
+### 2.1. Cấu trúc Sự kiện & Thể thức Thi đấu
 
-AWS Certified Cloud Practitioner là một chứng chỉ nền tảng, tập trung vào các khái niệm tổng quan về AWS và trường hợp sử dụng của các dịch vụ.
+Cuộc thi được tổ chức theo thể thức loại trực tiếp với 8 đội tham gia qua 3 vòng thi. Mỗi vòng chứa đúng 10 câu hỏi trắc nghiệm tình huống có tính giờ với tỷ lệ phân bổ cụ thể giữa các cấp độ chứng chỉ:
 
-Kỳ thi gồm 65 câu hỏi, có thời lượng 90 phút và yêu cầu điểm đạt là 700 trên thang điểm 1.000.
+* **8 Đội thi đấu**: Đến từ các nhóm sinh viên đại học, cộng đồng cloud builder và các nhóm kỹ sư doanh nghiệp.
+* **3 Vòng loại trực tiếp (10 câu hỏi / vòng)**: Tổng cộng 30 câu hỏi kịch bản tình huống với tỷ lệ câu hỏi nâng cao tăng dần.
+* **Hình thức Trả lời Câu hỏi 100%**: Không có phần vẽ sơ đồ hay lập trình trực tiếp; tập trung hoàn toàn vào khả năng phân tích kịch bản và lựa chọn kiến trúc AWS tối ưu.
 
-Nội dung kỳ thi được chia thành bốn lĩnh vực:
+### 2.2. Vòng 1: 10 Câu hỏi — Tỷ lệ: 7 CLF / 2 SAA / 1 SAP
 
-* **Khái niệm về Cloud — 24%**
-* **Bảo mật và tuân thủ — 30%**
-* **Công nghệ và dịch vụ Cloud — 34%**
-* **Thanh toán, định giá và hỗ trợ — 12%**
+Vòng mở màn thử thách cả 8 đội thi với **10 câu hỏi tình huống**, tập trung chủ yếu vào các khái niệm nền tảng của Cloud Practitioner bên cạnh các câu hỏi SAA và SAP cơ bản:
 
-Phiên chia sẻ giới thiệu các chủ đề quan trọng như mô hình Trách nhiệm Chia sẻ của AWS, AWS IAM, định giá dịch vụ đám mây, các gói hỗ trợ và những dịch vụ AWS phổ biến như EC2, Lambda, S3, RDS, DynamoDB, VPC và Route 53.
+* **7 Câu hỏi Cloud Practitioner (CLF-C02)**: Khái niệm AWS Region, Availability Zone, Edge Location, phân biệt IAM user vs role, Security Group, lựa chọn EC2/S3/EFS, AWS Cost Explorer và AWS Budgets.
+* **2 Câu hỏi Solutions Architect Associate (SAA-C03)**: Thiết kế cơ bản subnet public/private trong VPC và cấu hình NAT Gateway với Auto Scaling.
+* **1 Câu hỏi Solutions Architect Professional (SAP-C02)**: Tính sẵn sàng cao của ứng dụng n-tier và tối ưu chi phí cơ bản.
 
-Người trình bày khuyến nghị nên học các dịch vụ AWS thông qua trường hợp sử dụng thực tế và những từ khóa liên quan. Việc xem lại các câu trả lời sai trong bài thi thử cũng được giới thiệu như một phương pháp ôn tập hiệu quả.
+Sau Vòng 1, 4 đội có điểm số cao nhất giành quyền bước vào Vòng 2.
 
-### 2.2. SLA và giám sát hệ thống - Nguyen Huynh Son
+### 2.3. Vòng 2: 10 Câu hỏi — Tỷ lệ: 6 CLF / 2 SAA / 2 SAP
 
-Thông điệp chính của phiên chia sẻ là:
+Vòng 2 nâng cao độ khó kỹ thuật cho 4 đội còn lại, gia tăng tỷ lệ các câu hỏi kiến trúc nâng cao:
 
-**Hạ tầng hoạt động ổn định không đồng nghĩa với trải nghiệm người dùng tốt.**
+* **6 Câu hỏi Cloud Practitioner (CLF-C02)**: Các kịch bản nâng cao về Shared Responsibility Model, ủy quyền IAM role, phân biệt AWS KMS vs Secrets Manager, và cấu hình cảnh báo ngân sách.
+* **2 Câu hỏi Solutions Architect Associate (SAA-C03)**: Amazon RDS Multi-AZ đối chiếu với Read Replica, ALB path-based routing, và quy tắc chuyển đổi vòng đời S3 Lifecycle.
+* **2 Câu hỏi Solutions Architect Professional (SAP-C02)**: Kiến trúc xử lý sự kiện bất đồng bộ (SQS, SNS, Lambda) và sao chép dữ liệu đa vùng.
 
-Một máy chủ có thể có mức sử dụng CPU và bộ nhớ bình thường, trong khi người dùng vẫn không thể đăng nhập hoặc hoàn thành các thao tác quan trọng.
+2 đội xuất sắc nhất đã giành vé vào trận Chung kết.
 
-SLA của AWS chỉ áp dụng cho từng dịch vụ AWS riêng lẻ, trong khi chủ sở hữu ứng dụng vẫn chịu trách nhiệm đối với toàn bộ trải nghiệm của khách hàng.
+### 2.4. Vòng 3: 10 Câu hỏi — Tỷ lệ: 5 CLF / 2 SAA / 3 SAP
 
-Mô hình giám sát bao gồm năm tầng:
+Trận Chung kết là cuộc so tài giữa 2 đội mạnh nhất với tỷ lệ câu hỏi cấp độ chuyên gia (SAP) cao nhất:
 
-* Nhà cung cấp dịch vụ đám mây.
-* Hạ tầng.
-* Ứng dụng.
-* Hoạt động kinh doanh.
-* Trải nghiệm khách hàng.
-
-Phần trình diễn trực tiếp cho thấy một endpoint kiểm tra tình trạng hệ thống vẫn có thể trả về phản hồi thành công, trong khi endpoint đăng nhập lại thất bại do sự cố kết nối cơ sở dữ liệu.
-
-Phiên chia sẻ cũng giới thiệu một quy trình cảnh báo sử dụng custom metric, Amazon CloudWatch Alarm, Amazon SNS và thông báo qua email hoặc Slack.
-
-Phiên này cho thấy việc giám sát cần bao gồm các hành động thực tế của người dùng như đăng nhập, thanh toán, mua hàng và tìm kiếm, thay vì chỉ dựa vào các chỉ số hạ tầng.
-
-### 2.3. AWS Security Agent - Thinh Nguyen
-
-AWS Security Agent được giới thiệu như một giải pháp bảo mật tự động được hỗ trợ bởi Amazon Bedrock.
-
-Giải pháp này hỗ trợ ba hoạt động chính:
-
-* Rà soát bảo mật thiết kế.
-* Rà soát bảo mật mã nguồn.
-* Kiểm thử xâm nhập tự động.
-
-Đối với rà soát thiết kế, agent có thể phân tích tài liệu kiến trúc, tệp Markdown và mã Terraform. Hệ thống có thể so sánh thiết kế với các tiêu chuẩn bảo mật như PCI DSS, NIST Cybersecurity Framework và hướng dẫn AWS Well-Architected.
-
-Đối với rà soát mã nguồn, agent có thể tích hợp với pull request trên GitHub hoặc GitLab, phát hiện lỗ hổng, nhận diện secret bị lộ và đề xuất phương án sửa mã.
-
-Đối với kiểm thử xâm nhập, agent có thể kiểm tra các ứng dụng đang hoạt động, xác thực như một người dùng, thực hiện các chuỗi tấn công nhiều bước và cung cấp bằng chứng cho những lỗ hổng đã được xác minh.
-
-Phiên chia sẻ cũng đề cập đến một số hạn chế. Các phương thức xác thực như MFA, sinh trắc học và mutual TLS có thể ngăn agent truy cập vào ứng dụng. Những lỗ hổng liên quan đến logic nghiệp vụ phức tạp vẫn có thể cần sự phân tích của con người.
-
-Chi phí cũng cần được giám sát vì các ứng dụng phức tạp có thể tiêu tốn nhiều task-hour. Các công cụ bảo mật tự động có thể hỗ trợ chuyên gia bảo mật, nhưng không thể thay thế hoàn toàn việc đánh giá của con người.
+* **5 Câu hỏi Cloud Practitioner (CLF-C02)**: Đánh giá khung kiến trúc AWS Well-Architected Framework phức tạp, các gói AWS Support Plan doanh nghiệp và quản trị dịch vụ toàn cầu.
+* **2 Câu hỏi Solutions Architect Associate (SAA-C03)**: Tích hợp microservices linh hoạt, API Gateway throttling, và xử lý lỗi bằng SQS Dead-Letter Queue (DLQ).
+* **3 Câu hỏi Solutions Architect Professional (SAP-C02)**: Chiến lược khôi phục sau thảm họa đa vùng Active-Active vs Active-Passive (**RTO < 5 phút**, **RPO < 1 phút**), điều hướng lai với AWS Transit Gateway, và chiến lược dịch chuyển ứng dụng doanh nghiệp bằng AWS Migration Hub và DMS.
 
 ## 3. Những điều mình học được
 
-Từ Sự kiện 1, mình học thêm về chứng chỉ AWS, giám sát ứng dụng và bảo mật trên nền tảng đám mây.
+Theo dõi cuộc thi AWS Cloud Architecture Championship mang lại những bài học thực tế trên cả 3 cấp độ chứng chỉ:
 
-Phiên AWS Cloud Practitioner giúp mình hiểu rõ hơn về các nhóm dịch vụ chính của AWS, mô hình Trách nhiệm Chia sẻ, các khái niệm bảo mật, mô hình định giá và chiến lược chuẩn bị cho kỳ thi.
+1. **Sự Phát triển Tư duy giữa CLF, SAA và SAP**:
+   * **CLF (Practitioner)** tập trung vào việc nhận biết dịch vụ AWS cốt lõi, mô hình chi phí và Shared Responsibility Model.
+   * **SAA (Associate)** tập trung vào việc lựa chọn dịch vụ AWS tối ưu nhất cho một yêu cầu chức năng đơn lẻ.
+   * **SAP (Professional)** tập trung vào tổng hợp hệ thống doanh nghiệp đa vùng, đánh giá các điểm đánh đổi phức tạp, quản trị chi phí, tuân thủ RTO/RPO và khôi phục sau thảm họa.
 
-Phiên giám sát hệ thống giúp mình hiểu rằng các chỉ số kỹ thuật không thể phản ánh đầy đủ tình trạng của một ứng dụng. Chỉ số hạ tầng hữu ích trong việc xác định nguyên nhân gốc rễ, nhưng các chỉ số kinh doanh và trải nghiệm người dùng mới cho thấy người dùng có thực sự bị ảnh hưởng hay không.
+2. **Đánh đổi RTO và RPO**:
+   * Các câu hỏi tình huống cho thấy yêu cầu RTO/RPO càng thấp thì chi phí và độ phức tạp kiến trúc càng tăng mạnh, đòi hỏi kỹ sư phải cân đối giữa chi phí và giá trị kinh doanh.
 
-Mình cũng học được cách Amazon CloudWatch và Amazon SNS có thể được sử dụng để phát hiện lỗi và gửi thông báo cho nhóm phụ trách.
+3. **Tầm quan trọng của Xử lý Bất đồng bộ**:
+   * Các câu hỏi về kiến trúc tính sẵn sàng cao nhấn mạnh việc dùng hàng chờ tin nhắn bất đồng bộ (Amazon SQS), xử lý sự kiện Lambda và Dead-Letter Queue để ngăn chặn sự cố sập hệ thống hàng loạt.
 
-Phiên AWS Security Agent giúp mình hiểu cách đưa bảo mật vào toàn bộ vòng đời phát triển phần mềm, từ thiết kế kiến trúc, rà soát mã nguồn cho đến kiểm thử ứng dụng sau khi triển khai.
-
-Mình cũng nhận ra rằng các công cụ bảo mật tự động có thể hỗ trợ lập trình viên và kỹ sư bảo mật, nhưng không thể thay thế hoàn toàn việc đánh giá của con người, sự hiểu biết về ngữ cảnh ứng dụng và hoạt động quản lý chi phí.
-
-Sự kiện giúp mình cải thiện khả năng:
-
-* Kết nối kiến thức AWS với các tình huống thực tế.
-* Đánh giá hệ thống từ góc nhìn của người dùng.
-* Cân nhắc yếu tố giám sát, bảo mật và chi phí trong quá trình phát triển.
-* Tóm tắt các bài trình bày kỹ thuật.
-* Xác định những nội dung cần tiếp tục nghiên cứu.
+4. **Kỹ năng Phân tích Kịch bản dưới Áp lực Thời gian**:
+   * Việc giải các câu hỏi tình huống trong thời gian ngắn đòi hỏi khả năng nhanh chóng nhận biết từ khóa yêu cầu (như "least operational overhead", "most cost-effective", "highest availability") để loại trừ các đáp án không phù hợp.
 
 ## 4. Phản hồi
 
-Sự kiện cung cấp nhiều kiến thức hữu ích và được tổ chức tốt. Các diễn giả giải thích chủ đề rõ ràng và sử dụng những ví dụ thực tế.
-
-Phần trình diễn về giám sát đặc biệt hữu ích vì cho thấy sự khác biệt giữa tình trạng hạ tầng và trải nghiệm thực tế của người dùng.
-
-Các sự kiện trong tương lai có thể bổ sung thêm bài thực hành và dành nhiều thời gian hơn cho phần hỏi đáp.
+Sự kiện được tổ chức rất chuyên nghiệp, lôi cuốn và giàu tính thực tiễn. Hình thức thi đấu tập trung vào câu hỏi giúp người tham dự và quan sát viên đánh giá mức độ sẵn sàng cho các kỳ thi chứng chỉ CLF, SAA và SAP.
 
 ## 5. Kỳ vọng
 
-Sau Sự kiện 1, mình mong muốn sẽ tiếp tục cải thiện kiến thức về AWS và chuẩn bị cho các chứng chỉ AWS.
+Sau khi tham dự Sự kiện 1, mình dự định sẽ:
 
-Mình cũng muốn áp dụng các khái niệm giám sát vào dự án thực tập bằng cách tạo các metric theo dõi lỗi đăng nhập, lỗi API, mức độ hoàn thành phiên học và các hành động quan trọng khác của người dùng.
-
-Về bảo mật, mình kỳ vọng sẽ rà soát kiến trúc ứng dụng, các tệp infrastructure as code và mã nguồn sớm hơn trong quá trình phát triển.
-
-Một số hoạt động hữu ích trong tương lai có thể bao gồm:
-
-* Một bài thi thử AWS Cloud Practitioner.
-* Một buổi thực hành Amazon CloudWatch.
-* Một bài mô phỏng xử lý sự cố.
-* Một buổi rà soát bảo mật dự án AWS SAM hoặc Terraform.
-* Một bài so sánh giữa kiểm thử bảo mật tự động và thủ công.
-
-Những hoạt động này sẽ giúp mình cải thiện kỹ năng về điện toán đám mây, giám sát, ứng phó sự cố và bảo mật ứng dụng.
+* Tiếp tục ôn luyện để chinh phục các chứng chỉ **AWS Certified Cloud Practitioner (CLF-C02)** và **AWS Certified Solutions Architect – Associate (SAA-C03)**.
+* Áp dụng các mô hình dự phòng đa vùng và xử lý hàng chờ bất đồng bộ vào các dự án serverless tiếp theo.
+* Thực hành giải các câu hỏi tình huống để nâng cao tốc độ và độ chính xác khi phân tích yêu cầu AWS phức tạp.
