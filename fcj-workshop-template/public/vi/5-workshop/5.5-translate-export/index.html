@@ -15,21 +15,21 @@
     <title>Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -425,7 +425,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
-  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  title="System Architecture &amp; Design Overview"
   class="dd-item 
         
         
@@ -433,7 +433,7 @@
         "
 >
   <a href="/vi/5-workshop/5.1-workshop-overview/">
-     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -461,7 +461,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
-  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
   class="dd-item 
         
         
@@ -469,7 +469,7 @@
         "
 >
   <a href="/vi/5-workshop/5.3-deploy-backend/">
-     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -515,7 +515,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.6-cleanup/"
-  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  title="Resource Teardown &amp; Operational Verification"
   class="dd-item 
         
         
@@ -523,7 +523,7 @@
         "
 >
   <a href="/vi/5-workshop/5.6-cleanup/">
-     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -750,11 +750,11 @@
 
 	<h4 id="tổng-quan-kiến-trúc--chi-tiết-tích-hợp">Tổng quan Kiến trúc &amp; Chi tiết Tích hợp</h4>
 <p>Phần này chi tiết hóa việc xây dựng ứng dụng <strong>Study Web Application</strong> và giải pháp xuất dữ liệu an toàn (Secure Data Export) áp dụng cơ chế <strong>Amazon S3 Pre-signed URLs</strong> liên kết với tên miền tùy chỉnh <code>axiza.net</code>.</p>
-<h4 id="kiến-trúc-ứng-dụng-web-ôn-tập-study-web-app-architecture">Kiến trúc Ứng dụng Web Ôn tập (Study Web App Architecture)</h4>
-<p>Ứng dụng Study Web App được lưu trữ trên AWS Amplify Hosting kết nối với S3 bucket chứa tập tin giao diện tĩnh, phục vụ thông qua tên miền tùy chỉnh <code>https://axiza.net/study</code> quản lý bởi Amazon Route 53.</p>
+<h4 id="kiến-trúc-ứng-dụng-web-ôn-tập-study-web-app">Kiến trúc Ứng dụng Web Ôn tập (Study Web App)</h4>
+<p>Ứng dụng Web Ôn tập (Study Web App) được lưu trữ trên AWS Amplify Hosting phục vụ qua mạng lưới CDN edge toàn cầu dưới tên miền chuẩn <code>https://www.axiza.net/study/</code> được quản lý bởi Route 53 (với tên miền apex <code>axiza.net</code> tự động điều hướng HTTP/HTTPS sang <code>www.axiza.net</code>).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>User Browser ─── REST API + JWT ───&gt; Route 53 (api.axiza.net) ───&gt; API Gateway ───&gt; AWS Lambda ───&gt; DynamoDB (Flashcards)
 </span></span><span style="display:flex;"><span>     │                                                                                                             │
-</span></span><span style="display:flex;"><span>     └─── Ôn tập thẻ flashcard (https://axiza.net/study) &lt;── Route 53 ──&gt; AWS Amplify Hosting (S3) ────────────────┘
+</span></span><span style="display:flex;"><span>     └─── View Active Recall Flashcards (https://www.axiza.net/study/) &lt;── Route 53 ──&gt; AWS Amplify Hosting (CDN) ──┘
 </span></span></code></pre></div><ol>
 <li><strong>Quản lý Trạng thái Xác thực (Authentication State)</strong>: Người dùng xác thực hệ thống thông qua mã Token JWT cấp phát từ phiên đăng nhập.</li>
 <li><strong>Lọc Danh mục &amp; Hàng chờ Học tập (Study Queue)</strong>: Dữ liệu flashcard lưu trên Amazon DynamoDB được truy vấn nhanh chóng dựa trên Partition Key (<code>userId</code>) kết hợp bộ lọc danh mục.</li>
@@ -1331,7 +1331,7 @@
 			<a class="nav nav-prev" href="/vi/5-workshop/5.4-extension-setup/" title="Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/5-workshop/5.6-cleanup/" title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/5-workshop/5.6-cleanup/" title="Resource Teardown &amp; Operational Verification" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1341,19 +1341,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

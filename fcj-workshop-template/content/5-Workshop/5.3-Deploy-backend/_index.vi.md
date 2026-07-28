@@ -1,33 +1,33 @@
 ---
-title: "Triển khai Backend Serverless & Hạ tầng AWS"
+title: "Serverless Backend Implementation & AWS Deployment"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.3. </b> "
 ---
 
-#### Tổng quan Quy trình Triển khai
+#### Tổng quan
 
-Phần này chi tiết hóa khai báo Hạ tầng dưới dạng Mã (Infrastructure as Code - IaC), quy trình đóng gói serverless stack và các bước triển khai lên nền tảng AWS cho stack `chrome-flashcard-axiza` kết hợp với tên miền tùy chỉnh `axiza.net` thông qua công cụ **AWS SAM (Serverless Application Model)**.
+Phần này mô tả cấu hình Hạ tầng dưới dạng Mã (IaC), quá trình biên dịch serverless stack và quy trình triển khai lên AWS được thực thi thông qua **AWS SAM (Serverless Application Model)** cho stack `chrome-flashcard-axiza` với các tên miền `www.axiza.net` và `api.axiza.net`.
 
-#### Khai báo Hạ tầng dưới dạng Mã (`infra/template.yaml`)
+#### Thông số Kỹ thuật Template Hạ tầng (`infra/template.yaml`)
 
-Toàn bộ hạ tầng serverless được định nghĩa theo chuẩn AWS Serverless Application Model specification. Chi tiết cấu hình tài nguyên chính bao gồm:
+Hạ tầng serverless được định nghĩa sử dụng chuẩn AWS Serverless Application Model. Dưới đây là cấu trúc các tài nguyên chính:
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: Template triển khai backend serverless cho chrome-flashcard-axiza trên axiza.net.
+Description: ChromeFlashcardExtension demo serverless backend stack.
 
 Parameters:
   JwtSecret:
     Type: String
     NoEcho: true
-    Description: Secret key dùng để xác thực chữ ký JWT.
+    Description: Secret key utilized for JWT signature verification.
   AllowedOrigins:
     Type: String
-    Default: "https://axiza.net"
-    Description: Các origin được phép truy cập cho API Gateway CORS validation.
+    Default: "https://www.axiza.net,https://axiza.net,http://axiza.net"
+    Description: Comma-separated origins allowed by backend CORS.
 
 Globals:
   Function:
@@ -42,12 +42,16 @@ Globals:
         CATEGORIES_TABLE: !Ref CategoriesTable
         EXPORT_BUCKET: !Ref ExportBucket
         JWT_SECRET: !Ref JwtSecret
+        ALLOWED_ORIGINS: !Ref AllowedOrigins
         SERVE_STUDY_STATIC: "false"
 
 Resources:
   HttpApi:
     Type: AWS::Serverless::HttpApi
     Properties:
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 40
+        ThrottlingRateLimit: 20
       CorsConfiguration:
         AllowMethods: [GET, POST, PUT, DELETE, OPTIONS]
         AllowHeaders: [Content-Type, Authorization]
@@ -70,48 +74,55 @@ Resources:
             ApiId: !Ref HttpApi
             Path: /{proxy+}
             Method: ANY
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: username
+          AttributeType: S
+      KeySchema:
+        - AttributeName: username
+          KeyType: HASH
 ```
 
-#### Quy trình Xây dựng & Triển khai (Build & Deployment Workflow)
+#### Quy trình Xây dựng & Triển khai
 
-1. **Giai đoạn Đóng gói Tài nguyên (Artifact Compilation Stage)**:
+1. **Giai đoạn Đóng gói Tài nguyên**:
    ```bash
    cd infra
    sam build
    ```
-   AWS SAM kiểm tra tính hợp lệ của `template.yaml`, tự động tải các gói phụ thuộc (production dependencies) và biên dịch gói nén zip tối ưu cho môi trường thực thi Node.js.
+   AWS SAM kiểm tra `template.yaml`, tải các dependency npm sản phẩm và đóng gói file zip tối ưu.
 
-2. **Khởi tạo Stack trên CloudFormation (Provisioning Stage)**:
+2. **Giai đoạn Triển khai CloudFormation Stack**:
    ```bash
    sam deploy --guided
    ```
-   Các tham số cấu hình được thiết lập trong quá trình triển khai:
+   Các tham số đầu vào được cung cấp trong quá trình deploy:
    - **Stack Name**: `chrome-flashcard-axiza`
    - **Target Region**: `ap-southeast-1`
-   - **Parameter JwtSecret**: *(Chuỗi khóa bí mật được bảo mật tại thời điểm triển khai)*
-   - **Parameter AllowedOrigins**: `https://axiza.net`
+   - **Parameter JwtSecret**: *(Chuỗi bảo mật được cung cấp lúc deploy)*
+   - **Parameter AllowedOrigins**: `https://www.axiza.net,https://axiza.net,http://axiza.net`
 
-3. **Cấu hình Tên miền Tùy chỉnh trên Amazon Route 53 (`axiza.net` & `api.axiza.net`)**:
-   Khởi tạo liên kết tên miền tùy chỉnh trong Hosted Zone của Route 53 cho tên miền apex `axiza.net` (điều hướng tới AWS Amplify Hosting) và subdomain `api.axiza.net` (điều hướng tới API Gateway HTTP API):
+3. **Cấu hình Tên miền Tùy chỉnh trên Amazon Route 53 (`www.axiza.net` & `api.axiza.net`)**:
+
+   Để điều hướng `api.axiza.net` tới API Gateway HTTP API, một API Gateway **Custom Domain Name** được tạo trước nhằm sinh ra **Regional Domain Name** (`d-xxxx.execute-api.ap-southeast-1.amazonaws.com`) và **Regional Hosted Zone ID** (`Z2FDTNDATAQYW2`). Bản ghi Route 53 Alias A/AAAA sẽ trỏ tới Regional endpoint này:
+
    ```bash
-   # Điều hướng apex domain axiza.net tới AWS Amplify Hosting
-   aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC \
-     --change-batch '{
-       "Changes": [{
-         "Action": "UPSERT",
-         "ResourceRecordSet": {
-           "Name": "axiza.net",
-           "Type": "A",
-           "AliasTarget": {
-             "HostedZoneId": "Z2FDTNDATAQYW2",
-             "DNSName": "d123456789abcdef.amplifyapp.com",
-             "EvaluateTargetHealth": false
-           }
-         }
-       }]
-     }'
+   # Bước 1: Tạo API Gateway Custom Domain Name sử dụng ACM Certificate
+   aws apigatewayv2 create-domain-name \
+     --domain-name api.axiza.net \
+     --domain-name-configurations TargetDomainName=api.axiza.net,CertificateArn=arn:aws:acm:ap-southeast-1:123456789012:certificate/abc-123,EndpointType=REGIONAL
 
-   # Điều hướng subdomain api.axiza.net tới API Gateway HTTP API
+   # Bước 2: Tạo API Gateway Mapping ($default stage)
+   aws apigatewayv2 create-api-mapping \
+     --domain-name api.axiza.net \
+     --api-id <api-id> \
+     --stage '$default'
+
+   # Bước 3: Route 53 Alias A-record trỏ vào API Gateway Regional Domain Name
    aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC \
      --change-batch '{
        "Changes": [{
@@ -121,33 +132,46 @@ Resources:
            "Type": "A",
            "AliasTarget": {
              "HostedZoneId": "Z2FDTNDATAQYW2",
-             "DNSName": "<api-id>.execute-api.ap-southeast-1.amazonaws.com",
+             "DNSName": "d-xxxx.execute-api.ap-southeast-1.amazonaws.com",
              "EvaluateTargetHealth": false
            }
          }
        }]
      }'
+
+   # Điều hướng tên miền chuẩn www.axiza.net qua CNAME tới AWS Amplify Hosting CDN
+   aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC \
+     --change-batch '{
+       "Changes": [{
+         "Action": "UPSERT",
+         "ResourceRecordSet": {
+           "Name": "www.axiza.net",
+           "Type": "CNAME",
+           "TTL": 300,
+           "ResourceRecords": [{"Value": "d123456789abcdef.amplifyapp.com"}]
+         }
+       }]
+     }'
    ```
 
-4. **Tổng hợp Tài nguyên Đám mây được Khởi tạo (Provisioned Resources Summary)**:
-   - `AWS::Route53::RecordSet` -> Bản ghi Alias A-record điều hướng apex domain `axiza.net` về AWS Amplify Hosting và subdomain `api.axiza.net` về API Gateway.
-   - `AWS::Amplify::App` / Amplify Hosting -> Trình phân phối ứng dụng Web Frontend kết nối S3 bucket, phục vụ giao diện tại `https://axiza.net`.
-   - `AWS::Serverless::HttpApi` -> Cổng REST API Gateway cấu hình tên miền tùy chỉnh `https://api.axiza.net`.
-   - `AWS::Lambda::Function` -> Hàm tính toán serverless gán IAM Role chứa quyền thao tác CRUD trên DynamoDB và S3.
-   - `AWS::DynamoDB::Table` (3 bảng) -> Cơ sở dữ liệu NoSQL gồm `UsersTable`, `FlashcardsTable`, và `CategoriesTable`.
-   - `AWS::S3::Bucket` -> Bucket chứa dữ liệu tĩnh giao diện cho Amplify và Bucket private lưu trữ tập tin xuất dữ liệu.
+4. **Tóm tắt Tài nguyên AWS đã Khởi tạo**:
+   - `AWS::Route53::RecordSet` -> Bản ghi CNAME cho tên miền chuẩn `www.axiza.net` (Amplify CDN distribution) kèm điều hướng apex, và bản ghi Alias A/AAAA cho `api.axiza.net` trỏ tới API Gateway Regional Domain Name.
+   - `AWS::Amplify::App` / Amplify Hosting -> Host ứng dụng web tĩnh phục vụ trực tiếp qua mạng lưới CDN edge toàn cầu dưới tên miền `https://www.axiza.net`.
+   - `AWS::Serverless::HttpApi` -> API Gateway HTTP API backend gắn custom domain `https://api.axiza.net`.
+   - `AWS::Lambda::Function` -> Lambda function được gán IAM role cấp quyền CRUD DynamoDB & S3.
+   - `AWS::DynamoDB::Table` (3 bảng) -> `UsersTable`, `FlashcardsTable`, và `CategoriesTable` hoạt động ở chế độ `PAY_PER_REQUEST`.
+   - `AWS::S3::Bucket` -> Private encrypted S3 export bucket lưu file JSON export với quy tắc vòng đời 7 ngày.
 
-#### Xác minh Vận hành Endpoint Backend (Operational Health Check)
+#### Kiểm tra Vận hành Endpoint
 
-Trạng thái vận hành của hệ thống được xác minh sau khi triển khai bằng cách gửi request kiểm tra sức khỏe (Health Check) tới endpoint thực tế:
+Tính sẵn sàng của hệ thống được xác nhận sau khi triển khai thông qua lệnh health check kiểm tra endpoint thực tế:
 
 ```bash
 curl https://api.axiza.net/api/health
 ```
 
-**Kết quả kỳ vọng (Expected Output)**:
+**Kết quả trả về dự kiến**:
 ```json
 {"ok":true,"service":"flashcard-backend"}
 ```
-
-Kết quả phản hồi xác nhận kết nối HTTPS thông suốt giữa Amazon Route 53, API Gateway, AWS Lambda và tầng ứng dụng backend.
+Kết quả xác nhận kết nối vận hành live giữa Route 53, API Gateway, AWS Lambda và ứng dụng backend.

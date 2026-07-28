@@ -15,21 +15,21 @@
     <title>Báo cáo Workshop :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -425,7 +425,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
-  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  title="System Architecture &amp; Design Overview"
   class="dd-item 
         
         
@@ -433,7 +433,7 @@
         "
 >
   <a href="/vi/5-workshop/5.1-workshop-overview/">
-     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -461,7 +461,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
-  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
   class="dd-item 
         
         
@@ -469,7 +469,7 @@
         "
 >
   <a href="/vi/5-workshop/5.3-deploy-backend/">
-     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -515,7 +515,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.6-cleanup/"
-  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  title="Resource Teardown &amp; Operational Verification"
   class="dd-item 
         
         
@@ -523,7 +523,7 @@
         "
 >
   <a href="/vi/5-workshop/5.6-cleanup/">
-     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -744,8 +744,8 @@
 
 	<h1 id="báo-cáo-kỹ-thuật-chrome-flashcard-extension--nền-tảng-học-tập-serverless-trên-aws">Báo cáo Kỹ thuật: Chrome Flashcard Extension &amp; Nền tảng Học tập Serverless trên AWS</h1>
 <h4 id="tóm-tắt">Tóm tắt</h4>
-<p>Báo cáo này trình bày chi tiết thiết kế kiến trúc, quá trình phát triển và triển khai trên cloud của dự án <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack Name: <code>chrome-flashcard-axiza</code>). Dự án xây dựng một tiện ích mở rộng trình duyệt hoạt động theo mô hình offline-first (Manifest V3) tích hợp với hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website frontend được lưu trữ trên <strong>AWS Amplify Hosting</strong> (kết nối S3 bucket) với tên miền tùy chỉnh <code>axiza.net</code>, trong khi backend API sử dụng tên miền tùy chỉnh <code>api.axiza.net</code>, cả hai đều được quản lý bởi <strong>Amazon Route 53</strong>. Hệ thống cho phép người dùng lưu từ vựng khi đọc trang web, lưu trữ local khi offline, đồng bộ dữ liệu với cơ sở dữ liệu trên cloud và ôn tập flashcard qua một Web App riêng biệt.</p>
-<h4 id="thành-viên-nhóm-thực-hiện">Thành viên Nhóm Thực hiện</h4>
+<p>Báo cáo này trình bày chi tiết thiết kế kiến trúc, quá trình phát triển và triển khai trên cloud của dự án <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack Name: <code>chrome-flashcard-axiza</code>). Dự án xây dựng một tiện ích mở rộng trình duyệt hoạt động theo mô hình offline-first (Manifest V3) tích hợp với hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website Web Application frontend được lưu trữ trên <strong>AWS Amplify Hosting</strong> dưới tên miền chuẩn (canonical domain) <strong><code>https://www.axiza.net</code></strong> (với tên miền apex <code>axiza.net</code> tự động điều hướng HTTP/HTTPS sang <code>www.axiza.net</code>), trong khi backend API sử dụng tên miền tùy chỉnh <strong><code>https://api.axiza.net</code></strong>, cả hai đều được quản lý bởi <strong>Amazon Route 53</strong> cùng chứng chỉ số SSL/TLS cấp phát bởi <strong>AWS Certificate Manager (ACM)</strong>. Hệ thống cho phép người dùng lưu từ vựng khi đọc trang web, lưu trữ local khi offline, đồng bộ dữ liệu với cơ sở dữ liệu trên cloud và ôn tập flashcard qua một Web App riêng biệt.</p>
+<h4 id="thành-viên-nhóm-thực-hiện-workshop">Thành viên Nhóm Thực hiện Workshop</h4>
 <table>
 	<thead>
 			<tr>
@@ -760,7 +760,7 @@
 			</tr>
 			<tr>
 					<td><strong>Nguyễn Nhật Hiếu</strong></td>
-					<td>&lt;&gt;</td>
+					<td>2352330</td>
 			</tr>
 			<tr>
 					<td><strong>Nguyễn Vũ Tường</strong></td>
@@ -770,13 +770,13 @@
 </table>
 <h4 id="dịch-vụ-aws-cốt-lõi">Dịch vụ AWS Cốt lõi</h4>
 <ul>
-<li><strong>Amazon Route 53</strong>: Quản lý các bản ghi DNS công cộng, điều hướng apex domain (<code>axiza.net</code>) tới AWS Amplify Hosting và subdomain API (<code>api.axiza.net</code>) thông qua bản ghi A/AAAA Alias tới API Gateway.</li>
-<li><strong>AWS Certificate Manager (ACM)</strong>: Cấp phát và quản lý chứng chỉ số SSL/TLS công cộng cho <code>axiza.net</code> và <code>api.axiza.net</code>.</li>
-<li><strong>AWS Amplify Hosting</strong>: Phục vụ tài nguyên trang web tĩnh (frontend static assets) lưu trong S3 bucket với tên miền tùy chỉnh <code>axiza.net</code>.</li>
-<li><strong>API Gateway HTTP API</strong>: Đóng vai trò là REST API gateway HTTPS trung tâm cho <code>api.axiza.net</code>, xử lý các request từ client và quản lý chính sách cấp quyền CORS cho <code>https://axiza.net</code>.</li>
+<li><strong>Amazon Route 53</strong>: Quản lý các bản ghi DNS công cộng cho Hosted Zone <code>axiza.net</code>, phục vụ bản ghi CNAME cho tên miền chuẩn <code>www.axiza.net</code>, điều hướng apex domain, và bản ghi A/AAAA Alias trỏ <code>api.axiza.net</code> tới Regional domain endpoint của API Gateway Custom Domain.</li>
+<li><strong>AWS Certificate Manager (ACM)</strong>: Cấp phát và quản lý chứng chỉ số SSL/TLS công cộng cho <code>www.axiza.net</code>, <code>axiza.net</code> và <code>api.axiza.net</code>.</li>
+<li><strong>AWS Amplify Hosting</strong>: Phục vụ trực tiếp tài nguyên trang web tĩnh (frontend static assets) qua mạng lưới CDN edge toàn cầu dưới tên miền <code>www.axiza.net</code>.</li>
+<li><strong>API Gateway HTTP API</strong>: Đóng vai trò là REST API gateway HTTPS trung tâm cho <code>api.axiza.net</code> hỗ trợ giới hạn lưu lượng throttling (20 req/s, burst 40 req/s), xử lý các request từ client và quản lý chính sách cấp quyền CORS cho danh sách allowlist (<code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, <code>chrome-extension://...</code>).</li>
 <li><strong>AWS Lambda</strong>: Thực thi logic ứng dụng cốt lõi trên Node.js runtime và Express.js framework thông qua <code>serverless-http</code>.</li>
-<li><strong>Amazon DynamoDB</strong>: Cơ sở dữ liệu NoSQL lưu trữ thông tin người dùng, bộ sưu tập flashcard và danh mục.</li>
-<li><strong>Amazon S3</strong>: Lưu trữ tài nguyên web tĩnh cho Amplify hosting và chứa file xuất dữ liệu private với pre-signed URL có thời hạn 15 phút.</li>
+<li><strong>Amazon DynamoDB</strong>: Cơ sở dữ liệu NoSQL bền vững hoạt động ở chế độ <code>PAY_PER_REQUEST</code> (On-Demand), lưu trữ thông tin người dùng, bộ sưu tập flashcard và danh mục.</li>
+<li><strong>Amazon S3</strong>: Bucket private mã hóa dành riêng cho việc lưu trữ file xuất dữ liệu JSON với pre-signed GET URL có thời hạn 15 phút.</li>
 </ul>
 <h4 id="sơ-đồ-kiến-trúc-tổng-quan">Sơ đồ Kiến trúc Tổng quan</h4>
 <p><img src="/images/5-Workshop/5.1-Workshop-overview/arch.jpg" alt=""></p>
@@ -1283,7 +1283,7 @@
 			<a class="nav nav-prev" href="/vi/4-eventparticipated/4.4-event4/" title="Sự kiện 4 (Trực tuyến) "> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/5-workshop/5.1-workshop-overview/" title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/5-workshop/5.1-workshop-overview/" title="System Architecture &amp; Design Overview" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1293,19 +1293,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

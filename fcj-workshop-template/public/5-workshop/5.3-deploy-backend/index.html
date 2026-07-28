@@ -15,21 +15,21 @@
     <title>Serverless Backend Implementation &amp; AWS Deployment :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -749,12 +749,12 @@
 
 
 	<h4 id="overview">Overview</h4>
-<p>This section documents the Infrastructure-as-Code (IaC) configuration, serverless stack compilation, and AWS deployment procedure executed via <strong>AWS SAM (Serverless Application Model)</strong> for stack <code>chrome-flashcard-axiza</code> under domain <code>axiza.net</code>.</p>
+<p>This section documents the Infrastructure-as-Code (IaC) configuration, serverless stack compilation, and AWS deployment procedure executed via <strong>AWS SAM (Serverless Application Model)</strong> for stack <code>chrome-flashcard-axiza</code> under domains <code>www.axiza.net</code> and <code>api.axiza.net</code>.</p>
 <h4 id="infrastructure-template-specification-infratemplateyaml">Infrastructure Template Specification (<code>infra/template.yaml</code>)</h4>
 <p>The serverless infrastructure is specified using the AWS Serverless Application Model specification. Below is an overview of the primary resource definitions:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Transform</span>: <span style="color:#ae81ff">AWS::Serverless-2016-10-31</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#ae81ff">ChromeFlashcardExtension production serverless backend stack for axiza.net.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#ae81ff">ChromeFlashcardExtension demo serverless backend stack.</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">JwtSecret</span>:
@@ -763,8 +763,8 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Secret key utilized for JWT signature verification.</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">AllowedOrigins</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Default</span>: <span style="color:#e6db74">&#34;https://axiza.net&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Permitted origins for API Gateway CORS validation.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Default</span>: <span style="color:#e6db74">&#34;https://www.axiza.net,https://axiza.net,http://axiza.net&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Comma-separated origins allowed by backend CORS.</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Globals</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">Function</span>:
@@ -779,12 +779,16 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">CATEGORIES_TABLE</span>: !<span style="color:#ae81ff">Ref CategoriesTable</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">EXPORT_BUCKET</span>: !<span style="color:#ae81ff">Ref ExportBucket</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">JWT_SECRET</span>: !<span style="color:#ae81ff">Ref JwtSecret</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ALLOWED_ORIGINS</span>: !<span style="color:#ae81ff">Ref AllowedOrigins</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">SERVE_STUDY_STATIC</span>: <span style="color:#e6db74">&#34;false&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">HttpApi</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::Serverless::HttpApi</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">DefaultRouteSettings</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ThrottlingBurstLimit</span>: <span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ThrottlingRateLimit</span>: <span style="color:#ae81ff">20</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">CorsConfiguration</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">AllowMethods</span>: [<span style="color:#ae81ff">GET, POST, PUT, DELETE, OPTIONS]</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">AllowHeaders</span>: [<span style="color:#ae81ff">Content-Type, Authorization]</span>
@@ -807,6 +811,17 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">ApiId</span>: !<span style="color:#ae81ff">Ref HttpApi</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">Path</span>: <span style="color:#ae81ff">/{proxy+}</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">Method</span>: <span style="color:#ae81ff">ANY</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">UsersTable</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::DynamoDB::Table</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BillingMode</span>: <span style="color:#ae81ff">PAY_PER_REQUEST</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">AttributeDefinitions</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">AttributeType</span>: <span style="color:#ae81ff">S</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">KeySchema</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">KeyType</span>: <span style="color:#ae81ff">HASH</span>
 </span></span></code></pre></div><h4 id="build--deployment-execution-workflow">Build &amp; Deployment Execution Workflow</h4>
 <ol>
 <li>
@@ -823,30 +838,24 @@
 <li><strong>Stack Name</strong>: <code>chrome-flashcard-axiza</code></li>
 <li><strong>Target Region</strong>: <code>ap-southeast-1</code></li>
 <li><strong>Parameter JwtSecret</strong>: <em>(Secured string provided at deployment time)</em></li>
-<li><strong>Parameter AllowedOrigins</strong>: <code>https://axiza.net</code></li>
+<li><strong>Parameter AllowedOrigins</strong>: <code>https://www.axiza.net,https://axiza.net,http://axiza.net</code></li>
 </ul>
 </li>
 <li>
-<p><strong>Amazon Route 53 Custom Domains Configuration (<code>axiza.net</code> &amp; <code>api.axiza.net</code>)</strong>:
-Create custom domain mappings in Route 53 Hosted Zone for <code>axiza.net</code> (pointing to AWS Amplify Hosting for frontend assets) and <code>api.axiza.net</code> (pointing to API Gateway HTTP API):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Route apex domain axiza.net to AWS Amplify Hosting</span>
-</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;UPSERT&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;axiza.net&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+<p><strong>Amazon Route 53 Custom Domains Configuration (<code>www.axiza.net</code> &amp; <code>api.axiza.net</code>)</strong>:</p>
+<p>To map <code>api.axiza.net</code> to API Gateway HTTP API, an API Gateway <strong>Custom Domain Name</strong> is created first to generate a <strong>Regional Domain Name</strong> (<code>d-xxxx.execute-api.ap-southeast-1.amazonaws.com</code>) and <strong>Regional Hosted Zone ID</strong> (<code>Z2FDTNDATAQYW2</code>). Route 53 Alias A/AAAA records point to this Regional endpoint:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Step 1: Create API Gateway Custom Domain Name using ACM Certificate</span>
+</span></span><span style="display:flex;"><span>aws apigatewayv2 create-domain-name <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name api.axiza.net <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name-configurations TargetDomainName<span style="color:#f92672">=</span>api.axiza.net,CertificateArn<span style="color:#f92672">=</span>arn:aws:acm:ap-southeast-1:123456789012:certificate/abc-123,EndpointType<span style="color:#f92672">=</span>REGIONAL
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Route backend subdomain api.axiza.net to API Gateway HTTP API</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 2: Create API Gateway API Mapping ($default stage)</span>
+</span></span><span style="display:flex;"><span>aws apigatewayv2 create-api-mapping <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name api.axiza.net <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --api-id &lt;api-id&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --stage <span style="color:#e6db74">&#39;$default&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Step 3: Route 53 Alias A-record trỏ vào API Gateway Regional Domain Name</span>
 </span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
@@ -856,9 +865,23 @@ Create custom domain mappings in Route 53 Hosted Zone for <code>axiza.net</code>
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d-xxxx.execute-api.ap-southeast-1.amazonaws.com&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Route canonical frontend domain www.axiza.net via CNAME to AWS Amplify Hosting CDN</span>
+</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;UPSERT&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;www.axiza.net&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;CNAME&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;TTL&#34;: 300,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;ResourceRecords&#34;: [{&#34;Value&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;}]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
@@ -866,12 +889,12 @@ Create custom domain mappings in Route 53 Hosted Zone for <code>axiza.net</code>
 <li>
 <p><strong>Provisioned Cloud Resources Summary</strong>:</p>
 <ul>
-<li><code>AWS::Route53::RecordSet</code> -&gt; Custom domain apex <code>axiza.net</code> routed to AWS Amplify Hosting (S3 static web assets), and subdomain <code>api.axiza.net</code> routed to API Gateway.</li>
-<li><code>AWS::Amplify::App</code> / Amplify Hosting -&gt; Frontend website host connected to S3 bucket, serving UI under <code>https://axiza.net</code>.</li>
-<li><code>AWS::Serverless::HttpApi</code> -&gt; Provisioned API Gateway custom domain endpoint URL: <code>https://api.axiza.net</code>.</li>
+<li><code>AWS::Route53::RecordSet</code> -&gt; CNAME record for canonical frontend domain <code>www.axiza.net</code> (Amplify CDN distribution) with apex HTTP/HTTPS redirection, and Alias A/AAAA record for <code>api.axiza.net</code> routed to API Gateway Regional Domain Name.</li>
+<li><code>AWS::Amplify::App</code> / Amplify Hosting -&gt; Web App host distributing static web assets directly via global CDN edge nodes under <code>https://www.axiza.net</code>.</li>
+<li><code>AWS::Serverless::HttpApi</code> -&gt; Provisioned API Gateway HTTP API backend mapping to custom domain <code>https://api.axiza.net</code>.</li>
 <li><code>AWS::Lambda::Function</code> -&gt; Execution function configured with IAM role granting DynamoDB &amp; S3 CRUD permissions.</li>
-<li><code>AWS::DynamoDB::Table</code> (3 instances) -&gt; <code>UsersTable</code>, <code>FlashcardsTable</code>, and <code>CategoriesTable</code>.</li>
-<li><code>AWS::S3::Bucket</code> -&gt; Private encrypted S3 export bucket with lifecycle expiration rules, plus S3 bucket for Amplify static web assets.</li>
+<li><code>AWS::DynamoDB::Table</code> (3 instances) -&gt; <code>UsersTable</code>, <code>FlashcardsTable</code>, and <code>CategoriesTable</code> operating in <code>PAY_PER_REQUEST</code> mode.</li>
+<li><code>AWS::S3::Bucket</code> -&gt; Private encrypted S3 export bucket dedicated exclusively to JSON data exports with 7-day lifecycle expiration.</li>
 </ul>
 </li>
 </ol>
@@ -1389,19 +1412,19 @@ Create custom domain mappings in Route 53 Hosted Zone for <code>axiza.net</code>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

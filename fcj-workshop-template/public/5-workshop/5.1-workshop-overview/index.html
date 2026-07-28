@@ -15,21 +15,21 @@
     <title>System Architecture &amp; Design Overview :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -749,7 +749,7 @@
 
 
 	<h4 id="executive-summary">Executive Summary</h4>
-<p>This section details the system architecture, component breakdown, and data communication patterns of the <strong>Chrome Flashcard Extension</strong> serverless application (<code>chrome-flashcard-axiza</code>) on Amazon Web Services (AWS). The frontend website is hosted using AWS Amplify pointing to an S3 bucket under the custom domain <code>axiza.net</code> managed by Amazon Route 53, while the backend API utilizes the custom domain <code>api.axiza.net</code> also managed via Amazon Route 53 and mapped to API Gateway HTTP API.</p>
+<p>This section details the system architecture, component breakdown, and data communication patterns of the <strong>Chrome Flashcard Extension</strong> serverless application (<code>chrome-flashcard-axiza</code>) on Amazon Web Services (AWS). The Web Application frontend is hosted on <strong>AWS Amplify Hosting</strong> using its native global CDN distribution under the canonical custom domain <strong><code>https://www.axiza.net</code></strong> (with apex domain <code>axiza.net</code> HTTP/HTTPS redirecting to <code>www.axiza.net</code>), while the backend API utilizes the custom domain <strong><code>https://api.axiza.net</code></strong>, both managed via <strong>Amazon Route 53</strong> with SSL/TLS certificates issued by <strong>AWS Certificate Manager (ACM)</strong>.</p>
 <h4 id="architectural-topology">Architectural Topology</h4>
 <p>The system employs an offline-first design pattern at the client layer coupled with a microservices-inspired serverless topology on AWS:</p>
 <p><img src="/images/5-Workshop/5.1-Workshop-overview/arch.jpg" alt=""></p>
@@ -766,22 +766,22 @@
 			<tr>
 					<td><strong>AWS Amplify Hosting</strong></td>
 					<td>Frontend Website Host</td>
-					<td>Serves frontend static web assets from S3 bucket under custom domain <code>axiza.net</code>.</td>
+					<td>Serves frontend static web assets directly via native global edge nodes under canonical custom domain <code>www.axiza.net</code>.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon Route 53</strong></td>
 					<td>DNS &amp; Domain Routing</td>
-					<td>Manages public DNS records for <code>axiza.net</code>, routing apex domain (<code>axiza.net</code>) to AWS Amplify Hosting and API subdomain (<code>api.axiza.net</code>) via A/AAAA Alias records to API Gateway.</td>
+					<td>Manages public DNS records for Hosted Zone <code>axiza.net</code>, serving a CNAME record for <code>www.axiza.net</code> (Amplify CDN endpoint), apex HTTP/HTTPS redirection (<code>axiza.net</code> $\rightarrow$ <code>www.axiza.net</code>), and an Alias A/AAAA record mapping <code>api.axiza.net</code> to API Gateway Regional Domain Name (<code>d-xxxx.execute-api...</code>).</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Certificate Manager (ACM)</strong></td>
 					<td>SSL/TLS Certificate Management</td>
-					<td>Provisions, manages, and automatically renews public SSL/TLS certificates for custom domains <code>axiza.net</code> and <code>api.axiza.net</code>, ensuring transport layer HTTPS security.</td>
+					<td>Provisions, manages, and automatically renews public SSL/TLS certificates for custom domains <code>www.axiza.net</code>, <code>axiza.net</code>, and <code>api.axiza.net</code>, ensuring transport layer HTTPS security.</td>
 			</tr>
 			<tr>
 					<td><strong>API Gateway HTTP API</strong></td>
 					<td>Public Gateway &amp; Reverse Proxy</td>
-					<td>Enforces HTTPS on custom domain <code>api.axiza.net</code>, manages CORS preflight authorization for allowed origin <code>https://axiza.net</code>, and routes all requests via proxy integration (<code>/{proxy+}</code>) to Lambda.</td>
+					<td>Enforces HTTPS on custom domain <code>api.axiza.net</code>, enforces throttling (20 req/s rate limit, 40 req/s burst limit), manages CORS preflight authorization for allowed origins (<code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, <code>chrome-extension://...</code>), and routes all requests via proxy integration (<code>/{proxy+}</code>) to Lambda.</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
@@ -791,12 +791,12 @@
 			<tr>
 					<td><strong>Amazon DynamoDB</strong></td>
 					<td>Persistent Storage Layer</td>
-					<td>Provisioned/On-demand NoSQL tables: <code>UsersTable</code> (PK: <code>username</code>), <code>FlashcardsTable</code> (PK: <code>userId</code>, SK: <code>cardId</code>), and <code>CategoriesTable</code> (PK: <code>userId</code>, SK: <code>categoryName</code>).</td>
+					<td>Fully managed NoSQL tables in <code>PAY_PER_REQUEST</code> (On-Demand) mode: <code>UsersTable</code> (PK: <code>username</code>), <code>FlashcardsTable</code> (PK: <code>userId</code>, SK: <code>cardId</code>), and <code>CategoriesTable</code> (PK: <code>userId</code>, SK: <code>categoryName</code>).</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
-					<td>Static Web &amp; Encrypted Document Store</td>
-					<td>Bucket for frontend static assets served via Amplify, plus private export bucket holding JSON data exports accessible only via temporary 15-minute pre-signed GET URLs.</td>
+					<td>Private Document Store</td>
+					<td>Private encrypted S3 bucket dedicated exclusively to storing generated JSON data exports accessible via temporary 15-minute pre-signed GET URLs.</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon CloudWatch</strong></td>
@@ -809,7 +809,7 @@
 <ol>
 <li><strong>Vocabulary Acquisition Phase</strong>: The browser extension captures highlighted text via a context menu listener. The content script (<code>contentScript.js</code>) renders an inline modal and persists records locally to <code>chrome.storage.local</code>.</li>
 <li><strong>Cloud Synchronization Phase</strong>: Upon user authentication or explicit sync initiation, the extension transmits accumulated local records via <code>POST https://api.axiza.net/api/sync</code> routed through Route 53 to API Gateway. Lambda verifies JWT credentials and executes batch operations against DynamoDB.</li>
-<li><strong>Interactive Practice Phase</strong>: The Study Web App is hosted via AWS Amplify pointing to S3 at <code>https://axiza.net/study</code> and loads user flashcards from DynamoDB via authenticated REST calls to the backend API (<code>https://api.axiza.net/api/...</code>), managing local study queues and recall scores.</li>
+<li><strong>Interactive Practice Phase</strong>: The Study Web App is hosted via AWS Amplify Hosting at <code>https://www.axiza.net/study/</code> (with apex redirect <code>axiza.net</code> $\rightarrow$ <code>www.axiza.net</code>) and loads user flashcards from DynamoDB via authenticated REST calls to the backend API (<code>https://api.axiza.net/api/...</code>), managing local study queues and recall scores.</li>
 <li><strong>Secure Export Phase</strong>: Export requests trigger Lambda to assemble a structured JSON snapshot, write the file to the private S3 bucket, and return a signed, temporary download link.</li>
 </ol>
 
@@ -1317,19 +1317,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

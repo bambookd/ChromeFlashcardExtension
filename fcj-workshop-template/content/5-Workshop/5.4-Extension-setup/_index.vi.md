@@ -52,7 +52,7 @@ Extension được thiết kế tuân thủ tiêu chuẩn Google Chrome Extensio
    ```javascript
    globalThis.FLASHCARD_CONFIG = {
      API_BASE_URL: "https://api.axiza.net",
-     STUDY_URL: "https://axiza.net/study"
+     STUDY_URL: "https://www.axiza.net/study/"
    };
    ```
 

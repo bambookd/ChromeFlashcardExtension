@@ -15,21 +15,21 @@
     <title>Đề xuất :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -425,7 +425,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
-  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  title="System Architecture &amp; Design Overview"
   class="dd-item 
         
         
@@ -433,7 +433,7 @@
         "
 >
   <a href="/vi/5-workshop/5.1-workshop-overview/">
-     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -461,7 +461,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
-  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
   class="dd-item 
         
         
@@ -469,7 +469,7 @@
         "
 >
   <a href="/vi/5-workshop/5.3-deploy-backend/">
-     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -515,7 +515,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.6-cleanup/"
-  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  title="Resource Teardown &amp; Operational Verification"
   class="dd-item 
         
         
@@ -523,7 +523,7 @@
         "
 >
   <a href="/vi/5-workshop/5.6-cleanup/">
-     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -772,7 +772,7 @@
 
 	<h1 id="đề-xuất-dự-án--kế-hoạch-triển-khai-workshop--serverless-flashcard-platform">Đề xuất Dự án &amp; Kế hoạch Triển khai Workshop — Serverless Flashcard Platform</h1>
 <h3 id="tóm-tắt-tổng-quan">Tóm tắt Tổng quan</h3>
-<p>Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack Name: <code>chrome-flashcard-axiza</code>). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Trang web frontend được lưu trữ trên dịch vụ <strong>AWS Amplify Hosting</strong> (kết nối S3 bucket) dưới tên miền tùy chỉnh <code>axiza.net</code>, trong khi backend API sử dụng tên miền tùy chỉnh <code>api.axiza.net</code>, cả hai đều được quản lý bởi <strong>Amazon Route 53</strong> với chứng chỉ số SSL/TLS cấp phát bởi <strong>AWS Certificate Manager (ACM)</strong>.</p>
+<p>Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack Name: <code>chrome-flashcard-axiza</code>). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website Web Application frontend được lưu trữ trên <strong>AWS Amplify Hosting</strong> dưới tên miền chuẩn (canonical domain) <strong><code>https://www.axiza.net</code></strong> (với tên miền apex <code>axiza.net</code> tự động điều hướng HTTP/HTTPS sang <code>www.axiza.net</code>), trong khi backend API sử dụng tên miền tùy chỉnh <strong><code>https://api.axiza.net</code></strong>, cả hai đều được quản lý bởi <strong>Amazon Route 53</strong> với chứng chỉ số SSL/TLS cấp phát bởi <strong>AWS Certificate Manager (ACM)</strong>.</p>
 <table>
 	<thead>
 			<tr>
@@ -795,7 +795,7 @@
 			</tr>
 			<tr>
 					<td><strong>Tên miền Frontend</strong></td>
-					<td><code>https://axiza.net</code> (AWS Amplify Hosting + Amazon S3)</td>
+					<td><code>https://www.axiza.net</code> (AWS Amplify Hosting CDN edge distribution)</td>
 			</tr>
 			<tr>
 					<td><strong>Tên miền Backend API</strong></td>
@@ -865,37 +865,37 @@
 			<tr>
 					<td><strong>O1</strong></td>
 					<td><strong>Chrome Extension (Manifest V3)</strong></td>
-					<td>Chọn từ $\rightarrow$ Chuột phải $\rightarrow$ Dialog lưu dưới 5 giây với khả năng lưu đệm ngoại tuyến.</td>
+					<td>Chọn từ $\rightarrow$ Chuột phải $\rightarrow$ Dialog lưu dưới 5 giây với khả năng lưu đệm ngoại tuyến trong <code>chrome.storage.local</code>.</td>
 			</tr>
 			<tr>
 					<td><strong>O2</strong></td>
 					<td><strong>Serverless REST API</strong></td>
-					<td>Endpoint HTTPS tại <code>https://api.axiza.net</code> xác thực bằng JWT Token, trả về <code>HTTP 200 OK</code> cho <code>/api/health</code>.</td>
+					<td>Endpoint HTTPS tại <code>https://api.axiza.net</code> xác thực bằng JWT Token, áp dụng throttling (20 req/s rate limit, 40 req/s burst limit), trả về <code>HTTP 200 OK</code> cho <code>/api/health</code>.</td>
 			</tr>
 			<tr>
 					<td><strong>O3</strong></td>
 					<td><strong>Cơ sở Dữ liệu NoSQL Bền vững</strong></td>
-					<td>Các bảng Amazon DynamoDB (<code>UsersTable</code>, <code>FlashcardsTable</code>, <code>CategoriesTable</code>) bảo đảm phân quyền dữ liệu đa người dùng.</td>
+					<td>Các bảng Amazon DynamoDB (<code>UsersTable</code>, <code>FlashcardsTable</code>, <code>CategoriesTable</code>) ở chế độ <code>PAY_PER_REQUEST</code> bảo đảm phân quyền dữ liệu đa người dùng.</td>
 			</tr>
 			<tr>
 					<td><strong>O4</strong></td>
 					<td><strong>Ứng dụng Web Ôn tập (Study App)</strong></td>
-					<td>Frontend lưu trữ trên <strong>AWS Amplify Hosting</strong> tại <code>https://axiza.net/study</code> hỗ trợ thuật toán hàng chờ Active Recall.</td>
+					<td>Frontend lưu trữ trên <strong>AWS Amplify Hosting</strong> tại <code>https://www.axiza.net/study/</code> hỗ trợ thuật toán hàng chờ Active Recall.</td>
 			</tr>
 			<tr>
 					<td><strong>O5</strong></td>
 					<td><strong>Xuất Dữ liệu An toàn</strong></td>
-					<td>File JSON export lưu trữ trên S3 chỉ cho phép tải xuống qua Pre-signed URL thời hạn 15 phút; truy cập URL gốc trả về <code>403 Forbidden</code>.</td>
+					<td>File JSON export lưu trữ trên S3 private mã hóa chỉ cho phép tải xuống qua Pre-signed URL thời hạn 15 phút; truy cập URL gốc trả về <code>403 Forbidden</code>.</td>
 			</tr>
 			<tr>
 					<td><strong>O6</strong></td>
 					<td><strong>Hạ tầng dưới dạng Mã (IaC) &amp; Bảo mật</strong></td>
-					<td>Template AWS SAM tự động (<code>infra/template.yaml</code>) tích hợp chứng chỉ ACM SSL/TLS và bản ghi DNS Route 53.</td>
+					<td>Template AWS SAM tự động (<code>infra/template.yaml</code>) tích hợp chứng chỉ ACM SSL/TLS và bản ghi DNS Route 53 (CNAME cho <code>www</code> &amp; Alias A/AAAA cho <code>api</code>).</td>
 			</tr>
 			<tr>
 					<td><strong>O7</strong></td>
 					<td><strong>Giám sát &amp; Quản lý Chi phí</strong></td>
-					<td>Tích hợp Amazon CloudWatch metrics, quy tắc lưu trữ log 7 ngày và chi phí vận hành dưới $5 USD/tháng.</td>
+					<td>Tích hợp Amazon CloudWatch metrics, quy tắc lưu trữ log 7 ngày và chi phí vận hành dưới $2 USD/tháng.</td>
 			</tr>
 	</tbody>
 </table>
@@ -907,27 +907,27 @@
 </span></span><span style="display:flex;"><span>|  (Manifest V3)        |                                           |  (Hosted Zone: axiza.net)|
 </span></span><span style="display:flex;"><span>+-----------------------+                                           +--------------------------+
 </span></span><span style="display:flex;"><span>            | (Lưu trữ đệm Cục bộ)                                          |               |
-</span></span><span style="display:flex;"><span>+-----------------------+        HTTPS (axiza.net)                          | Alias         | Alias
-</span></span><span style="display:flex;"><span>|  Study &amp; Game Web     |---------------------------------------------------+ (axiza.net)   | (api.axiza.net)
+</span></span><span style="display:flex;"><span>+-----------------------+        HTTPS (www.axiza.net)                      | CNAME         | Alias A/AAAA
+</span></span><span style="display:flex;"><span>|  Study Web App        |---------------------------------------------------+ (www)         | (api)
 </span></span><span style="display:flex;"><span>|  (AWS Amplify Host)   |                                                   v               v
 </span></span><span style="display:flex;"><span>+-----------------------+                                        +-------------------+ +--------------------------+
-</span></span><span style="display:flex;"><span>            |                                                    | AWS Amplify Host  | |  API Gateway (HTTP API)  |
-</span></span><span style="display:flex;"><span>            v (Tài nguyên Tĩnh)                                  +-------------------+ +--------------------------+
-</span></span><span style="display:flex;"><span>+-----------------------+                                                  |                         |
-</span></span><span style="display:flex;"><span>|  Amazon S3 Bucket     |&lt;-------------------------------------------------+                         v
-</span></span><span style="display:flex;"><span>|  (Static Web Assets)  |                                                               +--------------------------+
-</span></span><span style="display:flex;"><span>|                       |                                                               |  AWS Lambda Function     |
-</span></span><span style="display:flex;"><span>+-----------------------+                                                               |  (Node.js Express)       |
-</span></span><span style="display:flex;"><span>                                                                                        +--------------------------+
-</span></span><span style="display:flex;"><span>                                                                                                     |
-</span></span><span style="display:flex;"><span>                                                                                    +-----------------+-----------------+
-</span></span><span style="display:flex;"><span>                                                                                    |                                   |
-</span></span><span style="display:flex;"><span>                                                                                    v                                   v
-</span></span><span style="display:flex;"><span>                                                                          +--------------------+              +--------------------+
-</span></span><span style="display:flex;"><span>                                                                          |  Amazon DynamoDB   |              |  Amazon S3 Bucket  |
-</span></span><span style="display:flex;"><span>                                                                          |  (Users, Cards,    |              |  (Private Export   |
-</span></span><span style="display:flex;"><span>                                                                          |   Categories)      |              |   Pre-signed URLs) |
-</span></span><span style="display:flex;"><span>                                                                          +--------------------+              +--------------------+
+</span></span><span style="display:flex;"><span>            | (Edge CDN)                                         | AWS Amplify Host  | |  API Gateway (HTTP API)  |
+</span></span><span style="display:flex;"><span>            v                                                    +-------------------+ +--------------------------+
+</span></span><span style="display:flex;"><span>+-----------------------+                                                                           |
+</span></span><span style="display:flex;"><span>| Global Edge Network   |                                                                           v
+</span></span><span style="display:flex;"><span>| (Amplify Distribution)|                                                              +--------------------------+
+</span></span><span style="display:flex;"><span>+-----------------------+                                                              |  AWS Lambda Function     |
+</span></span><span style="display:flex;"><span>                                                                                       |  (Node.js Express)       |
+</span></span><span style="display:flex;"><span>                                                                                       +--------------------------+
+</span></span><span style="display:flex;"><span>                                                                                                    |
+</span></span><span style="display:flex;"><span>                                                                                    +---------------+-----------------+
+</span></span><span style="display:flex;"><span>                                                                                    |                                 |
+</span></span><span style="display:flex;"><span>                                                                                    v                                 v
+</span></span><span style="display:flex;"><span>                                                                          +--------------------+            +--------------------+
+</span></span><span style="display:flex;"><span>                                                                          |  Amazon DynamoDB   |            |  Amazon S3 Bucket  |
+</span></span><span style="display:flex;"><span>                                                                          |  (PAY_PER_REQUEST  |            |  (Private Export   |
+</span></span><span style="display:flex;"><span>                                                                          |   On-Demand Mode)  |            |   Pre-signed URLs) |
+</span></span><span style="display:flex;"><span>                                                                          +--------------------+            +--------------------+
 </span></span></code></pre></div><h3 id="lý-do-lựa-chọn-dịch-vụ-aws-aws-service-rationale">Lý do Lựa chọn Dịch vụ AWS (AWS Service Rationale)</h3>
 <table>
 	<thead>
@@ -940,38 +940,38 @@
 	<tbody>
 			<tr>
 					<td><strong>AWS Amplify Hosting</strong></td>
-					<td>Kết nối S3 bucket phân phối giao diện web tĩnh qua CDN toàn cầu dưới tên miền tùy chỉnh <code>axiza.net</code> ổn định và tự động.</td>
-					<td>S3 Static Website Hosting đơn lập (thiếu hỗ trợ HTTPS tùy chỉnh nếu không dùng CloudFront).</td>
+					<td>Serves static web assets qua mạng lưới CDN edge toàn cầu dưới tên miền chuẩn <code>www.axiza.net</code> với hiệu năng cao và tự động hóa CI/CD.</td>
+					<td>S3 Static Website Hosting đơn lập (thiếu hỗ trợ HTTPS tùy chỉnh nếu không kết hợp CloudFront).</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon Route 53</strong></td>
-					<td>Quản lý DNS công cộng độ tin cậy cao cho Hosted Zone <code>axiza.net</code>, phục vụ bản ghi Alias A/AAAA cho cả Amplify và API Gateway.</td>
+					<td>Quản lý DNS công cộng độ tin cậy cao cho Hosted Zone <code>axiza.net</code>, phục vụ bản ghi CNAME cho <code>www.axiza.net</code>, apex redirect, và bản ghi Alias A/AAAA cho API Gateway Custom Domain Name.</td>
 					<td>Trình quản lý DNS bên thứ ba (độ trễ cao hơn và không có tích hợp bản ghi Alias gốc của AWS).</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Certificate Manager (ACM)</strong></td>
-					<td>Tự động cấp phát và gia hạn chứng chỉ số SSL/TLS công cộng cho <code>axiza.net</code> và <code>api.axiza.net</code>.</td>
+					<td>Tự động cấp phát và gia hạn chứng chỉ số SSL/TLS công cộng cho <code>www.axiza.net</code>, <code>axiza.net</code> và <code>api.axiza.net</code>.</td>
 					<td>Chứng chỉ Let&rsquo;s Encrypt thủ công (yêu cầu cấu hình script tự động gia hạn phức tạp).</td>
 			</tr>
 			<tr>
 					<td><strong>API Gateway HTTP API</strong></td>
-					<td>REST API gateway độ trễ thấp, hỗ trợ xác thực CORS preflight và custom domain <code>api.axiza.net</code> với chi phí rẻ hơn 70% so với REST API.</td>
+					<td>REST API gateway độ trễ thấp, hỗ trợ xác thực CORS preflight, rate limit throttling (20 req/s, burst 40 req/s) và custom domain <code>api.axiza.net</code> với chi phí rẻ hơn 70% so với REST API v1.</td>
 					<td>Application Load Balancer (ALB) (phát sinh chi phí duy trì cố định theo giờ ngay cả khi không có traffic).</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
-					<td>Môi trường thực thi Node.js tính toán dạng stateless kết hợp <code>serverless-http</code>. Tự động co giãn về 0 (scale-to-zero) giúp triệt tiêu chi phí khi nhàn rỗi.</td>
+					<td>Môi trường thực thi Node.js 24.x tính toán dạng stateless kết hợp <code>serverless-http</code>. Tự động co giãn về 0 (scale-to-zero) giúp triệt tiêu chi phí khi nhàn rỗi.</td>
 					<td>Máy chủ EC2 / ECS Containers (yêu cầu quản trị hệ điều hành và tính phí liên tục).</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon DynamoDB</strong></td>
-					<td>Cơ sở dữ liệu NoSQL fully-managed với độ trễ truy xuất dưới 10ms. Cấu trúc Partition Key (<code>userId</code>) tối ưu cho truy vấn dữ liệu người dùng.</td>
+					<td>Cơ sở dữ liệu NoSQL fully-managed ở chế độ <code>PAY_PER_REQUEST</code> (On-Demand) với độ trễ truy xuất dưới 10ms. Cấu trúc Partition Key (<code>userId</code>) tối ưu cho truy vấn dữ liệu người dùng.</td>
 					<td>Amazon RDS / PostgreSQL (phức tạp hóa cấu trúc dữ liệu quan hệ và tốn chi phí máy chủ cố định).</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
-					<td>Chiến lược hai S3 bucket: bucket chứa web tĩnh cho Amplify hosting và bucket private lưu file JSON export truy cập qua pre-signed GET URL thời hạn 15 phút.</td>
-					<td>Lưu file export trực tiếp trong DynamoDB (vượt giới hạn dung lượng item và tăng chi phí).</td>
+					<td>Bucket private mã hóa dành riêng cho việc lưu trữ file JSON export truy cập qua pre-signed GET URL thời hạn 15 phút.</td>
+					<td>Lưu file export trực tiếp trong DynamoDB (vượt giới hạn dung lượng item và tăng chi phí read/write).</td>
 			</tr>
 	</tbody>
 </table>
@@ -980,7 +980,7 @@
 <li><strong>Nguyên tắc Quyền tối thiểu (Least Privilege IAM Policies)</strong>: IAM Role thực thi của Lambda được giới hạn chính xác qua các SAM Policy (<code>DynamoDBCrudPolicy</code> cho 3 bảng cụ thể và <code>S3CrudPolicy</code> cho export bucket).</li>
 <li><strong>Xác thực JWT An toàn</strong>: Mọi request đều trích xuất <code>userId</code> trực tiếp từ thông tin token JWT đã qua kiểm tra (<code>req.user.userId</code>). Mọi <code>userId</code> do client tự gửi lên đều bị loại bỏ.</li>
 <li><strong>S3 Block Public Access</strong>: Export S3 bucket kích hoạt toàn bộ tính năng <code>BlockPublicAccess</code>. Tập tin export chỉ được tải xuống bằng URL Pre-signed mã hóa AWS Signature Version 4 có thời hạn 900 giây.</li>
-<li><strong>Chính sách CORS Nghiêm ngặt</strong>: API Gateway áp dụng quy tắc CORS nghiêm ngặt chỉ chấp nhận request đến từ origin <code>https://axiza.net</code> và các extension scheme được cấp phép.</li>
+<li><strong>Chính sách CORS Nghiêm ngặt</strong>: API Gateway áp dụng quy tắc CORS nghiêm ngặt cho danh sách allowlist: <code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, và extension scheme (<code>chrome-extension://...</code>).</li>
 </ul>
 <hr>
 <h2 id="5-lộ-trình-thực-hiện-7-tuần--liên-kết-worklog">5. Lộ trình Thực hiện 7 Tuần &amp; Liên kết Worklog</h2>
@@ -1028,7 +1028,7 @@
 			<tr>
 					<td><strong>Tuần 6</strong></td>
 					<td>20/07 – 26/07/2026</td>
-					<td>Kiểm thử toàn diện, tối ưu hiệu năng, cấu hình tên miền tùy chỉnh (<code>axiza.net</code> &amp; <code>api.axiza.net</code>)</td>
+					<td>Kiểm thử toàn diện, tối ưu hiệu năng, cấu hình tên miền tùy chỉnh (<code>www.axiza.net</code> &amp; <code>api.axiza.net</code>)</td>
 					<td>Điều hướng Custom Domain &amp; Kiểm thử E2E</td>
 			</tr>
 			<tr>
@@ -1053,7 +1053,7 @@
 <h4 id="bài-51-tổng-quan-kiến-trúc--thiết-kế-hệ-thống">Bài 5.1: Tổng quan Kiến trúc &amp; Thiết kế Hệ thống</h4>
 <ul>
 <li><strong>Mục tiêu</strong>: Giới thiệu cho người học về kiến trúc serverless, thiết kế mẫu offline-first và thông số kỹ thuật các thành phần AWS.</li>
-<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc tổng quan, bảng thông số các thành phần AWS (bao gồm ACM, Route 53, Amplify, API Gateway, Lambda, DynamoDB, S3), và phân tích luồng dữ liệu 4 giai đoạn.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc tổng quan, bảng thông số các thành phần AWS (bao gồm ACM, Route 53, Amplify Hosting CDN, API Gateway, Lambda, DynamoDB <code>PAY_PER_REQUEST</code>, S3 private export), và phân tích luồng dữ liệu 4 giai đoạn.</li>
 </ul>
 <h4 id="bài-52-yêu-cầu-môi-trường--thông-số-kỹ-thuật">Bài 5.2: Yêu cầu Môi trường &amp; Thông số Kỹ thuật</h4>
 <ul>
@@ -1063,22 +1063,22 @@
 <h4 id="bài-53-triển-khai-backend-serverless--hạ-tầng-aws">Bài 5.3: Triển khai Backend Serverless &amp; Hạ tầng AWS</h4>
 <ul>
 <li><strong>Mục tiêu</strong>: Triển khai backend serverless bằng AWS SAM và cấu hình điều hướng tên miền tùy chỉnh qua Amazon Route 53.</li>
-<li><strong>Tài liệu Cốt lõi</strong>: Phân tích <code>infra/template.yaml</code>, các lệnh <code>sam build</code> và <code>sam deploy --guided</code>, script CLI tạo bản ghi Alias Route 53 cho <code>axiza.net</code> (Amplify) và <code>api.axiza.net</code> (API Gateway), và kiểm tra endpoint thực tế (<code>curl https://api.axiza.net/api/health</code>).</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Phân tích <code>infra/template.yaml</code>, các lệnh <code>sam build</code> và <code>sam deploy --guided</code>, quy trình tạo API Gateway Custom Domain Name Regional endpoint và bản ghi Route 53 Alias A-record cho <code>api.axiza.net</code>, CNAME cho <code>www.axiza.net</code>, và kiểm tra endpoint thực tế (<code>curl https://api.axiza.net/api/health</code>).</li>
 </ul>
 <h4 id="bài-54-kiến-trúc-chrome-extension--cơ-chế-đồng-bộ-client">Bài 5.4: Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client</h4>
 <ul>
 <li><strong>Mục tiêu</strong>: Cài đặt và cấu hình Chrome Extension Manifest V3, thực hành lưu trữ đệm cục bộ và đồng bộ hàng loạt lên cloud.</li>
-<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc thành phần client, file <code>extension-config.js</code> (<code>API_BASE_URL: &quot;https://api.axiza.net&quot;</code>), cấu trúc JSON local storage, và quy trình đồng bộ cloud (<code>POST /api/sync</code>).</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc thành phần client, file <code>extension-config.js</code> (<code>API_BASE_URL: &quot;https://api.axiza.net&quot;</code>, <code>STUDY_URL: &quot;https://www.axiza.net/study/&quot;</code>), cấu trúc JSON local storage, và quy trình đồng bộ cloud (<code>POST /api/sync</code>).</li>
 </ul>
 <h4 id="bài-55-ứng-dụng-web-ôn-tập--xuất-dữ-liệu">Bài 5.5: Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu</h4>
 <ul>
 <li><strong>Mục tiêu</strong>: Trải nghiệm Study Web App lưu trữ trên AWS Amplify và thực hành xuất dữ liệu an toàn qua Amazon S3 Pre-signed URL.</li>
-<li><strong>Tài liệu Cốt lõi</strong>: Mô hình tích hợp Study App (<code>https://axiza.net/study</code>), thuật toán hàng chờ ôn tập Active Recall, sơ đồ trình tự xuất dữ liệu S3 Pre-signed URL (<code>POST /api/export</code> -&gt; Pre-signed GET URL 15 phút), và kiểm tra bảo mật (<code>403 Forbidden</code> khi truy cập URL gốc S3).</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Mô hình tích hợp Study App (<code>https://www.axiza.net/study/</code>), thuật toán hàng chờ ôn tập Active Recall, sơ đồ trình tự xuất dữ liệu S3 Pre-signed URL (<code>POST /api/export</code> -&gt; Pre-signed GET URL 15 phút), và kiểm tra bảo mật (<code>403 Forbidden</code> khi truy cập URL gốc S3).</li>
 </ul>
 <h4 id="bài-56-giải-phóng-tài-nguyên--đánh-giá-vận-hành">Bài 5.6: Giải phóng Tài nguyên &amp; Đánh giá Vận hành</h4>
 <ul>
-<li><strong>Mục tiêu</strong>: Thực hành hủy triển khai hạ tầng tự động nhằm triệt tiêu phát sinh chi phí sau workshop.</li>
-<li><strong>Tài liệu Cốt lõi</strong>: Lệnh xóa bản ghi Route 53 Alias, dọn dẹp S3 bucket, lệnh hủy stack <code>sam delete --no-prompts</code>, các lệnh kiểm tra xác minh sau vận hành (<code>aws cloudformation describe-stacks</code>, <code>aws dynamodb list-tables</code>), và kết luận tổng kết.</li>
+<li><strong>Mục tiêu</strong>: Hướng dẫn người học quy trình dọn dẹp và hủy triển khai hạ tầng tự động nhằm triệt tiêu phát sinh chi phí sau workshop.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Lệnh xóa bản ghi Route 53 CNAME/Alias, dọn dẹp S3 export bucket, lệnh hủy stack <code>sam delete --no-prompts</code>, các lệnh kiểm tra xác minh sau vận hành (<code>aws cloudformation describe-stacks</code>, <code>aws dynamodb list-tables</code>), và kết luận tổng kết.</li>
 </ul>
 <hr>
 <h2 id="7-quản-lý-chi-phí--ngân-sách-vận-hành">7. Quản lý Chi phí &amp; Ngân sách Vận hành</h2>
@@ -1104,7 +1104,7 @@
 			</tr>
 			<tr>
 					<td><strong>AWS Amplify Hosting</strong></td>
-					<td>Phân phối web tĩnh từ S3</td>
+					<td>Phân phối web tĩnh từ CDN edge</td>
 					<td>$0.00 USD (Trong hạn mức AWS Free Tier)</td>
 			</tr>
 			<tr>
@@ -1114,17 +1114,17 @@
 			</tr>
 			<tr>
 					<td><strong>AWS Certificate Manager (ACM)</strong></td>
-					<td>Chứng chỉ số SSL/TLS công cộng cho <code>axiza.net</code> &amp; <code>api.axiza.net</code></td>
+					<td>Chứng chỉ số SSL/TLS công cộng cho <code>www.axiza.net</code> &amp; <code>api.axiza.net</code></td>
 					<td>$0.00 USD (Miễn phí cho dịch vụ AWS)</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon DynamoDB</strong></td>
-					<td>3 bảng NoSQL (Chế độ On-Demand hoặc 1 RCU / 1 WCU Provisioned)</td>
-					<td>~$0.00 – $1.00 USD</td>
+					<td>3 bảng NoSQL (Chế độ <code>PAY_PER_REQUEST</code> On-Demand)</td>
+					<td>~$0.00 – $0.50 USD</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
-					<td>Bucket chứa web tĩnh + Bucket export private (&lt; 100 MB)</td>
+					<td>Private export bucket (&lt; 100 MB JSON data)</td>
 					<td>&lt; $0.10 USD</td>
 			</tr>
 			<tr>
@@ -1135,14 +1135,14 @@
 			<tr>
 					<td><strong>Tổng Chi phí Dự kiến</strong></td>
 					<td></td>
-					<td><strong>~$0.70 – $1.70 USD / tháng</strong></td>
+					<td><strong>~$0.70 – $1.50 USD / tháng</strong></td>
 			</tr>
 	</tbody>
 </table>
 <h3 id="các-biện-pháp-kiểm-soát-tài-chính-financial-guardrails">Các Biện pháp Kiểm soát Tài chính (Financial Guardrails)</h3>
 <ul>
 <li><strong>Cảnh báo Ngân sách AWS Budgets</strong>: Cấu hình cảnh báo tự động gửi email khi chi phí đạt ngưỡng $1.00 USD và $5.00 USD.</li>
-<li><strong>Giới hạn Lưu lượng API Gateway</strong>: Giới hạn burst rate ở mức 10 req/s và rate limit ở mức 5 req/s.</li>
+<li><strong>Giới hạn Lưu lượng API Gateway</strong>: Giới hạn burst rate ở mức 40 req/s và rate limit ở mức 20 req/s.</li>
 <li><strong>Quy tắc Vòng đời Tài nguyên (Lifecycle Policies)</strong>: Tập tin export trên S3 tự động xóa sau 7 ngày; thời gian lưu trữ log trên CloudWatch Log Group được giới hạn 7 ngày.</li>
 </ul>
 <hr>
@@ -1164,7 +1164,7 @@
 					<td><strong>Lỗi CORS trên Custom Domain</strong></td>
 					<td>Cao</td>
 					<td>Cao</td>
-					<td>Đồng bộ cấu hình origin giữa API Gateway (<code>AllowedOrigins</code>) và Express backend (<code>https://axiza.net</code>). Kiểm thử thực tế trên tên miền thật.</td>
+					<td>Cấu hình allowlist gồm <code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, và extension scheme. Kiểm thử thực tế trên tên miền thật.</td>
 					<td><strong>Đã xử lý</strong></td>
 			</tr>
 			<tr>
@@ -1172,7 +1172,7 @@
 					<td><strong>Trễ Cấp phát Chứng chỉ ACM SSL/TLS</strong></td>
 					<td>Trung bình</td>
 					<td>Trung bình</td>
-					<td>Khởi tạo chứng chỉ ACM public cho <code>axiza.net</code> và <code>*.axiza.net</code> trước khi thực hiện ánh xạ bản ghi Route 53.</td>
+					<td>Khởi tạo chứng chỉ ACM public cho <code>www.axiza.net</code>, <code>axiza.net</code> và <code>api.axiza.net</code> trước khi thực hiện ánh xạ bản ghi Route 53.</td>
 					<td><strong>Đã phòng ngừa</strong></td>
 			</tr>
 			<tr>
@@ -1212,7 +1212,6 @@
 <hr>
 <h2 id="9-định-hướng-phát-triển-trong-tương-lai">9. Định hướng Phát triển trong Tương lai</h2>
 <ol>
-<li><strong>Amazon CloudFront + Origin Access Control (OAC)</strong>: Bổ sung mạng phân phối nội dung toàn cầu CloudFront CDN phía trước S3 nhằm tăng tốc độ tải giao diện web tĩnh hơn nữa.</li>
 <li><strong>Tích hợp Amazon Cognito</strong>: Nâng cấp hệ thống xác thực JWT tùy chỉnh sang Amazon Cognito User Pools nhằm đạt chuẩn OAuth2/OIDC, hỗ trợ Refresh Token và xác thực hai yếu tố (MFA).</li>
 <li><strong>Thuật toán Ghi nhớ Lặp lại Ngắt quãng (Spaced Repetition)</strong>: Nâng cấp thuật toán hàng chờ Active Recall sang thuật toán SuperMemo SM-2 giúp tối ưu hóa khả năng ghi nhớ dài hạn của người học.</li>
 <li><strong>Phát hành trên Chrome Web Store</strong>: Đóng gói extension Manifest V3 cùng bộ tài nguyên cửa hàng để chính thức đăng tải lên Chrome Web Store.</li>
@@ -1721,19 +1720,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

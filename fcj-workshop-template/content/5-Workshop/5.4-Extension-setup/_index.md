@@ -52,7 +52,7 @@ The extension architecture leverages modern Chrome Extension Manifest V3 specifi
    ```javascript
    globalThis.FLASHCARD_CONFIG = {
      API_BASE_URL: "https://api.axiza.net",
-     STUDY_URL: "https://axiza.net/study"
+     STUDY_URL: "https://www.axiza.net/study/"
    };
    ```
 

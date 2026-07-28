@@ -10,14 +10,14 @@ pre: " <b> 5.5. </b> "
 
 Phần này chi tiết hóa việc xây dựng ứng dụng **Study Web Application** và giải pháp xuất dữ liệu an toàn (Secure Data Export) áp dụng cơ chế **Amazon S3 Pre-signed URLs** liên kết với tên miền tùy chỉnh `axiza.net`.
 
-#### Kiến trúc Ứng dụng Web Ôn tập (Study Web App Architecture)
+#### Kiến trúc Ứng dụng Web Ôn tập (Study Web App)
 
-Ứng dụng Study Web App được lưu trữ trên AWS Amplify Hosting kết nối với S3 bucket chứa tập tin giao diện tĩnh, phục vụ thông qua tên miền tùy chỉnh `https://axiza.net/study` quản lý bởi Amazon Route 53.
+Ứng dụng Web Ôn tập (Study Web App) được lưu trữ trên AWS Amplify Hosting phục vụ qua mạng lưới CDN edge toàn cầu dưới tên miền chuẩn `https://www.axiza.net/study/` được quản lý bởi Route 53 (với tên miền apex `axiza.net` tự động điều hướng HTTP/HTTPS sang `www.axiza.net`).
 
 ```text
 User Browser ─── REST API + JWT ───> Route 53 (api.axiza.net) ───> API Gateway ───> AWS Lambda ───> DynamoDB (Flashcards)
      │                                                                                                             │
-     └─── Ôn tập thẻ flashcard (https://axiza.net/study) <── Route 53 ──> AWS Amplify Hosting (S3) ────────────────┘
+     └─── View Active Recall Flashcards (https://www.axiza.net/study/) <── Route 53 ──> AWS Amplify Hosting (CDN) ──┘
 ```
 
 1. **Quản lý Trạng thái Xác thực (Authentication State)**: Người dùng xác thực hệ thống thông qua mã Token JWT cấp phát từ phiên đăng nhập.

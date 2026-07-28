@@ -7,7 +7,7 @@ chapter: false
 pre: " <b> 6. </b> "
 --------------------
 
-Trong thời gian thực tập tại AWS từ **ngày 15 tháng 6 năm 2026 đến ngày 31 tháng 7 năm 2026**, mình có cơ hội áp dụng những kiến thức và kỹ năng đã học tại trường đại học vào môi trường làm việc chuyên nghiệp. Kỳ thực tập cũng giúp mình tích lũy kinh nghiệm thực tế về điện toán đám mây, phát triển ứng dụng serverless, triển khai hệ thống, bảo mật, giám sát và xây dựng tài liệu kỹ thuật.
+Trong thời gian thực tập tại AWS từ **ngày 15 tháng 6 năm 2026 đến ngày 02 tháng 8 năm 2026**, mình có cơ hội áp dụng những kiến thức và kỹ năng đã học tại trường đại học vào môi trường làm việc chuyên nghiệp. Kỳ thực tập cũng giúp mình tích lũy kinh nghiệm thực tế về điện toán đám mây, phát triển ứng dụng serverless, triển khai hệ thống, bảo mật, giám sát và xây dựng tài liệu kỹ thuật.
 
 Dự án chính của mình là phát triển và triển khai **ChromeFlashCardExtension — Nền tảng Flashcard Serverless**. Dự án cung cấp một tiện ích mở rộng cho Chrome, cho phép người dùng lưu lại những từ tiếng Anh chưa biết trong quá trình đọc nội dung trực tuyến và đưa chúng vào hệ thống flashcard trên cloud để ôn tập sau này.
 

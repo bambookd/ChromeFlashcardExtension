@@ -12,12 +12,12 @@ This section details the implementation of the **Study Web Application** and sec
 
 #### Study Web Application Architecture
 
-The Study Web Application is hosted using AWS Amplify pointing to an S3 bucket with static web assets, accessible via the custom domain `https://axiza.net/study` managed by Route 53.
+The Study Web Application is hosted on AWS Amplify Hosting using its native global CDN distribution, accessible via canonical custom domain `https://www.axiza.net/study/` managed by Route 53 (with apex domain `axiza.net` HTTP/HTTPS redirecting to `www.axiza.net`).
 
 ```text
 User Browser ─── REST API + JWT ───> Route 53 (api.axiza.net) ───> API Gateway ───> AWS Lambda ───> DynamoDB (Flashcards)
      │                                                                                                             │
-     └─── View Active Recall Flashcards (https://axiza.net/study) <── Route 53 ──> AWS Amplify Hosting (S3) ───────┘
+     └─── View Active Recall Flashcards (https://www.axiza.net/study/) <── Route 53 ──> AWS Amplify Hosting (CDN) ┘
 ```
 
 1. **Authentication State**: Users authenticate using JWT tokens obtained during login.

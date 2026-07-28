@@ -8,33 +8,30 @@ pre: " <b> 5.6. </b> "
 
 #### Teardown & Operational Summary
 
-This section documents the resource teardown procedures, stack destruction workflow, cost management practices, and post-operational verification steps for the deployed AWS cloud infrastructure (`chrome-flashcard-axiza`) under domain `axiza.net`.
+This section documents the planned resource teardown procedure, stack destruction workflow, cost management practices, and post-operational verification steps for the AWS cloud infrastructure (`chrome-flashcard-axiza`) under domains `www.axiza.net` and `api.axiza.net`.
 
-#### Automated Resource Decommissioning Workflow
+#### Automated Resource Decommissioning Procedure
 
-To prevent unnecessary billing and ensure total resource cleanup upon completion of project evaluation, the following teardown sequence was executed:
+To prevent unnecessary billing and ensure total resource cleanup upon completion of workshop evaluation, the following teardown procedure is designed to be executed:
 
 1. **Route 53 Custom Domains Record Cleanup**:
-   Remove the custom domain Alias record sets (`axiza.net` and `api.axiza.net`) from Route 53 Hosted Zone `axiza.net`:
+   Remove the custom domain record sets (`www.axiza.net` CNAME and `api.axiza.net` Alias A-record) from Route 53 Hosted Zone `axiza.net`:
    ```bash
-   # Remove apex domain axiza.net Alias record
+   # Remove canonical frontend domain www.axiza.net CNAME record
    aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC \
      --change-batch '{
        "Changes": [{
          "Action": "DELETE",
          "ResourceRecordSet": {
-           "Name": "axiza.net",
-           "Type": "A",
-           "AliasTarget": {
-             "HostedZoneId": "Z2FDTNDATAQYW2",
-             "DNSName": "d123456789abcdef.amplifyapp.com",
-             "EvaluateTargetHealth": false
-           }
+           "Name": "www.axiza.net",
+           "Type": "CNAME",
+           "TTL": 300,
+           "ResourceRecords": [{"Value": "d123456789abcdef.amplifyapp.com"}]
          }
        }]
      }'
 
-   # Remove backend subdomain api.axiza.net Alias record
+   # Remove backend subdomain api.axiza.net Alias A-record mapping to API Gateway Regional endpoint
    aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC \
      --change-batch '{
        "Changes": [{
@@ -44,7 +41,7 @@ To prevent unnecessary billing and ensure total resource cleanup upon completion
            "Type": "A",
            "AliasTarget": {
              "HostedZoneId": "Z2FDTNDATAQYW2",
-             "DNSName": "<api-id>.execute-api.ap-southeast-1.amazonaws.com",
+             "DNSName": "d-xxxx.execute-api.ap-southeast-1.amazonaws.com",
              "EvaluateTargetHealth": false
            }
          }
@@ -53,7 +50,7 @@ To prevent unnecessary billing and ensure total resource cleanup upon completion
    ```
 
 2. **Storage Purging Phase**:
-   Prior to CloudFormation stack deletion, all persistent objects within the private S3 bucket and frontend static asset S3 bucket were purged:
+   Prior to CloudFormation stack deletion, all persistent JSON export objects within the private S3 export bucket are purged:
    ```bash
    aws s3 rm s3://<export-bucket-name> --recursive
    ```
@@ -67,40 +64,40 @@ To prevent unnecessary billing and ensure total resource cleanup upon completion
 
 #### Decommissioned Infrastructure Inventory
 
-The automated stack destruction process cleanly removed the following AWS cloud resources:
+Executing the automated stack destruction process will release and remove the following AWS cloud resources:
 
 | AWS Resource | Resource Name / Pattern | Action Taken |
 |---|---|---|
-| **Route 53 Records** | `axiza.net` & `api.axiza.net` | Deleted Alias A-records mapping to AWS Amplify and API Gateway in `axiza.net` hosted zone |
-| **AWS Amplify** | `Amplify App` (`chrome-flashcard-axiza`) | Disassociated domain `axiza.net` and released frontend web host |
-| **API Gateway** | `HttpApi` (`api.axiza.net`) | Terminated custom domain mapping and HTTP endpoints |
+| **Route 53 Records** | `www.axiza.net` & `api.axiza.net` | Delete CNAME record (`www.axiza.net`) and Alias A-record (`api.axiza.net`) in `axiza.net` hosted zone |
+| **AWS Amplify** | `Amplify App` (`chrome-flashcard-axiza`) | Disassociate domain `www.axiza.net` and release frontend web host |
+| **API Gateway** | `HttpApi` (`api.axiza.net`) | Terminate custom domain mapping and HTTP API endpoints |
 | **AWS Lambda** | `ApiFunction` (`chrome-flashcard-axiza-*`) | Function, execution runtime, and IAM Execution Roles deleted |
-| **DynamoDB Tables** | `UsersTable`, `FlashcardsTable`, `CategoriesTable` | Tables destroyed & provisioned RCUs/WCUs released |
-| **Amazon S3** | Static Web Bucket & `ExportBucket` | Bucket policies and storage containers removed |
+| **DynamoDB Tables** | `UsersTable`, `FlashcardsTable`, `CategoriesTable` | Tables destroyed (`PAY_PER_REQUEST` On-Demand billing mode terminated) |
+| **Amazon S3** | Private `ExportBucket` | Private export bucket policies and storage containers removed |
 | **IAM Policies** | Inline SAM policies (`DynamoDBCrudPolicy`, `S3CrudPolicy`) | Role policies detached and deleted |
 
 #### Post-Operational Verification & Auditing
 
-Completion of the teardown process was empirically verified using the AWS CLI:
+Upon completion of the teardown command, post-cleanup verification is conducted using the AWS CLI to confirm complete resource deletion:
 
 1. **CloudFormation Audit**:
    ```bash
    aws cloudformation describe-stacks --stack-name chrome-flashcard-axiza --region ap-southeast-1
    ```
-   **Expected result**: `Stack with id chrome-flashcard-axiza does not exist` (Status confirmed).
+   **Expected result**: `Stack with id chrome-flashcard-axiza does not exist` (Confirms stack removal).
 
 2. **DynamoDB Audit**:
    ```bash
    aws dynamodb list-tables --region ap-southeast-1
    ```
-   **Expected result**: Verified zero remaining project-related table instances.
+   **Expected result**: Confirms zero remaining project-related table instances.
 
 3. **CloudWatch Log Audit**:
    ```bash
    aws logs describe-log-groups --log-group-name-prefix "/aws/lambda/chrome-flashcard" --region ap-southeast-1
    ```
-   **Expected result**: Log groups successfully purged or set to short retention windows, completing system decommissioning.
+   **Expected result**: Confirms deletion or retention expiration of log groups.
 
-#### Project Conclusion
+#### Conclusion & Operational Best Practices
 
-The project successfully demonstrated an **offline-first Chrome Extension (MV3)** combined with frontend hosting on **AWS Amplify** (pointing to S3) under custom domain `axiza.net` managed by **Route 53**, and a scalable, secure **AWS Serverless backend API** mapped to custom domain `api.axiza.net`. System verification confirms operational stability, robust data synchronization, and complete cloud resource lifecycle control.
+The reproducible deployment and teardown process demonstrates the benefits of Infrastructure-as-Code (IaC) via AWS SAM. By managing resources through a declarative template, developers maintain full control over cloud environments, enforce security policies, and ensure clean resource decommissioning without leaving orphan billing assets.

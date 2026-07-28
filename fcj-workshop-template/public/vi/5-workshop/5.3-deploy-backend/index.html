@@ -12,24 +12,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Triển khai Backend Serverless &amp; Hạ tầng AWS :: Báo cáo thực tập</title>
+    <title>Serverless Backend Implementation &amp; AWS Deployment :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -425,7 +425,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
-  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  title="System Architecture &amp; Design Overview"
   class="dd-item 
         
         
@@ -433,7 +433,7 @@
         "
 >
   <a href="/vi/5-workshop/5.1-workshop-overview/">
-     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -461,7 +461,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
-  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
   class="dd-item 
         
         active
@@ -469,7 +469,7 @@
         "
 >
   <a href="/vi/5-workshop/5.3-deploy-backend/">
-     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -515,7 +515,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.6-cleanup/"
-  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  title="Resource Teardown &amp; Operational Verification"
   class="dd-item 
         
         
@@ -523,7 +523,7 @@
         "
 >
   <a href="/vi/5-workshop/5.6-cleanup/">
-     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -705,7 +705,7 @@
             
           
           
-            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/5-workshop/'>Báo cáo Workshop</a> > Triển khai Backend Serverless & Hạ tầng AWS
+            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/5-workshop/'>Báo cáo Workshop</a> > Serverless Backend Implementation & AWS Deployment
           
         
           
@@ -740,7 +740,7 @@
           
             <h1>
               
-              Triển khai Backend Serverless &amp; Hạ tầng AWS
+              Serverless Backend Implementation &amp; AWS Deployment
             </h1>
           
 
@@ -748,23 +748,23 @@
 
 
 
-	<h4 id="tổng-quan-quy-trình-triển-khai">Tổng quan Quy trình Triển khai</h4>
-<p>Phần này chi tiết hóa khai báo Hạ tầng dưới dạng Mã (Infrastructure as Code - IaC), quy trình đóng gói serverless stack và các bước triển khai lên nền tảng AWS cho stack <code>chrome-flashcard-axiza</code> kết hợp với tên miền tùy chỉnh <code>axiza.net</code> thông qua công cụ <strong>AWS SAM (Serverless Application Model)</strong>.</p>
-<h4 id="khai-báo-hạ-tầng-dưới-dạng-mã-infratemplateyaml">Khai báo Hạ tầng dưới dạng Mã (<code>infra/template.yaml</code>)</h4>
-<p>Toàn bộ hạ tầng serverless được định nghĩa theo chuẩn AWS Serverless Application Model specification. Chi tiết cấu hình tài nguyên chính bao gồm:</p>
+	<h4 id="tổng-quan">Tổng quan</h4>
+<p>Phần này mô tả cấu hình Hạ tầng dưới dạng Mã (IaC), quá trình biên dịch serverless stack và quy trình triển khai lên AWS được thực thi thông qua <strong>AWS SAM (Serverless Application Model)</strong> cho stack <code>chrome-flashcard-axiza</code> với các tên miền <code>www.axiza.net</code> và <code>api.axiza.net</code>.</p>
+<h4 id="thông-số-kỹ-thuật-template-hạ-tầng-infratemplateyaml">Thông số Kỹ thuật Template Hạ tầng (<code>infra/template.yaml</code>)</h4>
+<p>Hạ tầng serverless được định nghĩa sử dụng chuẩn AWS Serverless Application Model. Dưới đây là cấu trúc các tài nguyên chính:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">AWSTemplateFormatVersion</span>: <span style="color:#e6db74">&#34;2010-09-09&#34;</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Transform</span>: <span style="color:#ae81ff">AWS::Serverless-2016-10-31</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Template triển khai backend serverless cho chrome-flashcard-axiza trên axiza.net.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Description</span>: <span style="color:#ae81ff">ChromeFlashcardExtension demo serverless backend stack.</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Parameters</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">JwtSecret</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">NoEcho</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Secret key dùng để xác thực chữ ký JWT.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Secret key utilized for JWT signature verification.</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">AllowedOrigins</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">String</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Default</span>: <span style="color:#e6db74">&#34;https://axiza.net&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Các origin được phép truy cập cho API Gateway CORS validation.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Default</span>: <span style="color:#e6db74">&#34;https://www.axiza.net,https://axiza.net,http://axiza.net&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Description</span>: <span style="color:#ae81ff">Comma-separated origins allowed by backend CORS.</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Globals</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">Function</span>:
@@ -779,12 +779,16 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">CATEGORIES_TABLE</span>: !<span style="color:#ae81ff">Ref CategoriesTable</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">EXPORT_BUCKET</span>: !<span style="color:#ae81ff">Ref ExportBucket</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">JWT_SECRET</span>: !<span style="color:#ae81ff">Ref JwtSecret</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ALLOWED_ORIGINS</span>: !<span style="color:#ae81ff">Ref AllowedOrigins</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">SERVE_STUDY_STATIC</span>: <span style="color:#e6db74">&#34;false&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">HttpApi</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::Serverless::HttpApi</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">DefaultRouteSettings</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ThrottlingBurstLimit</span>: <span style="color:#ae81ff">40</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ThrottlingRateLimit</span>: <span style="color:#ae81ff">20</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">CorsConfiguration</span>:
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">AllowMethods</span>: [<span style="color:#ae81ff">GET, POST, PUT, DELETE, OPTIONS]</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">AllowHeaders</span>: [<span style="color:#ae81ff">Content-Type, Authorization]</span>
@@ -807,46 +811,51 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">ApiId</span>: !<span style="color:#ae81ff">Ref HttpApi</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">Path</span>: <span style="color:#ae81ff">/{proxy+}</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">Method</span>: <span style="color:#ae81ff">ANY</span>
-</span></span></code></pre></div><h4 id="quy-trình-xây-dựng--triển-khai-build--deployment-workflow">Quy trình Xây dựng &amp; Triển khai (Build &amp; Deployment Workflow)</h4>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">UsersTable</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::DynamoDB::Table</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">BillingMode</span>: <span style="color:#ae81ff">PAY_PER_REQUEST</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">AttributeDefinitions</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">AttributeType</span>: <span style="color:#ae81ff">S</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">KeySchema</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">AttributeName</span>: <span style="color:#ae81ff">username</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">KeyType</span>: <span style="color:#ae81ff">HASH</span>
+</span></span></code></pre></div><h4 id="quy-trình-xây-dựng--triển-khai">Quy trình Xây dựng &amp; Triển khai</h4>
 <ol>
 <li>
-<p><strong>Giai đoạn Đóng gói Tài nguyên (Artifact Compilation Stage)</strong>:</p>
+<p><strong>Giai đoạn Đóng gói Tài nguyên</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd infra
 </span></span><span style="display:flex;"><span>sam build
-</span></span></code></pre></div><p>AWS SAM kiểm tra tính hợp lệ của <code>template.yaml</code>, tự động tải các gói phụ thuộc (production dependencies) và biên dịch gói nén zip tối ưu cho môi trường thực thi Node.js.</p>
+</span></span></code></pre></div><p>AWS SAM kiểm tra <code>template.yaml</code>, tải các dependency npm sản phẩm và đóng gói file zip tối ưu.</p>
 </li>
 <li>
-<p><strong>Khởi tạo Stack trên CloudFormation (Provisioning Stage)</strong>:</p>
+<p><strong>Giai đoạn Triển khai CloudFormation Stack</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sam deploy --guided
-</span></span></code></pre></div><p>Các tham số cấu hình được thiết lập trong quá trình triển khai:</p>
+</span></span></code></pre></div><p>Các tham số đầu vào được cung cấp trong quá trình deploy:</p>
 <ul>
 <li><strong>Stack Name</strong>: <code>chrome-flashcard-axiza</code></li>
 <li><strong>Target Region</strong>: <code>ap-southeast-1</code></li>
-<li><strong>Parameter JwtSecret</strong>: <em>(Chuỗi khóa bí mật được bảo mật tại thời điểm triển khai)</em></li>
-<li><strong>Parameter AllowedOrigins</strong>: <code>https://axiza.net</code></li>
+<li><strong>Parameter JwtSecret</strong>: <em>(Chuỗi bảo mật được cung cấp lúc deploy)</em></li>
+<li><strong>Parameter AllowedOrigins</strong>: <code>https://www.axiza.net,https://axiza.net,http://axiza.net</code></li>
 </ul>
 </li>
 <li>
-<p><strong>Cấu hình Tên miền Tùy chỉnh trên Amazon Route 53 (<code>axiza.net</code> &amp; <code>api.axiza.net</code>)</strong>:
-Khởi tạo liên kết tên miền tùy chỉnh trong Hosted Zone của Route 53 cho tên miền apex <code>axiza.net</code> (điều hướng tới AWS Amplify Hosting) và subdomain <code>api.axiza.net</code> (điều hướng tới API Gateway HTTP API):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Điều hướng apex domain axiza.net tới AWS Amplify Hosting</span>
-</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;UPSERT&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;axiza.net&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+<p><strong>Cấu hình Tên miền Tùy chỉnh trên Amazon Route 53 (<code>www.axiza.net</code> &amp; <code>api.axiza.net</code>)</strong>:</p>
+<p>Để điều hướng <code>api.axiza.net</code> tới API Gateway HTTP API, một API Gateway <strong>Custom Domain Name</strong> được tạo trước nhằm sinh ra <strong>Regional Domain Name</strong> (<code>d-xxxx.execute-api.ap-southeast-1.amazonaws.com</code>) và <strong>Regional Hosted Zone ID</strong> (<code>Z2FDTNDATAQYW2</code>). Bản ghi Route 53 Alias A/AAAA sẽ trỏ tới Regional endpoint này:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Bước 1: Tạo API Gateway Custom Domain Name sử dụng ACM Certificate</span>
+</span></span><span style="display:flex;"><span>aws apigatewayv2 create-domain-name <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name api.axiza.net <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name-configurations TargetDomainName<span style="color:#f92672">=</span>api.axiza.net,CertificateArn<span style="color:#f92672">=</span>arn:aws:acm:ap-southeast-1:123456789012:certificate/abc-123,EndpointType<span style="color:#f92672">=</span>REGIONAL
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Điều hướng subdomain api.axiza.net tới API Gateway HTTP API</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bước 2: Tạo API Gateway Mapping ($default stage)</span>
+</span></span><span style="display:flex;"><span>aws apigatewayv2 create-api-mapping <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --domain-name api.axiza.net <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --api-id &lt;api-id&gt; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --stage <span style="color:#e6db74">&#39;$default&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bước 3: Route 53 Alias A-record trỏ vào API Gateway Regional Domain Name</span>
 </span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
@@ -856,31 +865,45 @@ Khởi tạo liên kết tên miền tùy chỉnh trong Hosted Zone của Route 
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d-xxxx.execute-api.ap-southeast-1.amazonaws.com&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Điều hướng tên miền chuẩn www.axiza.net qua CNAME tới AWS Amplify Hosting CDN</span>
+</span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;UPSERT&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;www.axiza.net&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;CNAME&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;TTL&#34;: 300,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;ResourceRecords&#34;: [{&#34;Value&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;}]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
 </span></span></code></pre></div></li>
 <li>
-<p><strong>Tổng hợp Tài nguyên Đám mây được Khởi tạo (Provisioned Resources Summary)</strong>:</p>
+<p><strong>Tóm tắt Tài nguyên AWS đã Khởi tạo</strong>:</p>
 <ul>
-<li><code>AWS::Route53::RecordSet</code> -&gt; Bản ghi Alias A-record điều hướng apex domain <code>axiza.net</code> về AWS Amplify Hosting và subdomain <code>api.axiza.net</code> về API Gateway.</li>
-<li><code>AWS::Amplify::App</code> / Amplify Hosting -&gt; Trình phân phối ứng dụng Web Frontend kết nối S3 bucket, phục vụ giao diện tại <code>https://axiza.net</code>.</li>
-<li><code>AWS::Serverless::HttpApi</code> -&gt; Cổng REST API Gateway cấu hình tên miền tùy chỉnh <code>https://api.axiza.net</code>.</li>
-<li><code>AWS::Lambda::Function</code> -&gt; Hàm tính toán serverless gán IAM Role chứa quyền thao tác CRUD trên DynamoDB và S3.</li>
-<li><code>AWS::DynamoDB::Table</code> (3 bảng) -&gt; Cơ sở dữ liệu NoSQL gồm <code>UsersTable</code>, <code>FlashcardsTable</code>, và <code>CategoriesTable</code>.</li>
-<li><code>AWS::S3::Bucket</code> -&gt; Bucket chứa dữ liệu tĩnh giao diện cho Amplify và Bucket private lưu trữ tập tin xuất dữ liệu.</li>
+<li><code>AWS::Route53::RecordSet</code> -&gt; Bản ghi CNAME cho tên miền chuẩn <code>www.axiza.net</code> (Amplify CDN distribution) kèm điều hướng apex, và bản ghi Alias A/AAAA cho <code>api.axiza.net</code> trỏ tới API Gateway Regional Domain Name.</li>
+<li><code>AWS::Amplify::App</code> / Amplify Hosting -&gt; Host ứng dụng web tĩnh phục vụ trực tiếp qua mạng lưới CDN edge toàn cầu dưới tên miền <code>https://www.axiza.net</code>.</li>
+<li><code>AWS::Serverless::HttpApi</code> -&gt; API Gateway HTTP API backend gắn custom domain <code>https://api.axiza.net</code>.</li>
+<li><code>AWS::Lambda::Function</code> -&gt; Lambda function được gán IAM role cấp quyền CRUD DynamoDB &amp; S3.</li>
+<li><code>AWS::DynamoDB::Table</code> (3 bảng) -&gt; <code>UsersTable</code>, <code>FlashcardsTable</code>, và <code>CategoriesTable</code> hoạt động ở chế độ <code>PAY_PER_REQUEST</code>.</li>
+<li><code>AWS::S3::Bucket</code> -&gt; Private encrypted S3 export bucket lưu file JSON export với quy tắc vòng đời 7 ngày.</li>
 </ul>
 </li>
 </ol>
-<h4 id="xác-minh-vận-hành-endpoint-backend-operational-health-check">Xác minh Vận hành Endpoint Backend (Operational Health Check)</h4>
-<p>Trạng thái vận hành của hệ thống được xác minh sau khi triển khai bằng cách gửi request kiểm tra sức khỏe (Health Check) tới endpoint thực tế:</p>
+<h4 id="kiểm-tra-vận-hành-endpoint">Kiểm tra Vận hành Endpoint</h4>
+<p>Tính sẵn sàng của hệ thống được xác nhận sau khi triển khai thông qua lệnh health check kiểm tra endpoint thực tế:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://api.axiza.net/api/health
-</span></span></code></pre></div><p><strong>Kết quả kỳ vọng (Expected Output)</strong>:</p>
+</span></span></code></pre></div><p><strong>Kết quả trả về dự kiến</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;ok&#34;</span>:<span style="color:#66d9ef">true</span>,<span style="color:#f92672">&#34;service&#34;</span>:<span style="color:#e6db74">&#34;flashcard-backend&#34;</span>}
-</span></span></code></pre></div><p>Kết quả phản hồi xác nhận kết nối HTTPS thông suốt giữa Amazon Route 53, API Gateway, AWS Lambda và tầng ứng dụng backend.</p>
+</span></span></code></pre></div><p>Kết quả xác nhận kết nối vận hành live giữa Route 53, API Gateway, AWS Lambda và ứng dụng backend.</p>
 
 
 
@@ -1389,19 +1412,19 @@ Khởi tạo liên kết tên miền tùy chỉnh trong Hosted Zone của Route 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

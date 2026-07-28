@@ -12,24 +12,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Giải phóng Tài nguyên &amp; Đánh giá Vận hành :: Báo cáo thực tập</title>
+    <title>Resource Teardown &amp; Operational Verification :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785217672" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785217672" rel="stylesheet">
-    <link href="/css/hybrid.css?1785217672" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785217672" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785217672" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785217672" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785217672" rel="stylesheet">
-    <link href="/css/theme.css?1785217672" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785217672" rel="stylesheet">
+    <link href="/css/nucleus.css?1785220796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785220796" rel="stylesheet">
+    <link href="/css/hybrid.css?1785220796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785220796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785220796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785220796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785220796" rel="stylesheet">
+    <link href="/css/theme.css?1785220796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785220796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785217672" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785220796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785217672"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785220796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785217672"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785217672"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785220796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785220796"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/workshop-sample.awsfcaj.com\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785217672"></script>
+<script type="text/javascript" src="/js/search.js?1785220796"></script>
  
   </div>
 
@@ -425,7 +425,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
-  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  title="System Architecture &amp; Design Overview"
   class="dd-item 
         
         
@@ -433,7 +433,7 @@
         "
 >
   <a href="/vi/5-workshop/5.1-workshop-overview/">
-     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -461,7 +461,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
-  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
   class="dd-item 
         
         
@@ -469,7 +469,7 @@
         "
 >
   <a href="/vi/5-workshop/5.3-deploy-backend/">
-     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -515,7 +515,7 @@
             
 <li
   data-nav-id="/vi/5-workshop/5.6-cleanup/"
-  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  title="Resource Teardown &amp; Operational Verification"
   class="dd-item 
         
         active
@@ -523,7 +523,7 @@
         "
 >
   <a href="/vi/5-workshop/5.6-cleanup/">
-     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -705,7 +705,7 @@
             
           
           
-            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/5-workshop/'>Báo cáo Workshop</a> > Giải phóng Tài nguyên & Đánh giá Vận hành
+            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/5-workshop/'>Báo cáo Workshop</a> > Resource Teardown & Operational Verification
           
         
           
@@ -740,7 +740,7 @@
           
             <h1>
               
-              Giải phóng Tài nguyên &amp; Đánh giá Vận hành
+              Resource Teardown &amp; Operational Verification
             </h1>
           
 
@@ -748,32 +748,29 @@
 
 
 
-	<h4 id="tóm-tắt-quy-trình-giải-phóng-tài-nguyên--vận-hành">Tóm tắt Quy trình Giải phóng Tài nguyên &amp; Vận hành</h4>
-<p>Phần này chi tiết hóa các bước giải phóng tài nguyên (Teardown Procedures), quy trình hủy stack tự động, quản lý chi phí vận hành và các thao tác kiểm soát (Post-Operational Audit) đối với hạ tầng AWS Cloud đã triển khai cho stack <code>chrome-flashcard-axiza</code> với tên miền tùy chỉnh <code>axiza.net</code>.</p>
-<h4 id="quy-trình-hủy-triển-khai-hạ-tầng-tự-động-automated-decommissioning">Quy trình Hủy Triển khai Hạ tầng Tự động (Automated Decommissioning)</h4>
-<p>Để ngăn ngừa phát sinh chi phí phát sinh ngoài ý muốn và bảo đảm thu hồi toàn bộ tài nguyên đám mây sau khi kết thúc đánh giá dự án, quy trình hủy triển khai được thực thi theo thứ tự:</p>
+	<h4 id="tóm-tắt-quy-trình-giải-phóng-tài-nguyên--đánh-giá-vận-hành">Tóm tắt Quy trình Giải phóng Tài nguyên &amp; Đánh giá Vận hành</h4>
+<p>Phần này tài liệu hóa quy trình giải phóng tài nguyên dự kiến, luồng hủy CloudFormation stack, các biện pháp quản lý chi phí và các bước kiểm tra xác nhận sau khi vận hành đối với hạ tầng đám mây AWS (<code>chrome-flashcard-axiza</code>) dưới các tên miền <code>www.axiza.net</code> và <code>api.axiza.net</code>.</p>
+<h4 id="quy-trình-tự-động-hủy-tài-nguyên-dự-kiến">Quy trình Tự động Hủy Tài nguyên Dự kiến</h4>
+<p>Để tránh phát sinh chi phí không cần thiết và bảo đảm giải phóng hoàn toàn tài nguyên sau khi kết thúc đánh giá workshop, quy trình hủy tài nguyên được thiết kế để thực thi theo các bước sau:</p>
 <ol>
 <li>
-<p><strong>Gỡ bỏ Bản ghi Route 53 Custom Domains</strong>:
-Thu hồi các bản ghi Alias A-record của tên miền tùy chỉnh (<code>axiza.net</code> và <code>api.axiza.net</code>) khỏi Hosted Zone Route 53 <code>axiza.net</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Xóa bản ghi Alias apex domain axiza.net</span>
+<p><strong>Dọn dẹp Bản ghi Tên miền Tùy chỉnh trên Route 53</strong>:
+Xóa các tập bản ghi tên miền tùy chỉnh (bản ghi CNAME <code>www.axiza.net</code> và bản ghi Alias A-record <code>api.axiza.net</code>) khỏi Hosted Zone <code>axiza.net</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Xóa bản ghi CNAME của tên miền chuẩn www.axiza.net</span>
 </span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;Action&#34;: &#34;DELETE&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      &#34;ResourceRecordSet&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;axiza.net&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Name&#34;: &#34;www.axiza.net&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;CNAME&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;TTL&#34;: 300,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;ResourceRecords&#34;: [{&#34;Value&#34;: &#34;d123456789abcdef.amplifyapp.com&#34;}]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    }]
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Xóa bản ghi Alias subdomain api.axiza.net</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Xóa bản ghi Alias A-record của subdomain backend api.axiza.net trỏ vào API Gateway Regional endpoint</span>
 </span></span><span style="display:flex;"><span>aws route53 change-resource-record-sets --hosted-zone-id Z1234567890ABC <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>  --change-batch <span style="color:#e6db74">&#39;{
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;Changes&#34;: [{
@@ -783,7 +780,7 @@ Thu hồi các bản ghi Alias A-record của tên miền tùy chỉnh (<code>ax
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;Type&#34;: &#34;A&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;AliasTarget&#34;: {
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;HostedZoneId&#34;: &#34;Z2FDTNDATAQYW2&#34;,
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;DNSName&#34;: &#34;d-xxxx.execute-api.ap-southeast-1.amazonaws.com&#34;,
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          &#34;EvaluateTargetHealth&#34;: false
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        }
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      }
@@ -791,86 +788,86 @@ Thu hồi các bản ghi Alias A-record của tên miền tùy chỉnh (<code>ax
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  }&#39;</span>
 </span></span></code></pre></div></li>
 <li>
-<p><strong>Dọn dẹp Dữ liệu Lưu trữ (Storage Purging Stage)</strong>:
-Trước khi tiến hành hủy CloudFormation Stack, toàn bộ dữ liệu trong Private S3 Export Bucket và S3 Bucket của Amplify Frontend được xóa hoàn toàn:</p>
+<p><strong>Giai đoạn Xóa Dữ liệu Lưu trữ</strong>:
+Trước khi tiến hành xóa CloudFormation stack, toàn bộ các đối tượng file JSON export trong S3 export bucket private sẽ được dọn sạch:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 rm s3://&lt;export-bucket-name&gt; --recursive
 </span></span></code></pre></div></li>
 <li>
-<p><strong>Hủy Stack CloudFormation (CloudFormation Stack Destruction)</strong>:
-Thực thi lệnh xóa stack từ công cụ AWS SAM CLI để hủy toàn bộ tài nguyên đã được khởi tạo trong <code>template.yaml</code>:</p>
+<p><strong>Thực thi Hủy CloudFormation Stack</strong>:
+Sử dụng lệnh xóa stack của SAM CLI để hủy toàn bộ các tài nguyên đã định nghĩa trong <code>template.yaml</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd infra
 </span></span><span style="display:flex;"><span>sam delete --no-prompts
 </span></span></code></pre></div></li>
 </ol>
-<h4 id="danh-mục-tài-nguyên-hạ-tầng-đã-thu-hồi-decommissioned-infrastructure-inventory">Danh mục Tài nguyên Hạ tầng Đã Thu hồi (Decommissioned Infrastructure Inventory)</h4>
-<p>Quy trình gỡ bỏ tự động đã giải phóng hoàn toàn các tài nguyên đám mây sau:</p>
+<h4 id="danh-mục-hạ-tầng-sẽ-giải-phóng">Danh mục Hạ tầng Sẽ Giải phóng</h4>
+<p>Khi lệnh hủy stack tự động được thực thi, các tài nguyên AWS cloud sau đây sẽ được giải phóng và loại bỏ hoàn toàn:</p>
 <table>
 	<thead>
 			<tr>
 					<th>Tài nguyên AWS</th>
-					<th>Tên / Định danh Tài nguyên</th>
-					<th>Hành động Thu hồi</th>
+					<th>Tên Tài nguyên / Pattern</th>
+					<th>Hành động Thực hiện</th>
 			</tr>
 	</thead>
 	<tbody>
 			<tr>
 					<td><strong>Bản ghi Route 53</strong></td>
-					<td><code>axiza.net</code> &amp; <code>api.axiza.net</code></td>
-					<td>Xóa các bản ghi Alias A-record điều hướng tới AWS Amplify và API Gateway trong Hosted Zone <code>axiza.net</code></td>
+					<td><code>www.axiza.net</code> &amp; <code>api.axiza.net</code></td>
+					<td>Xóa bản ghi CNAME (<code>www.axiza.net</code>) và bản ghi Alias A-record (<code>api.axiza.net</code>) trong hosted zone <code>axiza.net</code></td>
 			</tr>
 			<tr>
 					<td><strong>AWS Amplify</strong></td>
 					<td><code>Amplify App</code> (<code>chrome-flashcard-axiza</code>)</td>
-					<td>Hủy liên kết tên miền <code>axiza.net</code> và thu hồi trình phân phối giao diện web frontend</td>
+					<td>Hủy liên kết tên miền <code>www.axiza.net</code> và giải phóng host ứng dụng web</td>
 			</tr>
 			<tr>
 					<td><strong>API Gateway</strong></td>
 					<td><code>HttpApi</code> (<code>api.axiza.net</code>)</td>
-					<td>Hủy cấu hình tên miền tùy chỉnh và thu hồi các HTTP Endpoints</td>
+					<td>Chấm dứt mapping tên miền tùy chỉnh và hủy các HTTP API endpoint</td>
 			</tr>
 			<tr>
 					<td><strong>AWS Lambda</strong></td>
 					<td><code>ApiFunction</code> (<code>chrome-flashcard-axiza-*</code>)</td>
-					<td>Xóa hàm tính toán, môi trường thực thi và IAM Execution Role</td>
+					<td>Xóa Lambda function, môi trường thực thi và IAM Execution Role</td>
 			</tr>
 			<tr>
-					<td><strong>Bảng DynamoDB</strong></td>
+					<td><strong>DynamoDB Tables</strong></td>
 					<td><code>UsersTable</code>, <code>FlashcardsTable</code>, <code>CategoriesTable</code></td>
-					<td>Xóa hoàn toàn các bảng NoSQL và thu hồi năng lực tính toán RCU/WCU</td>
+					<td>Xóa các bảng NoSQL (chấm dứt chế độ tính phí <code>PAY_PER_REQUEST</code> On-Demand)</td>
 			</tr>
 			<tr>
 					<td><strong>Amazon S3</strong></td>
-					<td>Static Web Bucket &amp; <code>ExportBucket</code></td>
-					<td>Xóa các Bucket Policy và container lưu trữ tập tin</td>
+					<td>Private <code>ExportBucket</code></td>
+					<td>Xóa chính sách bucket và giải phóng container lưu trữ private export</td>
 			</tr>
 			<tr>
 					<td><strong>IAM Policies</strong></td>
 					<td>Inline SAM policies (<code>DynamoDBCrudPolicy</code>, <code>S3CrudPolicy</code>)</td>
-					<td>Gỡ bỏ chính sách truy cập và xóa các vai trò (Roles) tương ứng</td>
+					<td>Gỡ bỏ và xóa các chính sách cấp quyền role</td>
 			</tr>
 	</tbody>
 </table>
-<h4 id="xác-minh--kiểm-soát-sau-vận-hành-post-operational-audit">Xác minh &amp; Kiểm soát Sau Vận hành (Post-Operational Audit)</h4>
-<p>Quy trình giải phóng tài nguyên được xác minh thực tế thông qua bộ công cụ AWS CLI:</p>
+<h4 id="đánh-giá--kiểm-tra-xác-nhận-sau-khi-hủy-tài-nguyên">Đánh giá &amp; Kiểm tra Xác nhận sau khi Hủy Tài nguyên</h4>
+<p>Sau khi thực thi lệnh dọn dẹp, quy trình kiểm tra xác nhận được tiến hành bằng AWS CLI để chứng minh tài nguyên đã được xóa sạch hoàn toàn:</p>
 <ol>
 <li>
-<p><strong>Kiểm soát CloudFormation Stack</strong>:</p>
+<p><strong>Kiểm tra CloudFormation Stack</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws cloudformation describe-stacks --stack-name chrome-flashcard-axiza --region ap-southeast-1
-</span></span></code></pre></div><p><strong>Kết quả kỳ vọng (Expected Output)</strong>: <code>Stack with id chrome-flashcard-axiza does not exist</code> (Xác nhận stack đã bị hủy).</p>
+</span></span></code></pre></div><p><strong>Kết quả dự kiến</strong>: <code>Stack with id chrome-flashcard-axiza does not exist</code> (Xác nhận stack không còn tồn tại).</p>
 </li>
 <li>
-<p><strong>Kiểm soát Bảng DynamoDB</strong>:</p>
+<p><strong>Kiểm tra DynamoDB Tables</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws dynamodb list-tables --region ap-southeast-1
-</span></span></code></pre></div><p><strong>Kết quả kỳ vọng (Expected Output)</strong>: Xác minh không còn bảng dữ liệu nào thuộc về dự án trên AWS Region.</p>
+</span></span></code></pre></div><p><strong>Kết quả dự kiến</strong>: Xác nhận không còn bất kỳ bảng dữ liệu nào của dự án.</p>
 </li>
 <li>
-<p><strong>Kiểm soát Nhật ký CloudWatch Logs</strong>:</p>
+<p><strong>Kiểm tra CloudWatch Log Groups</strong>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws logs describe-log-groups --log-group-name-prefix <span style="color:#e6db74">&#34;/aws/lambda/chrome-flashcard&#34;</span> --region ap-southeast-1
-</span></span></code></pre></div><p><strong>Kết quả kỳ vọng (Expected Output)</strong>: Các nhóm nhật ký đã được dọn dẹp hoặc cài đặt chu kỳ lưu trữ ngắn, hoàn tất toàn bộ quy trình thu hồi hệ thống.</p>
+</span></span></code></pre></div><p><strong>Kết quả dự kiến</strong>: Xác nhận các log group đã bị xóa hoặc hết hạn lưu trữ.</p>
 </li>
 </ol>
-<h4 id="kết-luận">Kết luận</h4>
-<p>Dự án đã chứng minh thành công tính hiệu quả của mô hình <strong>offline-first Chrome Extension (MV3)</strong> tích hợp cùng giao diện frontend lưu trữ trên <strong>AWS Amplify Hosting</strong> (kết nối S3 bucket) phục vụ dưới tên miền tùy chỉnh <code>axiza.net</code> quản lý bởi <strong>Amazon Route 53</strong>, kết hợp với hạ tầng backend API serverless bảo mật, linh hoạt trên tên miền tùy chỉnh <code>api.axiza.net</code>. Đánh giá vận hành khẳng định hệ thống hoạt động ổn định, bảo đảm tính nhất quán dữ liệu và khả năng làm chủ hoàn toàn vòng đời tài nguyên trên đám mây AWS.</p>
+<h4 id="kết-luận--thực-tiễn-vận-hành-đã-rút-ra">Kết luận &amp; Thực tiễn Vận hành Đã rút ra</h4>
+<p>Quy trình triển khai và dọn dẹp có tính lặp lại chứng minh lợi ích vượt trội của Hạ tầng dưới dạng Mã (IaC) thông qua AWS SAM. Việc quản lý toàn bộ tài nguyên qua tệp cấu hình giúp lập trình viên kiểm soát môi trường đám mây, tuân thủ các quy tắc bảo mật và giải phóng tài nguyên một cách an toàn mà không để lại các tài nguyên mồ côi gây phát sinh chi phí.</p>
 
 
 
@@ -1379,19 +1376,19 @@ Thực thi lệnh xóa stack từ công cụ AWS SAM CLI để hủy toàn bộ 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785217672"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785217672"></script>
-    <script src="/js/jquery.sticky.js?1785217672"></script>
-    <script src="/js/featherlight.min.js?1785217672"></script>
-    <script src="/js/highlight.pack.js?1785217672"></script>
+    <script src="/js/clipboard.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785220796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785220796"></script>
+    <script src="/js/jquery.sticky.js?1785220796"></script>
+    <script src="/js/featherlight.min.js?1785220796"></script>
+    <script src="/js/highlight.pack.js?1785220796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785217672"></script>
-    <script src="/js/learn.js?1785217672"></script>
-    <script src="/js/hugo-learn.js?1785217672"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785220796"></script>
+    <script src="/js/learn.js?1785220796"></script>
+    <script src="/js/hugo-learn.js?1785220796"></script>
 
-    <link href="/mermaid/mermaid.css?1785217672" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785217672"></script>
+    <link href="/mermaid/mermaid.css?1785220796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785220796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

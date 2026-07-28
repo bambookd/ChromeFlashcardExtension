@@ -13,7 +13,7 @@ pre: " <b> 1.6. </b> "
 Các mục tiêu cho Tuần 6 bao gồm:
 
 * Kiểm thử toàn diện các luồng công việc (Workflows) end-to-end trên môi trường AWS thực tế.
-* Cấu hình điều hướng tên miền tùy chỉnh trên Amazon Route 53 cho `axiza.net` (AWS Amplify Hosting + S3) và `api.axiza.net` (API Gateway HTTP API).
+* Cấu hình điều hướng tên miền tùy chỉnh trên Amazon Route 53 cho `www.axiza.net` (AWS Amplify Hosting CDN) và `api.axiza.net` (API Gateway HTTP API).
 * Cấp phát chứng chỉ số SSL/TLS công cộng thông qua dịch vụ AWS Certificate Manager (ACM).
 * Xác minh tính giao tiếp bảo mật giữa Chrome Extension (MV3), Study Web App và serverless backend API.
 * Đánh giá thời gian phản hồi hệ thống và tối ưu hóa hiệu năng ứng dụng.

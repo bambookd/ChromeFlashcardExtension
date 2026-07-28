@@ -13,7 +13,7 @@ pre: " <b> 1.6. </b> "
 The objectives for Week 6 were to:
 
 * Test main application workflows end-to-end in the live AWS environment.
-* Configure Amazon Route 53 custom domain mappings for `axiza.net` (AWS Amplify Hosting + S3) and `api.axiza.net` (API Gateway HTTP API).
+* Configure Amazon Route 53 custom domain mappings for `www.axiza.net` (AWS Amplify Hosting CDN) and `api.axiza.net` (API Gateway HTTP API).
 * Provision public SSL/TLS certificates via AWS Certificate Manager (ACM).
 * Verify secure communication between the Chrome extension (MV3), Study web app, and serverless API backend.
 * Evaluate application response times and optimize system performance.
