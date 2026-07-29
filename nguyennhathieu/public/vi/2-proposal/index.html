@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="thienlh@thienlu.com" />
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Đề xuất :: Báo cáo thực tập</title>
+
+    
+    <link href="/css/nucleus.css?1785332145" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785332145" rel="stylesheet">
+    <link href="/css/hybrid.css?1785332145" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785332145" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785332145" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785332145" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785332145" rel="stylesheet">
+    <link href="/css/theme.css?1785332145" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785332145" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1785332145" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1785332145"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="/vi/2-proposal/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#fff;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1785332145"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785332145"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1785332145"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Nhật ký công việc"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/">
+     <b> 1. </b> Nhật ký công việc 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Nhật ký công việc Tuần 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Nhật ký công việc Tuần 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Nhật ký công việc Tuần 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Nhật ký công việc Tuần 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Nhật ký công việc Tuần 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Nhật ký công việc Tuần 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Nhật ký công việc Tuần 4"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Nhật ký công việc Tuần 4 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Nhật ký công việc Tuần 5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Nhật ký công việc Tuần 5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Nhật ký công việc Tuần 6"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Nhật ký công việc Tuần 6 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Nhật ký công việc Tuần 7"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Nhật ký công việc Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Đề xuất"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="/vi/2-proposal/">
+     <b> 2. </b> Đề xuất 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/3-blogsposted/"
+  title="Các blog đã đăng"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/">
+     <b> 3. </b> Các blog đã đăng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.1-blog1/"
+  title="Blog 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.1-blog1/">
+     <b> 3.1. </b> Blog 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.2-blog2/"
+  title="Blog 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.2-blog2/">
+     <b> 3.2. </b> Blog 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.3-blog3/"
+  title="Blog 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.3-blog3/">
+     <b> 3.3 </b> Blog 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/4-eventparticipated/"
+  title="Các sự kiện đã tham gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/">
+     <b> 4. </b> Các sự kiện đã tham gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.1-event1/"
+  title="Sự kiện 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.1-event1/">
+     <b> 1. </b> Sự kiện 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.2-event2/"
+  title="Sự kiện 2 (Trực tuyến)"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.2-event2/">
+     <b> 2. </b> Sự kiện 2 (Trực tuyến) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.3-event3/"
+  title="Sự kiện 3 (Trực tuyến)"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.3-event3/">
+     <b> 3. </b> Sự kiện 3 (Trực tuyến) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.4-event4/"
+  title="Sự kiện 4 (Trực tuyến)"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.4-event4/">
+     <b> 4. </b> Sự kiện 4 (Trực tuyến) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/5-workshop/"
+  title="Báo cáo Workshop"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/">
+     <b> 5. </b> Báo cáo Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
+  title="Tổng quan Kiến trúc &amp; Thiết kế Hệ thống"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.1-workshop-overview/">
+     <b> 5.1. </b> Tổng quan Kiến trúc &amp; Thiết kế Hệ thống 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.2-prerequiste/"
+  title="Yêu cầu Môi trường &amp; Thông số Kỹ thuật"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Yêu cầu Môi trường &amp; Thông số Kỹ thuật 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
+  title="Triển khai Backend Serverless &amp; Hạ tầng AWS"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.3-deploy-backend/">
+     <b> 5.3. </b> Triển khai Backend Serverless &amp; Hạ tầng AWS 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-extension-setup/"
+  title="Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.4-extension-setup/">
+     <b> 5.4. </b> Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.5-translate-export/"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.5-translate-export/">
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.6-cleanup/"
+  title="Giải phóng Tài nguyên &amp; Đánh giá Vận hành"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.6-cleanup/">
+     <b> 5.6. </b> Giải phóng Tài nguyên &amp; Đánh giá Vận hành 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/6-self-evaluation/"
+  title="Tự đánh giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/6-self-evaluation/">
+     <b> 6. </b> Tự đánh giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/7-feedback/"
+  title="Chia sẻ và phản hồi"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/7-feedback/">
+     <b> 7. </b> Chia sẻ và phản hồi 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/8-references/"
+  title="Tài liệu tham khảo"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/8-references/">
+     <b> 8. </b> Tài liệu tham khảo 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="http://awsstudygroup.com"
+            ><i class='fab fa-aws'></i> AWS Study Group - Blog</a
+          >
+        </li>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"
+            ><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/2-proposal/"
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/vi/2-proposal/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i>
+        <font color=orange>29-07-2026</font>
+    </i>
+</left>
+<left>
+    <br>
+    <br>
+    <b> Team </b> <br>
+    <i>
+        <a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud AI Journey</a>
+    </i>
+</left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script></section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Báo cáo thực tập</a> > Đề xuất
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tóm-tắt-tổng-quan">Tóm tắt Tổng quan</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-đặt-vấn-đề--thách-thức-kỹ-thuật">1. Đặt vấn đề &amp; Thách thức Kỹ thuật</a></li>
+    <li><a href="#2-đối-tượng-người-dùng-mục-tiêu">2. Đối tượng Người dùng Mục tiêu</a></li>
+    <li><a href="#3-mục-tiêu-dự-án--kết-quả-đạt-được">3. Mục tiêu Dự án &amp; Kết quả Đạt được</a>
+      <ul>
+        <li><a href="#mục-tiêu-cốt-lõi">Mục tiêu Cốt lõi</a></li>
+        <li><a href="#danh-mục-kết-quả-đạt-được-key-deliverables-matrix">Danh mục Kết quả Đạt được (Key Deliverables Matrix)</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-kiến-trúc-giải-pháp--thiết-kế-kỹ-thuật">4. Kiến trúc Giải pháp &amp; Thiết kế Kỹ thuật</a>
+      <ul>
+        <li><a href="#sơ-đồ-kiến-trúc-hệ-thống-system-topology">Sơ đồ Kiến trúc Hệ thống (System Topology)</a></li>
+        <li><a href="#lý-do-lựa-chọn-dịch-vụ-aws-aws-service-rationale">Lý do Lựa chọn Dịch vụ AWS (AWS Service Rationale)</a></li>
+        <li><a href="#điểm-sáng-về-kiến-trúc-bảo-mật">Điểm sáng về Kiến trúc Bảo mật</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-lộ-trình-thực-hiện-7-tuần--liên-kết-worklog">5. Lộ trình Thực hiện 7 Tuần &amp; Liên kết Worklog</a></li>
+    <li><a href="#6-kế-hoạch-chi-tiết-triển-khai-workshop-workshop-5-breakdown">6. Kế hoạch Chi tiết Triển khai Workshop (Workshop 5 Breakdown)</a>
+      <ul>
+        <li><a href="#nội-dung-chi-tiết-các-bài-thực-hành">Nội dung Chi tiết Các Bài Thực hành</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-quản-lý-chi-phí--ngân-sách-vận-hành">7. Quản lý Chi phí &amp; Ngân sách Vận hành</a>
+      <ul>
+        <li><a href="#các-biện-pháp-kiểm-soát-tài-chính-financial-guardrails">Các Biện pháp Kiểm soát Tài chính (Financial Guardrails)</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-quản-trị-rủi-ro--phương-án-tối-ưu">8. Quản trị Rủi ro &amp; Phương án Tối ưu</a></li>
+    <li><a href="#9-định-hướng-phát-triển-trong-tương-lai">9. Định hướng Phát triển trong Tương lai</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Đề xuất
+            </h1>
+          
+
+        
+
+
+
+	<h1 id="đề-xuất-dự-án--kế-hoạch-triển-khai-workshop--serverless-flashcard-platform">Đề xuất Dự án &amp; Kế hoạch Triển khai Workshop — Serverless Flashcard Platform</h1>
+<h3 id="tóm-tắt-tổng-quan">Tóm tắt Tổng quan</h3>
+<p>Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack Name: <code>chrome-flashcard-axiza</code>). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website Web Application frontend được lưu trữ trên <strong>AWS Amplify Hosting</strong> dưới tên miền chuẩn (canonical domain) <strong><code>https://www.axiza.net</code></strong> (với tên miền apex <code>axiza.net</code> tự động điều hướng HTTP/HTTPS sang <code>www.axiza.net</code>), trong khi backend API sử dụng tên miền tùy chỉnh <strong><code>https://api.axiza.net</code></strong>, cả hai đều được quản lý bởi <strong>Amazon Route 53</strong> với chứng chỉ số SSL/TLS cấp phát bởi <strong>AWS Certificate Manager (ACM)</strong>.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Thông số</th>
+					<th>Giá trị Cấu hình</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Tên Dự án</strong></td>
+					<td>ChromeFlashCardExtension — Serverless Flashcard Platform</td>
+			</tr>
+			<tr>
+					<td><strong>Tên Cloud Stack</strong></td>
+					<td><code>chrome-flashcard-axiza</code></td>
+			</tr>
+			<tr>
+					<td><strong>AWS Region Triển khai</strong></td>
+					<td><code>ap-southeast-1</code> (Singapore)</td>
+			</tr>
+			<tr>
+					<td><strong>Tên miền Frontend</strong></td>
+					<td><code>https://www.axiza.net</code> (AWS Amplify Hosting CDN edge distribution)</td>
+			</tr>
+			<tr>
+					<td><strong>Tên miền Backend API</strong></td>
+					<td><code>https://api.axiza.net</code> (Amazon Route 53 + API Gateway HTTP API)</td>
+			</tr>
+			<tr>
+					<td><strong>Dịch vụ AWS Cốt lõi</strong></td>
+					<td>Route 53, Amplify Hosting, API Gateway, Lambda, DynamoDB, S3, ACM, CloudWatch</td>
+			</tr>
+			<tr>
+					<td><strong>Trạng thái Triển khai</strong></td>
+					<td>Đã hoàn tất &amp; Kiểm thử thành công — Chuẩn bị triển khai Workshop 5</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="1-đặt-vấn-đề--thách-thức-kỹ-thuật">1. Đặt vấn đề &amp; Thách thức Kỹ thuật</h2>
+<p>Người học ngôn ngữ và kỹ sư phần mềm khi đọc tài liệu kỹ thuật, bài báo khoa học hoặc tin tức tiếng Anh thường gặp phải 3 rào cản lớn trong việc tích lũy từ vựng:</p>
+<ol>
+<li><strong>Gợi mở Từ vựng làm Gián đoạn Luồng Đọc (Context Switching)</strong>: Việc chuyển đổi qua lại giữa bài viết đang đọc và ứng dụng từ điển bên ngoài, sao chép từ, gõ nghĩa và phân loại mất từ 20–30 giây. Rào cản thao tác này khiến hầu hết người học bỏ cuộc sau một thời gian ngắn.</li>
+<li><strong>Mất Ngữ cảnh Cụm từ &amp; Thất thoát Dữ liệu</strong>: Các ứng dụng flashcard truyền thống chỉ lưu trữ từ đơn lẻ. Nếu không lưu kèm câu văn gốc và liên kết trang web chứa từ vựng, khả năng ghi nhớ dài hạn giảm đáng kể.</li>
+<li><strong>Phụ thuộc Bộ nhớ Trình duyệt Cục bộ</strong>: Dữ liệu lưu trữ local của extension thông thường bị gắn chặt vào một máy tính và một profile trình duyệt duy nhất. Khi cài đặt lại hệ thống hoặc chuyển đổi máy làm việc, toàn bộ bộ sưu tập từ vựng sẽ bị mất hoàn toàn.</li>
+</ol>
+<p>Các giải pháp hiện có chỉ giải quyết đơn lẻ từng vấn đề—extension từ điển hiển thị nghĩa nhưng không lưu trữ, trong khi các ứng dụng flashcard độc lập yêu cầu nhập liệu thủ công phức tạp. Dự án này được thiết kế để kết nối trực tiếp từ <strong>thời điểm phát hiện từ vựng trên trang web</strong> tới <strong>phiên ôn tập active recall trên mọi thiết bị</strong>.</p>
+<hr>
+<h2 id="2-đối-tượng-người-dùng-mục-tiêu">2. Đối tượng Người dùng Mục tiêu</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Nhóm Người dùng</th>
+					<th>Nhu cầu Thực tế</th>
+					<th>Giải pháp Kỹ thuật</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Kỹ sư Phần mềm &amp; Sinh viên</strong></td>
+					<td>Lưu thuật ngữ chuyên ngành mà không làm gián đoạn luồng đọc</td>
+					<td>Thao tác lưu qua menu ngữ cảnh (Context Menu) dưới 5 giây</td>
+			</tr>
+			<tr>
+					<td><strong>Người Tự học &amp; Luyện thi Certificate</strong></td>
+					<td>Tạo bộ thẻ học từ chính tài liệu thực tế đang đọc</td>
+					<td>Web App ôn tập thuật toán Active Recall có đánh giá độ khó</td>
+			</tr>
+			<tr>
+					<td><strong>Người dùng Đa thiết bị</strong></td>
+					<td>Truy cập bộ từ vựng đồng nhất ở nhà, công ty và di động</td>
+					<td>Cơ chế đồng bộ dữ liệu Cloud về Amazon DynamoDB qua <code>https://api.axiza.net</code></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="3-mục-tiêu-dự-án--kết-quả-đạt-được">3. Mục tiêu Dự án &amp; Kết quả Đạt được</h2>
+<h3 id="mục-tiêu-cốt-lõi">Mục tiêu Cốt lõi</h3>
+<p>Tối ưu hóa quy trình thu thập và lưu trữ từ vựng mới xuống <strong>dưới 5 giây</strong> mỗi từ mà không cần rời khỏi trang web đang xem, đồng thời cung cấp khả năng truy cập bộ thẻ học mọi lúc mọi nơi thông qua kiến trúc serverless bảo mật trên cloud.</p>
+<h3 id="danh-mục-kết-quả-đạt-được-key-deliverables-matrix">Danh mục Kết quả Đạt được (Key Deliverables Matrix)</h3>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>Kết quả Đạt được</th>
+					<th>Tiêu chí Hoàn thành &amp; Thông số Kỹ thuật</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>O1</strong></td>
+					<td><strong>Chrome Extension (Manifest V3)</strong></td>
+					<td>Chọn từ $\rightarrow$ Chuột phải $\rightarrow$ Dialog lưu dưới 5 giây với khả năng lưu đệm ngoại tuyến trong <code>chrome.storage.local</code>.</td>
+			</tr>
+			<tr>
+					<td><strong>O2</strong></td>
+					<td><strong>Serverless REST API</strong></td>
+					<td>Endpoint HTTPS tại <code>https://api.axiza.net</code> xác thực bằng JWT Token, áp dụng throttling (20 req/s rate limit, 40 req/s burst limit), trả về <code>HTTP 200 OK</code> cho <code>/api/health</code>.</td>
+			</tr>
+			<tr>
+					<td><strong>O3</strong></td>
+					<td><strong>Cơ sở Dữ liệu NoSQL Bền vững</strong></td>
+					<td>Các bảng Amazon DynamoDB (<code>UsersTable</code>, <code>FlashcardsTable</code>, <code>CategoriesTable</code>) ở chế độ <code>PAY_PER_REQUEST</code> bảo đảm phân quyền dữ liệu đa người dùng.</td>
+			</tr>
+			<tr>
+					<td><strong>O4</strong></td>
+					<td><strong>Ứng dụng Web Ôn tập (Study App)</strong></td>
+					<td>Frontend lưu trữ trên <strong>AWS Amplify Hosting</strong> tại <code>https://www.axiza.net/study/</code> hỗ trợ thuật toán hàng chờ Active Recall.</td>
+			</tr>
+			<tr>
+					<td><strong>O5</strong></td>
+					<td><strong>Xuất Dữ liệu An toàn</strong></td>
+					<td>File JSON export lưu trữ trên S3 private mã hóa chỉ cho phép tải xuống qua Pre-signed URL thời hạn 15 phút; truy cập URL gốc trả về <code>403 Forbidden</code>.</td>
+			</tr>
+			<tr>
+					<td><strong>O6</strong></td>
+					<td><strong>Hạ tầng dưới dạng Mã (IaC) &amp; Bảo mật</strong></td>
+					<td>Template AWS SAM tự động (<code>infra/template.yaml</code>) tích hợp chứng chỉ ACM SSL/TLS và bản ghi DNS Route 53 (CNAME cho <code>www</code> &amp; Alias A/AAAA cho <code>api</code>).</td>
+			</tr>
+			<tr>
+					<td><strong>O7</strong></td>
+					<td><strong>Giám sát &amp; Quản lý Chi phí</strong></td>
+					<td>Tích hợp Amazon CloudWatch metrics, quy tắc lưu trữ log 7 ngày và chi phí vận hành dưới $2 USD/tháng.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="4-kiến-trúc-giải-pháp--thiết-kế-kỹ-thuật">4. Kiến trúc Giải pháp &amp; Thiết kế Kỹ thuật</h2>
+<h3 id="sơ-đồ-kiến-trúc-hệ-thống-system-topology">Sơ đồ Kiến trúc Hệ thống (System Topology)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>+-----------------------+        HTTPS REST (api.axiza.net)         +--------------------------+
+</span></span><span style="display:flex;"><span>|  Chrome Extension     |------------------------------------------&gt;|  Amazon Route 53         |
+</span></span><span style="display:flex;"><span>|  (Manifest V3)        |                                           |  (Hosted Zone: axiza.net)|
+</span></span><span style="display:flex;"><span>+-----------------------+                                           +--------------------------+
+</span></span><span style="display:flex;"><span>            | (Lưu trữ đệm Cục bộ)                                          |               |
+</span></span><span style="display:flex;"><span>+-----------------------+        HTTPS (www.axiza.net)                      | CNAME         | Alias A/AAAA
+</span></span><span style="display:flex;"><span>|  Study Web App        |---------------------------------------------------+ (www)         | (api)
+</span></span><span style="display:flex;"><span>|  (AWS Amplify Host)   |                                                   v               v
+</span></span><span style="display:flex;"><span>+-----------------------+                                        +-------------------+ +--------------------------+
+</span></span><span style="display:flex;"><span>            | (Edge CDN)                                         | AWS Amplify Host  | |  API Gateway (HTTP API)  |
+</span></span><span style="display:flex;"><span>            v                                                    +-------------------+ +--------------------------+
+</span></span><span style="display:flex;"><span>+-----------------------+                                                                           |
+</span></span><span style="display:flex;"><span>| Global Edge Network   |                                                                           v
+</span></span><span style="display:flex;"><span>| (Amplify Distribution)|                                                              +--------------------------+
+</span></span><span style="display:flex;"><span>+-----------------------+                                                              |  AWS Lambda Function     |
+</span></span><span style="display:flex;"><span>                                                                                       |  (Node.js Express)       |
+</span></span><span style="display:flex;"><span>                                                                                       +--------------------------+
+</span></span><span style="display:flex;"><span>                                                                                                    |
+</span></span><span style="display:flex;"><span>                                                                                    +---------------+-----------------+
+</span></span><span style="display:flex;"><span>                                                                                    |                                 |
+</span></span><span style="display:flex;"><span>                                                                                    v                                 v
+</span></span><span style="display:flex;"><span>                                                                          +--------------------+            +--------------------+
+</span></span><span style="display:flex;"><span>                                                                          |  Amazon DynamoDB   |            |  Amazon S3 Bucket  |
+</span></span><span style="display:flex;"><span>                                                                          |  (PAY_PER_REQUEST  |            |  (Private Export   |
+</span></span><span style="display:flex;"><span>                                                                          |   On-Demand Mode)  |            |   Pre-signed URLs) |
+</span></span><span style="display:flex;"><span>                                                                          +--------------------+            +--------------------+
+</span></span></code></pre></div><h3 id="lý-do-lựa-chọn-dịch-vụ-aws-aws-service-rationale">Lý do Lựa chọn Dịch vụ AWS (AWS Service Rationale)</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Dịch vụ AWS</th>
+					<th>Lý do Lựa chọn</th>
+					<th>Phương án Đã Đánh giá &amp; Bỏ qua</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>AWS Amplify Hosting</strong></td>
+					<td>Serves static web assets qua mạng lưới CDN edge toàn cầu dưới tên miền chuẩn <code>www.axiza.net</code> với hiệu năng cao và tự động hóa CI/CD.</td>
+					<td>S3 Static Website Hosting đơn lập (thiếu hỗ trợ HTTPS tùy chỉnh nếu không kết hợp CloudFront).</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon Route 53</strong></td>
+					<td>Quản lý DNS công cộng độ tin cậy cao cho Hosted Zone <code>axiza.net</code>, phục vụ bản ghi CNAME cho <code>www.axiza.net</code>, apex redirect, và bản ghi Alias A/AAAA cho API Gateway Custom Domain Name.</td>
+					<td>Trình quản lý DNS bên thứ ba (độ trễ cao hơn và không có tích hợp bản ghi Alias gốc của AWS).</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Certificate Manager (ACM)</strong></td>
+					<td>Tự động cấp phát và gia hạn chứng chỉ số SSL/TLS công cộng cho <code>www.axiza.net</code>, <code>axiza.net</code> và <code>api.axiza.net</code>.</td>
+					<td>Chứng chỉ Let&rsquo;s Encrypt thủ công (yêu cầu cấu hình script tự động gia hạn phức tạp).</td>
+			</tr>
+			<tr>
+					<td><strong>API Gateway HTTP API</strong></td>
+					<td>REST API gateway độ trễ thấp, hỗ trợ xác thực CORS preflight, rate limit throttling (20 req/s, burst 40 req/s) và custom domain <code>api.axiza.net</code> với chi phí rẻ hơn 70% so với REST API v1.</td>
+					<td>Application Load Balancer (ALB) (phát sinh chi phí duy trì cố định theo giờ ngay cả khi không có traffic).</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Lambda</strong></td>
+					<td>Môi trường thực thi Node.js 24.x tính toán dạng stateless kết hợp <code>serverless-http</code>. Tự động co giãn về 0 (scale-to-zero) giúp triệt tiêu chi phí khi nhàn rỗi.</td>
+					<td>Máy chủ EC2 / ECS Containers (yêu cầu quản trị hệ điều hành và tính phí liên tục).</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon DynamoDB</strong></td>
+					<td>Cơ sở dữ liệu NoSQL fully-managed ở chế độ <code>PAY_PER_REQUEST</code> (On-Demand) với độ trễ truy xuất dưới 10ms. Cấu trúc Partition Key (<code>userId</code>) tối ưu cho truy vấn dữ liệu người dùng.</td>
+					<td>Amazon RDS / PostgreSQL (phức tạp hóa cấu trúc dữ liệu quan hệ và tốn chi phí máy chủ cố định).</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon S3</strong></td>
+					<td>Bucket private mã hóa dành riêng cho việc lưu trữ file JSON export truy cập qua pre-signed GET URL thời hạn 15 phút.</td>
+					<td>Lưu file export trực tiếp trong DynamoDB (vượt giới hạn dung lượng item và tăng chi phí read/write).</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="điểm-sáng-về-kiến-trúc-bảo-mật">Điểm sáng về Kiến trúc Bảo mật</h3>
+<ul>
+<li><strong>Nguyên tắc Quyền tối thiểu (Least Privilege IAM Policies)</strong>: IAM Role thực thi của Lambda được giới hạn chính xác qua các SAM Policy (<code>DynamoDBCrudPolicy</code> cho 3 bảng cụ thể và <code>S3CrudPolicy</code> cho export bucket).</li>
+<li><strong>Xác thực JWT An toàn</strong>: Mọi request đều trích xuất <code>userId</code> trực tiếp từ thông tin token JWT đã qua kiểm tra (<code>req.user.userId</code>). Mọi <code>userId</code> do client tự gửi lên đều bị loại bỏ.</li>
+<li><strong>S3 Block Public Access</strong>: Export S3 bucket kích hoạt toàn bộ tính năng <code>BlockPublicAccess</code>. Tập tin export chỉ được tải xuống bằng URL Pre-signed mã hóa AWS Signature Version 4 có thời hạn 900 giây.</li>
+<li><strong>Chính sách CORS Nghiêm ngặt</strong>: API Gateway áp dụng quy tắc CORS nghiêm ngặt cho danh sách allowlist: <code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, và extension scheme (<code>chrome-extension://...</code>).</li>
+</ul>
+<hr>
+<h2 id="5-lộ-trình-thực-hiện-7-tuần--liên-kết-worklog">5. Lộ trình Thực hiện 7 Tuần &amp; Liên kết Worklog</h2>
+<p>Quá trình nghiên cứu, xây dựng và hoàn thiện hệ thống được thực thi trong 7 tuần, được ghi nhận chi tiết tại <a href="#ZgotmplZ"><code>content/1-Worklog</code></a>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Tuần</th>
+					<th>Thời gian</th>
+					<th>Trọng tâm Công việc &amp; Các Cột mốc Đạt được</th>
+					<th>Sản phẩm / Kết quả Đạt được</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Tuần 1</strong></td>
+					<td>15/06 – 21/06/2026</td>
+					<td>Onboarding, thiết lập tài khoản AWS, thành lập đội ngũ, thống nhất mục tiêu và khởi động dự án</td>
+					<td>Đề khung dự án &amp; Phạm vi công việc</td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 2</strong></td>
+					<td>22/06 – 28/06/2026</td>
+					<td>Nghiên cứu các dịch vụ AWS, định nghĩa bài toán dự án và xây dựng prototype Chrome Extension ban đầu</td>
+					<td>Extension Manifest V3 chạy với Local Storage</td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 3</strong></td>
+					<td>29/06 – 05/07/2026</td>
+					<td>Logic phiên học, quản lý danh mục, Express.js REST API, template DynamoDB SAM</td>
+					<td>Template <code>template.yaml</code> &amp; backend Express local</td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 4</strong></td>
+					<td>06/07 – 12/07/2026</td>
+					<td>Chuẩn hóa bộ tài liệu kiến trúc, kiểm tra an ninh, tối ưu giao diện UI/UX</td>
+					<td>Bộ 11 tài liệu thiết kế &amp; API Contract</td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 5</strong></td>
+					<td>13/07 – 19/07/2026</td>
+					<td>Triển khai thực tế lần đầu lên AWS cloud, deploy SAM stack, thiết lập guardrail chi phí</td>
+					<td>Stack đám mây live <code>chrome-flashcard-dev</code></td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 6</strong></td>
+					<td>20/07 – 26/07/2026</td>
+					<td>Kiểm thử toàn diện, tối ưu hiệu năng, cấu hình tên miền tùy chỉnh (<code>www.axiza.net</code> &amp; <code>api.axiza.net</code>)</td>
+					<td>Điều hướng Custom Domain &amp; Kiểm thử E2E</td>
+			</tr>
+			<tr>
+					<td><strong>Tuần 7</strong></td>
+					<td>27/07 – 02/08/2026</td>
+					<td>Hoàn thiện báo cáo tổng kết, xây dựng tài liệu Workshop, tự động hóa dọn dẹp tài nguyên</td>
+					<td>Bộ tài liệu Workshop 5 &amp; Script dọn dẹp</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="6-kế-hoạch-chi-tiết-triển-khai-workshop-workshop-5-breakdown">6. Kế hoạch Chi tiết Triển khai Workshop (Workshop 5 Breakdown)</h2>
+<p>Dựa trên kết quả triển khai hạ tầng và nhật ký công việc, <strong>Workshop 5</strong> (<a href="#ZgotmplZ"><code>content/5-Workshop</code></a>) được cấu trúc thành 6 bài thực hành chi tiết:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>5-Workshop/
+</span></span><span style="display:flex;"><span>├── 5.1-Workshop-overview/    # Bài 1: Tổng quan Kiến trúc, Thông số Kỹ thuật &amp; Luồng Dữ liệu
+</span></span><span style="display:flex;"><span>├── 5.2-Prerequiste/          # Bài 2: Yêu cầu Môi trường, Công cụ CLI &amp; Kiểm thử Local
+</span></span><span style="display:flex;"><span>├── 5.3-Deploy-backend/       # Bài 3: Triển khai Backend SAM, Cloud Deployment &amp; Route 53 Custom Domains
+</span></span><span style="display:flex;"><span>├── 5.4-Extension-setup/      # Bài 4: Cấu hình Chrome Extension MV3 &amp; Đồng bộ Hàng loạt Cloud
+</span></span><span style="display:flex;"><span>├── 5.5-Translate-export/     # Bài 5: Ứng dụng Web Ôn tập Amplify &amp; Xuất Dữ liệu S3 Pre-signed URL
+</span></span><span style="display:flex;"><span>└── 5.6-Cleanup/              # Bài 6: Giải phóng Tài nguyên, Kiểm soát Chi phí &amp; Kết luận
+</span></span></code></pre></div><h3 id="nội-dung-chi-tiết-các-bài-thực-hành">Nội dung Chi tiết Các Bài Thực hành</h3>
+<h4 id="bài-51-tổng-quan-kiến-trúc--thiết-kế-hệ-thống">Bài 5.1: Tổng quan Kiến trúc &amp; Thiết kế Hệ thống</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Giới thiệu cho người học về kiến trúc serverless, thiết kế mẫu offline-first và thông số kỹ thuật các thành phần AWS.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc tổng quan, bảng thông số các thành phần AWS (bao gồm ACM, Route 53, Amplify Hosting CDN, API Gateway, Lambda, DynamoDB <code>PAY_PER_REQUEST</code>, S3 private export), và phân tích luồng dữ liệu 4 giai đoạn.</li>
+</ul>
+<h4 id="bài-52-yêu-cầu-môi-trường--thông-số-kỹ-thuật">Bài 5.2: Yêu cầu Môi trường &amp; Thông số Kỹ thuật</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Hướng dẫn người học kiểm tra môi trường, cài đặt các công cụ dòng lệnh (CLI) và kiểm thử ứng dụng ở môi trường cục bộ.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Bảng yêu cầu phiên bản (Node.js v18+, AWS CLI v2, AWS SAM CLI v1.100+), cấu trúc thư mục repository, và lệnh kiểm tra health check local (<code>http://localhost:3000/api/health</code>).</li>
+</ul>
+<h4 id="bài-53-triển-khai-backend-serverless--hạ-tầng-aws">Bài 5.3: Triển khai Backend Serverless &amp; Hạ tầng AWS</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Triển khai backend serverless bằng AWS SAM và cấu hình điều hướng tên miền tùy chỉnh qua Amazon Route 53.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Phân tích <code>infra/template.yaml</code>, các lệnh <code>sam build</code> và <code>sam deploy --guided</code>, quy trình tạo API Gateway Custom Domain Name Regional endpoint và bản ghi Route 53 Alias A-record cho <code>api.axiza.net</code>, CNAME cho <code>www.axiza.net</code>, và kiểm tra endpoint thực tế (<code>curl https://api.axiza.net/api/health</code>).</li>
+</ul>
+<h4 id="bài-54-kiến-trúc-chrome-extension--cơ-chế-đồng-bộ-client">Bài 5.4: Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Cài đặt và cấu hình Chrome Extension Manifest V3, thực hành lưu trữ đệm cục bộ và đồng bộ hàng loạt lên cloud.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Sơ đồ kiến trúc thành phần client, file <code>extension-config.js</code> (<code>API_BASE_URL: &quot;https://api.axiza.net&quot;</code>, <code>STUDY_URL: &quot;https://www.axiza.net/study/&quot;</code>), cấu trúc JSON local storage, và quy trình đồng bộ cloud (<code>POST /api/sync</code>).</li>
+</ul>
+<h4 id="bài-55-ứng-dụng-web-ôn-tập--xuất-dữ-liệu">Bài 5.5: Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Trải nghiệm Study Web App lưu trữ trên AWS Amplify và thực hành xuất dữ liệu an toàn qua Amazon S3 Pre-signed URL.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Mô hình tích hợp Study App (<code>https://www.axiza.net/study/</code>), thuật toán hàng chờ ôn tập Active Recall, sơ đồ trình tự xuất dữ liệu S3 Pre-signed URL (<code>POST /api/export</code> -&gt; Pre-signed GET URL 15 phút), và kiểm tra bảo mật (<code>403 Forbidden</code> khi truy cập URL gốc S3).</li>
+</ul>
+<h4 id="bài-56-giải-phóng-tài-nguyên--đánh-giá-vận-hành">Bài 5.6: Giải phóng Tài nguyên &amp; Đánh giá Vận hành</h4>
+<ul>
+<li><strong>Mục tiêu</strong>: Hướng dẫn người học quy trình dọn dẹp và hủy triển khai hạ tầng tự động nhằm triệt tiêu phát sinh chi phí sau workshop.</li>
+<li><strong>Tài liệu Cốt lõi</strong>: Lệnh xóa bản ghi Route 53 CNAME/Alias, dọn dẹp S3 export bucket, lệnh hủy stack <code>sam delete --no-prompts</code>, các lệnh kiểm tra xác minh sau vận hành (<code>aws cloudformation describe-stacks</code>, <code>aws dynamodb list-tables</code>), và kết luận tổng kết.</li>
+</ul>
+<hr>
+<h2 id="7-quản-lý-chi-phí--ngân-sách-vận-hành">7. Quản lý Chi phí &amp; Ngân sách Vận hành</h2>
+<p>Ngân sách vận hành cho hệ thống được tối ưu hóa nằm gọn trong hạn mức <strong>AWS Free Tier</strong> và duy trì chi phí siêu thấp ở điều kiện lưu lượng kiểm thử (~1,000 requests/tháng) tại khu vực <code>ap-southeast-1</code>:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Dịch vụ AWS</th>
+					<th>Yếu tố Phát sinh Chi phí</th>
+					<th>Chi phí Dự kiến / Tháng</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>AWS Lambda</strong></td>
+					<td>~1,000 lượt gọi, 256 MB RAM, thời gian chạy ~200 ms</td>
+					<td>$0.00 USD (Trong hạn mức AWS Free Tier)</td>
+			</tr>
+			<tr>
+					<td><strong>API Gateway HTTP API</strong></td>
+					<td>~1,000 request REST</td>
+					<td>$0.00 USD (Trong hạn mức AWS Free Tier)</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Amplify Hosting</strong></td>
+					<td>Phân phối web tĩnh từ CDN edge</td>
+					<td>$0.00 USD (Trong hạn mức AWS Free Tier)</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon Route 53</strong></td>
+					<td>1 Hosted Zone (<code>axiza.net</code>) + truy vấn DNS</td>
+					<td>~$0.50 USD / tháng</td>
+			</tr>
+			<tr>
+					<td><strong>AWS Certificate Manager (ACM)</strong></td>
+					<td>Chứng chỉ số SSL/TLS công cộng cho <code>www.axiza.net</code> &amp; <code>api.axiza.net</code></td>
+					<td>$0.00 USD (Miễn phí cho dịch vụ AWS)</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon DynamoDB</strong></td>
+					<td>3 bảng NoSQL (Chế độ <code>PAY_PER_REQUEST</code> On-Demand)</td>
+					<td>~$0.00 – $0.50 USD</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon S3</strong></td>
+					<td>Private export bucket (&lt; 100 MB JSON data)</td>
+					<td>&lt; $0.10 USD</td>
+			</tr>
+			<tr>
+					<td><strong>Amazon CloudWatch</strong></td>
+					<td>Nhập nhật ký (&lt; 50 MB) với quy tắc lưu trữ 7 ngày</td>
+					<td>&lt; $0.10 USD</td>
+			</tr>
+			<tr>
+					<td><strong>Tổng Chi phí Dự kiến</strong></td>
+					<td></td>
+					<td><strong>~$0.70 – $1.50 USD / tháng</strong></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="các-biện-pháp-kiểm-soát-tài-chính-financial-guardrails">Các Biện pháp Kiểm soát Tài chính (Financial Guardrails)</h3>
+<ul>
+<li><strong>Cảnh báo Ngân sách AWS Budgets</strong>: Cấu hình cảnh báo tự động gửi email khi chi phí đạt ngưỡng $1.00 USD và $5.00 USD.</li>
+<li><strong>Giới hạn Lưu lượng API Gateway</strong>: Giới hạn burst rate ở mức 40 req/s và rate limit ở mức 20 req/s.</li>
+<li><strong>Quy tắc Vòng đời Tài nguyên (Lifecycle Policies)</strong>: Tập tin export trên S3 tự động xóa sau 7 ngày; thời gian lưu trữ log trên CloudWatch Log Group được giới hạn 7 ngày.</li>
+</ul>
+<hr>
+<h2 id="8-quản-trị-rủi-ro--phương-án-tối-ưu">8. Quản trị Rủi ro &amp; Phương án Tối ưu</h2>
+<table>
+	<thead>
+			<tr>
+					<th>#</th>
+					<th>Rủi ro Kỹ thuật</th>
+					<th>Khả năng</th>
+					<th>Ảnh hưởng</th>
+					<th>Biện pháp Phòng ngừa &amp; Tối ưu</th>
+					<th>Trạng thái</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>R1</strong></td>
+					<td><strong>Lỗi CORS trên Custom Domain</strong></td>
+					<td>Cao</td>
+					<td>Cao</td>
+					<td>Cấu hình allowlist gồm <code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, và extension scheme. Kiểm thử thực tế trên tên miền thật.</td>
+					<td><strong>Đã xử lý</strong></td>
+			</tr>
+			<tr>
+					<td><strong>R2</strong></td>
+					<td><strong>Trễ Cấp phát Chứng chỉ ACM SSL/TLS</strong></td>
+					<td>Trung bình</td>
+					<td>Trung bình</td>
+					<td>Khởi tạo chứng chỉ ACM public cho <code>www.axiza.net</code>, <code>axiza.net</code> và <code>api.axiza.net</code> trước khi thực hiện ánh xạ bản ghi Route 53.</td>
+					<td><strong>Đã phòng ngừa</strong></td>
+			</tr>
+			<tr>
+					<td><strong>R3</strong></td>
+					<td><strong>Phát sinh Chi phí Đám mây Ngoài ý muốn</strong></td>
+					<td>Trung bình</td>
+					<td>Cao</td>
+					<td>Khai báo AWS Budgets $1/$5, quy tắc S3 Lifecycle, CloudWatch log retention 7 ngày và kiến trúc scale-to-zero.</td>
+					<td><strong>Đã kiểm soát</strong></td>
+			</tr>
+			<tr>
+					<td><strong>R4</strong></td>
+					<td><strong>Rò rỉ hoặc Mất Khóa JWT Secret</strong></td>
+					<td>Trung bình</td>
+					<td>Cao</td>
+					<td>Khai báo <code>JwtSecret</code> trong SAM Parameters với <code>NoEcho: true</code> và truyền tự động qua GitHub Secrets trong CI/CD.</td>
+					<td><strong>Đã kiểm soát</strong></td>
+			</tr>
+			<tr>
+					<td><strong>R5</strong></td>
+					<td><strong>Độ trễ Cold Start của AWS Lambda</strong></td>
+					<td>Trung bình</td>
+					<td>Thấp</td>
+					<td>Tối ưu dung lượng gói nén zip triển khai dưới 5 MB, sử dụng Node.js 24 runtime gọn nhẹ và tối ưu hóa module import.</td>
+					<td><strong>Đã tối ưu</strong></td>
+			</tr>
+			<tr>
+					<td><strong>R6</strong></td>
+					<td><strong>Tài nguyên Dư thừa Sau Workshop</strong></td>
+					<td>Cao</td>
+					<td>Cao</td>
+					<td>Tự động hóa quy trình dọn dẹp (<code>sam delete --no-prompts</code> &amp; gỡ bản ghi Route 53) được hướng dẫn chi tiết tại Bài 5.6.</td>
+					<td><strong>Đã tự động hóa</strong></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="9-định-hướng-phát-triển-trong-tương-lai">9. Định hướng Phát triển trong Tương lai</h2>
+<ol>
+<li><strong>Tích hợp Amazon Cognito</strong>: Nâng cấp hệ thống xác thực JWT tùy chỉnh sang Amazon Cognito User Pools nhằm đạt chuẩn OAuth2/OIDC, hỗ trợ Refresh Token và xác thực hai yếu tố (MFA).</li>
+<li><strong>Thuật toán Ghi nhớ Lặp lại Ngắt quãng (Spaced Repetition)</strong>: Nâng cấp thuật toán hàng chờ Active Recall sang thuật toán SuperMemo SM-2 giúp tối ưu hóa khả năng ghi nhớ dài hạn của người học.</li>
+<li><strong>Phát hành trên Chrome Web Store</strong>: Đóng gói extension Manifest V3 cùng bộ tài nguyên cửa hàng để chính thức đăng tải lên Chrome Web Store.</li>
+</ol>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/1-worklog/1.7-week7/" title="Nhật ký công việc Tuần 7"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/3-blogsposted/" title="Các blog đã đăng" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1785332145"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785332145"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785332145"></script>
+    <script src="/js/jquery.sticky.js?1785332145"></script>
+    <script src="/js/featherlight.min.js?1785332145"></script>
+    <script src="/js/highlight.pack.js?1785332145"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785332145"></script>
+    <script src="/js/learn.js?1785332145"></script>
+    <script src="/js/hugo-learn.js?1785332145"></script>
+
+    <link href="/mermaid/mermaid.css?1785332145" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785332145"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+
+  </body>
+</html>
