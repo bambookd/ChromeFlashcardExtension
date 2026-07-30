@@ -25,8 +25,8 @@ pre: " <b> 1.6. </b> "
 | Set up Route 53 Alias A/AAAA records — `axiza.net` → Amplify, `api.axiza.net` → API Gateway | Done | 21/07/2026 | 22/07/2026 |
 | Confirm API calls, Lambda execution, DynamoDB batch writes, and CORS on `https://axiza.net` | Done | 22/07/2026 | 23/07/2026 |
 | Fix issues surfaced by domain-level testing | Done | 23/07/2026 | 24/07/2026 |
-| Tune Lambda cold starts, static asset loading, and client-side rendering | Done | 24/07/2026 | 25/07/2026 |
-| Re-run the full flow on the custom domains to confirm stability | Done | 25/07/2026 | 26/07/2026 |
+| Tune Lambda cold starts, static asset loading, and client-side rendering | Done | 24/07/2026 | 24/07/2026 |
+| Re-run the full flow on the custom domains to confirm stability | Done | 24/07/2026 | 24/07/2026 |
 
 ## Outcomes
 

@@ -15,21 +15,21 @@
     <title>Nhật ký công việc Tuần 7 :: Báo cáo thực tập</title>
 
     
-    <link href="/css/nucleus.css?1785383412" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785383412" rel="stylesheet">
-    <link href="/css/hybrid.css?1785383412" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785383412" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785383412" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785383412" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785383412" rel="stylesheet">
-    <link href="/css/theme.css?1785383412" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785383412" rel="stylesheet">
+    <link href="/css/nucleus.css?1785405830" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785405830" rel="stylesheet">
+    <link href="/css/hybrid.css?1785405830" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785405830" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785405830" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785405830" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785405830" rel="stylesheet">
+    <link href="/css/theme.css?1785405830" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785405830" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785383412" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785405830" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785383412"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785405830"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785383412"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785383412"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785405830"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785405830"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785383412"></script>
+<script type="text/javascript" src="/js/search.js?1785405830"></script>
  
   </div>
 
@@ -210,6 +210,42 @@
 >
   <a href="/vi/1-worklog/1.7-week7/">
      <b> 1.7. </b> Nhật ký công việc Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.8-week8/"
+  title="Nhật ký công việc Tuần 8"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.8-week8/">
+     <b> 1.8. </b> Nhật ký công việc Tuần 8 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.9-week9/"
+  title="Nhật ký công việc Tuần 9"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.9-week9/">
+     <b> 1.9. </b> Nhật ký công việc Tuần 9 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -748,11 +784,11 @@
 	<h1 id="tuần-7--2707--02082026">Tuần 7 — 27/07 – 02/08/2026</h1>
 <h2 id="mục-tiêu">Mục tiêu</h2>
 <ul>
-<li>Hoàn thiện báo cáo kỹ thuật và tổng kết nhật ký công việc.</li>
 <li>Hoàn tất bộ tài liệu Workshop 5 gồm 6 module (<code>content/5-Workshop</code>).</li>
-<li>Chuẩn bị các kịch bản demo: lưu từ qua extension, ôn tập active recall và xuất dữ liệu qua pre-signed URL S3.</li>
-<li>Xác minh các script dọn dẹp tài nguyên — xóa Route 53 records và chạy <code>sam delete --no-prompts</code> để hủy stack.</li>
-<li>Dọn dẹp dự án, build trang web tĩnh Hugo và chuẩn bị hồ sơ nộp bài cuối kỳ.</li>
+<li>Xây dựng và xác minh các kịch bản demo: lưu từ qua extension, ôn tập active recall và xuất dữ liệu qua pre-signed URL S3.</li>
+<li>Chạy kiểm thử tích hợp trên các domain trực tiếp (<code>https://axiza.net</code> và <code>https://api.axiza.net</code>).</li>
+<li>Xác minh các script dọn dẹp tài nguyên và tự động hóa teardown (<code>sam delete --no-prompts</code> và xóa Route 53 record).</li>
+<li>Rà soát hệ thống ban đầu và chuẩn bị tài liệu workshop.</li>
 </ul>
 <h2 id="nhật-ký-công-việc">Nhật ký công việc</h2>
 <table>
@@ -784,7 +820,7 @@
 					<td>29/07/2026</td>
 			</tr>
 			<tr>
-					<td>Chạy luồng demo trực tiếp trên <code>https://axiza.net</code> và <code>https://api.axiza.net</code></td>
+					<td>Chạy luồng demo trực tiếp trên <code>https://axiza.net</code> và <code>https://api.axiza.net</code> và tiến hành kiểm thử tích hợp</td>
 					<td>Hoàn thành</td>
 					<td>30/07/2026</td>
 					<td>31/07/2026</td>
@@ -793,22 +829,22 @@
 					<td>Xác minh các lệnh dọn dẹp tài nguyên (<code>aws route53 change-resource-record-sets</code>, <code>aws s3 rm</code>, <code>sam delete</code>)</td>
 					<td>Hoàn thành</td>
 					<td>31/07/2026</td>
-					<td>01/08/2026</td>
+					<td>31/07/2026</td>
 			</tr>
 			<tr>
-					<td>Build lại trang web bằng Hugo (<code>hugo</code>) và hoàn tất dọn dẹp mã nguồn</td>
+					<td>Rà soát ban đầu tài liệu workshop và cấu hình trang tĩnh</td>
 					<td>Hoàn thành</td>
-					<td>02/08/2026</td>
-					<td>02/08/2026</td>
+					<td>31/07/2026</td>
+					<td>31/07/2026</td>
 			</tr>
 	</tbody>
 </table>
 <h2 id="kết-quả-đạt-được">Kết quả đạt được</h2>
 <ul>
-<li>Báo cáo kỹ thuật và đề xuất dự án đã được hoàn thiện.</li>
 <li>Đã xuất bản đầy đủ 6 module tài liệu Workshop 5 bằng cả tiếng Anh và tiếng Việt.</li>
+<li>Hoàn thành kiểm thử tích hợp end-to-end trên môi trường domain trực tiếp.</li>
 <li>Xác minh các script teardown hoạt động tốt, loại bỏ hoàn toàn chi phí AWS phát sinh sau workshop.</li>
-<li>Build thành công trang web tĩnh Hugo sạch tại <code>fcj-workshop-template/public/</code>.</li>
+<li>Hoàn thành rà soát hệ thống ban đầu và tài liệu workshop.</li>
 </ul>
 
 
@@ -977,6 +1013,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -985,8 +1037,24 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1305,7 +1373,7 @@
 			<a class="nav nav-prev" href="/vi/1-worklog/1.6-week6/" title="Nhật ký công việc Tuần 6"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/2-proposal/" title="Đề xuất" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/1-worklog/1.8-week8/" title="Nhật ký công việc Tuần 8" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1315,19 +1383,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785383412"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785383412"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785383412"></script>
-    <script src="/js/jquery.sticky.js?1785383412"></script>
-    <script src="/js/featherlight.min.js?1785383412"></script>
-    <script src="/js/highlight.pack.js?1785383412"></script>
+    <script src="/js/clipboard.min.js?1785405830"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785405830"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785405830"></script>
+    <script src="/js/jquery.sticky.js?1785405830"></script>
+    <script src="/js/featherlight.min.js?1785405830"></script>
+    <script src="/js/highlight.pack.js?1785405830"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785383412"></script>
-    <script src="/js/learn.js?1785383412"></script>
-    <script src="/js/hugo-learn.js?1785383412"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785405830"></script>
+    <script src="/js/learn.js?1785405830"></script>
+    <script src="/js/hugo-learn.js?1785405830"></script>
 
-    <link href="/mermaid/mermaid.css?1785383412" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785383412"></script>
+    <link href="/mermaid/mermaid.css?1785405830" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785405830"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -25,8 +25,8 @@ pre: " <b> 1.6. </b> "
 | Thiết lập Route 53 Alias A/AAAA records — `axiza.net` → Amplify, `api.axiza.net` → API Gateway | Hoàn thành | 21/07/2026 | 22/07/2026 |
 | Xác minh gọi API, thực thi Lambda, ghi DynamoDB batch và CORS trên `https://axiza.net` | Hoàn thành | 22/07/2026 | 23/07/2026 |
 | Xử lý các sự cố phát hiện trong quá trình kiểm thử domain | Hoàn thành | 23/07/2026 | 24/07/2026 |
-| Tối ưu Lambda cold start, tải static assets và client-side rendering | Hoàn thành | 24/07/2026 | 25/07/2026 |
-| Chạy lại toàn bộ luồng trên custom domain để đảm bảo độ ổn định | Hoàn thành | 25/07/2026 | 26/07/2026 |
+| Tối ưu Lambda cold start, tải static assets và client-side rendering | Hoàn thành | 24/07/2026 | 24/07/2026 |
+| Chạy lại toàn bộ luồng trên custom domain để đảm bảo độ ổn định | Hoàn thành | 24/07/2026 | 24/07/2026 |
 
 ## Kết quả đạt được
 

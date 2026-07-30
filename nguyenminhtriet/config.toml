@@ -2,6 +2,7 @@ baseURL = "https://workshop-sample.awsfcaj.com/"
 relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
+buildFuture = true
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"

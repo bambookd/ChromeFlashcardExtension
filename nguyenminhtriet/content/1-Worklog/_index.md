@@ -10,7 +10,7 @@ pre: " <b> 1. </b> "
 
 ## Summary
 
-This document tracks the progress of a 7-week engineering internship (June 15 – August 2, 2026), organized on a weekly basis. For each week it lists the work carried out, the main areas of focus, the milestones reached, and the tangible outputs produced while building the **Chrome Flashcard Extension & Serverless Study Platform** (`chrome-flashcard-axiza`).
+This document tracks the progress of a 9-week engineering internship (June 15 – August 14, 2026), organized on a weekly basis. For each week it lists the work carried out, the main areas of focus, the milestones reached, and the tangible outputs produced while building the **Chrome Flashcard Extension & Serverless Study Platform** (`chrome-flashcard-axiza`).
 
 The internship clock starts on **June 15, 2026**, the day the team came together — not on June 22, 2026, when the code repository was actually created. Week numbering therefore follows team formation, not the first commit.
 
@@ -24,4 +24,6 @@ The internship clock starts on **June 15, 2026**, the day the team came together
 | [Week 4](1.4-week4/) | 06/07 – 12/07/2026 | Architecture docs, security review, UI/UX polish | 11 design & API-contract documents | Done |
 | [Week 5](1.5-week5/) | 13/07 – 19/07/2026 | First AWS deployment, SAM stack rollout, cost guardrails | Live stack `chrome-flashcard-dev` | Done |
 | [Week 6](1.6-week6/) | 20/07 – 26/07/2026 | Testing, performance tuning, domain setup (axiza.net & api.axiza.net) | Custom domain routing + E2E checks | Done |
-| [Week 7](1.7-week7/) | 27/07 – 02/08/2026 | Final report, workshop content, teardown automation | Workshop 5 docs + cleanup scripts | Done |
+| [Week 7](1.7-week7/) | 27/07 – 02/08/2026 | Workshop documentation, domain setup, and initial system review | Workshop 5 docs & teardown verification | Done |
+| [Week 8](1.8-week8/) | 03/08 – 09/08/2026 | Final feature polish, minor code cleanup, and operational verification | Polished codebase & E2E verification | Done |
+| [Week 9](1.9-week9/) | 10/08 – 14/08/2026 | Final project report preparation, submission & project closeout | Final project report & project closeout | Done |
