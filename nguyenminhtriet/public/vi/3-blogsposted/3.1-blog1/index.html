@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="vi" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta
+  name="description"
+  content=""
+/>
+<meta name="author" content="thienlh@thienlu.com" />
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Blog 1 :: Báo cáo thực tập</title>
+
+    
+    <link href="/css/nucleus.css?1785383412" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785383412" rel="stylesheet">
+    <link href="/css/hybrid.css?1785383412" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785383412" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785383412" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785383412" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785383412" rel="stylesheet">
+    <link href="/css/theme.css?1785383412" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785383412" rel="stylesheet">
+    
+    <link href="/css/theme-workshop.css?1785383412" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1785383412"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+
+  </head>
+  <body class="" data-url="/vi/3-blogsposted/3.1-blog1/">
+    <nav
+  id="sidebar"
+  class="showVisitedLinks"
+>
+   
+  <div id="header-wrapper">
+    <div id="header"><a id="logo" href="/">
+
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#fff;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg>
+
+</a>
+</div>
+     <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1785383412"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785383412"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/localhost:1313\/\/vi";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1785383412"></script>
+ 
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+               
+<li
+  data-nav-id="/vi/1-worklog/"
+  title="Nhật ký công việc"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/">
+     <b> 1. </b> Nhật ký công việc 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/1-worklog/1.1-week1/"
+  title="Nhật ký công việc Tuần 1"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.1-week1/">
+     <b> 1.1. </b> Nhật ký công việc Tuần 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.2-week2/"
+  title="Nhật ký công việc Tuần 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.2-week2/">
+     <b> 1.2. </b> Nhật ký công việc Tuần 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.3-week3/"
+  title="Nhật ký công việc Tuần 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.3-week3/">
+     <b> 1.3. </b> Nhật ký công việc Tuần 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.4-week4/"
+  title="Nhật ký công việc Tuần 4"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.4-week4/">
+     <b> 1.4. </b> Nhật ký công việc Tuần 4 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.5-week5/"
+  title="Nhật ký công việc Tuần 5"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.5-week5/">
+     <b> 1.5. </b> Nhật ký công việc Tuần 5 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.6-week6/"
+  title="Nhật ký công việc Tuần 6"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.6-week6/">
+     <b> 1.6. </b> Nhật ký công việc Tuần 6 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/1-worklog/1.7-week7/"
+  title="Nhật ký công việc Tuần 7"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/1-worklog/1.7-week7/">
+     <b> 1.7. </b> Nhật ký công việc Tuần 7 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/2-proposal/"
+  title="Đề xuất"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/2-proposal/">
+     <b> 2. </b> Đề xuất 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/3-blogsposted/"
+  title="Các blog đã đăng"
+  class="dd-item 
+        parent
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/">
+     <b> 3. </b> Các blog đã đăng 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.1-blog1/"
+  title="Blog 1"
+  class="dd-item 
+        
+        active
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.1-blog1/">
+     <b> 3.1. </b> Blog 1 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.2-blog2/"
+  title="Blog 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.2-blog2/">
+     <b> 3.2. </b> Blog 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/3-blogsposted/3.3-blog3/"
+  title="Blog 3"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/3-blogsposted/3.3-blog3/">
+     <b> 3.3 </b> Blog 3 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/4-eventparticipated/"
+  title="Các sự kiện đã tham gia"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/">
+     <b> 4. </b> Các sự kiện đã tham gia 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.1-event1/"
+  title="Sự kiện 1 (Trực tuyến)"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.1-event1/">
+     <b> 1. </b> Sự kiện 1 (Trực tuyến) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.2-event2/"
+  title="Sự kiện 2"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.2-event2/">
+     <b> 2. </b> Sự kiện 2 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/4-eventparticipated/4.3-event3/"
+  title="Sự kiện 3 (Trực tuyến)"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/4-eventparticipated/4.3-event3/">
+     <b> 3. </b> Sự kiện 3 (Trực tuyến) 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/5-workshop/"
+  title="Báo cáo Workshop"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/">
+     <b> 5. </b> Báo cáo Workshop 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+  <ul>
+          
+            
+<li
+  data-nav-id="/vi/5-workshop/5.1-workshop-overview/"
+  title="System Architecture &amp; Design Overview"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.1-workshop-overview/">
+     <b> 5.1. </b> System Architecture &amp; Design Overview 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.2-prerequiste/"
+  title="Yêu cầu Môi trường &amp; Thông số Kỹ thuật"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.2-prerequiste/">
+     <b> 5.2. </b> Yêu cầu Môi trường &amp; Thông số Kỹ thuật 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.3-deploy-backend/"
+  title="Serverless Backend Implementation &amp; AWS Deployment"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.3-deploy-backend/">
+     <b> 5.3. </b> Serverless Backend Implementation &amp; AWS Deployment 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.4-extension-setup/"
+  title="Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.4-extension-setup/">
+     <b> 5.4. </b> Kiến trúc Chrome Extension &amp; Cơ chế Đồng bộ Client 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.5-translate-export/"
+  title="Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.5-translate-export/">
+     <b> 5.5. </b> Ứng dụng Web Ôn tập &amp; Xuất Dữ liệu 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+            
+<li
+  data-nav-id="/vi/5-workshop/5.6-cleanup/"
+  title="Resource Teardown &amp; Operational Verification"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/5-workshop/5.6-cleanup/">
+     <b> 5.6. </b> Resource Teardown &amp; Operational Verification 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+     
+  </ul>
+  
+</li>
+           
+<li
+  data-nav-id="/vi/6-self-evaluation/"
+  title="Tự đánh giá"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/6-self-evaluation/">
+     <b> 6. </b> Tự đánh giá 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/7-feedback/"
+  title="Chia sẻ và phản hồi"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/7-feedback/">
+     <b> 7. </b> Chia sẻ và phản hồi 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+           
+<li
+  data-nav-id="/vi/8-references/"
+  title="Tài liệu tham khảo"
+  class="dd-item 
+        
+        
+        
+        "
+>
+  <a href="/vi/8-references/">
+     <b> 8. </b> Tài liệu tham khảo 
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+   
+</li>
+    
+    </ul>
+
+     
+    <section id="shortcuts">
+      <h3>
+        More
+      </h3>
+      <ul>
+        
+        <li>
+          <a class="padding" href="http://awsstudygroup.com"
+            ><i class='fab fa-aws'></i> AWS Study Group - Blog</a
+          >
+        </li>
+        
+        <li>
+          <a class="padding" href="https://www.facebook.com/groups/awsstudygroupfcj"
+            ><i class='fab fa-facebook'></i> AWS Study Group - Nhóm FB</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+     
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding">
+            <i class="fas fa-language fa-fw"></i>
+            <div class="select-style">
+              <select id="select-language" onchange="location = this.value;">
+                       
+                <option
+                  id="en"
+                  value="http://localhost:1313/3-blogsposted/3.1-blog1/"
+                >
+                  English
+                </option>
+                            
+                <option
+                  id="vi"
+                  value="http://localhost:1313/vi/3-blogsposted/3.1-blog1/"
+                  selected
+                >
+                  Tiếng Việt
+                </option>
+                   
+              </select>
+              <svg
+                version="1.1"
+                id="Capa_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                width="255px"
+                height="255px"
+                viewBox="0 0 255 255"
+                style="enable-background: new 0 0 255 255"
+                xml:space="preserve"
+              >
+                <g>
+                  <g id="arrow-drop-down">
+                    <polygon points="0,63.75 127.5,191.25 255,63.75 		" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </a>
+        </li>
+         
+        <li>
+          <a class="padding" href="#" data-clear-history-toggle=""
+            ><i class="fas fa-history fa-fw"></i> Clear History</a
+          >
+        </li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer"><left>
+    <br>
+    <br>
+    <b> Last Updated </b> <br>
+    <i>
+        <font color=orange>30-07-2026</font>
+    </i>
+</left>
+<left>
+    <br>
+    <br>
+    <b> Team </b> <br>
+    <i>
+        <a href="https://www.facebook.com/groups/660548818043427" style="color:orange">First Cloud AI Journey</a>
+    </i>
+</left>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script></section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/vi/'>Báo cáo thực tập</a> > <a href='/vi/3-blogsposted/'>Các blog đã đăng</a> > Blog 1
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+  <div class="wrapper"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#giới-thiệu">GIỚI THIỆU</a></li>
+        <li><a href="#vấn-đề-với-giải-pháp-cũ">VẤN ĐỀ VỚI GIẢI PHÁP CŨ</a></li>
+        <li><a href="#giải-pháp-của-aws-player-gateway">GIẢI PHÁP CỦA AWS: PLAYER GATEWAY</a></li>
+        <li><a href="#1-relay-networking-và-token-authentication">1. RELAY NETWORKING VÀ TOKEN AUTHENTICATION</a></li>
+        <li><a href="#giới-hạn-traffic-theo-player">GIỚI HẠN TRAFFIC THEO PLAYER</a></li>
+        <li><a href="#2-multi-relay">2. MULTI-RELAY</a></li>
+        <li><a href="#3-dynamic-failover">3. DYNAMIC FAILOVER</a></li>
+        <li><a href="#fallback">FALLBACK</a></li>
+        <li><a href="#predictive-rotation">PREDICTIVE ROTATION</a></li>
+        <li><a href="#từ-phòng-thủ-bị-động-sang-chủ-động">TỪ PHÒNG THỦ BỊ ĐỘNG SANG CHỦ ĐỘNG</a></li>
+      </ul>
+    </li>
+    <li><a href="#luồng-hoạt-động-tổng-quát">LUỒNG HOẠT ĐỘNG TỔNG QUÁT</a></li>
+    <li><a href="#những-điểm-cần-lưu-ý">NHỮNG ĐIỂM CẦN LƯU Ý</a></li>
+    <li><a href="#kết-luận">KẾT LUẬN</a></li>
+    <li><a href="#nguồn-tham-khảo">NGUỒN THAM KHẢO</a></li>
+  </ul>
+</nav></div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Blog 1
+            </h1>
+          
+
+        
+
+
+
+	<hr>
+<h1 id="cơ-chế-ddos-protection-trên-amazon-gamelift-servers">CƠ CHẾ DDoS PROTECTION TRÊN AMAZON GAMELIFT SERVERS</h1>
+<table>
+	<thead>
+			<tr>
+					<th></th>
+					<th></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Published</td>
+					<td>03/07/2026</td>
+			</tr>
+			<tr>
+					<td>Platform</td>
+					<td>AWS Study Group</td>
+			</tr>
+			<tr>
+					<td>Link</td>
+					<td><a href="https://www.facebook.com/photo?fbid=2182481875876802&amp;set=gm.2202654247166202&amp;idorvanity=660548818043427">https://www.facebook.com/photo?fbid=2182481875876802&set=gm.2202654247166202&idorvanity=660548818043427</a></td>
+			</tr>
+			<tr>
+					<td>Evidence</td>
+					<td><img src="/images/3-BlogsPosted/3.1-Blog1/image.png" alt=""></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h3 id="giới-thiệu">GIỚI THIỆU</h3>
+<p>Tháng 3/2026, AWS ra mắt tính năng DDoS Protection tích hợp dành cho Amazon GameLift Servers, giúp tăng khả năng chống chịu của game session trước các cuộc tấn công từ chối dịch vụ phân tán.</p>
+<p>Thay vì để game client kết nối trực tiếp đến địa chỉ IP và port của game server, cơ chế mới đưa traffic qua <strong>Amazon GameLift Servers Player Gateway</strong>.</p>
+<p>Player Gateway hoạt động như một lớp trung gian giữa người chơi và game server. Lớp này xác thực từng player, giới hạn lưu lượng, phân tán traffic qua nhiều relay endpoint và hỗ trợ tự động chuyển đổi endpoint khi xảy ra sự cố.</p>
+<p>Điểm đáng chú ý là cơ chế này không chỉ phát hiện và phản ứng sau khi cuộc tấn công đã ảnh hưởng đến server. Nó chủ động giảm bề mặt tấn công bằng cách ẩn game server khỏi client và loại bỏ traffic không hợp lệ trước khi traffic đó tiếp cận game session.</p>
+<h3 id="vấn-đề-với-giải-pháp-cũ">VẤN ĐỀ VỚI GIẢI PHÁP CŨ</h3>
+<p>Nhiều hệ thống chống DDoS truyền thống hoạt động theo mô hình phản ứng:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Attack → Detect → Analyze → Mitigate
+</span></span></code></pre></div><p>Hệ thống phải chờ cuộc tấn công xuất hiện, xác định server hoặc traffic pattern đang bị ảnh hưởng, sau đó mới áp dụng biện pháp giảm thiểu.</p>
+<p>Với game online, khoảng thời gian này có thể tạo ra tác động rõ rệt. Chỉ cần vài giây packet loss, jitter hoặc latency tăng cao cũng có thể làm gián đoạn game session và ảnh hưởng tiêu cực đến trải nghiệm người chơi.</p>
+<p>Vấn đề này đặc biệt quan trọng với UDP traffic, loại traffic được sử dụng phổ biến trong các game thời gian thực như:</p>
+<ul>
+<li>FPS;</li>
+<li>MOBA;</li>
+<li>racing;</li>
+<li>action game;</li>
+<li>game multiplayer yêu cầu độ trễ thấp.</li>
+</ul>
+<p>UDP không thiết lập kết nối theo cách TCP thực hiện. Vì vậy, attacker có thể tạo ra lượng lớn packet giả mạo hoặc packet không hợp lệ và gửi trực tiếp đến IP và port của game server.</p>
+<p>Các giải pháp truyền thống thường phải dựa vào byte-matching rule hoặc traffic signature để nhận diện packet tấn công.</p>
+<p>Cách tiếp cận này có hai hạn chế:</p>
+<ol>
+<li>Hệ thống phải biết trước đặc điểm của packet độc hại.</li>
+<li>Rule phải liên tục được cập nhật khi attacker thay đổi phương thức tấn công.</li>
+</ol>
+<p>Điều đó khiến cơ chế phòng thủ thường chậm hơn attacker ít nhất một bước.</p>
+<h3 id="giải-pháp-của-aws-player-gateway">GIẢI PHÁP CỦA AWS: PLAYER GATEWAY</h3>
+<p>Trung tâm của cơ chế DDoS Protection mới là <strong>Amazon GameLift Servers Player Gateway</strong>.</p>
+<p>Player Gateway cung cấp một lớp relay networking nằm giữa game client và game server.</p>
+<p>Luồng kết nối tổng quát diễn ra như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Game client
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Player Gateway relay endpoint
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Amazon GameLift game server
+</span></span></code></pre></div><p>Game client không cần biết địa chỉ IP thật của game server. Client chỉ nhận token và danh sách relay endpoint cần thiết để tham gia game session.</p>
+<p>Player Gateway gồm ba cơ chế chính:</p>
+<ol>
+<li>Relay Networking kết hợp Token Authentication.</li>
+<li>Multi-Relay.</li>
+<li>Dynamic Failover.</li>
+</ol>
+<h3 id="1-relay-networking-và-token-authentication">1. RELAY NETWORKING VÀ TOKEN AUTHENTICATION</h3>
+<p>Trong mô hình kết nối thông thường, game client kết nối trực tiếp đến IP và port của game server.</p>
+<p>Điều này khiến địa chỉ của game server có thể bị lộ cho client. Nếu attacker lấy được thông tin đó, họ có thể gửi lượng lớn UDP traffic trực tiếp đến server.</p>
+<p>Với Player Gateway, client không còn kết nối trực tiếp đến game server.</p>
+<p>Khi một người chơi chuẩn bị tham gia game session, game backend gọi API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>GetPlayerConnectionDetails
+</span></span></code></pre></div><p>API trả về:</p>
+<ul>
+<li>Player Gateway Token;</li>
+<li>danh sách relay endpoint;</li>
+<li>thông tin kết nối cần thiết cho game client.</li>
+</ul>
+<p>Backend sau đó gửi thông tin này về client.</p>
+<p>Khi gửi UDP traffic, client gắn Player Gateway Token vào đầu mỗi packet và gửi packet đến relay endpoint thay vì địa chỉ game server.</p>
+<p>Luồng xử lý packet có thể được mô tả như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>UDP packet
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Player Gateway Token
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Relay endpoint
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Token validation
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Original game payload
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Game server
+</span></span></code></pre></div><p>Relay xác thực token trước khi cho phép traffic đi tiếp.</p>
+<ul>
+<li>Packet thiếu token sẽ bị loại bỏ.</li>
+<li>Packet sử dụng token không hợp lệ sẽ bị loại bỏ.</li>
+<li>Packet có token hợp lệ sẽ được chuyển tiếp đến game server.</li>
+</ul>
+<p>Trước khi packet được chuyển tiếp, Player Gateway loại bỏ phần token và chỉ gửi payload gốc tới server. Vì vậy, game server vẫn nhận được packet theo định dạng mà game server mong đợi.</p>
+<p>Traffic phản hồi từ game server về client cũng đi qua relay network.</p>
+<p>Cơ chế này mang lại hai lợi ích quan trọng.</p>
+<p>Thứ nhất, IP thật của game server được ẩn khỏi player. Client chỉ nhận địa chỉ của relay endpoint.</p>
+<p>Thứ hai, traffic không được xác thực có thể bị loại bỏ trước khi tiếp cận game server.</p>
+<h3 id="giới-hạn-traffic-theo-player">GIỚI HẠN TRAFFIC THEO PLAYER</h3>
+<p>Bên cạnh token authentication, Player Gateway còn áp dụng giới hạn traffic theo từng player.</p>
+<p>Điều này giúp xử lý trường hợp attacker sở hữu token hợp lệ, chẳng hạn khi attacker tham gia game session như một player bình thường nhưng sau đó gửi lượng traffic bất thường.</p>
+<p>Player Gateway có thể giới hạn lượng traffic của player đó trước khi traffic tiếp cận game server.</p>
+<p>Nhờ vậy, một client bị xâm nhập hoặc một player độc hại khó có thể sử dụng một kết nối hợp lệ để làm quá tải toàn bộ game session.</p>
+<h3 id="2-multi-relay">2. MULTI-RELAY</h3>
+<p>Mỗi player nhận nhiều relay endpoint thay vì chỉ một endpoint duy nhất.</p>
+<p>Danh sách relay endpoint cũng có thể khác nhau giữa các player trong cùng một game session.</p>
+<p>Ví dụ:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Player</th>
+					<th>Relay endpoint</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Player A</td>
+					<td>Relay 1, Relay 2, Relay 3</td>
+			</tr>
+			<tr>
+					<td>Player B</td>
+					<td>Relay 2, Relay 4, Relay 5</td>
+			</tr>
+			<tr>
+					<td>Player C</td>
+					<td>Relay 1, Relay 4, Relay 6</td>
+			</tr>
+	</tbody>
+</table>
+<p>Cách phân phối này giúp traffic không tập trung vào một relay duy nhất.</p>
+<p>Nếu tất cả player trong một game session sử dụng cùng một relay, relay đó có thể trở thành single point of failure. Một cuộc tấn công nhắm vào relay có thể gây gián đoạn cho toàn bộ người chơi.</p>
+<p>Với Multi-Relay, traffic được phân tán trên relay infrastructure.</p>
+<p>Nếu một endpoint bị tấn công hoặc gặp sự cố, phạm vi ảnh hưởng có thể được cô lập ở một nhóm kết nối thay vì lan sang toàn bộ game session.</p>
+<p>Cơ chế này cũng làm tăng độ khó của cuộc tấn công. Attacker không chỉ phải xác định một endpoint duy nhất mà phải đối mặt với một tập hợp endpoint được phân phối động giữa nhiều player.</p>
+<h3 id="3-dynamic-failover">3. DYNAMIC FAILOVER</h3>
+<p>Relay endpoint không cố định trong toàn bộ thời gian tồn tại của game session.</p>
+<p>Khi một relay trở nên unhealthy, Amazon GameLift Servers có thể thay thế endpoint đó và trả về thông tin endpoint mới trong lần gọi API tiếp theo.</p>
+<p>Client sau đó chuyển traffic sang endpoint khác mà không cần kết nối trực tiếp lại với game server.</p>
+<p>AWS cung cấp hai cơ chế lựa chọn endpoint:</p>
+<ul>
+<li>Fallback;</li>
+<li>Predictive Rotation.</li>
+</ul>
+<h3 id="fallback">FALLBACK</h3>
+<p>Trong chế độ Fallback, client sử dụng một relay endpoint chính.</p>
+<p>Client tiếp tục gửi traffic đến endpoint này cho đến khi endpoint gặp lỗi hoặc không còn khả dụng. Khi đó, client chuyển sang endpoint khác trong danh sách.</p>
+<p>Luồng xử lý có thể được mô tả như sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Relay A
+</span></span><span style="display:flex;"><span>    ↓ unhealthy
+</span></span><span style="display:flex;"><span>Relay B
+</span></span><span style="display:flex;"><span>    ↓ unhealthy
+</span></span><span style="display:flex;"><span>Relay C
+</span></span></code></pre></div><p>Fallback phù hợp với các loại game hoặc chức năng ít nhạy cảm với packet loss tạm thời, chẳng hạn:</p>
+<ul>
+<li>lobby;</li>
+<li>menu;</li>
+<li>matchmaking screen;</li>
+<li>turn-based game;</li>
+<li>các hoạt động không yêu cầu cập nhật theo thời gian thực liên tục.</li>
+</ul>
+<p>Hạn chế của cơ chế này là một số packet có thể bị mất trong khoảng thời gian client phát hiện endpoint lỗi và chuyển sang endpoint khác.</p>
+<h3 id="predictive-rotation">PREDICTIVE ROTATION</h3>
+<p>Predictive Rotation liên tục luân chuyển traffic giữa các relay endpoint.</p>
+<p>Thay vì chờ một endpoint ngừng hoạt động hoàn toàn, client và Player Gateway chủ động sử dụng nhiều endpoint và dự đoán lỗi trước khi endpoint trở nên unavailable.</p>
+<p>Cách tiếp cận này giúp giảm khoảng trống trong quá trình failover và duy trì luồng packet ổn định hơn.</p>
+<p>Predictive Rotation phù hợp với các game thời gian thực như:</p>
+<ul>
+<li>FPS;</li>
+<li>racing;</li>
+<li>action multiplayer;</li>
+<li>battle royale;</li>
+<li>game yêu cầu packet delivery liên tục và latency thấp.</li>
+</ul>
+<p>Đối với các thể loại game này, ngay cả một khoảng mất kết nối ngắn cũng có thể khiến nhân vật dịch chuyển bất thường, input không được ghi nhận hoặc trạng thái giữa client và server mất đồng bộ.</p>
+<h3 id="từ-phòng-thủ-bị-động-sang-chủ-động">TỪ PHÒNG THỦ BỊ ĐỘNG SANG CHỦ ĐỘNG</h3>
+<p>Sự khác biệt chính giữa cơ chế truyền thống và Player Gateway nằm ở thời điểm traffic được xử lý.</p>
+<p>Với mô hình truyền thống:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Traffic reaches server
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Attack is detected
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Traffic is analyzed
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Mitigation is applied
+</span></span></code></pre></div><p>Với Player Gateway:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Traffic reaches relay
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Token is validated
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Player traffic is limited
+</span></span><span style="display:flex;"><span>    ↓
+</span></span><span style="display:flex;"><span>Only valid traffic reaches the game server
+</span></span></code></pre></div><p>Traffic không hợp lệ được loại bỏ ở lớp relay, trước khi tiếp cận game server.</p>
+<p>IP của game server cũng không được cung cấp trực tiếp cho player. Điều này làm giảm khả năng attacker nhắm trực tiếp vào server đang chạy game session.</p>
+<p>Multi-Relay và Dynamic Failover tiếp tục giảm ảnh hưởng bằng cách phân tán traffic và chuyển kết nối khỏi relay đang gặp sự cố.</p>
+<h2 id="luồng-hoạt-động-tổng-quát">LUỒNG HOẠT ĐỘNG TỔNG QUÁT</h2>
+<p>Toàn bộ quy trình có thể được tóm tắt qua các bước sau:</p>
+<ol>
+<li>Player yêu cầu tham gia game session.</li>
+<li>Game backend gọi <code>GetPlayerConnectionDetails</code>.</li>
+<li>Amazon GameLift Servers trả về Player Gateway Token và danh sách relay endpoint.</li>
+<li>Backend gửi thông tin kết nối về game client.</li>
+<li>Client gắn token vào UDP packet.</li>
+<li>Client gửi packet đến relay endpoint.</li>
+<li>Relay xác thực token.</li>
+<li>Relay giới hạn traffic theo player.</li>
+<li>Relay loại bỏ token và chuyển payload đến game server.</li>
+<li>Traffic phản hồi từ game server được gửi ngược lại qua relay.</li>
+<li>Nếu relay gặp sự cố, client chuyển sang endpoint khác.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Player
+</span></span><span style="display:flex;"><span>   ↓ Request connection
+</span></span><span style="display:flex;"><span>Game backend
+</span></span><span style="display:flex;"><span>   ↓ GetPlayerConnectionDetails
+</span></span><span style="display:flex;"><span>Amazon GameLift Servers
+</span></span><span style="display:flex;"><span>   ↓ Token + relay endpoints
+</span></span><span style="display:flex;"><span>Game client
+</span></span><span style="display:flex;"><span>   ↓ Authenticated UDP packets
+</span></span><span style="display:flex;"><span>Player Gateway
+</span></span><span style="display:flex;"><span>   ↓ Validated game traffic
+</span></span><span style="display:flex;"><span>Game server
+</span></span></code></pre></div><h2 id="những-điểm-cần-lưu-ý">NHỮNG ĐIỂM CẦN LƯU Ý</h2>
+<p>DDoS Protection của Amazon GameLift Servers được AWS quản lý, nhưng điều đó không có nghĩa là game developer không cần thực hiện tích hợp.</p>
+<p>Để sử dụng Player Gateway, hệ thống game vẫn cần:</p>
+<ul>
+<li>bật Player Gateway khi cấu hình tài nguyên GameLift phù hợp;</li>
+<li>cập nhật game backend để gọi <code>GetPlayerConnectionDetails</code>;</li>
+<li>gửi token và relay endpoint về client;</li>
+<li>cập nhật game client để gắn token vào UDP packet;</li>
+<li>triển khai logic lựa chọn relay endpoint;</li>
+<li>triển khai Fallback hoặc Predictive Rotation tùy yêu cầu của game;</li>
+<li>xử lý việc làm mới thông tin endpoint khi relay thay đổi.</li>
+</ul>
+<p>AWS chịu trách nhiệm vận hành relay infrastructure và cơ chế bảo vệ bên dưới. Tuy nhiên, backend và client vẫn phải sử dụng đúng connection flow do Player Gateway cung cấp.</p>
+<h2 id="kết-luận">KẾT LUẬN</h2>
+<p>Amazon GameLift Servers DDoS Protection thay đổi cách game server được bảo vệ trước UDP-based DDoS attack.</p>
+<p>Thay vì để traffic đi trực tiếp đến server rồi mới phát hiện và giảm thiểu cuộc tấn công, Player Gateway chủ động đưa traffic qua một relay network.</p>
+<p>Tại đây, hệ thống:</p>
+<ul>
+<li>xác thực Player Gateway Token;</li>
+<li>loại bỏ packet không hợp lệ;</li>
+<li>giới hạn traffic theo từng player;</li>
+<li>ẩn IP thật của game server;</li>
+<li>phân tán kết nối qua nhiều relay;</li>
+<li>tự động chuyển endpoint khi relay gặp sự cố.</li>
+</ul>
+<p>Nhờ đó, game server giảm nguy cơ bị tấn công trực tiếp và game session có khả năng duy trì kết nối tốt hơn khi một phần relay infrastructure gặp sự cố.</p>
+<p>Cơ chế này đặc biệt phù hợp với các game multiplayer sử dụng UDP và yêu cầu latency thấp, nơi chỉ một khoảng gián đoạn ngắn cũng có thể ảnh hưởng trực tiếp đến trải nghiệm người chơi.</p>
+<h2 id="nguồn-tham-khảo">NGUỒN THAM KHẢO</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/gameliftservers/latest/developerguide/ddos-protection-intro.html">Amazon GameLift Servers DDoS protection</a></li>
+<li><a href="https://aws.amazon.com/gamelift/servers/">AWS — Amazon GameLift Servers</a></li>
+</ul>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/vi/3-blogsposted/" title="Các blog đã đăng"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/vi/3-blogsposted/3.2-blog2/" title="Blog 2" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1785383412"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785383412"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785383412"></script>
+    <script src="/js/jquery.sticky.js?1785383412"></script>
+    <script src="/js/featherlight.min.js?1785383412"></script>
+    <script src="/js/highlight.pack.js?1785383412"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785383412"></script>
+    <script src="/js/learn.js?1785383412"></script>
+    <script src="/js/hugo-learn.js?1785383412"></script>
+
+    <link href="/mermaid/mermaid.css?1785383412" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785383412"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script>
+  (function (i, s, o, g, r, a, m) {
+    i["GoogleAnalyticsObject"] = r;
+    ((i[r] =
+      i[r] ||
+      function () {
+        (i[r].q = i[r].q || []).push(arguments);
+      }),
+      (i[r].l = 1 * new Date()));
+    ((a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]));
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m);
+  })(
+    window,
+    document,
+    "script",
+    "https://www.google-analytics.com/analytics.js",
+    "ga",
+  );
+
+  ga("create", "UA-158079754-2", "auto");
+  ga("send", "pageview");
+</script>
+
+  </body>
+</html>
