@@ -54,84 +54,6 @@
                 href="http://localhost:1313/vi/1-worklog/1.1-week1/"
                 />
   </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.2-week2/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.2-week2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.2-week2/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.3-week3/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.3-week3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.3-week3/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.4-week4/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.4-week4/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.4-week4/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.5-week5/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.5-week5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.5-week5/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.6-week6/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.6-week6/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.6-week6/"
-                />
-  </url><url>
-    <loc>http://localhost:1313/vi/1-worklog/1.7-week7/</loc>
-    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/1-worklog/1.7-week7/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="http://localhost:1313/vi/1-worklog/1.7-week7/"
-                />
-  </url><url>
     <loc>http://localhost:1313/vi/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -197,6 +119,19 @@
                 href="http://localhost:1313/vi/4-eventparticipated/4.2-event2/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.2-week2/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.2-week2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.2-week2/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.2-prerequiste/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -234,6 +169,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/4-eventparticipated/4.3-event3/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.3-week3/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.3-week3/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.3-week3/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/3-blogsposted/</loc>
@@ -275,6 +223,19 @@
                 href="http://localhost:1313/vi/4-eventparticipated/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.4-week4/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.4-week4/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.4-week4/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.4-extension-setup/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -286,6 +247,19 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/5-workshop/5.4-extension-setup/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.5-week5/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.5-week5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.5-week5/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/5-workshop/</loc>
@@ -327,6 +301,19 @@
                 href="http://localhost:1313/vi/6-self-evaluation/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.6-week6/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.6-week6/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.6-week6/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/5-workshop/5.6-cleanup/</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -353,6 +340,19 @@
                 href="http://localhost:1313/vi/7-feedback/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.7-week7/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.7-week7/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.7-week7/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/8-references/</loc>
     <lastmod>2026-07-28T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -364,6 +364,32 @@
                 rel="alternate"
                 hreflang="vi"
                 href="http://localhost:1313/vi/8-references/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.8-week8/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.8-week8/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.8-week8/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/vi/1-worklog/1.9-week9/</loc>
+    <lastmod>2026-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.9-week9/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.9-week9/"
                 />
   </url><url>
     <loc>http://localhost:1313/vi/categories/</loc>

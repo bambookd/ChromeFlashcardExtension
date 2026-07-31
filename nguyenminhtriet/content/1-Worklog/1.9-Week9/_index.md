@@ -12,7 +12,7 @@ pre: " <b> 1.9. </b> "
 
 - Write, finalize, and submit the final project report.
 - Conduct final project presentation and team review.
-- Build static Hugo documentation site and execute official repository freeze & project closeout.
+- Execute official repository freeze & project closeout.
 
 ## Work log
 

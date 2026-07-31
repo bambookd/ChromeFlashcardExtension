@@ -18,7 +18,7 @@
 	"title": "Nhật ký công việc",
 	"tags": [],
 	"description": "",
-	"content": "Nhật ký công việc (15/06/2026 - 31/07/2026) Tuần Trọng tâm Kết quả Tuần 1 Lập nhóm, khảo sát và chọn đề tài Xác định phạm vi MVP Tuần 2 Prototype Extension Luồng lưu từ local Tuần 3 Backend và dữ liệu REST API local Tuần 4 Serverless migration Lambda và DynamoDB Tuần 5 AWS deployment API hoạt động Tuần 6 Study/Game và kiểm thử Game solo, realtime local Tuần 7 Báo cáo và xử lý blocker "
+	"content": "Nhật ký công việc — Kỳ thực tập kỹ thuật 9 tuần (15/06 – 14/08/2026) Tuần Trọng tâm Kết quả Tuần 1 Lập nhóm, khảo sát và chọn đề tài Xác định phạm vi MVP Tuần 2 Prototype Extension Luồng lưu từ local Tuần 3 Backend và dữ liệu REST API local Tuần 4 Serverless migration Lambda và DynamoDB Tuần 5 AWS deployment API hoạt động Tuần 6 Study/Game và kiểm thử Game solo, realtime local Tuần 7 Tài liệu workshop, cấu hình tên miền tùy chỉnh, đánh giá hệ thống ban đầu và xác minh teardown Kiểm thử tên miền trực tuyến \u0026amp; xác minh teardown Tuần 8 Hoàn thiện tính năng cuối, dọn dẹp mã nguồn, tinh chỉnh giao diện và xác minh vận hành Phiên bản độ tin cậy cao \u0026amp; tối ưu độ trễ Tuần 9 Chuẩn bị báo cáo cuối kỳ, nộp báo cáo, thuyết trình \u0026amp; kết thúc dự án Báo cáo hoàn tất \u0026amp; hoàn thành bàn giao "
 },
 {
 	"uri": "http://localhost:1313/vi/1-worklog/1.1-week1/",
@@ -32,7 +32,7 @@
 	"title": "Báo cáo thực tập",
 	"tags": [],
 	"description": "",
-	"content": "Báo cáo thực tập Thông tin sinh viên: Họ và tên: Nguyễn Nhật Hiếu\nSố điện thoại: 0934826940\nMSSV: 2352330\nEmail: hieu.nguyen260705@hcmut.edu.vn\nTrường: Đại học Bách Khoa - Đại học Quốc Gia TPHCM\nNgành: Khoa học Máy tính\nCông ty thực tập: Công ty TNHH Amazon Web Services Viet Nam\nVị trí thực tập: Workforce Bootcamp - First Cloud AI Journey\nThời gian thực tập: Từ ngày 15/06/2026 đến ngày 31/07/2026\nNội dung báo cáo Worklog Proposal Các bài blogs đã đăng Các events đã tham gia Workshop Tự đánh giá Chia sẻ, đóng góp ý kiến "
+	"content": "Báo cáo thực tập Thông tin sinh viên: Họ và tên: Nguyễn Nhật Hiếu\nSố điện thoại: 0934826940\nMSSV: 2352330\nEmail: hieu.nguyen260705@hcmut.edu.vn\nTrường: Đại học Bách Khoa - Đại học Quốc Gia TPHCM\nNgành: Khoa học Máy tính\nCông ty thực tập: Công ty TNHH Amazon Web Services Viet Nam\nVị trí thực tập: Workforce Bootcamp - First Cloud AI Journey\nThời gian thực tập: Từ ngày 15/06/2026 đến ngày 14/08/2026\nNội dung báo cáo Worklog Proposal Các bài blogs đã đăng Các events đã tham gia Workshop Tự đánh giá Chia sẻ, đóng góp ý kiến "
 },
 {
 	"uri": "http://localhost:1313/vi/5-workshop/5.1-workshop-overview/",
@@ -172,7 +172,7 @@
 	"title": "Nhật ký công việc Tuần 6",
 	"tags": [],
 	"description": "",
-	"content": "Tuần 6 — 20/07 – 26/07/2026 Tổng quan Phát triển game luyện từ.\nCông việc Tách Game thành trang độc lập với Study. Xây dựng WebSocket server local bằng thư viện ws. Kiểm tra khả năng chuyển realtime lên AWS. Vấn đề phát sinh Lambda HTTP API hiện tại không duy trì kết nối WebSocket hoặc trạng thái phòng trong bộ nhớ. Việc chuyển realtime lên AWS cần API Gateway WebSocket API, Lambda handlers riêng và nơi lưu trạng thái phòng/kết nối.\n"
+	"content": "Tuần 6 — 20/07 – 24/07/2026 Tổng quan Phát triển game luyện từ.\nCông việc Tách Game thành trang độc lập với Study. Xây dựng WebSocket server local bằng thư viện ws. Kiểm tra khả năng chuyển realtime lên AWS. Vấn đề phát sinh Lambda HTTP API hiện tại không duy trì kết nối WebSocket hoặc trạng thái phòng trong bộ nhớ. Việc chuyển realtime lên AWS cần API Gateway WebSocket API, Lambda handlers riêng và nơi lưu trạng thái phòng/kết nối.\n"
 },
 {
 	"uri": "http://localhost:1313/vi/5-workshop/5.6-cleanup/",
@@ -186,7 +186,7 @@
 	"title": "Nhật ký công việc Tuần 7",
 	"tags": [],
 	"description": "",
-	"content": "Tuần 7 — 27/07 – 31/07/2026 Tổng quan Hoàn thiện báo cáo, kiểm thử bàn giao và đánh giá blocker realtime.\nCông việc cần thực hiện Hoàn thiện báo cáo và tài liệu Workshop. Kiểm thử các luồng chính trước khi bàn giao. Đánh giá và ghi nhận hướng xử lý blocker realtime. Công việc đã thực hiện Rà soát luồng Extension, Study, Game, API và export. Hoàn thiện tài liệu Workshop và hướng dẫn cleanup. Ghi rõ giới hạn realtime trong kiến trúc AWS MVP. Build và kiểm tra website Hugo song ngữ. Tổ chức team meetup cuối kỳ để chạy thử kịch bản demo, tổng kết bài học và thống nhất nội dung bàn giao. Kết quả Các chức năng MVP không realtime đã sẵn sàng để demo và bàn giao.\n"
+	"content": "Tuần 7 — 27/07 – 31/07/2026 Tổng quan Hoàn thiện nội dung tài liệu Workshop 5, kiểm thử tích hợp tên miền tùy chỉnh trên các endpoint sản xuất, thực hiện đánh giá hệ thống ban đầu và xác minh quy trình tự động teardown giải phóng tài nguyên.\nCông việc cần thực hiện Biên soạn hoàn chỉnh bộ tài liệu hướng dẫn và nội dung kỹ thuật cho Workshop 5. Kiểm thử tích hợp thực tế luồng định tuyến tên miền tùy chỉnh tại https://axiza.net và https://api.axiza.net. Thực nghiệm và xác minh câu lệnh xóa tài nguyên tự động (sam delete --no-prompts) cùng quy trình gỡ bỏ bản ghi DNS trên Route 53. Công việc đã thực hiện Xây dựng tài liệu chi tiết cho Workshop 5 bao gồm sơ đồ kiến trúc AWS Serverless và hướng dẫn triển khai bằng AWS SAM. Thực hiện bài kiểm thử tích hợp end-to-end kết nối từ Chrome Extension đến API sản xuất (https://api.axiza.net) và giao diện Web (https://axiza.net). Đánh giá và kiểm tra lệnh dọn dẹp hệ thống sam delete --no-prompts, xác nhận thu hồi hoàn toàn chứng chỉ ACM SSL và các bản ghi Route 53 hosted zone. Phân tích và tài liệu hóa sự khác biệt kiến trúc giữa HTTP API và WebSocket API phục vụ định hướng mở rộng tính năng game realtime. Biên dịch và kiểm tra hiển thị website Hugo song ngữ phục vụ đợt rà soát tiến độ kỹ thuật. Kết quả Tài liệu Workshop 5 được hoàn tất, tên miền tùy chỉnh hoạt động ổn định và quy trình teardown tự động hóa được xác minh thành công.\n"
 },
 {
 	"uri": "http://localhost:1313/vi/7-feedback/",
@@ -201,6 +201,20 @@
 	"tags": [],
 	"description": "",
 	"content": "8. Tài liệu tham khảo 1. Địa chỉ Hệ thống \u0026amp; Repository Mã nguồn Môi trường / Tài nguyên URL Mô tả Ứng dụng Web chính (Canonical) https://www.axiza.net Website Web App ôn tập flashcard lưu trữ trên AWS Amplify Hosting Backend REST API Gốc https://api.axiza.net Endpoint REST API quản lý bởi API Gateway HTTP API API Health Check Endpoint https://api.axiza.net/api/health Endpoint kiểm tra trạng thái hoạt động (health check) của backend Video demo https://demo.axiza.net/ Demo video sản phẩm của workshop GitHub Repository https://github.com/bambookd/ChromeFlashcardExtension Toàn bộ mã nguồn Chrome Extension (Manifest V3), Express Backend và SAM IaC Template 2. Tài liệu Tham khảo từ các Bài viết Blog Kỹ thuật Blog 1 — DDoS Protection in Amazon GameLift Servers Bài blog trên Cộng đồng AWS: AWS Study Group Facebook Post Tài liệu Hướng dẫn AWS: Amazon GameLift Servers DDoS protection Trang sản phẩm AWS: AWS — Amazon GameLift Servers Blog 2 — Intelligent OCR with Amazon Textract Bài blog trên Cộng đồng AWS: AWS Study Group Facebook Post Trang sản phẩm AWS: Amazon Textract Homepage Câu hỏi Thường gặp AWS: Amazon Textract FAQs Tài liệu Kỹ thuật AWS: Amazon Textract Documentation Hướng dẫn Người dùng AWS: What is Amazon Textract? Khuyến nghị Thực thi AWS: Amazon Textract best practices Giới hạn Dịch vụ AWS: Amazon Textract service limits Tài liệu API AWS: Amazon Textract Queries Blog 3 — Cloud Data Security: AWS Key Management Service (KMS) Bài blog trên Cộng đồng AWS: AWS Study Group Facebook Post Bài viết Hướng dẫn Kỹ thuật: AWS KMS Introduction Article Tài liệu Hướng dẫn AWS: AWS Key Management Service Developer Guide "
+},
+{
+	"uri": "http://localhost:1313/vi/1-worklog/1.8-week8/",
+	"title": "Nhật ký công việc Tuần 8",
+	"tags": [],
+	"description": "",
+	"content": "Tuần 8 — 03/08 – 07/08/2026 Tổng quan Tập trung hoàn thiện giao diện người dùng, tối ưu hoá hiệu năng hệ thống, dọn dẹp mã nguồn, kiểm thử vận hành toàn diện end-to-end và giảm độ trễ phản hồi trên tất cả các tầng ứng dụng.\nCông việc cần thực hiện Tinh chỉnh giao diện UI/UX, cải thiện trải nghiệm tương tác và dọn dẹp mã nguồn dư thừa trong Extension và ứng dụng Web. Kiểm thử vận hành toàn diện (E2E) nối liền giữa Chrome Extension, API Gateway, DynamoDB và Web Client. Tối ưu tốc độ tải tài nguyên tĩnh, giảm độ trễ khởi động lạnh (cold-start) của Lambda và hoàn thiện cơ chế xử lý ngoại tuyến (offline mode). Công việc đã thực hiện Nâng cấp giao diện popup Extension, cải thiện font chữ, bố cục phản hồi và trạng thái trực quan trong quá trình đồng bộ dữ liệu. Tối ưu mã nguồn backend: loại bỏ log debug không cần thiết, tái cấu trúc hàm xử lý bất đồng bộ và giảm kích thước package Lambda. Chạy chuỗi bài kiểm thử tích hợp quy mô lớn từ khâu lưu từ mới, tính toán thuật toán lặp lại ngắt quãng (SRS), quản lý bộ từ đến phản hồi API Gateway. Cấu hình header caching cho static assets và tinh chỉnh thông số bộ nhớ Lambda nhằm tối ưu thời gian phản hồi. Bổ sung cơ chế lưu trữ đệm tại chỗ (local storage fallback) giúp ứng dụng hoạt động mượt mà khi mất kết nối mạng. Kết quả Hệ thống đạt độ ổn định và hoàn thiện cao, thời gian phản hồi API duy trì dưới 1 giây cùng khả năng đồng bộ dữ liệu ngoại tuyến tin cậy.\n"
+},
+{
+	"uri": "http://localhost:1313/vi/1-worklog/1.9-week9/",
+	"title": "Nhật ký công việc Tuần 9",
+	"tags": [],
+	"description": "",
+	"content": "Tuần 9 — 10/08 – 14/08/2026 Tổng quan Tổng hợp kết quả kỹ thuật, trình bày báo cáo tổng kết dự án, đóng băng kho mã nguồn và hoàn tất các thủ tục kết thúc kỳ thực tập.\nCông việc cần thực hiện Tổng hợp kết quả, biên soạn, rà soát và nộp báo cáo tổng kết thực tập chính thức. Chuẩn bị tài liệu thuyết trình, thực hiện buổi demo trực tiếp và họp tổng kết bài học kinh nghiệm cùng nhóm. Đóng băng repository và hoàn thành bàn giao dự án. Công việc đã thực hiện Tổng hợp toàn bộ dữ liệu đo lường hiệu năng, quyết định kiến trúc và bài học kinh nghiệm vào báo cáo kỹ thuật cuối kỳ. Thực hiện thành công buổi báo cáo và demo trực tiếp các tính năng: lưu từ qua Extension, đồng bộ AWS Serverless, chế độ học flashcard và chỉ số vận hành. Tổ chức buổi họp retrospective đánh giá các mốc đạt được, giá trị thu hoạch và hướng phát triển tương lai. Kiểm tra toàn bộ liên kết song ngữ và gắn tag phiên bản phát hành chính thức trên Git. Hoàn tất quy trình bàn giao, lưu trữ tài nguyên dự án và chính thức đóng kỳ thực tập. Kết quả Báo cáo cuối kỳ được nộp đúng hạn, buổi thuyết trình demo thành công tốt đẹp, website tài liệu Hugo được biên dịch \u0026amp; đóng băng hoàn toàn.\n"
 },
 {
 	"uri": "http://localhost:1313/vi/categories/",

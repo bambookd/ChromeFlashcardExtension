@@ -10,7 +10,7 @@ pre: " <b> 2. </b> "
 
 ### Tóm tắt Tổng quan
 
-Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng **Chrome Flashcard Extension & Serverless Study Platform** (Stack Name: `chrome-flashcard-axiza`). Được xây dựng trong đợt thực tập 7 tuần (15/06/2026 – 02/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website Web Application frontend được lưu trữ trên **AWS Amplify Hosting** dưới tên miền chuẩn (canonical domain) **`https://www.axiza.net`** (với tên miền apex `axiza.net` tự động điều hướng HTTP/HTTPS sang `www.axiza.net`), trong khi backend API sử dụng tên miền tùy chỉnh **`https://api.axiza.net`**, cả hai đều được quản lý bởi **Amazon Route 53** với chứng chỉ số SSL/TLS cấp phát bởi **AWS Certificate Manager (ACM)**.
+Tài liệu này trình bày chi tiết đề xuất kỹ thuật, kiến trúc hệ thống, lộ trình phát triển và kế hoạch thực thi Workshop cho ứng dụng **Chrome Flashcard Extension & Serverless Study Platform** (Stack Name: `chrome-flashcard-axiza`). Được xây dựng trong đợt thực tập 9 tuần (15/06/2026 – 14/08/2026), ứng dụng kết hợp giữa tiện ích mở rộng trình duyệt theo mô hình offline-first (Manifest V3) và hạ tầng backend AWS Serverless được quản lý hoàn toàn. Website Web Application frontend được lưu trữ trên **AWS Amplify Hosting** dưới tên miền chuẩn (canonical domain) **`https://www.axiza.net`** (với tên miền apex `axiza.net` tự động điều hướng HTTP/HTTPS sang `www.axiza.net`), trong khi backend API sử dụng tên miền tùy chỉnh **`https://api.axiza.net`**, cả hai đều được quản lý bởi **Amazon Route 53** với chứng chỉ số SSL/TLS cấp phát bởi **AWS Certificate Manager (ACM)**.
 
 | Thông số | Giá trị Cấu hình |
 | --- | --- |
@@ -118,9 +118,9 @@ Tối ưu hóa quy trình thu thập và lưu trữ từ vựng mới xuống **
 
 ---
 
-## 5. Lộ trình Thực hiện 7 Tuần & Liên kết Worklog
+## 5. Lộ trình Thực hiện 9 Tuần & Liên kết Worklog
 
-Quá trình nghiên cứu, xây dựng và hoàn thiện hệ thống được thực thi trong 7 tuần, được ghi nhận chi tiết tại [`content/1-Worklog`](file:///Users/axiza/Documents/GitHub/ChromeFlashcardExtension/fcj-workshop-template/content/1-Worklog/_index.vi.md):
+Quá trình nghiên cứu, xây dựng và hoàn thiện hệ thống được thực thi trong 9 tuần, được ghi nhận chi tiết tại [`content/1-Worklog`](file:///Users/axiza/Documents/GitHub/ChromeFlashcardExtension/nguyenvutuong/content/1-Worklog/_index.vi.md):
 
 | Tuần | Thời gian | Trọng tâm Công việc & Các Cột mốc Đạt được | Sản phẩm / Kết quả Đạt được |
 | --- | --- | --- | --- |
@@ -129,8 +129,10 @@ Quá trình nghiên cứu, xây dựng và hoàn thiện hệ thống được t
 | **Tuần 3** | 29/06 – 05/07/2026 | Logic phiên học, quản lý danh mục, Express.js REST API, template DynamoDB SAM | Template `template.yaml` & backend Express local |
 | **Tuần 4** | 06/07 – 12/07/2026 | Chuẩn hóa bộ tài liệu kiến trúc, kiểm tra an ninh, tối ưu giao diện UI/UX | Bộ 11 tài liệu thiết kế & API Contract |
 | **Tuần 5** | 13/07 – 19/07/2026 | Triển khai thực tế lần đầu lên AWS cloud, deploy SAM stack, thiết lập guardrail chi phí | Stack đám mây live `chrome-flashcard-dev` |
-| **Tuần 6** | 20/07 – 26/07/2026 | Kiểm thử toàn diện, tối ưu hiệu năng, cấu hình tên miền tùy chỉnh (`www.axiza.net` & `api.axiza.net`) | Điều hướng Custom Domain & Kiểm thử E2E |
-| **Tuần 7** | 27/07 – 02/08/2026 | Hoàn thiện báo cáo tổng kết, xây dựng tài liệu Workshop, tự động hóa dọn dẹp tài nguyên | Bộ tài liệu Workshop 5 & Script dọn dẹp |
+| **Tuần 6** | 20/07 – 24/07/2026 | Kiểm thử toàn diện, tối ưu hiệu năng, cấu hình tên miền tùy chỉnh (`www.axiza.net` & `api.axiza.net`) | Điều hướng Custom Domain & Kiểm thử E2E |
+| **Tuần 7** | 27/07 – 31/07/2026 | Đóng gói tài liệu Workshop 5, cấu hình tích hợp tên miền tùy chỉnh, đánh giá hệ thống ban đầu và xác minh quy trình dọn dẹp tài nguyên | Bộ tài liệu Workshop 5 & Script xác minh dọn dẹp |
+| **Tuần 8** | 03/08 – 07/08/2026 | Tối ưu hóa tính năng, tinh chỉnh giao diện người dùng, làm sạch mã nguồn và xác minh vận hành hệ thống | Mã nguồn đã tinh chỉnh, giao diện UI/UX tối ưu & Báo cáo kiểm thử vận hành |
+| **Tuần 9** | 10/08 – 14/08/2026 | Trình bày và nộp báo cáo kỹ thuật tổng kết, thuyết trình báo cáo dự án, đóng băng trang Hugo static site và đóng dự án | Báo cáo kỹ thuật tổng kết, Slide thuyết trình, Bản đóng băng website tĩnh & Hồ sơ bàn giao |
 
 ---
 

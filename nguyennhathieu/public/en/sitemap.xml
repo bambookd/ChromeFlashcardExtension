@@ -379,6 +379,32 @@
                 href="http://localhost:1313/vi/8-references/"
                 />
   </url><url>
+    <loc>http://localhost:1313/1-worklog/1.8-week8/</loc>
+    <lastmod>2026-07-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.8-week8/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.8-week8/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/1-worklog/1.9-week9/</loc>
+    <lastmod>2026-07-27T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/1-worklog/1.9-week9/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/1-worklog/1.9-week9/"
+                />
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"

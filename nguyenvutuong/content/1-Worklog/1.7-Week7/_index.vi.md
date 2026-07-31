@@ -1,37 +1,34 @@
 ---
 title: "Nhật ký công việc Tuần 7"
 date: 2026-06-15
-weight: 1
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
 
-# Tuần 7 — 27/07 – 02/08/2026
+# Tuần 7 — 27/07 – 31/07/2026
 
 ## Mục tiêu
 
-Các mục tiêu cho Tuần 7 bao gồm:
+Các mục tiêu trọng tâm cho Tuần 7 bao gồm:
 
-* Tổng hợp toàn bộ tài liệu kỹ thuật và hoàn thiện các nhật ký công việc thực tập.
-* Biên soạn và chuẩn hóa bộ tài liệu Workshop 5 gồm 6 bài thực hành chi tiết ([`content/5-Workshop`](file:///Users/axiza/Documents/GitHub/ChromeFlashcardExtension/fcj-workshop-template/content/5-Workshop/_index.vi.md)).
-* Xây dựng kịch bản kiểm thử demo bao gồm các thao tác lưu từ vựng từ Extension, ôn tập thẻ Active Recall và xuất dữ liệu S3 Pre-signed URL.
-* Kiểm thử các script tự động dọn dẹp tài nguyên (xóa bản ghi Route 53 và hủy stack CloudFormation `sam delete --no-prompts`).
-* Tối ưu hóa cấu trúc dự án, build ứng dụng Hugo static site và chuẩn bị hồ sơ bàn giao cuối cùng.
+* Đóng gói, chuẩn hóa và rà soát toàn bộ bộ tài liệu thực hành Workshop 5 gồm 6 bài hướng dẫn chi tiết ([`content/5-Workshop`](file:///Users/axiza/Documents/GitHub/ChromeFlashcardExtension/nguyenvutuong/content/5-Workshop/_index.vi.md)).
+* Đánh giá tổng thể kiến trúc kỹ thuật hệ thống, bảng thông số dịch vụ AWS và các liên kết bảo mật tích hợp.
+* Thực hiện kiểm thử tích hợp thực tế trên các đầu tên miền tùy chỉnh live `https://axiza.net` và `https://api.axiza.net`.
+* Xác minh kịch bản tự động hóa gỡ bỏ tài nguyên đám mây (`sam delete --no-prompts` và giải phóng bản ghi Route 53).
 
 ## Các Công việc Đã Thực hiện
 
 | Nhiệm vụ | Trạng thái | Ngày Bắt đầu | Ngày Hoàn thành |
 | :--- | :--- | :--- | :--- |
-| Tổng kết toàn bộ kiến trúc kỹ thuật, bảng thông số thành phần AWS và các bằng chứng triển khai đám mây. | ✅ Hoàn thành | 27/07/2026 | 27/07/2026 |
-| Xây dựng và tinh chỉnh bộ tài liệu Workshop 5 (Tổng quan, Yêu cầu, Deploy Backend, Cấu hình Extension, Study Web App, Cleanup). | ✅ Hoàn thành | 28/07/2026 | 28/07/2026 |
-| Cập nhật tài liệu đề xuất dự án (`content/2-Proposal`) thống nhất các mục tiêu, kiến trúc, lộ trình 7 tuần, ngân sách và lộ trình workshop. | ✅ Hoàn thành | 29/07/2026 | 29/07/2026 |
-| Kiểm thử kịch bản demo hệ thống trên các tên miền thực tế `https://axiza.net` và `https://api.axiza.net`. | ✅ Hoàn thành | 30/07/2026 | 31/07/2026 |
-| Xác minh các lệnh tự động giải phóng tài nguyên (`aws route53 change-resource-record-sets`, `aws s3 rm`, `sam delete`). | ✅ Hoàn thành | 31/07/2026 | 01/08/2026 |
-| Biên dịch lại trang web bằng Hugo (`hugo`) và thực hiện dọn dẹp tối ưu hóa mã nguồn. | ✅ Hoàn thành | 02/08/2026 | 02/08/2026 |
+| Rà soát và đánh giá toàn bộ kiến trúc thành phần AWS, mô hình phân quyền bảo mật và thông số hạ tầng triển khai. | ✅ Hoàn thành | 27/07/2026 | 27/07/2026 |
+| Biển soạn, định dạng và hoàn thiện 6 bài thực hành Workshop 5 (Tổng quan, Yêu cầu Môi trường, Deploy Backend SAM, Extension, Study Client, Cleanup). | ✅ Hoàn thành | 28/07/2026 | 28/07/2026 |
+| Cập nhật bộ tài liệu Đề xuất Dự án (`content/2-Proposal`) đồng bộ các mục tiêu kiến trúc, ngân sách đám mây và lộ trình thực thi. | ✅ Hoàn thành | 29/07/2026 | 29/07/2026 |
+| Kiểm thử tích hợp thực tế các tính năng thu thập, đồng bộ và ôn tập thẻ trên các tên miền tùy chỉnh `https://axiza.net` và `https://api.axiza.net`. | ✅ Hoàn thành | 30/07/2026 | 30/07/2026 |
+| Xác minh các lệnh tự động dọn dẹp tài nguyên (`aws route53 change-resource-record-sets`, `aws s3 rm`, `sam delete --no-prompts`) đảm bảo không phát sinh chi phí duy trì. | ✅ Hoàn thành | 31/07/2026 | 31/07/2026 |
 
 ## Kết quả Đạt được
 
-* Hoàn thành bộ báo cáo kỹ thuật và đề xuất dự án tổng thể.
-* Đăng tải đầy đủ bộ tài liệu 6 bài thực hành thuộc Workshop 5 bằng cả tiếng Anh và tiếng Việt.
-* Xác minh thành công các script tự động gỡ bỏ tài nguyên nhằm bảo đảm triệt tiêu hoàn toàn chi phí AWS phát sinh sau workshop.
-* Biên dịch thành công bộ tài nguyên web tĩnh Hugo sạch tại `fcj-workshop-template/public/`.
+* Đăng tải thành công bộ tài liệu 6 bài thực hành thuộc Workshop 5 chuẩn hóa bằng cả tiếng Anh và tiếng Việt.
+* Xác minh vận hành ổn định các luồng nghiệp vụ ứng dụng trên tên miền tùy chỉnh `https://axiza.net` và `https://api.axiza.net`.
+* Xác minh tính chính xác của quy trình dọn dẹp tự động hóa tài nguyên đám mây, triệt tiêu nguy cơ phát sinh chi phí duy trì ngoài ý muốn.

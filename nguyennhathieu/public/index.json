@@ -18,7 +18,7 @@
 	"title": "Worklog",
 	"tags": [],
 	"description": "",
-	"content": "Worklog (15/06/2026 - 31/07/2026) Week Focus Result Week 1 Team Formation, Research and project selection MVP scope defined Week 2 Extension prototype Local word capture flow Week 3 Backend and data Local REST API Week 4 Serverless migration Lambda and DynamoDB Week 5 AWS deployment Working API Week 6 Study/Game and testing Solo game, local realtime Week 7 Report and blocker review "
+	"content": "Worklog — 9-week engineering internship (June 15 – August 14, 2026) Week Focus Result Week 1 Team Formation, Research and project selection MVP scope defined Week 2 Extension prototype Local word capture flow Week 3 Backend and data Local REST API Week 4 Serverless migration Lambda and DynamoDB Week 5 AWS deployment Working API Week 6 Study/Game and testing Solo game, local realtime Week 7 Workshop documentation, custom domain setup, initial system review, and teardown verification Live domain testing \u0026amp; teardown verified Week 8 Final feature polish, minor code cleanup, UI refinement, and operational verification High-reliability build \u0026amp; latency optimized Week 9 Final project report preparation, submission, presentation \u0026amp; project closeout Final report submitted \u0026amp; repository frozen "
 },
 {
 	"uri": "http://localhost:1313/1-worklog/1.1-week1/",
@@ -32,7 +32,7 @@
 	"title": "Internship Report",
 	"tags": [],
 	"description": "",
-	"content": "Internship Report Student Information: Full Name: Nguyen Nhat Hieu\nPhone Number: 0934826940\nStudent ID: 2352330\nEmail: hieu.nguyen260705@hcmut.edu.vn\nUniversity: Ho Chi Minh City University of Technology - VNU-HCM\nMajor: Computer Science\nInternship Company: Amazon Web Services Viet Nam Company Limited\nInternship Position: Workforce Bootcamp - First Cloud AI Journey\nInternship Duration: From 15/06/2026 to 31/07/2026\nReport Content Worklog Proposal BlogsPosted Events Participated Workshop Self-evaluation Sharing and Feedback "
+	"content": "Internship Report Student Information: Full Name: Nguyen Nhat Hieu\nPhone Number: 0934826940\nStudent ID: 2352330\nEmail: hieu.nguyen260705@hcmut.edu.vn\nUniversity: Ho Chi Minh City University of Technology - VNU-HCM\nMajor: Computer Science\nInternship Company: Amazon Web Services Viet Nam Company Limited\nInternship Position: Workforce Bootcamp - First Cloud AI Journey\nInternship Duration: From 15/06/2026 to 14/08/2026\nReport Content Worklog Proposal BlogsPosted Events Participated Workshop Self-evaluation Sharing and Feedback "
 },
 {
 	"uri": "http://localhost:1313/5-workshop/5.1-workshop-overview/",
@@ -172,7 +172,7 @@
 	"title": "Week 6 Worklog",
 	"tags": [],
 	"description": "",
-	"content": "Week 6 — 20/07 – 26/07/2026 Overall Developed the vocabulary game.\nWork completed Separated Game from the Study page. Built a local WebSocket server with the ws library. Investigated migration of realtime gameplay to AWS. Problem encountered The current Lambda HTTP API cannot retain WebSocket connections or in-memory room state. Migrating realtime gameplay requires an API Gateway WebSocket API, separate Lambda handlers, and persistent room/connection storage.\n"
+	"content": "Week 6 — 20/07 – 24/07/2026 Overall Developed the vocabulary game.\nWork completed Separated Game from the Study page. Built a local WebSocket server with the ws library. Investigated migration of realtime gameplay to AWS. Problem encountered The current Lambda HTTP API cannot retain WebSocket connections or in-memory room state. Migrating realtime gameplay requires an API Gateway WebSocket API, separate Lambda handlers, and persistent room/connection storage.\n"
 },
 {
 	"uri": "http://localhost:1313/5-workshop/5.6-cleanup/",
@@ -186,7 +186,7 @@
 	"title": "Week 7 Worklog",
 	"tags": [],
 	"description": "",
-	"content": "Week 7 — 27/07 – 31/07/2026 Overall Finalised the report, performed handover testing, and reviewed the realtime blocker.\nTask to be done Complete the report and workshop documentation. Test the main workflows before handover. Review and document the proposed resolution for the realtime blocker. Task done Reviewed the Extension, Study, Game, API, and export workflows. Completed the workshop and cleanup instructions. Documented the realtime limitation in the AWS MVP architecture. Built and checked the bilingual Hugo website. Held a final team meetup to rehearse the demo, review lessons learned, and confirm the handover content. Result All non-realtime MVP functions were ready for demonstration and handover.\n"
+	"content": "Week 7 — 27/07 – 31/07/2026 Overall Completed Workshop 5 material compilation, conducted live custom domain integration testing across production endpoints, performed initial system evaluations, and validated automated environment teardown procedures.\nTask to be done Finalize Workshop 5 documentation and technical architecture deployment guides. Perform live custom domain integration testing across https://axiza.net and https://api.axiza.net. Verify automated infrastructure teardown execution (sam delete --no-prompts) and DNS record cleanup in Route 53. Task done Authored comprehensive Workshop 5 deployment guidelines detailing AWS Serverless SAM stack setup. Conducted end-to-end integration tests linking Chrome Extension to live production API (https://api.axiza.net) and web client (https://axiza.net). Verified automated infrastructure deprovisioning using sam delete --no-prompts and confirmed clean removal of ACM SSL certificates and Route 53 hosted zone records. Analyzed architecture trade-offs between HTTP API and WebSocket API for future realtime game expansion. Built and validated bilingual static documentation rendering for mid-phase technical review. Result Workshop 5 materials completed, custom domain endpoints fully operational, and automated stack teardown workflows thoroughly verified.\n"
 },
 {
 	"uri": "http://localhost:1313/7-feedback/",
@@ -201,6 +201,20 @@
 	"tags": [],
 	"description": "",
 	"content": "8. References 1. Core System Endpoints \u0026amp; Source Code Repositories Environment / Asset URL Description Canonical Web Application https://www.axiza.net Live Study Web Application hosted via AWS Amplify Hosting Backend REST API Base https://api.axiza.net API Gateway HTTP API endpoint API Health Endpoint https://api.axiza.net/api/health Live backend health check status endpoint Video demo https://demo.axiza.net/ Demo video for the workshop GitHub Repository https://github.com/bambookd/ChromeFlashcardExtension Complete source code for Chrome Extension (MV3), Express Backend, and IaC SAM template 2. References from Published Technical Blogs Blog 1 — DDoS Protection in Amazon GameLift Servers AWS Community Publication: AWS Study Group Facebook Post AWS Developer Guide: Amazon GameLift Servers DDoS protection AWS Product Homepage: AWS — Amazon GameLift Servers Blog 2 — Intelligent OCR with Amazon Textract AWS Community Publication: AWS Study Group Facebook Post AWS Product Homepage: Amazon Textract Homepage AWS Service FAQs: Amazon Textract FAQs AWS Technical Documentation: Amazon Textract Documentation AWS User Guide: What is Amazon Textract? AWS Best Practices: Amazon Textract best practices AWS Service Quotas: Amazon Textract service limits AWS API Reference: Amazon Textract Queries Blog 3 — Cloud Data Security: AWS Key Management Service (KMS) AWS Community Publication: AWS Study Group Facebook Post Technical Guide Article: AWS KMS Introduction Article AWS Developer Guide: AWS Key Management Service Developer Guide "
+},
+{
+	"uri": "http://localhost:1313/1-worklog/1.8-week8/",
+	"title": "Week 8 Worklog",
+	"tags": [],
+	"description": "",
+	"content": "Week 8 — 03/08 – 07/08/2026 Overall Focused on system-wide feature polishing, UI/UX refinements, code cleanup, operational end-to-end verification, and latency optimization across all application tiers.\nTask to be done Refine UI components, polish user interaction flows, and execute a comprehensive code cleanup across extension and web repositories. Perform thorough end-to-end operational testing covering the Chrome extension, API Gateway, DynamoDB data persistence, and web client. Optimize static asset delivery, cold-start Lambda response latency, and client-side offline fallback mechanisms. Task done Polished extension popup interface, improved typography, responsive layouts, and visual feedback states during sync operations. Streamlined codebase by removing redundant debug logs, unused imports, and optimizing async handling in backend Lambda functions. Executed end-to-end integration tests verifying word capture, SRS algorithm calculation, flashcard deck management, and API Gateway route responses under load. Implemented caching headers for static web assets and tuned Lambda execution parameters to minimize overall API response latency. Enhanced offline storage sync using local storage fallback when network connection to API Gateway is unavailable. Result Achieved a highly polished, resilient system build with sub-second API response times and seamless offline-to-online data synchronization.\n"
+},
+{
+	"uri": "http://localhost:1313/1-worklog/1.9-week9/",
+	"title": "Week 9 Worklog",
+	"tags": [],
+	"description": "",
+	"content": "Week 9 — 10/08 – 14/08/2026 Overall Compiled technical documentation, delivered final project presentation, froze code repository, and successfully finalized internship closeout activities.\nTask to be done Consolidate technical findings, draft, review, and formally submit the comprehensive final internship report. Prepare presentation materials, conduct live project demonstration, and hold team retrospective session. Freeze git repositories, and conclude project closeout. Task done Synthesized architectural decisions, benchmark performance data, and lessons learned into the final technical report. Conducted successful live project presentation showcasing Chrome Extension capture, AWS Serverless sync, flashcard study modes, and system performance metrics. Held team retrospective meeting to evaluate internship milestones, key achievements, and future roadmap possibilities. Verified all markdown links and bilingual asset paths, and tagged release candidate in Git. Completed final handover procedures, archived repository artifacts, and executed project closeout. Result Final internship report submitted, project demo successfully presented, static documentation site generated and frozen, marking official project completion.\n"
 },
 {
 	"uri": "http://localhost:1313/categories/",

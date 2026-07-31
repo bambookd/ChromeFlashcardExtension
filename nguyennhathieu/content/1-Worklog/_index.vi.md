@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Nhật ký công việc (15/06/2026 - 31/07/2026)
+# Nhật ký công việc — Kỳ thực tập kỹ thuật 9 tuần (15/06 – 14/08/2026)
 
 | Tuần | Trọng tâm | Kết quả |
 | --- | --- | --- |
@@ -16,4 +16,7 @@ pre: " <b> 1. </b> "
 | [Tuần 4](1.4-week4/) | Serverless migration | Lambda và DynamoDB |
 | [Tuần 5](1.5-week5/) | AWS deployment | API hoạt động |
 | [Tuần 6](1.6-week6/) | Study/Game và kiểm thử | Game solo, realtime local |
-| [Tuần 7](1.7-week7/) | Báo cáo và xử lý blocker
+| [Tuần 7](1.7-week7/) | Tài liệu workshop, cấu hình tên miền tùy chỉnh, đánh giá hệ thống ban đầu và xác minh teardown | Kiểm thử tên miền trực tuyến & xác minh teardown |
+| [Tuần 8](1.8-week8/) | Hoàn thiện tính năng cuối, dọn dẹp mã nguồn, tinh chỉnh giao diện và xác minh vận hành | Phiên bản độ tin cậy cao & tối ưu độ trễ |
+| [Tuần 9](1.9-week9/) | Chuẩn bị báo cáo cuối kỳ, nộp báo cáo, thuyết trình & kết thúc dự án | Báo cáo hoàn tất & hoàn thành bàn giao |
+

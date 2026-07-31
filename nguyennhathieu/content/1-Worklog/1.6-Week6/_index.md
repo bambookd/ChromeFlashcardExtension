@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1.6. </b> "
 ---
 
-# Week 6 — 20/07 – 26/07/2026
+# Week 6 — 20/07 – 24/07/2026
 
 ## Overall
 

@@ -12,7 +12,7 @@ pre: " <b> 1.9. </b> "
 
 - Soạn thảo, hoàn thiện và nộp báo cáo kỹ thuật tổng kết dự án.
 - Tổ chức phiên báo cáo nghiệm thu và đánh giá kết quả thực hiện cùng đội ngũ phát triển.
-- Biên dịch trang web tĩnh bằng Hugo, đóng băng repository mã nguồn và chính thức kết thúc dự án.
+- Đóng băng repository mã nguồn và chính thức kết thúc dự án.
 
 ## Nhật ký công việc
 
@@ -21,7 +21,7 @@ pre: " <b> 1.9. </b> "
 | Tổng hợp kết quả đánh giá kỹ thuật, dữ liệu đo đạc hiệu năng và biên soạn báo cáo tổng kết | Hoàn thành | 10/08/2026 | 11/08/2026 |
 | Rà soát toàn bộ nội dung báo cáo kỹ thuật cuối kỳ và nộp cho đơn vị quản lý | Hoàn thành | 11/08/2026 | 12/08/2026 |
 | Thực hiện báo cáo nghiệm thu sản phẩm và tổ chức họp đánh giá rút kinh nghiệm (Retrospective) | Hoàn thành | 13/08/2026 | 14/08/2026 |
-| Biên dịch trang web tĩnh bằng Hugo (`hugo`), hoàn tất đóng băng mã nguồn và chính thức tổng kết dự án | Hoàn thành | 14/08/2026 | 14/08/2026 |
+| Hoàn tất đóng băng mã nguồn và chính thức tổng kết dự án | Hoàn thành | 14/08/2026 | 14/08/2026 |
 
 ## Kết quả đạt được
 
