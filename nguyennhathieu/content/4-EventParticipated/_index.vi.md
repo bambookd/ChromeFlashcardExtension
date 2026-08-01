@@ -77,4 +77,20 @@ Mỗi sự kiện mang đến một góc nhìn khác nhau, từ kiến thức n�
 
 ---
 
-Thông qua bốn sự kiện, mình đã mở rộng kiến thức về AWS Cloud, AI agent, giám sát hệ thống, bảo mật, Data Engineering và định hướng nghề nghiệp. Đây cũng là cơ hội để mình kết nối kiến thức học thuật với các tình huống thực tế trong doanh nghiệp.
+### [Sự kiện 5](4.5-Event5/)
+
+ **Tên sự kiện:** Agent Forge – Deepdive Day 1
+
+ **Ngày:** 01/08/2026
+
+ **Hình thức:** Trực tiếp (Offline)
+
+ **Vai trò:** Người tham dự
+
+ **Nội dung chính:** Vibe Coding với Kiro, Amazon Bedrock AgentCore, Strands Agents SDK, phát triển AI Agent, AWS Lambda, Amazon Cognito, IAM, Amazon CloudWatch, quản lý bộ nhớ của AI Agent, triển khai và giám sát hệ thống trên AWS.
+
+ **Giá trị nhận được:** Mình hiểu thêm về quy trình phát triển một AI Agent hoàn chỉnh trên nền tảng AWS, từ việc sử dụng Kiro để sinh mã nguồn, hạ tầng và tài liệu từ yêu cầu bằng ngôn ngữ tự nhiên đến triển khai trên Amazon Bedrock AgentCore. Bên cạnh đó, mình cũng nắm được vai trò của bộ nhớ (Memory), kết nối dịch vụ (Gateway), môi trường thực thi (Runtime), khả năng giám sát (Observability), cũng như tầm quan trọng của bảo mật, xác thực, giám sát hệ thống và việc kiểm tra lại mã do AI tạo ra trước khi đưa vào môi trường thực tế.
+
+---
+
+Thông qua năm sự kiện, mình đã mở rộng kiến thức về điện toán đám mây AWS, AI Agent, giám sát hệ thống, bảo mật, kỹ thuật dữ liệu, kiến trúc hệ thống doanh nghiệp và phát triển phần mềm với sự hỗ trợ của AI. Những trải nghiệm này giúp tôi hiểu rõ hơn về quy trình xây dựng và triển khai các hệ thống AI trong môi trường thực tế, đồng thời củng cố tư duy kỹ thuật, khả năng kết hợp giữa kiến thức học thuật với các bài toán doanh nghiệp và nhận thức về tầm quan trọng của bảo mật, quản trị và đánh giá chất lượng trong quá trình phát triển phần mềm hiện đại.

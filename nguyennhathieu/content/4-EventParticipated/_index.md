@@ -77,4 +77,20 @@ Each event provided a different perspective, ranging from foundational AWS knowl
 
 ---
 
-Through these four events, I expanded my knowledge of AWS Cloud, AI agents, system monitoring, security, data engineering, and career development. These events also gave me opportunities to connect academic knowledge with practical enterprise scenarios.
+### [Event 5](4.5-Event5/)
+
+ **Event Name:** Agent Forge – Deepdive Day 1
+
+ **Date:** August 1, 2026
+
+ **Participation Format:** Offline
+
+ **Role:** Attendee
+
+ **Main Topics:** Kiro vibe coding, Amazon Bedrock AgentCore, Strands Agents SDK, AI agent development, AWS Lambda, Amazon Cognito, IAM, CloudWatch, agent memory, deployment, monitoring, and production-ready AI applications.
+
+ **Value Gained:** I learned how AI-assisted development with Kiro can accelerate software creation by generating application code, infrastructure, tests, and documentation from natural-language requirements. I also gained practical experience building and deploying a production-ready AI agent using Amazon Bedrock AgentCore, while understanding the importance of memory, secure integrations, authentication, monitoring, scalability, and human review of AI-generated code for enterprise deployment.
+
+---
+
+Through these five events, I expanded my knowledge of AWS Cloud, AI agents, system monitoring, security, data engineering, enterprise architecture, and AI-assisted software development. These experiences strengthened my understanding of modern cloud technologies, production-ready AI systems, and the importance of combining technical expertise with security, governance, and practical engineering skills while connecting academic knowledge with real-world enterprise applications.

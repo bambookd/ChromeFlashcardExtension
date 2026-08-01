@@ -12,7 +12,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Workshop Report :: Internship Report</title>
+    <title>Event 5 :: Internship Report</title>
 
     
     <link href="/css/nucleus.css?1785598756" rel="stylesheet">
@@ -40,7 +40,7 @@
     
 
   </head>
-  <body class="" data-url="/5-workshop/">
+  <body class="" data-url="/4-eventparticipated/4.5-event5/">
     <nav
   id="sidebar"
   class="showVisitedLinks"
@@ -352,7 +352,7 @@
   data-nav-id="/4-eventparticipated/"
   title="Events Participated"
   class="dd-item 
-        
+        parent
         
         
         "
@@ -443,7 +443,7 @@
   title="Event 5"
   class="dd-item 
         
-        
+        active
         
         "
 >
@@ -464,7 +464,7 @@
   title="Workshop Report"
   class="dd-item 
         
-        active
+        
         
         "
 >
@@ -687,7 +687,7 @@
                     
                   
                   
-                  <option id="en" value="/5-workshop/" selected>
+                  <option id="en" value="/4-eventparticipated/4.5-event5/" selected>
                     English
                   </option>
                 
@@ -703,7 +703,7 @@
                     
                   
                   
-                  <option id="vi" value="/vi/5-workshop/" >
+                  <option id="vi" value="/vi/4-eventparticipated/4.5-event5/" >
                     Tiếng Việt
                   </option>
                 
@@ -791,7 +791,13 @@
             
           
           
-            <a href='/'>Internship Report</a> > Workshop Report
+            
+            
+          
+          
+            <a href='/'>Internship Report</a> > <a href='/4-eventparticipated/'>Events Participated</a> > Event 5
+          
+        
           
         
           
@@ -803,11 +809,19 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#1-overview">1. Overview</a></li>
+    <li><a href="#2-topics">2. Topics</a>
       <ul>
-        <li></li>
+        <li><a href="#kiro-and-vibe-coding">Kiro and Vibe Coding</a></li>
+        <li><a href="#strands-agents-sdk">Strands Agents SDK</a></li>
+        <li><a href="#amazon-bedrock-agentcore">Amazon Bedrock AgentCore</a></li>
+        <li><a href="#aws-services">AWS Services</a></li>
+        <li><a href="#workshop-labs">Workshop Labs</a></li>
       </ul>
     </li>
+    <li><a href="#3-what-i-learned">3. What I Learned</a></li>
+    <li><a href="#4-feedback">4. Feedback</a></li>
+    <li><a href="#5-expectations">5. Expectations</a></li>
   </ul>
 </nav></div>
 </div>
@@ -824,7 +838,7 @@
           
             <h1>
               
-              Workshop Report
+              Event 5
             </h1>
           
 
@@ -832,57 +846,111 @@
 
 
 
-	<h1 id="technical-report-serverless-chrome-flashcard-extension--study-platform-on-aws">Technical Report: Serverless Chrome Flashcard Extension &amp; Study Platform on AWS</h1>
-<h4 id="abstract">Abstract</h4>
-<p>This report documents the architectural design, implementation details, and cloud deployment of the <strong>Chrome Flashcard Extension &amp; Serverless Study Platform</strong> (Stack: <code>chrome-flashcard-axiza</code>). The project establishes an offline-first browser extension (Manifest V3) integrated with a fully managed AWS Serverless backend infrastructure. The Web Application frontend is hosted on <strong>AWS Amplify Hosting</strong> under the canonical domain <strong><code>https://www.axiza.net</code></strong> (with apex domain <code>axiza.net</code> HTTP/HTTPS redirecting to <code>www.axiza.net</code>), while the backend API utilizes the custom domain <strong><code>https://api.axiza.net</code></strong>, both managed via <strong>Amazon Route 53</strong> with SSL/TLS certificates issued by <strong>AWS Certificate Manager (ACM)</strong>. The system enables users to capture vocabulary while reading web pages, perform offline local storage operations, synchronize data with a cloud database, and review flashcards via a dedicated Web Application.</p>
-<h4 id="workshop-contributors--project-team">Workshop Contributors &amp; Project Team</h4>
-<table>
-	<thead>
-			<tr>
-					<th>Member</th>
-					<th>ID</th>
-			</tr>
-	</thead>
-	<tbody>
-			<tr>
-					<td><strong>Nguyễn Minh Triết</strong></td>
-					<td>2353214</td>
-			</tr>
-			<tr>
-					<td><strong>Nguyễn Nhật Hiếu</strong></td>
-					<td>2352330</td>
-			</tr>
-			<tr>
-					<td><strong>Nguyễn Vũ Tường</strong></td>
-					<td>2313834</td>
-			</tr>
-	</tbody>
-</table>
-<h4 id="source-code--project-repository">Source Code &amp; Project Repository</h4>
+	<h1 id="event-5-agent-forge---deepdive-day-1-01082026">Event 5: Agent Forge - Deepdive Day 1 (01/08/2026)</h1>
+<h2 id="1-overview">1. Overview</h2>
+<p>The event focused on building and deploying production-ready AI agents on <strong>Amazon Bedrock AgentCore</strong> by using <strong>vibe coding with Kiro</strong>.</p>
+<p>Instead of writing code manually, participants described what they wanted to build in natural language. Kiro then generated the required application code, infrastructure configuration, deployment scripts, tests, and documentation.</p>
+<p>During the workshop, participants built a complete <strong>Returns &amp; Refunds AI Agent</strong> and deployed it to AWS. The workshop introduced the full agent development lifecycle, from creating the agent logic to adding memory, external integrations, authentication, deployment, monitoring, and resource cleanup.</p>
+<p>The workshop was designed to be completed within approximately four hours and was suitable for developers, product managers, technical architects, and anyone interested in AI-powered software development.</p>
+<h2 id="2-topics">2. Topics</h2>
+<p>The main topics covered during the event included:</p>
+<h3 id="kiro-and-vibe-coding">Kiro and Vibe Coding</h3>
 <ul>
-<li><strong>GitHub Repository</strong>: <a href="https://github.com/bambookd/ChromeFlashcardExtension">https://github.com/bambookd/ChromeFlashcardExtension</a></li>
+<li>Using natural-language prompts to generate working software</li>
+<li>Creating features without manually writing code</li>
+<li>Using spec-driven development to transform ideas into structured requirements</li>
+<li>Using agent hooks to automate development workflows</li>
+<li>Connecting external tools and services through MCP integrations</li>
+<li>Generating tested, documented, and deployment-ready code</li>
 </ul>
-<h4 id="core-aws-managed-services">Core AWS Managed Services</h4>
+<h3 id="strands-agents-sdk">Strands Agents SDK</h3>
 <ul>
-<li><strong>Amazon Route 53</strong>: Manages public DNS records for Hosted Zone <code>axiza.net</code>, providing a CNAME record for canonical frontend domain <code>www.axiza.net</code>, apex HTTP/HTTPS redirection, and an Alias A/AAAA record mapping <code>api.axiza.net</code> to the API Gateway Custom Domain Name regional endpoint.</li>
-<li><strong>AWS Certificate Manager (ACM)</strong>: Issues and manages public SSL/TLS certificates for <code>www.axiza.net</code>, <code>axiza.net</code>, and <code>api.axiza.net</code>.</li>
-<li><strong>AWS Amplify Hosting</strong>: Serves Web App static assets directly via its native global edge distribution under custom domain <code>www.axiza.net</code>.</li>
-<li><strong>API Gateway HTTP API</strong>: Functions as the central HTTPS REST API gateway for <code>api.axiza.net</code> with rate limit throttling (20 req/s, burst 40 req/s), handling client requests and CORS authorization for allowed origins (<code>https://www.axiza.net</code>, <code>https://axiza.net</code>, <code>http://axiza.net</code>, <code>chrome-extension://...</code>).</li>
-<li><strong>AWS Lambda</strong>: Executes core application logic using Node.js runtime with Express.js via <code>serverless-http</code>.</li>
-<li><strong>Amazon DynamoDB</strong>: Serves as a persistent NoSQL data store operating in <code>PAY_PER_REQUEST</code> (On-Demand) mode, storing user profiles, flashcard collections, and categories.</li>
-<li><strong>Amazon S3</strong>: Private encrypted bucket dedicated exclusively to storing JSON data exports accessible via 15-minute pre-signed GET URLs.</li>
+<li>Building AI agents with the open-source Strands Agents SDK</li>
+<li>Creating custom tools for agents</li>
+<li>Managing agent memory and conversational context</li>
+<li>Orchestrating agent workflows</li>
+<li>Connecting agents to external services</li>
 </ul>
-<h4 id="system-architecture-overview">System Architecture Overview</h4>
-<p><img src="/images/5-Workshop/5.1-Workshop-overview/arch.jpg" alt=""></p>
-<h4 id="report-structure">Report Structure</h4>
-<ol>
-<li><a href="/5-workshop/5.1-workshop-overview/">System Architecture &amp; Design Overview</a></li>
-<li><a href="/5-workshop/5.2-prerequiste/">Prerequisites &amp; System Specifications</a></li>
-<li><a href="/5-workshop/5.3-deploy-backend/">Serverless Backend Implementation &amp; AWS Deployment</a></li>
-<li><a href="/5-workshop/5.4-extension-setup/">Chrome Extension Architecture &amp; Client-Side Sync</a></li>
-<li><a href="/5-workshop/5.5-translate-export/">Study Web Application &amp; Data Export</a></li>
-<li><a href="/5-workshop/5.6-cleanup/">Resource Teardown &amp; Operational Verification</a></li>
-</ol>
+<h3 id="amazon-bedrock-agentcore">Amazon Bedrock AgentCore</h3>
+<ul>
+<li><strong>AgentCore Memory</strong> for remembering user preferences and conversation history</li>
+<li><strong>AgentCore Gateway</strong> for securely connecting agents to APIs and databases</li>
+<li><strong>AgentCore Runtime</strong> for deploying and scaling AI agents</li>
+<li><strong>AgentCore Observability</strong> for monitoring agent performance</li>
+<li>Integrating AgentCore with Amazon CloudWatch</li>
+</ul>
+<h3 id="aws-services">AWS Services</h3>
+<ul>
+<li>Amazon Bedrock</li>
+<li>AWS Lambda</li>
+<li>Amazon Cognito</li>
+<li>AWS Identity and Access Management</li>
+<li>Amazon CloudWatch</li>
+<li>AWS infrastructure deployment and cleanup</li>
+</ul>
+<h3 id="workshop-labs">Workshop Labs</h3>
+<h4 id="lab-1-kiro-and-vibe-coding">Lab 1: Kiro and Vibe Coding</h4>
+<ul>
+<li>Set up the development environment</li>
+<li>Configure AWS credentials</li>
+<li>Learn how to interact with Kiro</li>
+<li>Generate software by describing requirements in natural language</li>
+</ul>
+<h4 id="lab-2-build-and-deploy-an-ai-agent">Lab 2: Build and Deploy an AI Agent</h4>
+<ul>
+<li>Build a Returns &amp; Refunds assistant with Strands Agents</li>
+<li>Add persistent memory with AgentCore Memory</li>
+<li>Create Lambda functions and authentication</li>
+<li>Configure AgentCore Gateway</li>
+<li>Deploy the agent with AgentCore Runtime</li>
+<li>Add logs, metrics, dashboards, and monitoring</li>
+<li>Clean up AWS resources after completing the workshop</li>
+</ul>
+<h2 id="3-what-i-learned">3. What I Learned</h2>
+<p>From this event, I learned that AI-assisted development can significantly accelerate the process of building cloud applications.</p>
+<p>I learned how Kiro can transform natural-language requirements into structured specifications, application code, infrastructure scripts, tests, and documentation. This showed me how developers can focus more on system design and business requirements instead of spending most of their time writing repetitive code.</p>
+<p>I also gained a better understanding of the architecture of a production AI agent. A complete AI agent requires more than a language model. It also needs:</p>
+<ul>
+<li>Tools for completing real-world tasks</li>
+<li>Memory for maintaining context</li>
+<li>Secure access to external services</li>
+<li>Authentication and authorization</li>
+<li>A scalable runtime environment</li>
+<li>Logging, metrics, and monitoring</li>
+<li>A safe cleanup process for cloud resources</li>
+</ul>
+<p>The workshop also helped me understand the roles of different Amazon Bedrock AgentCore components:</p>
+<ul>
+<li>Memory stores user and conversation context.</li>
+<li>Gateway connects the agent to external APIs and services.</li>
+<li>Runtime hosts and scales the agent.</li>
+<li>Observability provides logs and operational insights.</li>
+</ul>
+<p>Another important lesson was that AI-generated code still requires human review. Even when Kiro generates code, developers should verify permissions, security settings, generated infrastructure, service quotas, deployment regions, and potential AWS costs.</p>
+<h2 id="4-feedback">4. Feedback</h2>
+<p>The workshop was practical and engaging because it demonstrated an end-to-end AI agent project rather than focusing only on theory.</p>
+<p>The strongest part of the event was the use of natural-language prompts to generate both application code and AWS infrastructure. This made complex services such as Amazon Bedrock AgentCore, Lambda, Cognito, IAM, and CloudWatch easier to understand.</p>
+<p>The Returns &amp; Refunds use case was also useful because it showed how AI agents can solve realistic business problems.</p>
+<p>Some parts could be improved:</p>
+<ul>
+<li>More time could be provided to explain the generated code.</li>
+<li>The workshop could include more troubleshooting examples.</li>
+<li>A detailed cost estimate would help participants using personal AWS accounts.</li>
+<li>IAM permissions and security best practices could be explained in greater depth.</li>
+<li>Additional examples could show when developers should modify generated code manually.</li>
+<li>A short architecture diagram would make the relationship between AgentCore components clearer.</li>
+</ul>
+<p>Overall, the event was a valuable introduction to vibe coding and production AI agent development on AWS.</p>
+<h2 id="5-expectations">5. Expectations</h2>
+<p>For Day 2, I expect to explore the technologies in greater depth and gain more hands-on experience.</p>
+<p>I would like to learn more about:</p>
+<ul>
+<li>Reviewing and improving AI-generated code</li>
+<li>Managing long-term memory and user-specific context</li>
+<li>Evaluating agent responses and reducing hallucinations</li>
+<li>Monitoring latency, token usage, failures, and cost</li>
+<li>Testing agents before production deployment</li>
+</ul>
 
 
 
@@ -1170,6 +1238,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1184,6 +1253,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1249,6 +1321,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1268,6 +1341,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -1283,9 +1358,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1438,10 +1510,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/4-eventparticipated/4.5-event5/" title="Event 5"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/4-eventparticipated/4.4-event4/" title="Event 4 (Online)"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/5-workshop/5.1-workshop-overview/" title="System Architecture &amp; Design Overview" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/5-workshop/" title="Workshop Report" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

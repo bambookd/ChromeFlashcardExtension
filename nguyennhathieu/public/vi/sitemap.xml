@@ -262,6 +262,19 @@
                 href="http://localhost:1313/vi/5-workshop/5.4-extension-setup/"
                 />
   </url><url>
+    <loc>http://localhost:1313/vi/4-eventparticipated/4.5-event5/</loc>
+    <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/4-eventparticipated/4.5-event5/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="http://localhost:1313/vi/4-eventparticipated/4.5-event5/"
+                />
+  </url><url>
     <loc>http://localhost:1313/vi/1-worklog/1.5-week5/</loc>
     <lastmod>2026-07-13T00:00:00+00:00</lastmod>
     <xhtml:link
