@@ -1,0 +1,108 @@
+\usepackage{iftex}
+\ifXeTeX\else
+  \PackageError{internship-report}
+    {This project must be compiled with XeLaTeX}
+    {Select XeLaTeX in the editor.}
+\fi
+
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+}{
+  \setmainfont{TeX Gyre Termes}
+}
+\IfFontExistsTF{TeX Gyre Cursor}{\setmonofont{TeX Gyre Cursor}}{}
+
+\usepackage[english]{babel}
+\usepackage[
+  a4paper,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=3.0cm,
+  right=2.0cm,
+  headheight=26pt,
+  headsep=12pt
+]{geometry}
+\usepackage{setspace}
+\setstretch{1.3}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.25em}
+\widowpenalty=10000
+\clubpenalty=10000
+\emergencystretch=2em
+\raggedbottom
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[table]{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{bookmark}
+
+\hypersetup{
+  unicode=true,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  pdftitle={External Internship Report -- \StudentName},
+  pdfauthor={\StudentName\space--\space\StudentID},
+  pdfsubject={External Internship, \Semester, Academic Year \AcademicYear}
+}
+
+\definecolor{HCMUTNavy}{HTML}{12379F}
+\definecolor{HCMUTBlue}{HTML}{1F91D5}
+\definecolor{ReportGray}{HTML}{5F6B76}
+
+\captionsetup{
+  font=small,
+  labelfont={bf,color=HCMUTNavy},
+  textfont={color=ReportGray},
+  justification=centering,
+  singlelinecheck=false
+}
+
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+
+\titleformat{\chapter}[hang]
+  {\normalfont\LARGE\bfseries\color{HCMUTNavy}}
+  {\color{HCMUTBlue}\thechapter}
+  {0.75em}
+  {\MakeUppercase}
+  [\vspace{0.45em}{\color{HCMUTBlue}\titlerule[1.2pt]}]
+\titlespacing*{\chapter}{0pt}{-18pt}{20pt}
+\titleformat{\section}
+  {\normalfont\large\bfseries\color{HCMUTNavy}}
+  {\thesection}{0.75em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\color{HCMUTBlue}}
+  {\thesubsection}{0.75em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{ReportGray} External Internship Report -- \Semester}
+\fancyhead[R]{\small\color{ReportGray} \StudentName\space | \StudentID}
+\fancyfoot[C]{\color{ReportGray}\thepage}
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{HCMUTBlue}\leaders\hrule height \headrulewidth\hfill}}
+
+\setlist[itemize]{leftmargin=1.5em,itemsep=0.25em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=2em,itemsep=0.25em,topsep=0.25em}
+\newcolumntype{Y}{>{\raggedright\arraybackslash\hyphenpenalty=10000}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash\hyphenpenalty=10000}p{#1}}
+\newcommand{\code}[1]{\nolinkurl{#1}}
+\newcommand{\placeholder}[1]{\textcolor{ReportGray}{\textit{[#1]}}}
+\newcommand{\placeholderbox}[2][0.82\textwidth]{%
+  \fbox{\parbox[c][#2][c]{#1}{\centering\placeholder{INSERT IMAGE OR DIAGRAM}}}%
+}

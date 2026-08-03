@@ -1,0 +1,73 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[12pt,a4paper,oneside]{report}
+
+\input{report-config}
+\input{metadata}
+\input{preamble}
+
+\begin{document}
+
+\ifincludeOfficialCover
+  \IfFileExists{assets/M1_cover_filled.pdf}{
+    \includepdf[pages=1,pagecommand={\thispagestyle{empty}},fitpaper=false]
+      {assets/M1_cover_filled.pdf}
+  }{
+    \input{sections/00-cover}
+  }
+\else
+  \input{sections/00-cover}
+\fi
+
+\ifincludeDTwo
+  \IfFileExists{assets/D2.pdf}{
+    \includepdf[pages=-,pagecommand={\thispagestyle{empty}},fitpaper=false]
+      {assets/D2.pdf}
+  }{}
+\fi
+
+\ifincludeDThree
+  \IfFileExists{assets/D3.pdf}{
+    \includepdf[pages=-,pagecommand={\thispagestyle{empty}},fitpaper=false]
+      {assets/D3.pdf}
+  }{}
+\fi
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\pagestyle{plain}
+\input{sections/00-acknowledgements}
+\ifincludeTableOfContents\tableofcontents\fi
+\ifincludeListOfFigures\listoffigures\fi
+\ifincludeListOfTables\listoftables\fi
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\input{sections/01-company-introduction}
+\input{sections/02-internship-overview}
+\input{sections/03-work-process}
+\input{sections/04-assigned-tasks}
+\input{sections/05-technologies-and-tools}
+\input{sections/06-results-and-products}
+\input{sections/07-knowledge-and-skills}
+\input{sections/08-challenges-and-solutions}
+\input{sections/09-evaluation-and-reflection}
+\input{sections/10-conclusion}
+
+\ifincludeConfirmationPage
+  \ifincludeSignedConfirmation
+    \IfFileExists{assets/signed_confirmation.pdf}{
+      \includepdf[pages=-,pagecommand={\thispagestyle{empty}},fitpaper=false]
+        {assets/signed_confirmation.pdf}
+    }{
+      \input{sections/11-confirmation}
+    }
+  \else
+    \input{sections/11-confirmation}
+  \fi
+\fi
+
+\end{document}
