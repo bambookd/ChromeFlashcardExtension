@@ -3,15 +3,18 @@
 \section{Client or Frontend Technologies}
 
 \begin{itemize}
-  \item \placeholder{Technology and its role.}
-  \item \placeholder{Technology and its role.}
-  \item \placeholder{Technology and its role.}
+  \item Chrome Extension Manifest V3 for the browser extension architecture.
+  \item JavaScript for the popup, background service worker, and content
+  script logic.
+  \item HTML and CSS for the extension UI and the study web application.
 \end{itemize}
 
 \section{Backend, Data, or Authentication}
 
-\placeholder{Describe backend frameworks, APIs, authentication, databases, or
-data-processing tools used in the project.}
+The backend used Node.js and Express.js, with \texttt{serverless-http} to run
+the API on AWS Lambda. JWT authentication protected private routes, while
+Amazon DynamoDB stored users, flashcards, and categories. Amazon S3 was used
+for private JSON exports through pre-signed URLs.
 
 \section{Cloud Services or Infrastructure}
 
@@ -22,9 +25,13 @@ data-processing tools used in the project.}
     \toprule
     \textbf{Service/tool} & \textbf{Role} \\
     \midrule
-    \placeholder{Service 1} & \placeholder{Verified role in the project} \\
-    \placeholder{Service 2} & \placeholder{Verified role in the project} \\
-    \placeholder{Service 3} & \placeholder{Verified role in the project} \\
+    AWS Lambda & Runs the Express backend without server management. \\
+    API Gateway HTTP API & Exposes the HTTPS REST API and handles routing and
+    CORS. \\
+    DynamoDB & Stores user-scoped flashcard and category data. \\
+    S3 & Stores export files privately and serves them through signed links. \\
+    Amplify Hosting & Hosts the study web application static site. \\
+    CloudWatch & Collects logs and operational diagnostics. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -38,13 +45,17 @@ data-processing tools used in the project.}
     \toprule
     \textbf{Entity} & \textbf{Key or identifier} & \textbf{Main data} \\
     \midrule
-    \placeholder{Entity 1} & \placeholder{Key} & \placeholder{Stored data} \\
-    \placeholder{Entity 2} & \placeholder{Key} & \placeholder{Stored data} \\
+    User & username or userId & Profile and authentication-related data. \\
+    Flashcard & userId + cardId & Word, meaning, category, timestamps, and
+    sync state. \\
+    Category & userId + categoryName & Category labels for grouped study. \\
     \bottomrule
   \end{tabularx}
 \end{table}
 
 \section{Development and Testing Tools}
 
-\placeholder{Describe version control, build tools, CI/CD, test frameworks,
-documentation tools, deployment tools, and how the student used them.}
+Git was used for version control, AWS SAM for build and deployment, and the
+AWS CLI for verification and teardown. Chrome was used to load and test the
+unpacked extension, while the static documentation site was maintained in Hugo
+and LaTeX-based report files.

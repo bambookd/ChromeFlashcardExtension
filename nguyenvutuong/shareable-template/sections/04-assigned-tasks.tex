@@ -2,8 +2,14 @@
 
 \section{Problem Analysis}
 
-\placeholder{Describe the problem, user need, business need, or technical
-requirement addressed during the internship.}
+The main problem was that learners often encounter unfamiliar vocabulary while
+reading web pages, but switching to a separate note-taking app interrupts the
+reading flow. Local browser storage alone also makes it difficult to persist,
+sync, and review flashcards across devices and sessions.
+
+The project addressed this by connecting a Chrome extension, a study web app,
+and an AWS backend into one workflow for capture, synchronization, practice,
+and export.
 
 \section{Task Groups}
 
@@ -14,14 +20,14 @@ requirement addressed during the internship.}
     \toprule
     \textbf{Group} & \textbf{Work} & \textbf{Output/evidence} \\
     \midrule
-    \placeholder{Task group 1} & \placeholder{Assigned and completed work} &
-      \placeholder{Deliverable or evidence} \\
+    Client extension & Built the Manifest V3 extension, popup UI, content
+      script, and offline storage flow. & Local capture and sync workflow. \\
     \addlinespace
-    \placeholder{Task group 2} & \placeholder{Assigned and completed work} &
-      \placeholder{Deliverable or evidence} \\
+    Backend and cloud & Implemented the Express.js API, DynamoDB model,
+      Lambda deployment, and export flow. & AWS SAM stack and live API. \\
     \addlinespace
-    \placeholder{Task group 3} & \placeholder{Assigned and completed work} &
-      \placeholder{Deliverable or evidence} \\
+    Documentation and delivery & Wrote the proposal, workshop modules,
+      worklog, blog posts, and final reflection. & Complete report content set. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -29,26 +35,32 @@ requirement addressed during the internship.}
 \section{Primary Implementation Flow}
 
 \begin{enumerate}
-  \item \placeholder{Step 1 of the main workflow.}
-  \item \placeholder{Step 2 of the main workflow.}
-  \item \placeholder{Step 3 of the main workflow.}
-  \item \placeholder{Step 4 of the main workflow.}
+  \item Capture text from the browser and create a flashcard in the extension.
+  \item Store the card locally in \texttt{chrome.storage.local} so the user can
+  continue working offline.
+  \item Authenticate the user and synchronize unsent cards to the AWS backend.
+  \item Study the cards in the web app and export them through a signed S3
+  link when needed.
 \end{enumerate}
 
 \section{Secondary Workflow or Supporting Work}
 
-\placeholder{Describe another important workflow, documentation process,
-deployment process, analysis activity, or operational task.}
+Supporting work included workshop documentation, deployment checks, security
+review, and operational teardown. These tasks ensured the project was not only
+implemented but also reproducible and safe to present.
 
 \section{Scope of Individual Contribution}
 
 \textbf{Individual responsibilities.}
-\placeholder{State precisely what the student personally designed, built,
-implemented, documented, tested, analyzed, or delivered.}
+I personally worked on the extension flow, the study workflow logic, the local
+backend prototype, the workshop documentation, and the final internship report
+content. I also helped verify the deployment and cleanup procedures.
 
 \textbf{Team-level responsibilities.}
-\placeholder{State what was performed collaboratively or mainly by teammates.}
+Architecture review, feedback, and project coordination were handled together
+with the team. Some components and final checks were completed collaboratively.
 
 \textbf{Boundary of contribution.}
-\placeholder{Clearly distinguish individual work from team deliverables and do
-not claim ownership of work performed by others.}
+The report only claims my own verified work. Where the project was built or
+reviewed with teammates, the text describes the shared result rather than
+assigning ownership to me alone.
